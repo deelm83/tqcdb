@@ -1,0 +1,57 @@
+{
+  "id": "dianwei",
+  "name_cn": "典韦",
+  "name_en": "Dian Wei",
+  "name_pinyin": "Diǎn Wéi",
+  "faction": "魏",
+  "faction_en": "Wei",
+  "rarity": 5,
+  "cost": 7,
+  "base_stats": {
+    "strength": 95,
+    "intelligence": 35,
+    "command": 72,
+    "speed": 72,
+    "politics": 29,
+    "charm": 58
+  },
+  "growth_rates": {
+    "strength": 2.62,
+    "intelligence": 0.19,
+    "command": 1.83,
+    "speed": 1.25
+  },
+  "troop_affinity": {
+    "cavalry": "B",
+    "shield": "S",
+    "archer": "C",
+    "spear": "A",
+    "siege": "C"
+  },
+  "innate_skill": {
+    "name_cn": "古之恶来",
+    "name_en": "Ancient Evil Comes",
+    "type": "指挥",
+    "type_en": "Command"
+  },
+  "inherited_skill": {
+    "name_cn": "折冲御侮",
+    "name_en": "Repelling Assault",
+    "type": "突击",
+    "type_en": "Assault"
+  },
+  "tags": [
+    "盾",
+    "武"
+  ],
+  "tags_en": [
+    "Shield",
+    "Military"
+  ],
+  "special_bonds": [
+    "虎卫神威"
+  ],
+  "recruitabke": false,
+  "source": "bilibili_wiki",
+  "source_url": "https://wiki.biligame.com/sgzzlb/典韦"
+}

@@ -1,0 +1,172 @@
+[
+  {
+    "name_cn": "乱世奸雄",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%B9%B1%E4%B8%96%E5%A5%B8%E9%9B%84",
+    "type": "指挥",
+    "quality": "S",
+    "source_type": "自带",
+    "source_general": "曹操",
+    "target": "我军群体（2人）",
+    "troop_compatibility": {
+      "cavalry": true,
+      "shield": true,
+      "archer": true,
+      "spear": true,
+      "siege": true
+    },
+    "effect": "战斗中，使友军群体（2人）造成的兵刃伤害和谋略伤害提高16%（受智力影响），自己受到的兵刃伤害和谋略伤害降低18%（受智力影响），如果自己为主将，副将造成伤害时，会为主将恢复其伤害量10%的兵力"
+  },
+  {
+    "name_cn": "梦中弑臣",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%A2%A6%E4%B8%AD%E5%BC%91%E8%87%A3",
+    "type": "指挥",
+    "quality": "S",
+    "source_type": "传承",
+    "source_general": "曹操",
+    "target": "自己",
+    "troop_compatibility": {
+      "cavalry": true,
+      "shield": true,
+      "archer": true,
+      "spear": true,
+      "siege": true
+    },
+    "effect": "战斗前2回合，如果自己为主将，则使随机副将为自己分担40%伤害。战斗第3回合起，自己行动时如果有负面状态，则获得50%概率反击状态(伤害率150%)，直到战斗结束"
+  },
+  {
+    "name_cn": "古之恶来",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%8F%A4%E4%B9%8B%E6%81%B6%E6%9D%A5",
+    "type": "指挥",
+    "quality": "S",
+    "source_type": "自带",
+    "source_general": "典韦",
+    "target": "我军主将",
+    "troop_compatibility": {
+      "cavalry": true,
+      "shield": true,
+      "archer": true,
+      "spear": true,
+      "siege": true
+    },
+    "effect": "我军主将即将受到普通攻击时,自身会对攻击者进行一次猛击(伤害率80%)并使其造成兵刃伤害降低18%，持续1回合,随后为我军主将承担此次普通攻击。"
+  },
+  {
+    "name_cn": "鹰视狼顾",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%B9%B0%E8%A7%86%E7%8B%BC%E9%A1%BE",
+    "type": "指挥",
+    "quality": "S",
+    "source_type": "自带",
+    "source_general": "司马懿",
+    "target": "先增益自身后对敌军群体（1-2人）",
+    "troop_compatibility": {
+      "cavalry": true,
+      "shield": true,
+      "archer": true,
+      "spear": true,
+      "siege": true
+    },
+    "effect": "战斗前4回合，每回合有80%概率使自身获得7%攻心或奇谋几率（每种效果最多叠加2次）；第5回合起，每回合有80%概率对1-2个敌军单体造成谋略伤害（伤害率154%，受智力影响）；自身为主将时，获得16%奇谋几率"
+  },
+  {
+    "name_cn": "用武通神",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%94%A8%E6%AD%A6%E9%80%9A%E7%A5%9E",
+    "type": "指挥",
+    "quality": "S",
+    "source_type": "传承",
+    "source_general": "司马懿",
+    "target": "敌军群体（2人）",
+    "troop_compatibility": {
+      "cavalry": true,
+      "shield": true,
+      "archer": true,
+      "spear": true,
+      "siege": true
+    },
+    "effect": "战斗开始的第2、4、6、8回合，对敌军群体（2人）逐渐造成75%、105%、135%、165%谋略伤害（受智力影响）"
+  },
+  {
+    "name_cn": "十胜十败",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%8D%81%E8%83%9C%E5%8D%81%E8%B4%A5",
+    "type": "指挥",
+    "quality": "S",
+    "source_type": "自带",
+    "source_general": "郭嘉",
+    "target": "友军主将",
+    "troop_compatibility": {
+      "cavalry": true,
+      "shield": true,
+      "archer": true,
+      "spear": true,
+      "siege": true
+    },
+    "effect": "战斗前2回合，使我军主将获得洞察（免疫所有控制效果）状态，受到的伤害降低50%"
+  },
+  {
+    "name_cn": "江天长焰",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%B1%9F%E5%A4%A9%E9%95%BF%E7%84%B0",
+    "type": "指挥",
+    "quality": "S",
+    "source_type": "自带",
+    "source_general": "sp周瑜",
+    "target": "敌军全体负面，敌军单体伤害",
+    "troop_compatibility": {
+      "cavalry": true,
+      "shield": true,
+      "archer": true,
+      "spear": true,
+      "siege": true
+    },
+    "effect": "战斗中，每回合使敌军全体受到谋略伤害提高4%（受智力影响），可叠加，并有几率（25%，没有一名敌军处于灼烧或水攻状态时，提高4%）对敌军单体造成谋略伤害（伤害率146%，受智力影响）；自身为主将时，基础概率提高至35%且该次攻击目标将锁定敌军兵力最低单体"
+  },
+  {
+    "name_cn": "南蛮渠魁",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%8D%97%E8%9B%AE%E6%B8%A0%E9%AD%81",
+    "type": "指挥",
+    "quality": "S",
+    "source_type": "自带",
+    "source_general": "孟获",
+    "target": "敌军全体",
+    "troop_compatibility": {
+      "cavalry": true,
+      "shield": true,
+      "archer": true,
+      "spear": true,
+      "siege": true
+    },
+    "effect": "战斗中，每回合行动时有49%几率对敌军全体造成兵刃伤害（伤害率106%），若未生效则提高7%发动概率，自身受到7次普通攻击后会进入1回合震慑（无法行动）状态；自身为主将时，每回合有15%（部队每多1名蛮族武将额外提高15%）概率使全体蛮族造成的伤害提高15%（受自身损失兵力影响，最多80%），持续1回合"
+  },
+  {
+    "name_cn": "挫锐",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%8C%AB%E9%94%90",
+    "type": "指挥",
+    "quality": "S",
+    "source_type": "传承",
+    "source_general": "孙坚 陈群",
+    "target": "敌军单体",
+    "troop_compatibility": {
+      "cavalry": true,
+      "shield": true,
+      "archer": true,
+      "spear": true,
+      "siege": true
+    },
+    "effect": "战斗前3回合，使敌军单体进入虚弱状态，造成伤害时有65%几率无法造成伤害"
+  },
+  {
+    "name_cn": "守而必固",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%AE%88%E8%80%8C%E5%BF%85%E5%9B%BA",
+    "type": "指挥",
+    "quality": "S",
+    "source_type": "传承",
+    "source_general": "曹植 程昱",
+    "target": "敌军主将",
+    "troop_compatibility": {
+      "cavalry": true,
+      "shield": true,
+      "archer": true,
+      "spear": true,
+      "siege": true
+    },
+    "effect": "战斗开始时，嘲讽敌军主将（强迫目标普通攻击自己），并使自己的统率提升40点，持续4回合"
+  }
+]

@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model General {
+  id              String   @id
+  slug            String   @unique
+  nameCn          String   @map("name_cn")
+  nameVi          String   @map("name_vi")
+  factionId       String   @map("faction_id")
+  cost            Int
+  wikiUrl         String?  @map("wiki_url")
+  image           String?
+  imageFull       String?  @map("image_full")
+
+  // Tags stored as JSON
+  tagsCn          String[] @map("tags_cn")
+  tagsVi          String[] @map("tags_vi")
+
+  // Troop compatibility grades
+  cavalryGrade    String?  @map("cavalry_grade")
+  shieldGrade     String?  @map("shield_grade")
+  archerGrade     String?  @map("archer_grade")
+  spearGrade      String?  @map("spear_grade")
+  siegeGrade      String?  @map("siege_grade")
+
+  // Skills - references by name
+  innateSkillName   String?  @map("innate_skill_name")
+  inheritedSkillName String? @map("inherited_skill_name")
+
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("generals")
+}
+
+model Skill {
+  id              Int      @id @default(autoincrement())
+  slug            String?  @unique
+  nameCn          String   @unique @map("name_cn")
+  nameVi          String   @map("name_vi")
+  typeId          String   @map("type_id")
+  typeNameCn      String?  @map("type_name_cn")
+  typeNameVi      String?  @map("type_name_vi")
+  quality         String?
+  triggerRate     Int?     @map("trigger_rate")
+  sourceType      String?  @map("source_type")
+  wikiUrl         String?  @map("wiki_url")
+
+  // Effect description
+  effectCn        String?  @map("effect_cn")
+  effectVi        String?  @map("effect_vi")
+
+  // Target
+  target          String?
+  targetVi        String?  @map("target_vi")
+
+  // Army types (stored as array)
+  armyTypes       String[] @map("army_types")
+
+  // Acquisition info
+  innateToGenerals      String[] @map("innate_to_generals")
+  inheritanceFromGenerals String[] @map("inheritance_from_generals")
+  acquisition           String[]
+
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("skills")
+}

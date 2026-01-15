@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 100" fill="none">
+  <!-- Background -->
+  <rect width="80" height="100" fill="#1a2130"/>
+
+  <!-- Decorative border -->
+  <rect x="2" y="2" width="76" height="96" stroke="#6b5a3e" stroke-width="1" fill="none" rx="4"/>
+
+  <!-- Inner frame -->
+  <rect x="6" y="6" width="68" height="88" stroke="#2a3548" stroke-width="1" fill="none" rx="2"/>
+
+  <!-- General silhouette - head -->
+  <ellipse cx="40" cy="32" rx="14" ry="16" fill="#2a3548"/>
+
+  <!-- Helmet/hat decoration -->
+  <path d="M26 28 Q40 18 54 28" stroke="#6b5a3e" stroke-width="2" fill="none"/>
+  <circle cx="40" cy="20" r="3" fill="#d4a74a"/>
+
+  <!-- Body/armor silhouette -->
+  <path d="M22 55 Q22 45 30 42 L40 40 L50 42 Q58 45 58 55 L58 85 Q58 90 50 90 L30 90 Q22 90 22 85 Z" fill="#2a3548"/>
+
+  <!-- Armor details -->
+  <path d="M30 50 L40 48 L50 50" stroke="#6b5a3e" stroke-width="1.5" fill="none"/>
+  <path d="M32 60 L40 58 L48 60" stroke="#6b5a3e" stroke-width="1" fill="none"/>
+  <line x1="40" y1="48" x2="40" y2="75" stroke="#6b5a3e" stroke-width="1"/>
+
+  <!-- Shoulder guards -->
+  <ellipse cx="24" cy="52" rx="6" ry="4" fill="#2a3548" stroke="#6b5a3e" stroke-width="1"/>
+  <ellipse cx="56" cy="52" rx="6" ry="4" fill="#2a3548" stroke="#6b5a3e" stroke-width="1"/>
+
+  <!-- Question mark or unknown indicator -->
+  <text x="40" y="78" text-anchor="middle" font-family="serif" font-size="16" fill="#6b5a3e">?</text>
+
+  <!-- Corner decorations -->
+  <path d="M8 8 L18 8 M8 8 L8 18" stroke="#d4a74a" stroke-width="1.5"/>
+  <path d="M72 8 L62 8 M72 8 L72 18" stroke="#d4a74a" stroke-width="1.5"/>
+  <path d="M8 92 L18 92 M8 92 L8 82" stroke="#d4a74a" stroke-width="1.5"/>
+  <path d="M72 92 L62 92 M72 92 L72 82" stroke="#d4a74a" stroke-width="1.5"/>
+</svg>

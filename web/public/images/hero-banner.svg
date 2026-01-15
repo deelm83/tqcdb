@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a2130"/>
+      <stop offset="100%" style="stop-color:#0a0e14"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0c96e"/>
+      <stop offset="50%" style="stop-color:#d4a74a"/>
+      <stop offset="100%" style="stop-color:#a67c32"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b2635"/>
+      <stop offset="100%" style="stop-color:#5c1a24"/>
+    </linearGradient>
+    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#d4a74a;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#d4a74a;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Filters -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+
+  <!-- Decorative mountain silhouettes -->
+  <path d="M0 350 L100 280 L200 320 L300 250 L400 300 L500 220 L600 280 L700 240 L800 300 L800 400 L0 400 Z" fill="#12171f" opacity="0.8"/>
+  <path d="M0 380 L150 320 L300 360 L450 300 L600 350 L750 310 L800 340 L800 400 L0 400 Z" fill="#0a0e14" opacity="0.9"/>
+
+  <!-- Center glow -->
+  <ellipse cx="400" cy="200" rx="300" ry="150" fill="url(#glowGrad)"/>
+
+  <!-- War banners - Left -->
+  <g transform="translate(120, 80)">
+    <rect x="0" y="0" width="8" height="180" fill="#6b5a3e"/>
+    <path d="M8 20 L80 35 L80 100 L8 85 Z" fill="url(#redGrad)"/>
+    <path d="M8 20 L80 35 L80 40 L8 25 Z" fill="#a13040"/>
+    <!-- Banner decoration -->
+    <circle cx="44" cy="60" r="15" fill="none" stroke="#d4a74a" stroke-width="2"/>
+    <text x="44" y="65" text-anchor="middle" font-family="serif" font-size="16" fill="#d4a74a">魏</text>
+  </g>
+
+  <!-- War banners - Right -->
+  <g transform="translate(680, 80)">
+    <rect x="0" y="0" width="8" height="180" fill="#6b5a3e"/>
+    <path d="M0 20 L-72 35 L-72 100 L0 85 Z" fill="#1a5c3a"/>
+    <path d="M0 20 L-72 35 L-72 40 L0 25 Z" fill="#2a8050"/>
+    <circle cx="-36" cy="60" r="15" fill="none" stroke="#d4a74a" stroke-width="2"/>
+    <text x="-36" y="65" text-anchor="middle" font-family="serif" font-size="16" fill="#d4a74a">蜀</text>
+  </g>
+
+  <!-- Center emblem -->
+  <g transform="translate(400, 180)">
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="80" fill="none" stroke="url(#goldGrad)" stroke-width="3" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#6b5a3e" stroke-width="1"/>
+
+    <!-- Inner design - octagon -->
+    <polygon points="0,-60 42,-42 60,0 42,42 0,60 -42,42 -60,0 -42,-42" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+
+    <!-- Center circle with dragon motif suggestion -->
+    <circle cx="0" cy="0" r="45" fill="#1a2130" stroke="#d4a74a" stroke-width="2"/>
+
+    <!-- Crossed swords -->
+    <g transform="rotate(-45)">
+      <rect x="-4" y="-50" width="8" height="70" fill="#6b7280"/>
+      <polygon points="0,-55 -8,-50 -4,-50 -4,-55 4,-55 4,-50 8,-50" fill="#d4a74a"/>
+    </g>
+    <g transform="rotate(45)">
+      <rect x="-4" y="-50" width="8" height="70" fill="#6b7280"/>
+      <polygon points="0,-55 -8,-50 -4,-50 -4,-55 4,-55 4,-50 8,-50" fill="#d4a74a"/>
+    </g>
+
+    <!-- Center jewel -->
+    <circle cx="0" cy="0" r="12" fill="url(#goldGrad)" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="8" fill="#f0c96e"/>
+    <circle cx="-3" cy="-3" r="3" fill="#fff" opacity="0.5"/>
+  </g>
+
+  <!-- Warrior silhouettes -->
+  <!-- Left warrior -->
+  <g transform="translate(220, 200)" opacity="0.6">
+    <ellipse cx="0" cy="-50" rx="12" ry="14" fill="#2a3548"/> <!-- head -->
+    <path d="M-20 -35 Q0 -20 20 -35 L25 40 L-25 40 Z" fill="#2a3548"/> <!-- body -->
+    <path d="M-30 -30 L-45 20" stroke="#2a3548" stroke-width="6" stroke-linecap="round"/> <!-- arm with weapon -->
+    <rect x="-48" y="-50" width="4" height="80" fill="#3a4558"/> <!-- spear -->
+    <polygon points="-46,-55 -52,-45 -40,-45" fill="#6b7280"/> <!-- spear tip -->
+  </g>
+
+  <!-- Right warrior -->
+  <g transform="translate(580, 200)" opacity="0.6">
+    <ellipse cx="0" cy="-50" rx="12" ry="14" fill="#2a3548"/>
+    <path d="M-20 -35 Q0 -20 20 -35 L25 40 L-25 40 Z" fill="#2a3548"/>
+    <path d="M30 -30 L45 20" stroke="#2a3548" stroke-width="6" stroke-linecap="round"/>
+    <rect x="44" y="-50" width="4" height="80" fill="#3a4558"/>
+    <polygon points="46,-55 52,-45 40,-45" fill="#6b7280"/>
+  </g>
+
+  <!-- Decorative corner elements -->
+  <g fill="url(#goldGrad)" opacity="0.5">
+    <!-- Top left -->
+    <path d="M20 20 L60 20 L60 25 L25 25 L25 60 L20 60 Z"/>
+    <circle cx="40" cy="40" r="5"/>
+
+    <!-- Top right -->
+    <path d="M780 20 L740 20 L740 25 L775 25 L775 60 L780 60 Z"/>
+    <circle cx="760" cy="40" r="5"/>
+
+    <!-- Bottom left -->
+    <path d="M20 380 L60 380 L60 375 L25 375 L25 340 L20 340 Z"/>
+    <circle cx="40" cy="360" r="5"/>
+
+    <!-- Bottom right -->
+    <path d="M780 380 L740 380 L740 375 L775 375 L775 340 L780 340 Z"/>
+    <circle cx="760" cy="360" r="5"/>
+  </g>
+
+  <!-- Floating particles/stars -->
+  <g fill="#d4a74a" opacity="0.4">
+    <circle cx="100" cy="150" r="2"/>
+    <circle cx="150" cy="100" r="1.5"/>
+    <circle cx="700" cy="150" r="2"/>
+    <circle cx="650" cy="100" r="1.5"/>
+    <circle cx="300" cy="350" r="1.5"/>
+    <circle cx="500" cy="350" r="1.5"/>
+    <circle cx="200" cy="300" r="1"/>
+    <circle cx="600" cy="300" r="1"/>
+  </g>
+</svg>

@@ -1,0 +1,709 @@
+[
+  {
+    "name": {
+      "cn": "曹操",
+      "vi": "Tào Tháo"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%9B%B9%E6%93%8D",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "辅盾"
+      ],
+      "vi": [
+        "Phụ Thuẫn"
+      ]
+    },
+    "bonds": {
+      "cn": [
+        "三足鼎立虎卫神威"
+      ],
+      "vi": [
+        "[三] Túc Đỉnh Lập Hổ Vệ Thần Uy"
+      ]
+    },
+    "recruitable": false,
+    "innate_skill": {
+      "name": {
+        "cn": "乱世奸雄",
+        "vi": "Loạn Thế Gian Hùng"
+      },
+      "type": {
+        "id": "command",
+        "name": {
+          "cn": "指挥",
+          "vi": "Chỉ Huy"
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "梦中弑臣",
+        "vi": "Mộng Trung Thí Thần"
+      },
+      "type": {
+        "id": "command",
+        "name": {
+          "cn": "指挥",
+          "vi": "Chỉ Huy"
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S",
+        "name": {
+          "cn": "骑兵",
+          "vi": "Kỵ Binh"
+        }
+      },
+      "shield": {
+        "grade": "S",
+        "name": {
+          "cn": "盾兵",
+          "vi": "Thuẫn Binh"
+        }
+      },
+      "archer": {
+        "grade": "A",
+        "name": {
+          "cn": "弓兵",
+          "vi": "Cung Binh"
+        }
+      },
+      "spear": {
+        "grade": "A",
+        "name": {
+          "cn": "枪兵",
+          "vi": "Thương Binh"
+        }
+      },
+      "siege": {
+        "grade": "B",
+        "name": {
+          "cn": "器械",
+          "vi": "Khí Giới"
+        }
+      }
+    },
+    "stats": {
+      "strength": {
+        "name": {
+          "cn": "武力",
+          "vi": "Vũ Lực"
+        },
+        "base": 72.0,
+        "growth": 1.33,
+        "max": 137.17
+      },
+      "intelligence": {
+        "name": {
+          "cn": "智力",
+          "vi": "Trí Lực"
+        },
+        "base": 91.0,
+        "growth": 1.94,
+        "max": 186.06
+      },
+      "command": {
+        "name": {
+          "cn": "统率",
+          "vi": "Thống Soái"
+        },
+        "base": 99.0,
+        "growth": 2.7,
+        "max": 231.3
+      },
+      "speed": {
+        "name": {
+          "cn": "速度",
+          "vi": "Tốc Độ"
+        },
+        "base": 64.0,
+        "growth": 1.18,
+        "max": 121.82
+      },
+      "politics": {
+        "name": {
+          "cn": "政治",
+          "vi": "Chính Trị"
+        },
+        "base": 94.0,
+        "growth": 1.7,
+        "max": 177.3
+      },
+      "charm": {
+        "name": {
+          "cn": "魅力",
+          "vi": "Mị Lực"
+        },
+        "base": 96.0,
+        "growth": 1.65,
+        "max": 176.85
+      }
+    }
+  },
+  {
+    "name": {
+      "cn": "刘备",
+      "vi": "Lưu Bị"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%88%98%E5%A4%87",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "医控"
+      ],
+      "vi": [
+        "[医] Khống"
+      ]
+    },
+    "bonds": {
+      "cn": [
+        "三足鼎立桃园结义"
+      ],
+      "vi": [
+        "[三] Túc Đỉnh Lập [桃] [园] [结] [义]"
+      ]
+    },
+    "recruitable": false,
+    "innate_skill": {
+      "name": {
+        "cn": "仁德载世",
+        "vi": "[仁] Đức [载] Thế"
+      },
+      "type": {
+        "id": "command",
+        "name": {
+          "cn": "指挥",
+          "vi": "Chỉ Huy"
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "义心昭烈",
+        "vi": "[义] [心] [昭] [烈]"
+      },
+      "type": {
+        "id": "command",
+        "name": {
+          "cn": "指挥",
+          "vi": "Chỉ Huy"
+        }
+      }
+    },
+    "stats": {
+      "strength": {
+        "name": {
+          "cn": "武力",
+          "vi": "Vũ Lực"
+        },
+        "base": 77.0,
+        "growth": 1.36,
+        "max": 143.64
+      },
+      "intelligence": {
+        "name": {
+          "cn": "智力",
+          "vi": "Trí Lực"
+        },
+        "base": 78.0,
+        "growth": 1.67,
+        "max": 159.83
+      },
+      "command": {
+        "name": {
+          "cn": "统率",
+          "vi": "Thống Soái"
+        },
+        "base": 81.0,
+        "growth": 1.98,
+        "max": 178.02
+      },
+      "speed": {
+        "name": {
+          "cn": "速度",
+          "vi": "Tốc Độ"
+        },
+        "base": 41.0,
+        "growth": 1.05,
+        "max": 92.45
+      },
+      "politics": {
+        "name": {
+          "cn": "政治",
+          "vi": "Chính Trị"
+        },
+        "base": 80.0,
+        "growth": 1.31,
+        "max": 144.19
+      },
+      "charm": {
+        "name": {
+          "cn": "魅力",
+          "vi": "Mị Lực"
+        },
+        "base": 99.0,
+        "growth": 2.7,
+        "max": 94.0
+      }
+    }
+  },
+  {
+    "name": {
+      "cn": "孙权",
+      "vi": "Tôn Quyền"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%AD%99%E6%9D%83"
+  },
+  {
+    "name": {
+      "cn": "诸葛亮",
+      "vi": "Gia Cát Lượng"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%AF%B8%E8%91%9B%E4%BA%AE",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "控谋"
+      ],
+      "vi": [
+        "Khống [谋]"
+      ]
+    },
+    "bonds": {
+      "cn": [
+        "国之栋才西蜀之智天水之战"
+      ],
+      "vi": [
+        "Quốc Chi [栋] [才] [西] Thục Chi Trí [天] Thủy Chi Chiến"
+      ]
+    },
+    "recruitable": false,
+    "innate_skill": {
+      "name": {
+        "cn": "神机妙算",
+        "vi": "Thần Cơ Diệu Toán"
+      },
+      "type": {
+        "id": "command",
+        "name": {
+          "cn": "指挥",
+          "vi": "Chỉ Huy"
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "舌战群儒",
+        "vi": "[舌] Chiến Quần [儒]"
+      },
+      "type": {
+        "id": "command",
+        "name": {
+          "cn": "指挥",
+          "vi": "Chỉ Huy"
+        }
+      }
+    },
+    "stats": {
+      "strength": {
+        "name": {
+          "cn": "武力",
+          "vi": "Vũ Lực"
+        },
+        "base": 38.0,
+        "growth": 0.41,
+        "max": 58.09
+      },
+      "intelligence": {
+        "name": {
+          "cn": "智力",
+          "vi": "Trí Lực"
+        },
+        "base": 100.0,
+        "growth": 3.0,
+        "max": 247.0
+      },
+      "command": {
+        "name": {
+          "cn": "统率",
+          "vi": "Thống Soái"
+        },
+        "base": 98.0,
+        "growth": 2.36,
+        "max": 213.64
+      },
+      "speed": {
+        "name": {
+          "cn": "速度",
+          "vi": "Tốc Độ"
+        },
+        "base": 37.0,
+        "growth": 0.55,
+        "max": 63.95
+      },
+      "politics": {
+        "name": {
+          "cn": "政治",
+          "vi": "Chính Trị"
+        },
+        "base": 95.0,
+        "growth": 2.61,
+        "max": 222.89
+      },
+      "charm": {
+        "name": {
+          "cn": "魅力",
+          "vi": "Mị Lực"
+        },
+        "base": 92.0,
+        "growth": 1.8,
+        "max": 94.0
+      }
+    }
+  },
+  {
+    "name": {
+      "cn": "司马懿",
+      "vi": "Tư Mã Ý"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%8F%B8%E9%A9%AC%E6%87%BF",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "谋"
+      ],
+      "vi": [
+        "[谋]"
+      ]
+    },
+    "bonds": {
+      "cn": [
+        "国栋之才"
+      ],
+      "vi": [
+        "Quốc [栋] Chi [才]"
+      ]
+    },
+    "recruitable": false,
+    "innate_skill": {
+      "name": {
+        "cn": "鹰视狼顾",
+        "vi": "Ưng Thị Lang Cố"
+      },
+      "type": {
+        "id": "command",
+        "name": {
+          "cn": "指挥",
+          "vi": "Chỉ Huy"
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "用武通神",
+        "vi": "Dụng Vũ Thông Thần"
+      },
+      "type": {
+        "id": "command",
+        "name": {
+          "cn": "指挥",
+          "vi": "Chỉ Huy"
+        }
+      }
+    },
+    "stats": {
+      "strength": {
+        "name": {
+          "cn": "武力",
+          "vi": "Vũ Lực"
+        },
+        "base": 63.0,
+        "growth": 0.42,
+        "max": 83.58
+      },
+      "intelligence": {
+        "name": {
+          "cn": "智力",
+          "vi": "Trí Lực"
+        },
+        "base": 98.0,
+        "growth": 2.67,
+        "max": 228.83
+      },
+      "command": {
+        "name": {
+          "cn": "统率",
+          "vi": "Thống Soái"
+        },
+        "base": 98.0,
+        "growth": 2.06,
+        "max": 198.94
+      },
+      "speed": {
+        "name": {
+          "cn": "速度",
+          "vi": "Tốc Độ"
+        },
+        "base": 39.0,
+        "growth": 0.82,
+        "max": 79.18
+      },
+      "politics": {
+        "name": {
+          "cn": "政治",
+          "vi": "Chính Trị"
+        },
+        "base": 93.0,
+        "growth": 1.75,
+        "max": 178.75
+      },
+      "charm": {
+        "name": {
+          "cn": "魅力",
+          "vi": "Mị Lực"
+        },
+        "base": 87.0,
+        "growth": 1.4,
+        "max": 155.6
+      }
+    }
+  },
+  {
+    "name": {
+      "cn": "周瑜",
+      "vi": "Chu Du"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%91%A8%E7%91%9C"
+  },
+  {
+    "name": {
+      "cn": "关羽",
+      "vi": "Quan Vũ"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%85%B3%E7%BE%BD",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "战辅"
+      ],
+      "vi": [
+        "Chiến Phụ"
+      ]
+    },
+    "bonds": {
+      "cn": [
+        "五虎上将桃园结义"
+      ],
+      "vi": [
+        "[五] Hổ [上] [将] [桃] [园] [结] [义]"
+      ]
+    },
+    "recruitable": true,
+    "innate_skill": {
+      "name": {
+        "cn": "威震华夏",
+        "vi": "Uy [震] [华] Hạ"
+      },
+      "type": {
+        "id": "active",
+        "name": {
+          "cn": "主动",
+          "vi": "Chủ Động"
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "横扫千军",
+        "vi": "[横] [扫] [千] Quân"
+      },
+      "type": {
+        "id": "active",
+        "name": {
+          "cn": "主动",
+          "vi": "Chủ Động"
+        }
+      }
+    },
+    "stats": {
+      "strength": {
+        "name": {
+          "cn": "武力",
+          "vi": "Vũ Lực"
+        },
+        "base": 97.0,
+        "growth": 2.68,
+        "max": 228.32
+      },
+      "intelligence": {
+        "name": {
+          "cn": "智力",
+          "vi": "Trí Lực"
+        },
+        "base": 79.0,
+        "growth": 1.05,
+        "max": 130.45
+      },
+      "command": {
+        "name": {
+          "cn": "统率",
+          "vi": "Thống Soái"
+        },
+        "base": 97.0,
+        "growth": 2.04,
+        "max": 196.96
+      },
+      "speed": {
+        "name": {
+          "cn": "速度",
+          "vi": "Tốc Độ"
+        },
+        "base": 74.0,
+        "growth": 1.3,
+        "max": 137.7
+      },
+      "politics": {
+        "name": {
+          "cn": "政治",
+          "vi": "Chính Trị"
+        },
+        "base": 62.0,
+        "growth": 0.5,
+        "max": 86.5
+      },
+      "charm": {
+        "name": {
+          "cn": "魅力",
+          "vi": "Mị Lực"
+        },
+        "base": 93.0,
+        "growth": 0.3,
+        "max": 107.7
+      }
+    }
+  },
+  {
+    "name": {
+      "cn": "张辽",
+      "vi": "Trương Liêu"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%BC%A0%E8%BE%BD",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Vũ"
+      ]
+    },
+    "bonds": {
+      "cn": [
+        "五子良将飞将所望"
+      ],
+      "vi": [
+        "[五] [子] [良] [将] Phi [将] [所] [望]"
+      ]
+    },
+    "recruitable": true,
+    "innate_skill": {
+      "name": {
+        "cn": "陷阵突袭",
+        "vi": "[陷] Trận Đột [袭]"
+      },
+      "type": {
+        "id": "passive",
+        "name": {
+          "cn": "被动",
+          "vi": "Bị Động"
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "勇者得前",
+        "vi": "[勇] [者] [得] [前]"
+      },
+      "type": {
+        "id": "assault",
+        "name": {
+          "cn": "突击",
+          "vi": "Đột Kích"
+        }
+      }
+    },
+    "stats": {
+      "strength": {
+        "name": {
+          "cn": "武力",
+          "vi": "Vũ Lực"
+        },
+        "base": 92.0,
+        "growth": 2.33,
+        "max": 206.17
+      },
+      "intelligence": {
+        "name": {
+          "cn": "智力",
+          "vi": "Trí Lực"
+        },
+        "base": 78.0,
+        "growth": 1.29,
+        "max": 141.21
+      },
+      "command": {
+        "name": {
+          "cn": "统率",
+          "vi": "Thống Soái"
+        },
+        "base": 95.0,
+        "growth": 1.32,
+        "max": 159.68
+      },
+      "speed": {
+        "name": {
+          "cn": "速度",
+          "vi": "Tốc Độ"
+        },
+        "base": 78.0,
+        "growth": 1.49,
+        "max": 151.01
+      },
+      "politics": {
+        "name": {
+          "cn": "政治",
+          "vi": "Chính Trị"
+        },
+        "base": 58.0,
+        "growth": 0.51,
+        "max": 82.99
+      },
+      "charm": {
+        "name": {
+          "cn": "魅力",
+          "vi": "Mị Lực"
+        },
+        "base": 78.0,
+        "growth": 0.42,
+        "max": 98.58
+      }
+    }
+  },
+  {
+    "name": {
+      "cn": "吕布",
+      "vi": "Lữ Bố"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%90%95%E5%B8%83"
+  },
+  {
+    "name": {
+      "cn": "赵云",
+      "vi": "Triệu Vân"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%B5%B5%E4%BA%91"
+  }
+]

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 50" fill="none">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0c96e"/>
+      <stop offset="50%" style="stop-color:#d4a74a"/>
+      <stop offset="100%" style="stop-color:#a67c32"/>
+    </linearGradient>
+    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2636"/>
+      <stop offset="100%" style="stop-color:#12171f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shield/emblem background -->
+  <path d="M5 4 L40 4 L40 38 L22.5 46 L5 38 Z" fill="url(#darkGrad)" stroke="url(#goldGrad)" stroke-width="1.5"/>
+
+  <!-- Inner frame -->
+  <path d="M9 8 L36 8 L36 35 L22.5 42 L9 35 Z" fill="none" stroke="url(#goldGrad)" stroke-width="0.75" opacity="0.4"/>
+
+  <!-- Crossed swords -->
+  <g transform="translate(22.5, 24)">
+    <rect x="-8" y="-10" width="2" height="18" fill="url(#goldGrad)" transform="rotate(-25)"/>
+    <rect x="6" y="-10" width="2" height="18" fill="url(#goldGrad)" transform="rotate(25)"/>
+  </g>
+
+  <!-- Center jewel -->
+  <circle cx="22.5" cy="22" r="4" fill="url(#goldGrad)"/>
+  <circle cx="22.5" cy="22" r="2" fill="#f0c96e"/>
+
+  <!-- Text: Tam Quốc Chí -->
+  <text x="52" y="28" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="url(#goldGrad)">Tam Quốc Chí</text>
+
+  <!-- Subtitle -->
+  <text x="52" y="42" font-family="Arial, sans-serif" font-size="9" fill="#8b9cb3" letter-spacing="3" font-weight="500">DATABASE</text>
+</svg>
