@@ -276,10 +276,12 @@ export default function AdminSkillsPage() {
               </thead>
               <tbody className="divide-y divide-stone-700">
                 {filteredSkills.map((skill) => (
-                  <tr key={skill.id} className={`hover:bg-stone-700/30 ${skill.status === 'complete' ? 'opacity-60' : ''}`}>
-                    <td className={`px-4 py-3 font-medium ${skill.status === 'complete' ? 'text-stone-400 line-through' : 'text-white'}`}>
+                  <tr key={skill.id} className="hover:bg-stone-700/30">
+                    <td className="px-4 py-3 font-medium text-white">
                       <div className="flex items-center gap-2">
-                        {skill.status !== 'complete' && (
+                        {skill.status === 'complete' ? (
+                          <span className="text-green-500 flex-shrink-0" title="Hoàn thành">✓</span>
+                        ) : (
                           <span className="w-2 h-2 rounded-full bg-orange-500 flex-shrink-0" title="Cần cập nhật"></span>
                         )}
                         {skill.name.vi}
