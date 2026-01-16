@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
-import { fetchAdminSkills, deleteSkill } from '@/lib/adminApi';
+import { fetchAdminSkills, deleteSkill, updateSkill } from '@/lib/adminApi';
 import { Skill } from '@/lib/api';
+
+type StatusFilter = 'all' | 'needs_update' | 'complete';
 
 const SKILL_TYPES = [
   { id: 'command', nameVi: 'Chỉ Huy' },
@@ -38,7 +40,9 @@ export default function AdminSkillsPage() {
   const [search, setSearch] = useState('');
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [selectedQuality, setSelectedQuality] = useState<string | null>(null);
+  const [selectedStatus, setSelectedStatus] = useState<StatusFilter>('all');
   const [deleting, setDeleting] = useState<number | null>(null);
+  const [togglingStatus, setTogglingStatus] = useState<number | null>(null);
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -80,10 +84,27 @@ export default function AdminSkillsPage() {
     }
   };
 
+  const handleToggleStatus = async (skill: Skill) => {
+    const newStatus = skill.status === 'complete' ? 'needs_update' : 'complete';
+    setTogglingStatus(skill.id);
+    try {
+      await updateSkill(skill.slug || String(skill.id), { status: newStatus });
+      setSkills((prev) =>
+        prev.map((s) => (s.id === skill.id ? { ...s, status: newStatus } : s))
+      );
+    } catch (error) {
+      alert('Không thể cập nhật trạng thái');
+      console.error(error);
+    } finally {
+      setTogglingStatus(null);
+    }
+  };
+
   const clearFilters = () => {
     setSearch('');
     setSelectedType(null);
     setSelectedQuality(null);
+    setSelectedStatus('all');
   };
 
   const filteredSkills = skills.filter((s) => {
@@ -104,6 +125,11 @@ export default function AdminSkillsPage() {
 
     // Quality filter
     if (selectedQuality && s.quality !== selectedQuality) {
+      return false;
+    }
+
+    // Status filter
+    if (selectedStatus !== 'all' && s.status !== selectedStatus) {
       return false;
     }
 
@@ -161,7 +187,38 @@ export default function AdminSkillsPage() {
                   </button>
                 );
               })}
-              {(selectedType || selectedQuality || search) && (
+              <span className="text-xs text-stone-500 ml-2">Trạng thái:</span>
+              <button
+                onClick={() => setSelectedStatus('all')}
+                className={`px-2 py-1 rounded text-xs transition-all ${
+                  selectedStatus === 'all'
+                    ? 'bg-stone-600 text-white'
+                    : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                }`}
+              >
+                Tất cả
+              </button>
+              <button
+                onClick={() => setSelectedStatus('needs_update')}
+                className={`px-2 py-1 rounded text-xs transition-all ${
+                  selectedStatus === 'needs_update'
+                    ? 'bg-orange-600 text-white'
+                    : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                }`}
+              >
+                Cần cập nhật
+              </button>
+              <button
+                onClick={() => setSelectedStatus('complete')}
+                className={`px-2 py-1 rounded text-xs transition-all ${
+                  selectedStatus === 'complete'
+                    ? 'bg-green-600 text-white'
+                    : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                }`}
+              >
+                Hoàn thành
+              </button>
+              {(selectedType || selectedQuality || search || selectedStatus !== 'all') && (
                 <button
                   onClick={clearFilters}
                   className="ml-2 px-2 py-1 text-xs text-stone-400 hover:text-amber-400 transition-colors"
@@ -214,6 +271,7 @@ export default function AdminSkillsPage() {
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Loại</th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Phẩm chất</th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Tỷ lệ kích hoạt</th>
+                  <th className="px-4 py-3 text-center text-sm font-medium text-stone-400">Trạng thái</th>
                   <th className="px-4 py-3 text-right text-sm font-medium text-stone-400">Thao tác</th>
                 </tr>
               </thead>
@@ -247,6 +305,19 @@ export default function AdminSkillsPage() {
                       </span>
                     </td>
                     <td className="px-4 py-3 text-amber-400">{skill.trigger_rate ? `${skill.trigger_rate}%` : '-'}</td>
+                    <td className="px-4 py-3 text-center">
+                      <button
+                        onClick={() => handleToggleStatus(skill)}
+                        disabled={togglingStatus === skill.id}
+                        className={`px-2 py-1 rounded text-xs font-medium transition-all ${
+                          skill.status === 'complete'
+                            ? 'bg-green-600/30 text-green-300 hover:bg-green-600/50'
+                            : 'bg-orange-600/30 text-orange-300 hover:bg-orange-600/50'
+                        } disabled:opacity-50`}
+                      >
+                        {togglingStatus === skill.id ? '...' : skill.status === 'complete' ? '✓ OK' : '⚠ Cần cập nhật'}
+                      </button>
+                    </td>
                     <td className="px-4 py-3 text-right">
                       <div className="flex items-center justify-end gap-2">
                         <Link

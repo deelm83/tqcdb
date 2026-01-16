@@ -38,6 +38,7 @@ router.get('/', async (req, res) => {
       },
       quality: s.quality,
       trigger_rate: s.triggerRate,
+      status: s.status,
     }));
 
     res.json(transformed);
@@ -114,6 +115,7 @@ router.get('/:id', async (req, res) => {
       exchange_generals: skill.exchangeGenerals, // Legacy string array
       exchange_general_ids: exchangeGeneralIds, // Proper relation IDs
       exchange_count: skill.exchangeCount,
+      status: skill.status,
     };
 
     res.json(transformed);
@@ -174,6 +176,7 @@ router.post('/', async (req, res) => {
         exchangeType: data.exchange_type || data.exchangeType || null,
         exchangeGenerals: data.exchange_generals || data.exchangeGenerals || [],
         exchangeCount: data.exchange_count ?? data.exchangeCount ?? null,
+        status: data.status || 'needs_update',
         // Create general relations if provided
         exchangeGeneralRelations: exchangeGeneralIds.length > 0 ? {
           create: exchangeGeneralIds.map(generalId => ({ generalId }))
@@ -271,6 +274,7 @@ router.put('/:id', async (req, res) => {
           exchangeType: data.exchange_type ?? data.exchangeType ?? existing.exchangeType,
           exchangeGenerals: data.exchange_generals ?? data.exchangeGenerals ?? existing.exchangeGenerals,
           exchangeCount: data.exchange_count ?? data.exchangeCount ?? existing.exchangeCount,
+          status: data.status ?? existing.status,
         },
       });
 

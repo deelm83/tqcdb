@@ -95,6 +95,7 @@ export default function EditSkillPage() {
     exchangeGenerals: [] as string[],
     exchangeGeneralIds: [] as string[],
     exchangeCount: 0,
+    status: 'needs_update' as string,
   });
   const [innateSearch, setInnateSearch] = useState('');
   const [inheritSearch, setInheritSearch] = useState('');
@@ -150,6 +151,7 @@ export default function EditSkillPage() {
           exchangeGenerals: data.exchange_generals || [],
           exchangeGeneralIds: data.exchange_general_ids || [],
           exchangeCount: data.exchange_count || 0,
+          status: data.status || 'needs_update',
         });
       } catch (err) {
         setError('Không thể tải chiến pháp');
@@ -275,6 +277,7 @@ export default function EditSkillPage() {
         exchange_generals: form.exchangeGenerals,
         exchange_general_ids: form.exchangeGeneralIds,
         exchange_count: form.exchangeCount || null,
+        status: form.status,
       } as any);
       showToast('Đã cập nhật chiến pháp thành công', 'success');
 
@@ -305,6 +308,7 @@ export default function EditSkillPage() {
         exchangeGenerals: data.exchange_generals || [],
         exchangeGeneralIds: data.exchange_general_ids || [],
         exchangeCount: data.exchange_count || 0,
+        status: data.status || 'needs_update',
       });
     } catch (err: any) {
       setError(err.message || 'Không thể cập nhật chiến pháp');
@@ -377,6 +381,18 @@ export default function EditSkillPage() {
               {form.triggerRate > 0 && (
                 <span className="text-amber-400 text-sm font-medium">{form.triggerRate}%</span>
               )}
+              {/* Status toggle */}
+              <button
+                type="button"
+                onClick={() => setForm((prev) => ({ ...prev, status: prev.status === 'complete' ? 'needs_update' : 'complete' }))}
+                className={`ml-auto px-3 py-1 rounded-full text-sm font-medium transition-all ${
+                  form.status === 'complete'
+                    ? 'bg-green-600/30 text-green-300 hover:bg-green-600/50'
+                    : 'bg-orange-600/30 text-orange-300 hover:bg-orange-600/50'
+                }`}
+              >
+                {form.status === 'complete' ? '✓ Hoàn thành' : '⚠ Cần cập nhật'}
+              </button>
             </div>
             <h1 className="text-2xl font-bold text-amber-100">{form.nameVi || 'Chiến pháp mới'}</h1>
             {showChinese && form.nameCn && <p className="text-stone-400 mt-1">{form.nameCn}</p>}

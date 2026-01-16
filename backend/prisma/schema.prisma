@@ -39,6 +39,9 @@ model General {
   innateSkillName   String?  @map("innate_skill_name")
   inheritedSkillName String? @map("inherited_skill_name")
 
+  // Status flag: "needs_update" or "complete"
+  status            String   @default("needs_update")
+
   // Skills that can be obtained by exchanging this general
   exchangeableForSkills  SkillExchangeGeneral[]
 
@@ -106,6 +109,9 @@ model Skill {
 
   // Relation to generals for inherit (proper FK relationship)
   inheritGeneralRelations   SkillInheritGeneral[]
+
+  // Status flag: "needs_update" or "complete"
+  status            String   @default("needs_update")
 
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")

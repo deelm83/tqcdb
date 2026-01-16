@@ -46,6 +46,7 @@ export default function EditGeneralPage() {
     siegeGrade: '',
     innateSkillId: null as number | null,
     inheritedSkillId: null as number | null,
+    status: 'needs_update' as string,
   });
 
   useEffect(() => {
@@ -81,6 +82,7 @@ export default function EditGeneralPage() {
           siegeGrade: generalData.troop_compatibility?.siege?.grade || '',
           innateSkillId: generalData.innate_skill_id || null,
           inheritedSkillId: generalData.inherited_skill_id || null,
+          status: generalData.status || 'needs_update',
         });
       } catch (err) {
         setError('Không thể tải thông tin tướng');
@@ -119,6 +121,7 @@ export default function EditGeneralPage() {
         },
         innate_skill_id: form.innateSkillId,
         inherited_skill_id: form.inheritedSkillId,
+        status: form.status,
       } as any);
       showToast('Đã cập nhật tướng thành công', 'success');
     } catch (err: any) {
@@ -164,7 +167,20 @@ export default function EditGeneralPage() {
     <main className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-8">
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-amber-100">Chỉnh sửa tướng</h1>
+          <div className="flex items-center gap-4">
+            <h1 className="text-2xl font-bold text-amber-100">Chỉnh sửa tướng</h1>
+            <button
+              type="button"
+              onClick={() => setForm((prev) => ({ ...prev, status: prev.status === 'complete' ? 'needs_update' : 'complete' }))}
+              className={`px-3 py-1 rounded-full text-sm font-medium transition-all ${
+                form.status === 'complete'
+                  ? 'bg-green-600/30 text-green-300 hover:bg-green-600/50'
+                  : 'bg-orange-600/30 text-orange-300 hover:bg-orange-600/50'
+              }`}
+            >
+              {form.status === 'complete' ? '✓ Hoàn thành' : '⚠ Cần cập nhật'}
+            </button>
+          </div>
           <Link
             href="/admin/generals"
             className="text-stone-400 hover:text-white text-sm"

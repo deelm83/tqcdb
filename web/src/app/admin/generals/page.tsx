@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
-import { fetchAdminGenerals, deleteGeneral } from '@/lib/adminApi';
+import { fetchAdminGenerals, deleteGeneral, updateGeneral } from '@/lib/adminApi';
 import { General } from '@/lib/api';
+
+type StatusFilter = 'all' | 'needs_update' | 'complete';
 import { FactionId, TroopType } from '@/types/general';
 import { factionNames, troopTypeNames } from '@/lib/generals';
 import { TroopIcon } from '@/components/icons/TroopIcons';
@@ -23,7 +25,9 @@ export default function AdminGeneralsPage() {
   const [selectedFactions, setSelectedFactions] = useState<FactionId[]>([]);
   const [selectedCost, setSelectedCost] = useState<number | null>(null);
   const [selectedTroops, setSelectedTroops] = useState<TroopType[]>([]);
+  const [selectedStatus, setSelectedStatus] = useState<StatusFilter>('all');
   const [deleting, setDeleting] = useState<string | null>(null);
+  const [togglingStatus, setTogglingStatus] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -81,11 +85,28 @@ export default function AdminGeneralsPage() {
     }
   };
 
+  const handleToggleStatus = async (general: General) => {
+    const newStatus = general.status === 'complete' ? 'needs_update' : 'complete';
+    setTogglingStatus(general.id);
+    try {
+      await updateGeneral(general.slug || general.id, { status: newStatus });
+      setGenerals((prev) =>
+        prev.map((g) => (g.id === general.id ? { ...g, status: newStatus } : g))
+      );
+    } catch (error) {
+      alert('Không thể cập nhật trạng thái');
+      console.error(error);
+    } finally {
+      setTogglingStatus(null);
+    }
+  };
+
   const clearFilters = () => {
     setSearch('');
     setSelectedFactions([]);
     setSelectedCost(null);
     setSelectedTroops([]);
+    setSelectedStatus('all');
   };
 
   const filteredGenerals = generals.filter((g) => {
@@ -124,6 +145,11 @@ export default function AdminGeneralsPage() {
       if (!hasMatchingTroop) return false;
     }
 
+    // Status filter
+    if (selectedStatus !== 'all' && g.status !== selectedStatus) {
+      return false;
+    }
+
     return true;
   });
 
@@ -155,6 +181,41 @@ export default function AdminGeneralsPage() {
               onChange={(e) => setSearch(e.target.value)}
               className="w-full px-4 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
             />
+          </div>
+
+          {/* Status filter row */}
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-sm font-medium text-amber-400">Trạng thái:</span>
+            <button
+              onClick={() => setSelectedStatus('all')}
+              className={`px-3 py-1.5 rounded text-sm transition-all ${
+                selectedStatus === 'all'
+                  ? 'bg-stone-600 text-white'
+                  : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+              }`}
+            >
+              Tất cả
+            </button>
+            <button
+              onClick={() => setSelectedStatus('needs_update')}
+              className={`px-3 py-1.5 rounded text-sm transition-all ${
+                selectedStatus === 'needs_update'
+                  ? 'bg-orange-600 text-white'
+                  : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+              }`}
+            >
+              Cần cập nhật
+            </button>
+            <button
+              onClick={() => setSelectedStatus('complete')}
+              className={`px-3 py-1.5 rounded text-sm transition-all ${
+                selectedStatus === 'complete'
+                  ? 'bg-green-600 text-white'
+                  : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+              }`}
+            >
+              Hoàn thành
+            </button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -251,6 +312,7 @@ export default function AdminGeneralsPage() {
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Tên</th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Phe</th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Phí</th>
+                  <th className="px-4 py-3 text-center text-sm font-medium text-stone-400">Trạng thái</th>
                   <th className="px-4 py-3 text-right text-sm font-medium text-stone-400">Thao tác</th>
                 </tr>
               </thead>
@@ -275,6 +337,19 @@ export default function AdminGeneralsPage() {
                       {factionNames[general.faction_id as FactionId]?.vi || general.faction_id}
                     </td>
                     <td className="px-4 py-3 text-amber-400 font-bold">{general.cost}</td>
+                    <td className="px-4 py-3 text-center">
+                      <button
+                        onClick={() => handleToggleStatus(general)}
+                        disabled={togglingStatus === general.id}
+                        className={`px-2 py-1 rounded text-xs font-medium transition-all ${
+                          general.status === 'complete'
+                            ? 'bg-green-600/30 text-green-300 hover:bg-green-600/50'
+                            : 'bg-orange-600/30 text-orange-300 hover:bg-orange-600/50'
+                        } disabled:opacity-50`}
+                      >
+                        {togglingStatus === general.id ? '...' : general.status === 'complete' ? '✓ OK' : '⚠ Cần cập nhật'}
+                      </button>
+                    </td>
                     <td className="px-4 py-3 text-right">
                       <div className="flex items-center justify-end gap-2">
                         <Link

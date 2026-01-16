@@ -111,6 +111,7 @@ router.get('/', async (req, res) => {
       inherited_skill_id: g.inheritedSkillId,
       innate_skill: g.innateSkill ? { id: g.innateSkill.id, name: { cn: g.innateSkill.nameCn, vi: g.innateSkill.nameVi } } : null,
       inherited_skill: g.inheritedSkill ? { id: g.inheritedSkill.id, name: { cn: g.inheritedSkill.nameCn, vi: g.inheritedSkill.nameVi } } : null,
+      status: g.status,
     }));
 
     res.json(transformed);
@@ -160,6 +161,7 @@ router.get('/:id', async (req, res) => {
       inherited_skill_id: general.inheritedSkillId,
       innate_skill: general.innateSkill ? { id: general.innateSkill.id, name: { cn: general.innateSkill.nameCn, vi: general.innateSkill.nameVi } } : null,
       inherited_skill: general.inheritedSkill ? { id: general.inheritedSkill.id, name: { cn: general.inheritedSkill.nameCn, vi: general.inheritedSkill.nameVi } } : null,
+      status: general.status,
     };
 
     res.json(transformed);
@@ -203,6 +205,7 @@ router.post('/', async (req, res) => {
         siegeGrade: data.troop_compatibility?.siege?.grade || data.siegeGrade,
         innateSkillId: data.innate_skill_id || data.innateSkillId || null,
         inheritedSkillId: data.inherited_skill_id || data.inheritedSkillId || null,
+        status: data.status || 'needs_update',
       },
     });
 
@@ -250,6 +253,7 @@ router.put('/:id', async (req, res) => {
         siegeGrade: data.troop_compatibility?.siege?.grade || data.siegeGrade || existing.siegeGrade,
         innateSkillId: data.innate_skill_id !== undefined ? data.innate_skill_id : (data.innateSkillId !== undefined ? data.innateSkillId : existing.innateSkillId),
         inheritedSkillId: data.inherited_skill_id !== undefined ? data.inherited_skill_id : (data.inheritedSkillId !== undefined ? data.inheritedSkillId : existing.inheritedSkillId),
+        status: data.status ?? existing.status,
       },
     });
 
