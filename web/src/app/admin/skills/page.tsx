@@ -267,9 +267,6 @@ export default function AdminSkillsPage() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-stone-700">
-                  <th className="px-2 py-3 text-center text-sm font-medium text-stone-400 w-10">
-                    <span title="Hoàn thành">✓</span>
-                  </th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Tên</th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Loại</th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Phẩm chất</th>
@@ -280,15 +277,6 @@ export default function AdminSkillsPage() {
               <tbody className="divide-y divide-stone-700">
                 {filteredSkills.map((skill) => (
                   <tr key={skill.id} className={`hover:bg-stone-700/30 ${skill.status === 'complete' ? 'opacity-60' : ''}`}>
-                    <td className="px-2 py-3 text-center">
-                      <input
-                        type="checkbox"
-                        checked={skill.status === 'complete'}
-                        onChange={() => handleToggleStatus(skill)}
-                        disabled={togglingStatus === skill.id}
-                        className="w-4 h-4 rounded border-stone-500 bg-stone-700 text-green-500 focus:ring-green-500 focus:ring-offset-stone-800 cursor-pointer disabled:opacity-50"
-                      />
-                    </td>
                     <td className={`px-4 py-3 font-medium ${skill.status === 'complete' ? 'text-stone-400 line-through' : 'text-white'}`}>{skill.name.vi}</td>
                     <td className="px-4 py-3">
                       <span className={`px-2 py-0.5 rounded text-xs font-bold ${
