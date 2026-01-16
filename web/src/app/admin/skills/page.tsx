@@ -267,18 +267,29 @@ export default function AdminSkillsPage() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-stone-700">
+                  <th className="px-2 py-3 text-center text-sm font-medium text-stone-400 w-10">
+                    <span title="Hoàn thành">✓</span>
+                  </th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Tên</th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Loại</th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Phẩm chất</th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Tỷ lệ kích hoạt</th>
-                  <th className="px-4 py-3 text-center text-sm font-medium text-stone-400">Trạng thái</th>
                   <th className="px-4 py-3 text-right text-sm font-medium text-stone-400">Thao tác</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-stone-700">
                 {filteredSkills.map((skill) => (
-                  <tr key={skill.id} className="hover:bg-stone-700/30">
-                    <td className="px-4 py-3 text-white font-medium">{skill.name.vi}</td>
+                  <tr key={skill.id} className={`hover:bg-stone-700/30 ${skill.status === 'complete' ? 'opacity-60' : ''}`}>
+                    <td className="px-2 py-3 text-center">
+                      <input
+                        type="checkbox"
+                        checked={skill.status === 'complete'}
+                        onChange={() => handleToggleStatus(skill)}
+                        disabled={togglingStatus === skill.id}
+                        className="w-4 h-4 rounded border-stone-500 bg-stone-700 text-green-500 focus:ring-green-500 focus:ring-offset-stone-800 cursor-pointer disabled:opacity-50"
+                      />
+                    </td>
+                    <td className={`px-4 py-3 font-medium ${skill.status === 'complete' ? 'text-stone-400 line-through' : 'text-white'}`}>{skill.name.vi}</td>
                     <td className="px-4 py-3">
                       <span className={`px-2 py-0.5 rounded text-xs font-bold ${
                         skill.type.id === 'command' ? 'bg-yellow-600/30 text-yellow-300' :
@@ -305,21 +316,17 @@ export default function AdminSkillsPage() {
                       </span>
                     </td>
                     <td className="px-4 py-3 text-amber-400">{skill.trigger_rate ? `${skill.trigger_rate}%` : '-'}</td>
-                    <td className="px-4 py-3 text-center">
-                      <button
-                        onClick={() => handleToggleStatus(skill)}
-                        disabled={togglingStatus === skill.id}
-                        className={`px-2 py-1 rounded text-xs font-medium transition-all ${
-                          skill.status === 'complete'
-                            ? 'bg-green-600/30 text-green-300 hover:bg-green-600/50'
-                            : 'bg-orange-600/30 text-orange-300 hover:bg-orange-600/50'
-                        } disabled:opacity-50`}
-                      >
-                        {togglingStatus === skill.id ? '...' : skill.status === 'complete' ? '✓ OK' : '⚠ Cần cập nhật'}
-                      </button>
-                    </td>
                     <td className="px-4 py-3 text-right">
                       <div className="flex items-center justify-end gap-2">
+                        {skill.status !== 'complete' && (
+                          <button
+                            onClick={() => handleToggleStatus(skill)}
+                            disabled={togglingStatus === skill.id}
+                            className="px-3 py-1 text-sm text-green-400 hover:text-green-300 border border-green-700 rounded hover:border-green-600 transition-colors disabled:opacity-50"
+                          >
+                            {togglingStatus === skill.id ? '...' : 'Done'}
+                          </button>
+                        )}
                         <Link
                           href={`/admin/skills/${skill.slug || skill.id}`}
                           className="px-3 py-1 text-sm text-amber-400 hover:text-amber-300 border border-amber-700 rounded hover:border-amber-600 transition-colors"
