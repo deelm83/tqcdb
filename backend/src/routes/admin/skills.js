@@ -21,6 +21,30 @@ function generateSlug(nameVi) {
     .replace(/^-|-$/g, '');
 }
 
+// Helper to generate unique slug (checks for conflicts)
+async function generateUniqueSlug(baseSlug, excludeId = null) {
+  if (!baseSlug) return null;
+
+  let slug = baseSlug;
+  let counter = 1;
+
+  while (true) {
+    const existing = await prisma.skill.findUnique({
+      where: { slug },
+      select: { id: true }
+    });
+
+    // No conflict, or it's the same skill we're updating
+    if (!existing || existing.id === excludeId) {
+      return slug;
+    }
+
+    // Conflict - append counter
+    counter++;
+    slug = `${baseSlug}-${counter}`;
+  }
+}
+
 // GET /api/admin/skills - List all skills
 router.get('/', async (req, res) => {
   try {
@@ -39,6 +63,7 @@ router.get('/', async (req, res) => {
       quality: s.quality,
       trigger_rate: s.triggerRate,
       status: s.status,
+      updated_at: s.updatedAt,
     }));
 
     res.json(transformed);
@@ -116,6 +141,7 @@ router.get('/:id', async (req, res) => {
       exchange_general_ids: exchangeGeneralIds, // Proper relation IDs
       exchange_count: skill.exchangeCount,
       status: skill.status,
+      updated_at: skill.updatedAt,
     };
 
     res.json(transformed);
@@ -226,6 +252,42 @@ router.put('/:id', async (req, res) => {
     const innateGeneralIds = data.innate_general_ids || [];
     const inheritGeneralIds = data.inherit_general_ids || [];
 
+    // Fetch general names to sync legacy arrays when relations are updated
+    let innateGeneralNames = data.innate_to ?? data.innateToGenerals;
+    let inheritGeneralNames = data.inheritance_from ?? data.inheritanceFromGenerals;
+    let exchangeGeneralNames = data.exchange_generals;
+
+    // If relation IDs are provided, fetch the Chinese names to sync legacy arrays
+    if (data.innate_general_ids !== undefined && innateGeneralIds.length > 0) {
+      const generals = await prisma.general.findMany({
+        where: { id: { in: innateGeneralIds } },
+        select: { nameCn: true }
+      });
+      innateGeneralNames = generals.map(g => g.nameCn);
+    } else if (data.innate_general_ids !== undefined) {
+      innateGeneralNames = []; // Clear if empty array was passed
+    }
+
+    if (data.inherit_general_ids !== undefined && inheritGeneralIds.length > 0) {
+      const generals = await prisma.general.findMany({
+        where: { id: { in: inheritGeneralIds } },
+        select: { nameCn: true }
+      });
+      inheritGeneralNames = generals.map(g => g.nameCn);
+    } else if (data.inherit_general_ids !== undefined) {
+      inheritGeneralNames = []; // Clear if empty array was passed
+    }
+
+    if (data.exchange_general_ids !== undefined && exchangeGeneralIds.length > 0) {
+      const generals = await prisma.general.findMany({
+        where: { id: { in: exchangeGeneralIds } },
+        select: { nameCn: true }
+      });
+      exchangeGeneralNames = generals.map(g => g.nameCn);
+    } else if (data.exchange_general_ids !== undefined) {
+      exchangeGeneralNames = []; // Clear if empty array was passed
+    }
+
     // Use transaction to update skill and relations
     const skill = await prisma.$transaction(async (tx) => {
       // Delete existing relations if we're updating them
@@ -247,7 +309,8 @@ router.put('/:id', async (req, res) => {
 
       // Generate slug if not provided and doesn't exist
       const nameVi = data.name?.vi ?? data.nameVi ?? existing.nameVi;
-      const newSlug = data.slug || existing.slug || generateSlug(nameVi);
+      const baseSlug = data.slug || existing.slug || generateSlug(nameVi);
+      const newSlug = await generateUniqueSlug(baseSlug, existing.id);
 
       // Update skill - use ?? for fields that should preserve null/empty values
       const updatedSkill = await tx.skill.update({
@@ -268,11 +331,11 @@ router.put('/:id', async (req, res) => {
           target: data.target ?? existing.target,
           targetVi: data.target_vi ?? data.targetVi ?? existing.targetVi,
           armyTypes: data.army_types ?? data.armyTypes ?? existing.armyTypes,
-          innateToGeneralNames: data.innate_to ?? data.innateToGenerals ?? existing.innateToGeneralNames,
-          inheritanceFromGeneralNames: data.inheritance_from ?? data.inheritanceFromGenerals ?? existing.inheritanceFromGeneralNames,
+          innateToGeneralNames: innateGeneralNames ?? existing.innateToGeneralNames,
+          inheritanceFromGeneralNames: inheritGeneralNames ?? existing.inheritanceFromGeneralNames,
           acquisitionType: data.acquisition_type ?? data.acquisitionType ?? existing.acquisitionType,
           exchangeType: data.exchange_type ?? data.exchangeType ?? existing.exchangeType,
-          exchangeGenerals: data.exchange_generals ?? data.exchangeGenerals ?? existing.exchangeGenerals,
+          exchangeGenerals: exchangeGeneralNames ?? existing.exchangeGenerals,
           exchangeCount: data.exchange_count ?? data.exchangeCount ?? existing.exchangeCount,
           status: data.status ?? existing.status,
         },

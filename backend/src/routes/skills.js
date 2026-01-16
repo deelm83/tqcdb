@@ -41,6 +41,17 @@ router.get('/', async (req, res) => {
     let skills = await prisma.skill.findMany({
       where,
       orderBy: { nameCn: 'asc' },
+      include: {
+        innateGeneralRelations: {
+          include: { general: { select: { nameCn: true } } }
+        },
+        inheritGeneralRelations: {
+          include: { general: { select: { nameCn: true } } }
+        },
+        exchangeGeneralRelations: {
+          include: { general: { select: { nameCn: true } } }
+        },
+      },
     });
 
     // Apply Vietnamese diacritics-insensitive search filter
@@ -51,29 +62,42 @@ router.get('/', async (req, res) => {
     }
 
     // Transform to match frontend expected format
-    const transformed = skills.map((s) => ({
-      id: s.id,
-      slug: s.slug,
-      name: { cn: s.nameCn, vi: s.nameVi },
-      type: {
-        id: s.typeId,
-        name: { cn: s.typeNameCn, vi: s.typeNameVi },
-      },
-      quality: s.quality,
-      trigger_rate: s.triggerRate,
-      source_type: s.sourceType,
-      wiki_url: s.wikiUrl,
-      effect: (s.effectCn || s.effectVi) ? { cn: s.effectCn, vi: s.effectVi } : null,
-      target: s.target,
-      target_vi: s.targetVi,
-      army_types: s.armyTypes,
-      innate_to: s.innateToGeneralNames,
-      inheritance_from: s.inheritanceFromGeneralNames,
-      acquisition_type: s.acquisitionType,
-      exchange_type: s.exchangeType,
-      exchange_generals: s.exchangeGenerals,
-      exchange_count: s.exchangeCount,
-    }));
+    const transformed = skills.map((s) => {
+      // Prefer relation data, fall back to legacy arrays
+      const innateGenerals = s.innateGeneralRelations.length > 0
+        ? s.innateGeneralRelations.map(r => r.general.nameCn)
+        : s.innateToGeneralNames;
+      const inheritGenerals = s.inheritGeneralRelations.length > 0
+        ? s.inheritGeneralRelations.map(r => r.general.nameCn)
+        : s.inheritanceFromGeneralNames;
+      const exchangeGenerals = s.exchangeGeneralRelations.length > 0
+        ? s.exchangeGeneralRelations.map(r => r.general.nameCn)
+        : s.exchangeGenerals;
+
+      return {
+        id: s.id,
+        slug: s.slug,
+        name: { cn: s.nameCn, vi: s.nameVi },
+        type: {
+          id: s.typeId,
+          name: { cn: s.typeNameCn, vi: s.typeNameVi },
+        },
+        quality: s.quality,
+        trigger_rate: s.triggerRate,
+        source_type: s.sourceType,
+        wiki_url: s.wikiUrl,
+        effect: (s.effectCn || s.effectVi) ? { cn: s.effectCn, vi: s.effectVi } : null,
+        target: s.target,
+        target_vi: s.targetVi,
+        army_types: s.armyTypes,
+        innate_to: innateGenerals,
+        inheritance_from: inheritGenerals,
+        acquisition_type: s.acquisitionType,
+        exchange_type: s.exchangeType,
+        exchange_generals: exchangeGenerals,
+        exchange_count: s.exchangeCount,
+      };
+    });
 
     res.json(transformed);
   } catch (error) {
@@ -139,9 +163,22 @@ router.get('/:identifier', async (req, res) => {
   try {
     const { identifier } = req.params;
 
+    const includeRelations = {
+      innateGeneralRelations: {
+        include: { general: { select: { nameCn: true } } }
+      },
+      inheritGeneralRelations: {
+        include: { general: { select: { nameCn: true } } }
+      },
+      exchangeGeneralRelations: {
+        include: { general: { select: { nameCn: true } } }
+      },
+    };
+
     // Try to find by slug first, then by id
     let skill = await prisma.skill.findUnique({
       where: { slug: identifier },
+      include: includeRelations,
     });
 
     if (!skill) {
@@ -150,6 +187,7 @@ router.get('/:identifier', async (req, res) => {
       if (!isNaN(id)) {
         skill = await prisma.skill.findUnique({
           where: { id },
+          include: includeRelations,
         });
       }
     }
@@ -157,6 +195,17 @@ router.get('/:identifier', async (req, res) => {
     if (!skill) {
       return res.status(404).json({ error: 'Không tìm thấy chiến pháp' });
     }
+
+    // Prefer relation data, fall back to legacy arrays
+    const innateGenerals = skill.innateGeneralRelations.length > 0
+      ? skill.innateGeneralRelations.map(r => r.general.nameCn)
+      : skill.innateToGeneralNames;
+    const inheritGenerals = skill.inheritGeneralRelations.length > 0
+      ? skill.inheritGeneralRelations.map(r => r.general.nameCn)
+      : skill.inheritanceFromGeneralNames;
+    const exchangeGenerals = skill.exchangeGeneralRelations.length > 0
+      ? skill.exchangeGeneralRelations.map(r => r.general.nameCn)
+      : skill.exchangeGenerals;
 
     // Transform to match frontend expected format
     const transformed = {
@@ -175,11 +224,11 @@ router.get('/:identifier', async (req, res) => {
       target: skill.target,
       target_vi: skill.targetVi,
       army_types: skill.armyTypes,
-      innate_to: skill.innateToGeneralNames,
-      inheritance_from: skill.inheritanceFromGeneralNames,
+      innate_to: innateGenerals,
+      inheritance_from: inheritGenerals,
       acquisition_type: skill.acquisitionType,
       exchange_type: skill.exchangeType,
-      exchange_generals: skill.exchangeGenerals,
+      exchange_generals: exchangeGenerals,
       exchange_count: skill.exchangeCount,
     };
 

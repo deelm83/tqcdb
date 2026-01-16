@@ -13,7 +13,6 @@ export default function GeneralsPage() {
   const [selectedFactions, setSelectedFactions] = useState<FactionId[]>([]);
   const [selectedCost, setSelectedCost] = useState<number | null>(null);
   const [selectedTroops, setSelectedTroops] = useState<TroopType[]>([]);
-  const [showFilters, setShowFilters] = useState(true);
   const [generals, setGenerals] = useState<General[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -56,40 +55,18 @@ export default function GeneralsPage() {
           <p className="text-sm text-[#6b7280] mt-1">Khám phá các vị tướng trong Tam Quốc Chí Chiến Lược</p>
         </div>
 
-        {/* Search */}
-        <div className="mb-4">
+        {/* Search and Filters */}
+        <div className="space-y-3 mb-6">
           <SearchBar value={search} onChange={setSearch} />
+          <FilterPanel
+            selectedFactions={selectedFactions}
+            onFactionChange={setSelectedFactions}
+            selectedCost={selectedCost}
+            onCostChange={setSelectedCost}
+            selectedTroops={selectedTroops}
+            onTroopChange={setSelectedTroops}
+          />
         </div>
-
-        {/* Filter Toggle */}
-        <button
-          onClick={() => setShowFilters(!showFilters)}
-          className="mb-4 flex items-center gap-2 text-sm text-[#b8a990] hover:text-[#f0c96e] transition-colors group"
-        >
-          <svg
-            className={`w-4 h-4 transition-transform duration-200 ${showFilters ? 'rotate-180' : ''}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-          <span className="group-hover:underline">{showFilters ? 'Ẩn bộ lọc' : 'Hiện bộ lọc'}</span>
-        </button>
-
-        {/* Filters */}
-        {showFilters && (
-          <div className="mb-6">
-            <FilterPanel
-              selectedFactions={selectedFactions}
-              onFactionChange={setSelectedFactions}
-              selectedCost={selectedCost}
-              onCostChange={setSelectedCost}
-              selectedTroops={selectedTroops}
-              onTroopChange={setSelectedTroops}
-            />
-          </div>
-        )}
 
         {/* Results Count */}
         <div className="mb-4 flex items-center justify-between">

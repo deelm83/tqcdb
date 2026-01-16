@@ -96,6 +96,7 @@ export default function EditSkillPage() {
     exchangeGeneralIds: [] as string[],
     exchangeCount: 0,
     status: 'needs_update' as string,
+    updatedAt: null as string | null,
   });
   const [innateSearch, setInnateSearch] = useState('');
   const [inheritSearch, setInheritSearch] = useState('');
@@ -152,6 +153,7 @@ export default function EditSkillPage() {
           exchangeGeneralIds: data.exchange_general_ids || [],
           exchangeCount: data.exchange_count || 0,
           status: data.status || 'needs_update',
+          updatedAt: data.updated_at || null,
         });
       } catch (err) {
         setError('Không thể tải chiến pháp');
@@ -250,10 +252,11 @@ export default function EditSkillPage() {
     }
   }, [handleImageUpload]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const saveSkill = async (statusOverride?: string) => {
     setError('');
     setSaving(true);
+
+    const statusToSave = statusOverride || form.status;
 
     try {
       await updateSkill(id, {
@@ -277,9 +280,9 @@ export default function EditSkillPage() {
         exchange_generals: form.exchangeGenerals,
         exchange_general_ids: form.exchangeGeneralIds,
         exchange_count: form.exchangeCount || null,
-        status: form.status,
+        status: statusToSave,
       } as any);
-      showToast('Đã cập nhật chiến pháp thành công', 'success');
+      showToast(statusOverride === 'complete' ? 'Đã lưu và đánh dấu hoàn thành' : 'Đã cập nhật chiến pháp thành công', 'success');
 
       // Reload the skill data to ensure form shows the latest saved data
       const data = await fetchAdminSkill(id);
@@ -309,12 +312,22 @@ export default function EditSkillPage() {
         exchangeGeneralIds: data.exchange_general_ids || [],
         exchangeCount: data.exchange_count || 0,
         status: data.status || 'needs_update',
+        updatedAt: data.updated_at || null,
       });
     } catch (err: any) {
       setError(err.message || 'Không thể cập nhật chiến pháp');
     } finally {
       setSaving(false);
     }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await saveSkill();
+  };
+
+  const handleSaveAndComplete = async () => {
+    await saveSkill('complete');
   };
 
   if (authLoading || !isAuthenticated) {
@@ -354,7 +367,17 @@ export default function EditSkillPage() {
             Danh sách
           </Link>
           <span className="text-stone-600">|</span>
-          <span className="text-stone-500 text-sm">Chỉnh sửa chiến pháp</span>
+          <a
+            href={`/skills/${form.slug || id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-amber-400 hover:text-amber-300 text-sm flex items-center gap-1"
+          >
+            Xem trang công khai
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
         </div>
 
         {error && (
@@ -394,7 +417,14 @@ export default function EditSkillPage() {
                 {form.status === 'complete' ? '✓ Hoàn thành' : '⚠ Cần cập nhật'}
               </button>
             </div>
-            <h1 className="text-2xl font-bold text-amber-100">{form.nameVi || 'Chiến pháp mới'}</h1>
+            <div className="flex items-center justify-between">
+              <h1 className="text-2xl font-bold text-amber-100">{form.nameVi || 'Chiến pháp mới'}</h1>
+              {form.updatedAt && (
+                <span className="text-xs text-stone-500">
+                  Cập nhật: {new Date(form.updatedAt).toLocaleString('vi-VN')}
+                </span>
+              )}
+            </div>
             {showChinese && form.nameCn && <p className="text-stone-400 mt-1">{form.nameCn}</p>}
           </div>
 
@@ -941,6 +971,17 @@ export default function EditSkillPage() {
                   className="w-full px-4 py-2.5 bg-amber-700 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50"
                 >
                   {saving ? 'Đang lưu...' : 'Lưu thay đổi'}
+                </button>
+                <button
+                  type="button"
+                  onClick={handleSaveAndComplete}
+                  disabled={saving || form.status === 'complete'}
+                  className="w-full px-4 py-2.5 bg-green-700 hover:bg-green-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {saving ? 'Đang lưu...' : 'Lưu & Hoàn thành'}
                 </button>
                 <Link
                   href="/admin/skills"

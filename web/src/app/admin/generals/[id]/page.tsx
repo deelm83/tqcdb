@@ -181,12 +181,26 @@ export default function EditGeneralPage() {
               {form.status === 'complete' ? '✓ Hoàn thành' : '⚠ Cần cập nhật'}
             </button>
           </div>
-          <Link
-            href="/admin/generals"
-            className="text-stone-400 hover:text-white text-sm"
-          >
-            Quay lại danh sách
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/admin/generals"
+              className="text-stone-400 hover:text-white text-sm"
+            >
+              ← Danh sách
+            </Link>
+            <span className="text-stone-600">|</span>
+            <a
+              href={`/generals/${form.slug || id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-400 hover:text-amber-300 text-sm flex items-center gap-1"
+            >
+              Xem trang công khai
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
         </div>
 
         {error && (

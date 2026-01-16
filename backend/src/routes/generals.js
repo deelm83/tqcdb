@@ -137,16 +137,25 @@ router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
+    const includeRelations = {
+      innateSkill: true,
+      inheritedSkill: true,
+      // Also include reverse relations from skills
+      innateSkillSources: {
+        include: { skill: true }
+      },
+      inheritSkillSources: {
+        include: { skill: true }
+      },
+    };
+
     let general;
 
     // Check if id is a number (index-based lookup)
     if (/^\d+$/.test(id)) {
       const index = parseInt(id);
       const generals = await prisma.general.findMany({
-        include: {
-          innateSkill: true,
-          inheritedSkill: true,
-        },
+        include: includeRelations,
         orderBy: { cost: 'desc' },
       });
       general = generals[index] || null;
@@ -154,26 +163,32 @@ router.get('/:id', async (req, res) => {
       // Try slug lookup first
       general = await prisma.general.findUnique({
         where: { slug: id },
-        include: {
-          innateSkill: true,
-          inheritedSkill: true,
-        },
+        include: includeRelations,
       });
 
       // If not found, try string ID lookup (Chinese name)
       if (!general) {
         general = await prisma.general.findUnique({
           where: { id: decodeURIComponent(id) },
-          include: {
-            innateSkill: true,
-            inheritedSkill: true,
-          },
+          include: includeRelations,
         });
       }
     }
 
     if (!general) {
       return res.status(404).json({ error: 'Không tìm thấy tướng' });
+    }
+
+    // Get innate skill: prefer direct FK, then check reverse relation
+    let innateSkill = general.innateSkill;
+    if (!innateSkill && general.innateSkillSources.length > 0) {
+      innateSkill = general.innateSkillSources[0].skill;
+    }
+
+    // Get inherited skill: prefer direct FK, then check reverse relation
+    let inheritedSkill = general.inheritedSkill;
+    if (!inheritedSkill && general.inheritSkillSources.length > 0) {
+      inheritedSkill = general.inheritSkillSources[0].skill;
     }
 
     // Transform to match frontend expected format
@@ -194,8 +209,8 @@ router.get('/:id', async (req, res) => {
         spear: { grade: general.spearGrade },
         siege: { grade: general.siegeGrade },
       },
-      innate_skill: transformSkill(general.innateSkill),
-      inherited_skill: transformSkill(general.inheritedSkill),
+      innate_skill: transformSkill(innateSkill),
+      inherited_skill: transformSkill(inheritedSkill),
     };
 
     res.json(transformed);

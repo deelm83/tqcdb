@@ -168,8 +168,8 @@ export default function SkillModal({ skill, generalsByName, onClose }: SkillModa
                 </span>
               )}
               {skill.trigger_rate && (
-                <span className="px-3 py-1 rounded text-xs bg-[#1e2636] border border-[#2a3548] text-[#b8a990]">
-                  Tỉ lệ: {skill.trigger_rate}%
+                <span className="px-3 py-1 rounded text-xs bg-amber-900/30 border border-amber-500/40 font-semibold">
+                  <span className="text-amber-400">{skill.trigger_rate}%</span>
                 </span>
               )}
             </div>
@@ -268,8 +268,48 @@ export default function SkillModal({ skill, generalsByName, onClose }: SkillModa
                   </span>
                 </div>
               )}
+              {/* Exchange */}
+              {skill.acquisition_type === 'exchange' && (
+                <div className="p-3 bg-cyan-900/20 rounded-lg border border-cyan-700/30">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-cyan-400 font-medium text-sm">Đổi tướng</span>
+                    <span className="px-2 py-0.5 rounded text-xs bg-cyan-900/50 text-cyan-300 border border-cyan-700/50">
+                      {skill.exchange_type === 'exact'
+                        ? `${skill.exchange_generals?.length || 0} tướng`
+                        : `${skill.exchange_count || skill.exchange_generals?.length || 0} tướng`
+                      }
+                    </span>
+                  </div>
+                  {skill.exchange_generals && skill.exchange_generals.length > 0 && (
+                    <div className="text-sm text-[#b8a990]">
+                      {skill.exchange_type === 'any' && (
+                        <span className="text-cyan-300 mr-2">Chọn từ các tướng:</span>
+                      )}
+                      {skill.exchange_generals.map((name, idx) => {
+                        const general = generalsByName[name];
+                        const separator = skill.exchange_type === 'exact' ? ' / ' : ', ';
+                        return (
+                          <span key={name}>
+                            {idx > 0 && <span className="text-[#6b7280]">{separator}</span>}
+                            {general ? (
+                              <Link
+                                href={`/generals/${general.id}`}
+                                className="text-[#d4a74a] hover:text-[#f0c96e] hover:underline"
+                              >
+                                {general.vi}
+                              </Link>
+                            ) : (
+                              <span>{name}</span>
+                            )}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              )}
               {/* Unknown */}
-              {!skill.innate_to?.length && !skill.inheritance_from?.length && (
+              {!skill.innate_to?.length && !skill.inheritance_from?.length && skill.acquisition_type !== 'exchange' && (
                 <span className="text-sm text-[#6b7280]">Chưa rõ</span>
               )}
             </div>

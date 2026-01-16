@@ -270,7 +270,8 @@ export default function AdminSkillsPage() {
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Tên</th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Loại</th>
                   <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Phẩm chất</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Tỷ lệ kích hoạt</th>
+                  <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Tỷ lệ</th>
+                  <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Cập nhật</th>
                   <th className="px-4 py-3 text-right text-sm font-medium text-stone-400">Thao tác</th>
                 </tr>
               </thead>
@@ -313,6 +314,9 @@ export default function AdminSkillsPage() {
                       </span>
                     </td>
                     <td className="px-4 py-3 text-amber-400">{skill.trigger_rate ? `${skill.trigger_rate}%` : '-'}</td>
+                    <td className="px-4 py-3 text-stone-500 text-xs">
+                      {(skill as any).updated_at ? new Date((skill as any).updated_at).toLocaleDateString('vi-VN') : '-'}
+                    </td>
                     <td className="px-4 py-3 text-right">
                       <div className="flex items-center justify-end gap-2">
                         {skill.status !== 'complete' && (
