@@ -29,9 +29,24 @@ model General {
   spearGrade      String?  @map("spear_grade")
   siegeGrade      String?  @map("siege_grade")
 
-  // Skills - references by name
+  // Skills - foreign key relations
+  innateSkillId     Int?     @map("innate_skill_id")
+  inheritedSkillId  Int?     @map("inherited_skill_id")
+  innateSkill       Skill?   @relation("InnateSkill", fields: [innateSkillId], references: [id])
+  inheritedSkill    Skill?   @relation("InheritedSkill", fields: [inheritedSkillId], references: [id])
+
+  // Legacy columns (kept for backup)
   innateSkillName   String?  @map("innate_skill_name")
   inheritedSkillName String? @map("inherited_skill_name")
+
+  // Skills that can be obtained by exchanging this general
+  exchangeableForSkills  SkillExchangeGeneral[]
+
+  // Skills where this general is listed as innate source
+  innateSkillSources     SkillInnateGeneral[]
+
+  // Skills where this general is listed as inherit source
+  inheritSkillSources    SkillInheritGeneral[]
 
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")
@@ -63,13 +78,82 @@ model Skill {
   // Army types (stored as array)
   armyTypes       String[] @map("army_types")
 
-  // Acquisition info
-  innateToGenerals      String[] @map("innate_to_generals")
-  inheritanceFromGenerals String[] @map("inheritance_from_generals")
-  acquisition           String[]
+  // Reverse relations to generals
+  innateToGenerals       General[] @relation("InnateSkill")
+  inheritedByGenerals    General[] @relation("InheritedSkill")
+
+  // Legacy columns
+  innateToGeneralNames      String[] @map("innate_to_generals")
+  inheritanceFromGeneralNames String[] @map("inheritance_from_generals")
+
+  // Acquisition - how to obtain this skill
+  // "inherit" - inherit from a general
+  // "innate" - only available as innate skill
+  // "exchange" - exchange generals to obtain
+  acquisitionType       String?  @map("acquisition_type")
+
+  // Exchange fields
+  // exchangeType: "exact" (need specific generals) or "any" (interchangeable, can use duplicates)
+  exchangeType          String?  @map("exchange_type")
+  exchangeGenerals      String[] @map("exchange_generals")  // Legacy: general names as strings
+  exchangeCount         Int?     @map("exchange_count")  // For "any" type: how many generals needed
+
+  // Relation to generals for exchange (proper FK relationship)
+  exchangeGeneralRelations  SkillExchangeGeneral[]
+
+  // Relation to generals for innate (proper FK relationship)
+  innateGeneralRelations    SkillInnateGeneral[]
+
+  // Relation to generals for inherit (proper FK relationship)
+  inheritGeneralRelations   SkillInheritGeneral[]
 
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")
 
   @@map("skills")
+}
+
+// Join table for skill exchange generals (many-to-many)
+model SkillExchangeGeneral {
+  id          Int      @id @default(autoincrement())
+  skillId     Int      @map("skill_id")
+  generalId   String   @map("general_id")
+
+  skill       Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  general     General  @relation(fields: [generalId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@unique([skillId, generalId])
+  @@map("skill_exchange_generals")
+}
+
+// Join table for skill innate generals (skill is innate to these generals)
+model SkillInnateGeneral {
+  id          Int      @id @default(autoincrement())
+  skillId     Int      @map("skill_id")
+  generalId   String   @map("general_id")
+
+  skill       Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  general     General  @relation(fields: [generalId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@unique([skillId, generalId])
+  @@map("skill_innate_generals")
+}
+
+// Join table for skill inherit generals (skill can be inherited from these generals)
+model SkillInheritGeneral {
+  id          Int      @id @default(autoincrement())
+  skillId     Int      @map("skill_id")
+  generalId   String   @map("general_id")
+
+  skill       Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  general     General  @relation(fields: [generalId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@unique([skillId, generalId])
+  @@map("skill_inherit_generals")
 }

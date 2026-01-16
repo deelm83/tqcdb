@@ -7,7 +7,7 @@ import { factionNames, troopTypeNames, FactionId, Grade } from '@/lib/generals';
 import { skillTypeNames, armyTypeNames, SkillTypeId, ArmyType } from '@/lib/skills';
 import { fetchGeneral, General } from '@/lib/api';
 import { TroopType } from '@/types/general';
-import { TroopIcon, ArmyIcon } from '@/components/icons/TroopIcons';
+import { TroopIcon, ArmyIcon, ArmyIconType } from '@/components/icons/TroopIcons';
 
 const troopTypes: TroopType[] = ['cavalry', 'shield', 'archer', 'spear', 'siege'];
 
@@ -161,9 +161,8 @@ function SkillCard({
               {skill.army_types.map((army) => (
                 <ArmyIcon
                   key={army}
-                  type={army as TroopType}
-                  size={22}
-                  className="text-green-400"
+                  type={army as ArmyIconType}
+                  size={24}
                 />
               ))}
             </div>

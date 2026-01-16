@@ -23,6 +23,22 @@ function matchesSearch(name, searchTerm) {
   return normalizedName.includes(normalizedSearch);
 }
 
+// Transform skill to frontend format
+function transformSkill(skill) {
+  if (!skill) return null;
+  return {
+    id: skill.id,
+    slug: skill.slug,
+    name: { cn: skill.nameCn, vi: skill.nameVi },
+    type: { id: skill.typeId, name: { cn: skill.typeNameCn, vi: skill.typeNameVi } },
+    quality: skill.quality,
+    trigger_rate: skill.triggerRate,
+    effect: { cn: skill.effectCn, vi: skill.effectVi },
+    target: skill.target,
+    target_vi: skill.targetVi,
+    army_types: skill.armyTypes,
+  };
+}
 
 // GET all generals with filtering
 router.get('/', async (req, res) => {
@@ -42,16 +58,13 @@ router.get('/', async (req, res) => {
 
     const where = {};
 
-    // Note: Search filter is applied in JavaScript after fetching
-    // to support Vietnamese diacritics-insensitive search
-
     // Faction filter
     if (factions) {
       const factionList = factions.split(',');
       where.factionId = { in: factionList };
     }
 
-    // Cost filter - supports both costs array and minCost/maxCost range
+    // Cost filter
     if (costs) {
       const costList = costs.split(',').map(c => parseInt(c));
       where.cost = { in: costList };
@@ -75,6 +88,10 @@ router.get('/', async (req, res) => {
 
     let generals = await prisma.general.findMany({
       where,
+      include: {
+        innateSkill: true,
+        inheritedSkill: true,
+      },
       orderBy: { cost: 'desc' },
     });
 
@@ -104,8 +121,8 @@ router.get('/', async (req, res) => {
         spear: { grade: g.spearGrade },
         siege: { grade: g.siegeGrade },
       },
-      innate_skill: g.innateSkillName ? { name: { cn: g.innateSkillName, vi: '' } } : null,
-      inherited_skill: g.inheritedSkillName ? { name: { cn: g.inheritedSkillName, vi: '' } } : null,
+      innate_skill: transformSkill(g.innateSkill),
+      inherited_skill: transformSkill(g.inheritedSkill),
     }));
 
     res.json(transformed);
@@ -125,8 +142,11 @@ router.get('/:id', async (req, res) => {
     // Check if id is a number (index-based lookup)
     if (/^\d+$/.test(id)) {
       const index = parseInt(id);
-      // Get all generals ordered by cost desc (same as list), then find by index
       const generals = await prisma.general.findMany({
+        include: {
+          innateSkill: true,
+          inheritedSkill: true,
+        },
         orderBy: { cost: 'desc' },
       });
       general = generals[index] || null;
@@ -134,34 +154,26 @@ router.get('/:id', async (req, res) => {
       // Try slug lookup first
       general = await prisma.general.findUnique({
         where: { slug: id },
+        include: {
+          innateSkill: true,
+          inheritedSkill: true,
+        },
       });
 
       // If not found, try string ID lookup (Chinese name)
       if (!general) {
         general = await prisma.general.findUnique({
           where: { id: decodeURIComponent(id) },
+          include: {
+            innateSkill: true,
+            inheritedSkill: true,
+          },
         });
       }
     }
 
     if (!general) {
       return res.status(404).json({ error: 'Không tìm thấy tướng' });
-    }
-
-    // Get skill details
-    let innateSkill = null;
-    let inheritedSkill = null;
-
-    if (general.innateSkillName) {
-      innateSkill = await prisma.skill.findUnique({
-        where: { nameCn: general.innateSkillName },
-      });
-    }
-
-    if (general.inheritedSkillName) {
-      inheritedSkill = await prisma.skill.findUnique({
-        where: { nameCn: general.inheritedSkillName },
-      });
     }
 
     // Transform to match frontend expected format
@@ -182,26 +194,8 @@ router.get('/:id', async (req, res) => {
         spear: { grade: general.spearGrade },
         siege: { grade: general.siegeGrade },
       },
-      innate_skill: innateSkill ? {
-        name: { cn: innateSkill.nameCn, vi: innateSkill.nameVi },
-        type: { id: innateSkill.typeId, name: { cn: innateSkill.typeNameCn, vi: innateSkill.typeNameVi } },
-        quality: innateSkill.quality,
-        trigger_rate: innateSkill.triggerRate,
-        effect: { cn: innateSkill.effectCn, vi: innateSkill.effectVi },
-        target: innateSkill.target,
-        target_vi: innateSkill.targetVi,
-        army_types: innateSkill.armyTypes,
-      } : null,
-      inherited_skill: inheritedSkill ? {
-        name: { cn: inheritedSkill.nameCn, vi: inheritedSkill.nameVi },
-        type: { id: inheritedSkill.typeId, name: { cn: inheritedSkill.typeNameCn, vi: inheritedSkill.typeNameVi } },
-        quality: inheritedSkill.quality,
-        trigger_rate: inheritedSkill.triggerRate,
-        effect: { cn: inheritedSkill.effectCn, vi: inheritedSkill.effectVi },
-        target: inheritedSkill.target,
-        target_vi: inheritedSkill.targetVi,
-        army_types: inheritedSkill.armyTypes,
-      } : null,
+      innate_skill: transformSkill(general.innateSkill),
+      inherited_skill: transformSkill(general.inheritedSkill),
     };
 
     res.json(transformed);

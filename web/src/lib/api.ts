@@ -38,6 +38,11 @@ export interface General {
     target_vi?: string;
     army_types?: string[];
   };
+  // Admin fields
+  innate_skill_name?: string;
+  inherited_skill_name?: string;
+  innate_skill_id?: number | null;
+  inherited_skill_id?: number | null;
 }
 
 export interface Skill {
@@ -55,7 +60,13 @@ export interface Skill {
   army_types?: string[];
   innate_to?: string[];
   inheritance_from?: string[];
-  acquisition?: string[];
+  innate_general_ids?: string[];
+  inherit_general_ids?: string[];
+  acquisition_type?: 'inherit' | 'innate' | 'exchange';
+  exchange_type?: 'exact' | 'any';
+  exchange_generals?: string[];
+  exchange_general_ids?: string[];
+  exchange_count?: number;
 }
 
 export interface GeneralsFilter {

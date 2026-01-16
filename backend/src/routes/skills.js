@@ -63,13 +63,16 @@ router.get('/', async (req, res) => {
       trigger_rate: s.triggerRate,
       source_type: s.sourceType,
       wiki_url: s.wikiUrl,
-      effect: s.effectCn ? { cn: s.effectCn, vi: s.effectVi } : null,
+      effect: (s.effectCn || s.effectVi) ? { cn: s.effectCn, vi: s.effectVi } : null,
       target: s.target,
       target_vi: s.targetVi,
       army_types: s.armyTypes,
-      innate_to: s.innateToGenerals,
-      inheritance_from: s.inheritanceFromGenerals,
-      acquisition: s.acquisition,
+      innate_to: s.innateToGeneralNames,
+      inheritance_from: s.inheritanceFromGeneralNames,
+      acquisition_type: s.acquisitionType,
+      exchange_type: s.exchangeType,
+      exchange_generals: s.exchangeGenerals,
+      exchange_count: s.exchangeCount,
     }));
 
     res.json(transformed);
@@ -168,13 +171,16 @@ router.get('/:identifier', async (req, res) => {
       trigger_rate: skill.triggerRate,
       source_type: skill.sourceType,
       wiki_url: skill.wikiUrl,
-      effect: skill.effectCn ? { cn: skill.effectCn, vi: skill.effectVi } : null,
+      effect: (skill.effectCn || skill.effectVi) ? { cn: skill.effectCn, vi: skill.effectVi } : null,
       target: skill.target,
       target_vi: skill.targetVi,
       army_types: skill.armyTypes,
-      innate_to: skill.innateToGenerals,
-      inheritance_from: skill.inheritanceFromGenerals,
-      acquisition: skill.acquisition,
+      innate_to: skill.innateToGeneralNames,
+      inheritance_from: skill.inheritanceFromGeneralNames,
+      acquisition_type: skill.acquisitionType,
+      exchange_type: skill.exchangeType,
+      exchange_generals: skill.exchangeGenerals,
+      exchange_count: skill.exchangeCount,
     };
 
     res.json(transformed);

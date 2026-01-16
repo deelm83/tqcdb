@@ -101,66 +101,25 @@ export function TroopIcon({ type, ...props }: { type: TroopIconType } & IconProp
   return <Icon {...props} />;
 }
 
-// ========== Army Type Icons (clearer, more distinct) ==========
+// ========== Army Type Icons using SVG images ==========
 
-// Horse head for cavalry - side profile
-function ArmyHorseIcon({ size = 20, className, ...props }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" className={className} {...props}>
-      <path d="M21 6c-1 0-2 .4-2.8 1L17 5l-2 1-1-2h-3l1 3-2 3v5l-2 1v4h3v-3l4-2v5h3v-5l2 1v-6l1-2c.5.3 1.2.5 2 .5V6zM9.5 10c-.3 0-.5-.2-.5-.5s.2-.5.5-.5.5.2.5.5-.2.5-.5.5z"/>
-    </svg>
-  );
+export type ArmyIconType = 'cavalry' | 'shield' | 'archer' | 'spear' | 'siege';
+
+interface ArmyIconProps {
+  type: ArmyIconType;
+  size?: number;
+  className?: string;
 }
 
-// Simple shield
-function ArmyShieldIcon({ size = 20, className, ...props }: IconProps) {
+// Get army icon using SVG images with transparent background
+export function ArmyIcon({ type, size = 20, className = '' }: ArmyIconProps) {
   return (
-    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" className={className} {...props}>
-      <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
-    </svg>
+    <img
+      src={`/images/army-types/${type}.svg`}
+      alt={type}
+      width={size}
+      height={size}
+      className={className}
+    />
   );
-}
-
-// Bow - curved bow shape with string
-function ArmyBowIcon({ size = 20, className, ...props }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" className={className} {...props}>
-      <path d="M4 2v20l2-2V4L4 2zm4 3v14c3-1 6-4 6-7s-3-6-6-7zm10 1l-6 6 6 6 2-2-4-4 4-4-2-2z"/>
-    </svg>
-  );
-}
-
-// Spear - long pole with pointed tip
-function ArmySpearIcon({ size = 20, className, ...props }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" className={className} {...props}>
-      <path d="M18.36 2.64L12 9l-1-1-8 8v4h4l8-8-1-1 6.36-6.36-2-2zM5 19v-1.59l7-7L13.59 12l-7 7H5z"/>
-    </svg>
-  );
-}
-
-// Wagon wheel for siege - spoked wheel
-function ArmyWheelIcon({ size = 20, className, ...props }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" className={className} {...props}>
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2c1.93 0 3.68.7 5.05 1.85L12 9.5V4zm-1.5 0v5.5L5.95 5.85A7.95 7.95 0 0110.5 4zM4 12c0-1.93.7-3.68 1.85-5.05L9.5 12l-3.65 5.05A7.95 7.95 0 014 12zm6.5 8v-5.5l4.55 3.65A7.95 7.95 0 0110.5 20zm1.5 0v-5.5l5.05 3.65A7.952 7.952 0 0112 20zm6.15-2.95L14.5 12l3.65-5.05A7.95 7.95 0 0120 12c0 1.93-.7 3.68-1.85 5.05zM12 14.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-    </svg>
-  );
-}
-
-// Map of army type to icon component
-export const armyIcons = {
-  cavalry: ArmyHorseIcon,
-  shield: ArmyShieldIcon,
-  archer: ArmyBowIcon,
-  spear: ArmySpearIcon,
-  siege: ArmyWheelIcon,
-};
-
-export type ArmyIconType = keyof typeof armyIcons;
-
-// Get army icon component by type
-export function ArmyIcon({ type, ...props }: { type: ArmyIconType } & IconProps) {
-  const Icon = armyIcons[type];
-  return Icon ? <Icon {...props} /> : null;
 }

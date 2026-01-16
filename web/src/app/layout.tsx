@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro, Great_Vibes } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
+import { ConditionalHeader, ConditionalBackToTop } from "@/components/ConditionalHeader";
 import ScrollToTop from "@/components/ScrollToTop";
-import BackToTop from "@/components/BackToTop";
 
 const beVietnam = Be_Vietnam_Pro({
   variable: "--font-be-vietnam",
@@ -36,9 +35,9 @@ export default function RootLayout({
         className={`${beVietnam.variable} ${greatVibes.variable} antialiased`}
       >
         <ScrollToTop />
-        <Header />
+        <ConditionalHeader />
         {children}
-        <BackToTop />
+        <ConditionalBackToTop />
       </body>
     </html>
   );

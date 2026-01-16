@@ -59,9 +59,9 @@ async function main() {
         target: skill.target || null,
         targetVi: skill.target_vi || null,
         armyTypes: skill.army_types || [],
-        innateToGenerals: skill.innate_to || [],
-        inheritanceFromGenerals: skill.inheritance_from || [],
-        acquisition: skill.acquisition || [],
+        innateToGeneralNames: skill.innate_to || [],
+        inheritanceFromGeneralNames: skill.inheritance_from || [],
+        acquisitionType: skill.acquisition?.[0] || null,
       },
     });
   }

@@ -1,0 +1,308 @@
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
+import { createGeneral } from '@/lib/adminApi';
+import Link from 'next/link';
+
+const FACTIONS = [
+  { id: 'wei', name: 'Wei' },
+  { id: 'shu', name: 'Shu' },
+  { id: 'wu', name: 'Wu' },
+  { id: 'qun', name: 'Qun' },
+];
+
+const GRADES = ['S', 'A', 'B', 'C', 'D'];
+
+export default function NewGeneralPage() {
+  const { isAuthenticated, isLoading: authLoading } = useAuth();
+  const router = useRouter();
+
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState('');
+
+  const [form, setForm] = useState({
+    slug: '',
+    nameCn: '',
+    nameVi: '',
+    factionId: '',
+    cost: 3,
+    wikiUrl: '',
+    image: '',
+    imageFull: '',
+    tagsCn: [] as string[],
+    tagsVi: [] as string[],
+    cavalryGrade: '',
+    shieldGrade: '',
+    archerGrade: '',
+    spearGrade: '',
+    siegeGrade: '',
+    innateSkillName: '',
+    inheritedSkillName: '',
+  });
+
+  if (authLoading) {
+    return null;
+  }
+
+  if (!isAuthenticated) {
+    router.push('/admin/login');
+    return null;
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setSaving(true);
+
+    try {
+      const result = await createGeneral({
+        slug: form.slug || undefined,
+        name: { cn: form.nameCn, vi: form.nameVi },
+        faction_id: form.factionId,
+        cost: form.cost,
+        wiki_url: form.wikiUrl || undefined,
+        image: form.image || undefined,
+        image_full: form.imageFull || undefined,
+        tags: { cn: form.tagsCn, vi: form.tagsVi },
+        troop_compatibility: {
+          cavalry: { grade: form.cavalryGrade },
+          shield: { grade: form.shieldGrade },
+          archer: { grade: form.archerGrade },
+          spear: { grade: form.spearGrade },
+          siege: { grade: form.siegeGrade },
+        },
+        innate_skill_name: form.innateSkillName || undefined,
+        inherited_skill_name: form.inheritedSkillName || undefined,
+      } as any);
+
+      router.push(`/admin/generals/${result.general.slug || result.general.id}`);
+    } catch (err: any) {
+      setError(err.message || 'Failed to create general');
+      setSaving(false);
+    }
+  };
+
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-8">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-2xl font-bold text-amber-100">New General</h1>
+          <Link
+            href="/admin/generals"
+            className="text-stone-400 hover:text-white text-sm"
+          >
+            Back to list
+          </Link>
+        </div>
+
+        {error && (
+          <div className="mb-4 p-3 bg-red-900/30 border border-red-700/50 rounded-lg text-red-300 text-sm">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Basic Info */}
+          <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-amber-100 mb-4">Basic Information</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-stone-300 mb-1">
+                  Slug <span className="text-stone-500">(auto-generated if empty)</span>
+                </label>
+                <input
+                  type="text"
+                  value={form.slug}
+                  onChange={(e) => setForm((prev) => ({ ...prev, slug: e.target.value }))}
+                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  placeholder="truong-phi"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-stone-300 mb-1">Faction *</label>
+                <select
+                  value={form.factionId}
+                  onChange={(e) => setForm((prev) => ({ ...prev, factionId: e.target.value }))}
+                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  required
+                >
+                  <option value="">Select faction</option>
+                  {FACTIONS.map((f) => (
+                    <option key={f.id} value={f.id}>{f.name}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-stone-300 mb-1">Name (CN) *</label>
+                <input
+                  type="text"
+                  value={form.nameCn}
+                  onChange={(e) => setForm((prev) => ({ ...prev, nameCn: e.target.value }))}
+                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-stone-300 mb-1">Name (VI) *</label>
+                <input
+                  type="text"
+                  value={form.nameVi}
+                  onChange={(e) => setForm((prev) => ({ ...prev, nameVi: e.target.value }))}
+                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-stone-300 mb-1">Cost</label>
+                <input
+                  type="number"
+                  value={form.cost}
+                  onChange={(e) => setForm((prev) => ({ ...prev, cost: parseInt(e.target.value) || 0 }))}
+                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  min={1}
+                  max={5}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-stone-300 mb-1">Wiki URL</label>
+                <input
+                  type="url"
+                  value={form.wikiUrl}
+                  onChange={(e) => setForm((prev) => ({ ...prev, wikiUrl: e.target.value }))}
+                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Image */}
+          <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-amber-100 mb-4">Image</h2>
+            <p className="text-sm text-stone-400 mb-4">
+              You can upload an image after creating the general.
+            </p>
+
+            <div>
+              <label className="block text-sm font-medium text-stone-300 mb-1">Image URL</label>
+              <input
+                type="text"
+                value={form.image}
+                onChange={(e) => setForm((prev) => ({ ...prev, image: e.target.value }))}
+                className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                placeholder="/images/generals/..."
+              />
+            </div>
+          </div>
+
+          {/* Troop Compatibility */}
+          <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-amber-100 mb-4">Troop Compatibility</h2>
+
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {[
+                { key: 'cavalryGrade', label: 'Cavalry' },
+                { key: 'shieldGrade', label: 'Shield' },
+                { key: 'archerGrade', label: 'Archer' },
+                { key: 'spearGrade', label: 'Spear' },
+                { key: 'siegeGrade', label: 'Siege' },
+              ].map(({ key, label }) => (
+                <div key={key}>
+                  <label className="block text-sm font-medium text-stone-300 mb-1">{label}</label>
+                  <select
+                    value={(form as any)[key]}
+                    onChange={(e) => setForm((prev) => ({ ...prev, [key]: e.target.value }))}
+                    className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  >
+                    <option value="">-</option>
+                    {GRADES.map((g) => (
+                      <option key={g} value={g}>{g}</option>
+                    ))}
+                  </select>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Skills */}
+          <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-amber-100 mb-4">Skills</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-stone-300 mb-1">Innate Skill Name</label>
+                <input
+                  type="text"
+                  value={form.innateSkillName}
+                  onChange={(e) => setForm((prev) => ({ ...prev, innateSkillName: e.target.value }))}
+                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-stone-300 mb-1">Inherited Skill Name</label>
+                <input
+                  type="text"
+                  value={form.inheritedSkillName}
+                  onChange={(e) => setForm((prev) => ({ ...prev, inheritedSkillName: e.target.value }))}
+                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Tags */}
+          <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-amber-100 mb-4">Tags</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-stone-300 mb-1">Tags (CN) - comma separated</label>
+                <input
+                  type="text"
+                  value={form.tagsCn.join(', ')}
+                  onChange={(e) => setForm((prev) => ({ ...prev, tagsCn: e.target.value.split(',').map(t => t.trim()).filter(Boolean) }))}
+                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-stone-300 mb-1">Tags (VI) - comma separated</label>
+                <input
+                  type="text"
+                  value={form.tagsVi.join(', ')}
+                  onChange={(e) => setForm((prev) => ({ ...prev, tagsVi: e.target.value.split(',').map(t => t.trim()).filter(Boolean) }))}
+                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Submit */}
+          <div className="flex justify-end gap-4">
+            <Link
+              href="/admin/generals"
+              className="px-6 py-2 border border-stone-600 text-stone-300 rounded-lg hover:bg-stone-700 transition-colors"
+            >
+              Cancel
+            </Link>
+            <button
+              type="submit"
+              disabled={saving}
+              className="px-6 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-lg transition-colors disabled:opacity-50"
+            >
+              {saving ? 'Creating...' : 'Create General'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  );
+}

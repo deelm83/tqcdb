@@ -1,11 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { SkillTypeId, skillTypeNames, armyTypeNames, ArmyType } from '@/lib/skills';
 import { Skill } from '@/lib/api';
-import { ArmyIcon } from '@/components/icons/TroopIcons';
-import { TroopType } from '@/types/general';
+import { ArmyIcon, ArmyIconType } from '@/components/icons/TroopIcons';
 
 // Skill type colors
 const skillTypeStyles: Record<SkillTypeId, { bg: string; text: string; border: string }> = {
@@ -25,6 +24,71 @@ const qualityStyles: Record<string, string> = {
   A: 'text-red-400 font-semibold',
   B: 'text-violet-400',
 };
+
+// Highlight special patterns in effect text
+function highlightEffectText(text: string): React.ReactNode {
+  if (!text) return null;
+
+  // Combined regex to match different patterns
+  // 1. Range with arrow: "37.5%→75%" or "39%→42%"
+  // 2. Number ranges: "1-2", "2-3" (for targets)
+  // 3. Percentages: "40%", "3%"
+  // 4. Duration: "1 hiệp", "2 hiệp"
+  const pattern = /(\d+(?:\.\d+)?%\s*[→→]\s*\d+(?:\.\d+)?%)|(\d+-\d+)|(\d+(?:\.\d+)?%)|(\d+\s*hiệp)/g;
+
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = pattern.exec(text)) !== null) {
+    // Add text before match
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+
+    const matchedText = match[0];
+
+    // Style based on match type
+    if (match[1]) {
+      // Range with arrow - most prominent highlight
+      parts.push(
+        <span key={match.index} className="text-amber-400 font-semibold">
+          {matchedText}
+        </span>
+      );
+    } else if (match[2]) {
+      // Number range like 1-2
+      parts.push(
+        <span key={match.index} className="text-cyan-400 font-medium">
+          {matchedText}
+        </span>
+      );
+    } else if (match[3]) {
+      // Single percentage
+      parts.push(
+        <span key={match.index} className="text-amber-300">
+          {matchedText}
+        </span>
+      );
+    } else if (match[4]) {
+      // Duration
+      parts.push(
+        <span key={match.index} className="text-green-400">
+          {matchedText}
+        </span>
+      );
+    }
+
+    lastIndex = match.index + matchedText.length;
+  }
+
+  // Add remaining text
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts.length > 0 ? parts : text;
+}
 
 interface SkillModalProps {
   skill: Skill;
@@ -119,7 +183,7 @@ export default function SkillModal({ skill, generalsByName, onClose }: SkillModa
             <div className="p-4 bg-[#0a0e14]/50 rounded-lg border border-[#2a3548]/50">
               <div className="text-xs text-[#d4a74a] uppercase tracking-wider mb-2">Hiệu ứng</div>
               <div className="text-sm text-[#b8a990] leading-relaxed">
-                {skill.effect.vi || skill.effect.cn}
+                {highlightEffectText(skill.effect.vi || skill.effect.cn || '')}
               </div>
             </div>
           )}
@@ -140,9 +204,8 @@ export default function SkillModal({ skill, generalsByName, onClose }: SkillModa
                 {skill.army_types.map((army) => (
                   <ArmyIcon
                     key={army}
-                    type={army as TroopType}
-                    size={22}
-                    className="text-green-400"
+                    type={army as ArmyIconType}
+                    size={24}
                   />
                 ))}
               </div>
