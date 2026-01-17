@@ -29,8 +29,8 @@ async function main() {
   console.log('Starting seed...');
 
   // Load JSON data
-  const generalsPath = path.join(__dirname, '../../data/generals/all_generals.json');
-  const skillsPath = path.join(__dirname, '../../data/skills/all_skills.json');
+  const generalsPath = path.join(__dirname, '../../../data/generals/all_generals.json');
+  const skillsPath = path.join(__dirname, '../../../data/skills/all_skills.json');
 
   const generalsData = JSON.parse(fs.readFileSync(generalsPath, 'utf-8'));
   const skillsData = JSON.parse(fs.readFileSync(skillsPath, 'utf-8'));
