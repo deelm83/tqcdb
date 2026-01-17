@@ -5,17 +5,19 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { createGeneral } from '@/lib/adminApi';
 import Link from 'next/link';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const FACTIONS = [
-  { id: 'wei', name: 'Wei' },
-  { id: 'shu', name: 'Shu' },
-  { id: 'wu', name: 'Wu' },
-  { id: 'qun', name: 'Qun' },
+  { id: 'wei', name: 'Ngụy' },
+  { id: 'shu', name: 'Thục' },
+  { id: 'wu', name: 'Ngô' },
+  { id: 'qun', name: 'Quần' },
 ];
 
 const GRADES = ['S', 'A', 'B', 'C', 'D'];
 
 export default function NewGeneralPage() {
+  usePageTitle('Thêm võ tướng', true);
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const router = useRouter();
 

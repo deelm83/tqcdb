@@ -1,5 +1,5 @@
 import { General, FactionId, TroopType, Grade } from '@/types/general';
-import generalsData from '../../../data/generals/all_generals.json';
+import generalsData from '@/data/generals/all_generals.json';
 
 // Re-export types
 export type { FactionId, TroopType, Grade } from '@/types/general';

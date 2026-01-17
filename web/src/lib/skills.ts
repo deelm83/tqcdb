@@ -1,4 +1,4 @@
-import skillsData from '../../../data/skills/all_skills.json';
+import skillsData from '@/data/skills/all_skills.json';
 
 export interface Skill {
   name: {

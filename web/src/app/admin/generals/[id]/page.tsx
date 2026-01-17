@@ -6,6 +6,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { fetchAdminGeneral, updateGeneral, uploadGeneralImage, fetchSkillsList, SkillOption } from '@/lib/adminApi';
 import { showToast } from '@/components/Toast';
 import Link from 'next/link';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const FACTIONS = [
   { id: 'wei', name: 'Ngụy' },
@@ -23,11 +24,6 @@ export default function EditGeneralPage() {
   const id = params.id as string;
 
   const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [uploading, setUploading] = useState(false);
-  const [error, setError] = useState('');
-  const [skills, setSkills] = useState<SkillOption[]>([]);
-
   const [form, setForm] = useState({
     slug: '',
     nameCn: '',
@@ -48,6 +44,12 @@ export default function EditGeneralPage() {
     inheritedSkillId: null as number | null,
     status: 'needs_update' as string,
   });
+
+  usePageTitle(form.nameVi ? `Sửa: ${form.nameVi}` : 'Sửa võ tướng', true);
+  const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState('');
+  const [skills, setSkills] = useState<SkillOption[]>([]);
 
   useEffect(() => {
     if (!authLoading && !isAuthenticated) {

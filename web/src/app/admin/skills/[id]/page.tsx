@@ -8,6 +8,7 @@ import { showToast } from '@/components/Toast';
 import Link from 'next/link';
 import { General } from '@/lib/api';
 import { ArmyIcon, ArmyIconType } from '@/components/icons/TroopIcons';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const SKILL_TYPES = [
   { id: 'command', nameVi: 'Chỉ Huy', color: 'bg-yellow-600/30 text-yellow-300 border-yellow-600/50' },
@@ -97,10 +98,14 @@ export default function EditSkillPage() {
     exchangeCount: 0,
     status: 'needs_update' as string,
     updatedAt: null as string | null,
+    screenshots: [] as string[],
   });
   const [innateSearch, setInnateSearch] = useState('');
   const [inheritSearch, setInheritSearch] = useState('');
   const [showChinese, setShowChinese] = useState(false);
+
+  usePageTitle(form.nameVi ? `Sửa: ${form.nameVi}` : 'Sửa chiến pháp', true);
+  const [uploadedImages, setUploadedImages] = useState<{file: File, url: string}[]>([]);
 
   useEffect(() => {
     if (!authLoading && !isAuthenticated) {
@@ -154,6 +159,7 @@ export default function EditSkillPage() {
           exchangeCount: data.exchange_count || 0,
           status: data.status || 'needs_update',
           updatedAt: data.updated_at || null,
+          screenshots: data.screenshots || [],
         });
       } catch (err) {
         setError('Không thể tải chiến pháp');
@@ -186,9 +192,46 @@ export default function EditSkillPage() {
     }));
   };
 
-  const handleImageUpload = useCallback(async (file: File) => {
-    if (!file.type.startsWith('image/')) {
-      showToast('Vui lòng chọn file ảnh', 'error');
+  // Add images to the list (no extraction)
+  const handleAddImages = useCallback((files: FileList | File[]) => {
+    const newImages: {file: File, url: string}[] = [];
+    for (const file of Array.from(files)) {
+      if (file.type.startsWith('image/')) {
+        newImages.push({
+          file,
+          url: URL.createObjectURL(file)
+        });
+      }
+    }
+    if (newImages.length > 0) {
+      setUploadedImages(prev => [...prev, ...newImages]);
+      showToast(`Đã thêm ${newImages.length} ảnh`, 'success');
+    }
+  }, []);
+
+  // Extract from all images (both uploaded and existing screenshots)
+  const handleExtractFromAllImages = useCallback(async () => {
+    const imagesToProcess: {file: File, name: string}[] = [];
+
+    // Add uploaded images
+    for (const img of uploadedImages) {
+      imagesToProcess.push({ file: img.file, name: img.file.name });
+    }
+
+    // Add existing screenshots from DB
+    for (const screenshot of form.screenshots) {
+      try {
+        const response = await fetch(`/images/skills/${screenshot}`);
+        const blob = await response.blob();
+        const file = new File([blob], screenshot, { type: blob.type });
+        imagesToProcess.push({ file, name: screenshot });
+      } catch (err) {
+        console.error(`Failed to load screenshot: ${screenshot}`);
+      }
+    }
+
+    if (imagesToProcess.length === 0) {
+      showToast('Không có ảnh để trích xuất', 'error');
       return;
     }
 
@@ -196,36 +239,45 @@ export default function EditSkillPage() {
     setError('');
 
     try {
-      const result = await processSkillImage(file);
-      if (result.success && result.data) {
-        const data = result.data;
-        // Update form with extracted data
-        setForm((prev) => ({
-          ...prev,
-          nameCn: data.name?.cn || prev.nameCn,
-          nameVi: data.name?.vi || prev.nameVi,
-          typeId: data.type?.id || prev.typeId,
-          typeNameCn: data.type?.name?.cn || prev.typeNameCn,
-          typeNameVi: data.type?.name?.vi || prev.typeNameVi,
-          quality: data.quality || prev.quality,
-          triggerRate: data.trigger_rate ?? prev.triggerRate,
-          effectCn: data.effect?.cn || prev.effectCn,
-          effectVi: data.effect?.vi || prev.effectVi,
-          target: data.target || prev.target,
-          targetVi: data.target_vi || prev.targetVi,
-          armyTypes: data.army_types?.length ? data.army_types : prev.armyTypes,
-          innateToGenerals: data.innate_to?.length ? data.innate_to : prev.innateToGenerals,
-          inheritanceFromGenerals: data.inheritance_from?.length ? data.inheritance_from : prev.inheritanceFromGenerals,
-        }));
-        showToast('Đã trích xuất thông tin từ ảnh thành công', 'success');
+      let extractedCount = 0;
+      for (const img of imagesToProcess) {
+        const result = await processSkillImage(img.file);
+        if (result.success && result.data) {
+          const data = result.data;
+          // Merge extracted data (only fill empty fields or append arrays)
+          setForm((prev) => ({
+            ...prev,
+            nameCn: prev.nameCn || data.name?.cn || '',
+            nameVi: prev.nameVi || data.name?.vi || '',
+            typeId: prev.typeId || data.type?.id || '',
+            typeNameCn: prev.typeNameCn || data.type?.name?.cn || '',
+            typeNameVi: prev.typeNameVi || data.type?.name?.vi || '',
+            quality: prev.quality || data.quality || '',
+            triggerRate: prev.triggerRate || data.trigger_rate || 0,
+            effectCn: prev.effectCn || data.effect?.cn || '',
+            effectVi: prev.effectVi || data.effect?.vi || '',
+            target: prev.target || data.target || '',
+            targetVi: prev.targetVi || data.target_vi || '',
+            armyTypes: prev.armyTypes.length > 0 ? prev.armyTypes : (data.army_types || []),
+            innateToGenerals: prev.innateToGenerals.length > 0 ? prev.innateToGenerals : (data.innate_to || []),
+            inheritanceFromGenerals: prev.inheritanceFromGenerals.length > 0 ? prev.inheritanceFromGenerals : (data.inheritance_from || []),
+          }));
+          extractedCount++;
+        }
       }
+      showToast(`Đã trích xuất từ ${extractedCount}/${imagesToProcess.length} ảnh`, 'success');
     } catch (err: any) {
       setError(err.message || 'Không thể xử lý ảnh');
-      showToast('Không thể xử lý ảnh', 'error');
+      showToast('Lỗi khi trích xuất', 'error');
     } finally {
       setProcessingImage(false);
     }
-  }, []);
+  }, [uploadedImages, form.screenshots]);
+
+  // Legacy function for compatibility
+  const handleImageUpload = useCallback(async (file: File) => {
+    handleAddImages([file]);
+  }, [handleAddImages]);
 
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -241,16 +293,25 @@ export default function EditSkillPage() {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      handleImageUpload(e.dataTransfer.files[0]);
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      handleAddImages(e.dataTransfer.files);
     }
-  }, [handleImageUpload]);
+  }, [handleAddImages]);
 
   const handleFileSelect = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      handleImageUpload(e.target.files[0]);
+    if (e.target.files && e.target.files.length > 0) {
+      handleAddImages(e.target.files);
     }
-  }, [handleImageUpload]);
+    e.target.value = '';
+  }, [handleAddImages]);
+
+  const removeUploadedImage = useCallback((index: number) => {
+    setUploadedImages(prev => {
+      const removed = prev[index];
+      if (removed) URL.revokeObjectURL(removed.url);
+      return prev.filter((_, i) => i !== index);
+    });
+  }, []);
 
   const saveSkill = async (statusOverride?: string) => {
     setError('');
@@ -313,6 +374,7 @@ export default function EditSkillPage() {
         exchangeCount: data.exchange_count || 0,
         status: data.status || 'needs_update',
         updatedAt: data.updated_at || null,
+        screenshots: data.screenshots || [],
       });
     } catch (err: any) {
       setError(err.message || 'Không thể cập nhật chiến pháp');
@@ -354,7 +416,7 @@ export default function EditSkillPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-6">
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         {/* Header with back button */}
         <div className="flex items-center gap-4 mb-4">
           <Link
@@ -387,7 +449,7 @@ export default function EditSkillPage() {
         )}
 
         <form onSubmit={handleSubmit}>
-          {/* Skill Title - Display */}
+          {/* 1. TITLE / INFO */}
           <div className="bg-stone-800/90 border border-amber-900/40 rounded-xl p-5 mb-5">
             {/* Title row with badges */}
             <div className="flex items-center gap-3 mb-4">
@@ -428,7 +490,160 @@ export default function EditSkillPage() {
             {showChinese && form.nameCn && <p className="text-stone-400 mt-1">{form.nameCn}</p>}
           </div>
 
-          {/* Basic Info Form */}
+          {/* 2. IMAGE AREA */}
+          <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5 mb-5">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-base font-semibold text-amber-100 flex items-center gap-2">
+                <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Ảnh tham khảo
+                {(form.screenshots.length + uploadedImages.length) > 0 && (
+                  <span className="text-stone-400 font-normal">
+                    ({form.screenshots.length} đã lưu{uploadedImages.length > 0 && `, ${uploadedImages.length} mới`})
+                  </span>
+                )}
+              </h2>
+              <div className="flex items-center gap-2">
+                {(form.screenshots.length + uploadedImages.length) > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (confirm('Xóa tất cả ảnh?')) {
+                        uploadedImages.forEach(img => URL.revokeObjectURL(img.url));
+                        setUploadedImages([]);
+                        setForm(prev => ({ ...prev, screenshots: [] }));
+                      }
+                    }}
+                    className="text-xs text-red-400 hover:text-red-300"
+                  >
+                    Xóa tất cả
+                  </button>
+                )}
+                <label className="cursor-pointer px-3 py-1.5 bg-stone-700 hover:bg-stone-600 text-white rounded text-xs transition-colors">
+                  + Thêm ảnh
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleFileSelect}
+                    className="hidden"
+                  />
+                </label>
+              </div>
+            </div>
+
+            {/* Images display */}
+            {(form.screenshots.length + uploadedImages.length) > 0 ? (
+              <div
+                className={`flex gap-4 overflow-x-auto pb-3 ${dragActive ? 'ring-2 ring-amber-500 rounded-lg p-2' : ''}`}
+                onDragEnter={handleDrag}
+                onDragLeave={handleDrag}
+                onDragOver={handleDrag}
+                onDrop={handleDrop}
+                style={{ scrollbarWidth: 'thin' }}
+              >
+                {/* Existing screenshots from DB */}
+                {form.screenshots.map((screenshot, index) => (
+                  <div key={`db-${index}`} className="relative group flex-shrink-0">
+                    <img
+                      src={`/images/skills/${screenshot}`}
+                      alt={`Screenshot ${index + 1}`}
+                      className="h-72 w-auto rounded-lg border-2 border-stone-600 cursor-pointer hover:border-amber-500 transition-all"
+                      style={{ minWidth: '180px', objectFit: 'contain', backgroundColor: '#1c1917' }}
+                      onClick={() => window.open(`/images/skills/${screenshot}`, '_blank')}
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                    <div className="absolute top-2 left-2 px-2 py-0.5 bg-green-600/80 text-white text-xs rounded">
+                      Đã lưu
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setForm(prev => ({ ...prev, screenshots: prev.screenshots.filter((_, i) => i !== index) }))}
+                      className="absolute top-2 right-2 p-1.5 bg-red-600 hover:bg-red-500 text-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                      title="Xóa"
+                    >
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                ))}
+
+                {/* Newly uploaded images */}
+                {uploadedImages.map((img, index) => (
+                  <div key={`new-${index}`} className="relative group flex-shrink-0">
+                    <img
+                      src={img.url}
+                      alt={`New ${index + 1}`}
+                      className="h-72 w-auto rounded-lg border-2 border-amber-500 cursor-pointer hover:border-amber-400 transition-all"
+                      style={{ minWidth: '180px', objectFit: 'contain', backgroundColor: '#1c1917' }}
+                      onClick={() => window.open(img.url, '_blank')}
+                    />
+                    <div className="absolute top-2 left-2 px-2 py-0.5 bg-amber-600/80 text-white text-xs rounded">
+                      Mới
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => removeUploadedImage(index)}
+                      className="absolute top-2 right-2 p-1.5 bg-red-600 hover:bg-red-500 text-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                      title="Xóa"
+                    >
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div
+                className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
+                  dragActive ? 'border-amber-500 bg-amber-900/20' : 'border-stone-600'
+                }`}
+                onDragEnter={handleDrag}
+                onDragLeave={handleDrag}
+                onDragOver={handleDrag}
+                onDrop={handleDrop}
+              >
+                <p className="text-stone-500">Kéo thả ảnh vào đây hoặc click "Thêm ảnh" ở trên</p>
+              </div>
+            )}
+
+            {/* Extract button */}
+            {(form.screenshots.length + uploadedImages.length) > 0 && (
+              <div className="mt-4 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={handleExtractFromAllImages}
+                  disabled={processingImage}
+                  className="px-4 py-2 bg-amber-600 hover:bg-amber-500 text-white rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center gap-2"
+                >
+                  {processingImage ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                      Đang xử lý...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                      Trích xuất từ {form.screenshots.length + uploadedImages.length} ảnh
+                    </>
+                  )}
+                </button>
+                <span className="text-xs text-stone-500">
+                  Tự động điền thông tin từ tất cả ảnh
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* 3. Basic Info Form */}
           <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5 mb-5">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-base font-semibold text-amber-100">Thông tin cơ bản</h2>
@@ -547,10 +762,8 @@ export default function EditSkillPage() {
             </div>
           </div>
 
-          {/* Two column layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-            {/* Left column - Effect & Target */}
-            <div className="lg:col-span-2 space-y-5">
+          {/* 4. MAIN CONTENT */}
+          <div className="space-y-5">
               {/* Effect */}
               <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5">
                 <h2 className="text-base font-semibold text-amber-100 mb-3 flex items-center gap-2">
@@ -898,99 +1111,34 @@ export default function EditSkillPage() {
                   )}
                 </div>
               </div>
-            </div>
+          </div>
 
-            {/* Right column - Image Upload & Meta */}
-            <div className="space-y-5">
-              {/* Image Upload */}
-              <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-4">
-                <h2 className="text-sm font-semibold text-amber-100 mb-3 flex items-center gap-2">
-                  <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  Trích xuất từ ảnh
-                </h2>
-
-                <div
-                  className={`border-2 border-dashed rounded-lg p-4 transition-colors ${
-                    dragActive
-                      ? 'border-amber-500 bg-amber-900/20'
-                      : 'border-stone-600 hover:border-stone-500'
-                  }`}
-                  onDragEnter={handleDrag}
-                  onDragLeave={handleDrag}
-                  onDragOver={handleDrag}
-                  onDrop={handleDrop}
-                >
-                  <div className="text-center">
-                    {processingImage ? (
-                      <div className="py-2">
-                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500 mx-auto mb-2"></div>
-                        <p className="text-amber-400 text-sm">Đang xử lý...</p>
-                      </div>
-                    ) : (
-                      <>
-                        <svg
-                          className="mx-auto h-8 w-8 text-stone-500 mb-2"
-                          stroke="currentColor"
-                          fill="none"
-                          viewBox="0 0 48 48"
-                        >
-                          <path
-                            d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                        <p className="text-stone-400 text-xs mb-2">
-                          Kéo thả ảnh hoặc
-                        </p>
-                        <label className="cursor-pointer">
-                          <span className="px-3 py-1.5 bg-stone-700 hover:bg-stone-600 text-white rounded text-xs transition-colors">
-                            Chọn ảnh
-                          </span>
-                          <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleFileSelect}
-                            className="hidden"
-                          />
-                        </label>
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Actions */}
-              <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-4 space-y-3">
-                <button
-                  type="submit"
-                  disabled={saving}
-                  className="w-full px-4 py-2.5 bg-amber-700 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50"
-                >
-                  {saving ? 'Đang lưu...' : 'Lưu thay đổi'}
-                </button>
-                <button
-                  type="button"
-                  onClick={handleSaveAndComplete}
-                  disabled={saving || form.status === 'complete'}
-                  className="w-full px-4 py-2.5 bg-green-700 hover:bg-green-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  {saving ? 'Đang lưu...' : 'Lưu & Hoàn thành'}
-                </button>
-                <Link
-                  href="/admin/skills"
-                  className="block w-full px-4 py-2 text-center border border-stone-600 text-stone-300 rounded-lg hover:bg-stone-700 transition-colors text-sm"
-                >
-                  Hủy
-                </Link>
-              </div>
-            </div>
+          {/* 5. BUTTONS */}
+          <div className="mt-5 flex items-center justify-end gap-3">
+            <Link
+              href="/admin/skills"
+              className="px-4 py-2 border border-stone-600 text-stone-300 rounded-lg hover:bg-stone-700 transition-colors text-sm"
+            >
+              Hủy
+            </Link>
+            <button
+              type="submit"
+              disabled={saving}
+              className="px-6 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50"
+            >
+              {saving ? 'Đang lưu...' : 'Lưu thay đổi'}
+            </button>
+            <button
+              type="button"
+              onClick={handleSaveAndComplete}
+              disabled={saving || form.status === 'complete'}
+              className="px-6 py-2 bg-green-700 hover:bg-green-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              {saving ? 'Đang lưu...' : 'Lưu & Hoàn thành'}
+            </button>
           </div>
         </form>
       </div>

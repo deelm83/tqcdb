@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function AdminLoginPage() {
+  usePageTitle('Đăng nhập', true);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -33,16 +35,22 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 flex items-center justify-center">
+    <main className="min-h-screen bg-[var(--bg)] flex items-center justify-center">
       <div className="w-full max-w-md mx-4">
-        <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-8 shadow-xl">
-          <h1 className="text-2xl font-bold text-amber-100 text-center mb-6">
-            Đăng nhập quản trị
-          </h1>
+        <div className="card p-8">
+          {/* Gold top accent */}
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--accent-gold)] to-transparent" />
+
+          <div className="text-center mb-6">
+            <h1 className="text-2xl font-bold text-[var(--accent-gold)] uppercase tracking-wider mb-2">
+              TAMQUOC.GG
+            </h1>
+            <span className="px-2 py-0.5 bg-[var(--accent-red)] text-white text-[10px] font-bold uppercase tracking-wider">Admin</span>
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-stone-300 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
                 Mật khẩu
               </label>
               <input
@@ -50,7 +58,7 @@ export default function AdminLoginPage() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 bg-stone-900/50 border border-stone-600 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500"
+                className="w-full px-4 py-3 bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-gold)]"
                 placeholder="Nhập mật khẩu quản trị"
                 required
                 autoFocus
@@ -58,7 +66,7 @@ export default function AdminLoginPage() {
             </div>
 
             {error && (
-              <div className="p-3 bg-red-900/30 border border-red-700/50 rounded-lg text-red-300 text-sm">
+              <div className="p-3 bg-[var(--accent-red)]/20 border border-[var(--accent-red)] text-[var(--accent-red-bright)] text-sm">
                 {error}
               </div>
             )}
@@ -66,7 +74,7 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-gradient-to-r from-amber-700 to-amber-600 hover:from-amber-600 hover:to-amber-500 text-white font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}
             </button>

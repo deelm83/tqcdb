@@ -6,6 +6,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 import { fetchAdminSkills, deleteSkill, updateSkill } from '@/lib/adminApi';
 import { Skill } from '@/lib/api';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 type StatusFilter = 'all' | 'needs_update' | 'complete';
 
@@ -33,6 +34,7 @@ function removeVietnameseDiacritics(str: string): string {
 }
 
 export default function AdminSkillsPage() {
+  usePageTitle('Chiến pháp', true);
   const { isAuthenticated, isLoading } = useAuth();
   const router = useRouter();
   const [skills, setSkills] = useState<Skill[]>([]);
@@ -141,20 +143,17 @@ export default function AdminSkillsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-8">
+    <main className="min-h-screen bg-[var(--bg)] py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-amber-100">Chiến pháp ({filteredSkills.length})</h1>
-          <Link
-            href="/admin/skills/new"
-            className="px-4 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-lg text-sm transition-colors"
-          >
+          <h1 className="text-2xl font-bold text-[var(--accent-gold)] uppercase tracking-wider">Chiến pháp ({filteredSkills.length})</h1>
+          <Link href="/admin/skills/new" className="btn-primary">
             + Thêm chiến pháp
           </Link>
         </div>
 
         {/* Filters */}
-        <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-4 mb-6 space-y-4">
+        <div className="card p-4 mb-6 space-y-4">
           {/* Search and Quality row */}
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
@@ -163,57 +162,57 @@ export default function AdminSkillsPage() {
                 placeholder="Tìm chiến pháp..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full px-4 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+                className="w-full px-4 py-2 bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-gold)]"
               />
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-stone-500">Phẩm:</span>
+              <span className="text-xs text-[var(--text-tertiary)]">Phẩm:</span>
               {QUALITIES.map(quality => {
                 const isSelected = selectedQuality === quality;
                 return (
                   <button
                     key={quality}
                     onClick={() => setSelectedQuality(selectedQuality === quality ? null : quality)}
-                    className={`w-8 h-8 rounded text-xs font-bold transition-all ${
+                    className={`w-8 h-8 text-xs font-bold transition-all ${
                       isSelected
-                        ? quality === 'S' ? 'bg-amber-600 text-white' :
-                          quality === 'A' ? 'bg-red-600 text-white' :
-                          quality === 'B' ? 'bg-violet-600 text-white' :
-                          'bg-stone-600 text-white'
-                        : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                        ? quality === 'S' ? 'bg-[var(--accent-gold)] text-[var(--bg)]' :
+                          quality === 'A' ? 'bg-[var(--accent-red-bright)] text-white' :
+                          quality === 'B' ? 'bg-blue-500 text-white' :
+                          'bg-[var(--bg-tertiary)] text-[var(--text-primary)]'
+                        : 'bg-[var(--bg-tertiary)] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]'
                     }`}
                   >
                     {quality}
                   </button>
                 );
               })}
-              <span className="text-xs text-stone-500 ml-2">Trạng thái:</span>
+              <span className="text-xs text-[var(--text-tertiary)] ml-2">Trạng thái:</span>
               <button
                 onClick={() => setSelectedStatus('all')}
-                className={`px-2 py-1 rounded text-xs transition-all ${
+                className={`px-2 py-1 text-xs border transition-all ${
                   selectedStatus === 'all'
-                    ? 'bg-stone-600 text-white'
-                    : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                    ? 'bg-[var(--bg-tertiary)] border-[var(--border-light)] text-[var(--text-primary)]'
+                    : 'border-[var(--border)] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]'
                 }`}
               >
                 Tất cả
               </button>
               <button
                 onClick={() => setSelectedStatus('needs_update')}
-                className={`px-2 py-1 rounded text-xs transition-all ${
+                className={`px-2 py-1 text-xs border transition-all ${
                   selectedStatus === 'needs_update'
-                    ? 'bg-orange-600 text-white'
-                    : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                    ? 'bg-orange-600/20 border-orange-600 text-orange-400'
+                    : 'border-[var(--border)] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]'
                 }`}
               >
                 Cần cập nhật
               </button>
               <button
                 onClick={() => setSelectedStatus('complete')}
-                className={`px-2 py-1 rounded text-xs transition-all ${
+                className={`px-2 py-1 text-xs border transition-all ${
                   selectedStatus === 'complete'
-                    ? 'bg-green-600 text-white'
-                    : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                    ? 'bg-green-600/20 border-green-600 text-green-400'
+                    : 'border-[var(--border)] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]'
                 }`}
               >
                 Hoàn thành
@@ -221,7 +220,7 @@ export default function AdminSkillsPage() {
               {(selectedType || selectedQuality || search || selectedStatus !== 'all') && (
                 <button
                   onClick={clearFilters}
-                  className="ml-2 px-2 py-1 text-xs text-stone-400 hover:text-amber-400 transition-colors"
+                  className="ml-2 px-2 py-1 text-xs text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors"
                 >
                   ✕ Xóa
                 </button>
@@ -231,26 +230,26 @@ export default function AdminSkillsPage() {
 
           {/* Type Filter - horizontal scrollable */}
           <div className="flex items-center gap-2 overflow-x-auto pb-1">
-            <span className="text-xs text-stone-500 flex-shrink-0">Loại:</span>
+            <span className="text-xs text-[var(--text-tertiary)] flex-shrink-0">Loại:</span>
             {SKILL_TYPES.map(type => {
               const isSelected = selectedType === type.id;
               const colorClass =
-                type.id === 'command' ? 'bg-yellow-600/20 text-yellow-400 border-yellow-600/50' :
-                type.id === 'active' ? 'bg-red-600/20 text-red-400 border-red-600/50' :
-                type.id === 'passive' ? 'bg-green-600/20 text-green-400 border-green-600/50' :
-                type.id === 'pursuit' ? 'bg-cyan-600/20 text-cyan-400 border-cyan-600/50' :
-                type.id === 'assault' ? 'bg-orange-600/20 text-orange-400 border-orange-600/50' :
-                type.id === 'internal' ? 'bg-purple-600/20 text-purple-400 border-purple-600/50' :
-                type.id === 'troop' ? 'bg-blue-600/20 text-blue-400 border-blue-600/50' :
-                'bg-stone-600/20 text-stone-400 border-stone-600/50';
+                type.id === 'command' ? 'text-yellow-400 border-yellow-600/50' :
+                type.id === 'active' ? 'text-red-400 border-red-600/50' :
+                type.id === 'passive' ? 'text-blue-400 border-blue-600/50' :
+                type.id === 'pursuit' ? 'text-cyan-400 border-cyan-600/50' :
+                type.id === 'assault' ? 'text-orange-400 border-orange-600/50' :
+                type.id === 'internal' ? 'text-purple-400 border-purple-600/50' :
+                type.id === 'troop' ? 'text-green-400 border-green-600/50' :
+                'text-[var(--text-tertiary)] border-[var(--border)]';
               return (
                 <button
                   key={type.id}
                   onClick={() => setSelectedType(selectedType === type.id ? null : type.id)}
-                  className={`px-3 py-1 rounded-full text-xs font-medium border transition-all flex-shrink-0 ${
+                  className={`px-3 py-1 text-xs font-medium border transition-all flex-shrink-0 ${
                     isSelected
-                      ? colorClass + ' ring-1 ring-offset-1 ring-offset-stone-800'
-                      : 'bg-stone-700/30 text-stone-400 border-stone-600/30 hover:bg-stone-700/50'
+                      ? colorClass + ' bg-[var(--bg-tertiary)]'
+                      : 'text-[var(--text-tertiary)] border-[var(--border)] hover:border-[var(--border-light)]'
                   }`}
                 >
                   {type.nameVi}
@@ -261,24 +260,24 @@ export default function AdminSkillsPage() {
         </div>
 
         {loading ? (
-          <div className="text-center text-stone-400 py-8">Đang tải...</div>
+          <div className="text-center text-[var(--text-secondary)] py-8">Đang tải...</div>
         ) : (
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg overflow-hidden">
+          <div className="card overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-stone-700">
-                  <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Tên</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Loại</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Phẩm chất</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Tỷ lệ</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Cập nhật</th>
-                  <th className="px-4 py-3 text-right text-sm font-medium text-stone-400">Thao tác</th>
+                <tr className="border-b border-[var(--border)]">
+                  <th className="px-4 py-3 text-left text-sm font-medium text-[var(--text-tertiary)]">Tên</th>
+                  <th className="px-4 py-3 text-left text-sm font-medium text-[var(--text-tertiary)]">Loại</th>
+                  <th className="px-4 py-3 text-left text-sm font-medium text-[var(--text-tertiary)]">Phẩm chất</th>
+                  <th className="px-4 py-3 text-left text-sm font-medium text-[var(--text-tertiary)]">Tỷ lệ</th>
+                  <th className="px-4 py-3 text-left text-sm font-medium text-[var(--text-tertiary)]">Cập nhật</th>
+                  <th className="px-4 py-3 text-right text-sm font-medium text-[var(--text-tertiary)]">Thao tác</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-700">
+              <tbody className="divide-y divide-[var(--border)]">
                 {filteredSkills.map((skill) => (
-                  <tr key={skill.id} className="hover:bg-stone-700/30">
-                    <td className="px-4 py-3 font-medium text-white">
+                  <tr key={skill.id} className="hover:bg-[var(--bg-tertiary)]">
+                    <td className="px-4 py-3 font-medium text-[var(--text-primary)]">
                       <div className="flex items-center gap-2">
                         {skill.status === 'complete' ? (
                           <span className="text-green-500 flex-shrink-0" title="Hoàn thành">✓</span>
@@ -289,32 +288,32 @@ export default function AdminSkillsPage() {
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <span className={`px-2 py-0.5 rounded text-xs font-bold ${
-                        skill.type.id === 'command' ? 'bg-yellow-600/30 text-yellow-300' :
-                        skill.type.id === 'active' ? 'bg-red-600/30 text-red-300' :
-                        skill.type.id === 'passive' ? 'bg-green-600/30 text-green-300' :
-                        skill.type.id === 'pursuit' ? 'bg-cyan-600/30 text-cyan-300' :
-                        skill.type.id === 'assault' ? 'bg-orange-600/30 text-orange-300' :
-                        skill.type.id === 'internal' ? 'bg-purple-600/30 text-purple-300' :
-                        skill.type.id === 'troop' ? 'bg-blue-600/30 text-blue-300' :
-                        'bg-stone-600/30 text-stone-300'
+                      <span className={`px-2 py-0.5 text-xs font-bold ${
+                        skill.type.id === 'command' ? 'text-yellow-400' :
+                        skill.type.id === 'active' ? 'text-red-400' :
+                        skill.type.id === 'passive' ? 'text-blue-400' :
+                        skill.type.id === 'pursuit' ? 'text-cyan-400' :
+                        skill.type.id === 'assault' ? 'text-orange-400' :
+                        skill.type.id === 'internal' ? 'text-purple-400' :
+                        skill.type.id === 'troop' ? 'text-green-400' :
+                        'text-[var(--text-tertiary)]'
                       }`}>
                         {skill.type.name?.vi || skill.type.id}
                       </span>
                     </td>
                     <td className="px-4 py-3">
-                      <span className={`inline-flex items-center justify-center w-6 h-6 rounded text-xs font-bold ${
-                        skill.quality === 'S' ? 'bg-amber-600/40 text-amber-300' :
-                        skill.quality === 'A' ? 'bg-red-600/40 text-red-300' :
-                        skill.quality === 'B' ? 'bg-violet-600/40 text-violet-300' :
-                        skill.quality === 'C' ? 'bg-stone-600/40 text-stone-300' :
-                        'text-stone-500'
+                      <span className={`inline-flex items-center justify-center w-6 h-6 text-xs font-bold ${
+                        skill.quality === 'S' ? 'text-[var(--accent-gold)]' :
+                        skill.quality === 'A' ? 'text-[var(--accent-red-bright)]' :
+                        skill.quality === 'B' ? 'text-blue-400' :
+                        skill.quality === 'C' ? 'text-[var(--text-tertiary)]' :
+                        'text-[var(--text-tertiary)]'
                       }`}>
                         {skill.quality || '-'}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-amber-400">{skill.trigger_rate ? `${skill.trigger_rate}%` : '-'}</td>
-                    <td className="px-4 py-3 text-stone-500 text-xs">
+                    <td className="px-4 py-3 text-[var(--accent-gold)]">{skill.trigger_rate ? `${skill.trigger_rate}%` : '-'}</td>
+                    <td className="px-4 py-3 text-[var(--text-tertiary)] text-xs">
                       {(skill as any).updated_at ? new Date((skill as any).updated_at).toLocaleDateString('vi-VN') : '-'}
                     </td>
                     <td className="px-4 py-3 text-right">
@@ -323,21 +322,21 @@ export default function AdminSkillsPage() {
                           <button
                             onClick={() => handleToggleStatus(skill)}
                             disabled={togglingStatus === skill.id}
-                            className="px-3 py-1 text-sm text-green-400 hover:text-green-300 border border-green-700 rounded hover:border-green-600 transition-colors disabled:opacity-50"
+                            className="px-3 py-1 text-sm text-green-400 hover:text-green-300 border border-green-700 hover:border-green-600 transition-colors disabled:opacity-50"
                           >
                             {togglingStatus === skill.id ? '...' : 'Done'}
                           </button>
                         )}
                         <Link
                           href={`/admin/skills/${skill.slug || skill.id}`}
-                          className="px-3 py-1 text-sm text-amber-400 hover:text-amber-300 border border-amber-700 rounded hover:border-amber-600 transition-colors"
+                          className="px-3 py-1 text-sm text-[var(--accent-gold)] hover:text-[var(--accent-gold-bright)] border border-[var(--accent-gold-dim)] hover:border-[var(--accent-gold)] transition-colors"
                         >
                           Sửa
                         </Link>
                         <button
                           onClick={() => handleDelete(skill.id, skill.slug, skill.name.vi)}
                           disabled={deleting === skill.id}
-                          className="px-3 py-1 text-sm text-red-400 hover:text-red-300 border border-red-700 rounded hover:border-red-600 transition-colors disabled:opacity-50"
+                          className="px-3 py-1 text-sm text-[var(--accent-red-bright)] hover:text-red-400 border border-[var(--accent-red)] hover:border-[var(--accent-red-bright)] transition-colors disabled:opacity-50"
                         >
                           {deleting === skill.id ? '...' : 'Xóa'}
                         </button>
@@ -349,7 +348,7 @@ export default function AdminSkillsPage() {
             </table>
 
             {filteredSkills.length === 0 && (
-              <div className="text-center text-stone-400 py-8">
+              <div className="text-center text-[var(--text-secondary)] py-8">
                 Không tìm thấy chiến pháp
               </div>
             )}

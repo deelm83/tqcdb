@@ -8,6 +8,7 @@ import { showToast } from '@/components/Toast';
 import Link from 'next/link';
 import { General } from '@/lib/api';
 import { ArmyIcon, ArmyIconType } from '@/components/icons/TroopIcons';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const SKILL_TYPES = [
   { id: 'command', nameVi: 'Chỉ Huy', color: 'bg-yellow-600/30 text-yellow-300 border-yellow-600/50' },
@@ -57,6 +58,7 @@ function normalizeVietnamese(str: string): string {
 }
 
 export default function NewSkillPage() {
+  usePageTitle('Thêm chiến pháp', true);
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const router = useRouter();
 

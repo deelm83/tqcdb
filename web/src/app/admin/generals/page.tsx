@@ -11,12 +11,14 @@ type StatusFilter = 'all' | 'needs_update' | 'complete';
 import { FactionId, TroopType } from '@/types/general';
 import { factionNames, troopTypeNames } from '@/lib/generals';
 import { TroopIcon } from '@/components/icons/TroopIcons';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 const factions: FactionId[] = ['wei', 'shu', 'wu', 'qun'];
 const troopTypes: TroopType[] = ['cavalry', 'shield', 'archer', 'spear', 'siege'];
 const costOptions = [1, 2, 3, 4, 5, 6, 7];
 
 export default function AdminGeneralsPage() {
+  usePageTitle('Võ tướng', true);
   const { isAuthenticated, isLoading } = useAuth();
   const router = useRouter();
   const [generals, setGenerals] = useState<General[]>([]);
@@ -158,60 +160,57 @@ export default function AdminGeneralsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-8">
+    <main className="min-h-screen bg-[var(--bg)] py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-amber-100">Tướng ({filteredGenerals.length})</h1>
-          <Link
-            href="/admin/generals/new"
-            className="px-4 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-lg text-sm transition-colors"
-          >
-            + Thêm tướng
+          <h1 className="text-2xl font-bold text-[var(--accent-gold)] uppercase tracking-wider">Võ tướng ({filteredGenerals.length})</h1>
+          <Link href="/admin/generals/new" className="btn-primary">
+            + Thêm võ tướng
           </Link>
         </div>
 
         {/* Filters */}
-        <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-4 mb-6">
+        <div className="card p-4 mb-6">
           {/* Search */}
           <div className="mb-4">
             <input
               type="text"
-              placeholder="Tìm tướng..."
+              placeholder="Tìm võ tướng..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full px-4 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+              className="w-full px-4 py-2 bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-gold)]"
             />
           </div>
 
           {/* Status filter row */}
           <div className="flex items-center gap-2 mb-4">
-            <span className="text-sm font-medium text-amber-400">Trạng thái:</span>
+            <span className="text-sm font-medium text-[var(--accent-gold-dim)]">Trạng thái:</span>
             <button
               onClick={() => setSelectedStatus('all')}
-              className={`px-3 py-1.5 rounded text-sm transition-all ${
+              className={`px-3 py-1.5 text-sm border transition-all ${
                 selectedStatus === 'all'
-                  ? 'bg-stone-600 text-white'
-                  : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                  ? 'bg-[var(--bg-tertiary)] border-[var(--border-light)] text-[var(--text-primary)]'
+                  : 'border-[var(--border)] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]'
               }`}
             >
               Tất cả
             </button>
             <button
               onClick={() => setSelectedStatus('needs_update')}
-              className={`px-3 py-1.5 rounded text-sm transition-all ${
+              className={`px-3 py-1.5 text-sm border transition-all ${
                 selectedStatus === 'needs_update'
-                  ? 'bg-orange-600 text-white'
-                  : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                  ? 'bg-orange-600/20 border-orange-600 text-orange-400'
+                  : 'border-[var(--border)] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]'
               }`}
             >
               Cần cập nhật
             </button>
             <button
               onClick={() => setSelectedStatus('complete')}
-              className={`px-3 py-1.5 rounded text-sm transition-all ${
+              className={`px-3 py-1.5 text-sm border transition-all ${
                 selectedStatus === 'complete'
-                  ? 'bg-green-600 text-white'
-                  : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                  ? 'bg-green-600/20 border-green-600 text-green-400'
+                  : 'border-[var(--border)] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]'
               }`}
             >
               Hoàn thành
@@ -221,7 +220,7 @@ export default function AdminGeneralsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Faction Filter */}
             <div>
-              <h3 className="text-sm font-medium text-amber-400 mb-2">Phe</h3>
+              <h3 className="text-sm font-medium text-[var(--accent-gold-dim)] mb-2">Thế lực</h3>
               <div className="flex flex-wrap gap-2">
                 {factions.map(faction => {
                   const isSelected = selectedFactions.includes(faction);
@@ -229,10 +228,10 @@ export default function AdminGeneralsPage() {
                     <button
                       key={faction}
                       onClick={() => toggleFaction(faction)}
-                      className={`px-3 py-1.5 rounded text-sm border transition-colors ${
+                      className={`px-3 py-1.5 text-sm border transition-colors ${
                         isSelected
-                          ? 'bg-amber-700/50 border-amber-600 text-amber-100'
-                          : 'border-stone-600 text-stone-400 hover:border-stone-500'
+                          ? 'bg-[var(--bg-tertiary)] border-[var(--accent-gold-dim)] text-[var(--accent-gold)]'
+                          : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
                       }`}
                     >
                       {factionNames[faction].vi}
@@ -244,7 +243,7 @@ export default function AdminGeneralsPage() {
 
             {/* Cost Filter */}
             <div>
-              <h3 className="text-sm font-medium text-amber-400 mb-2">Phí</h3>
+              <h3 className="text-sm font-medium text-[var(--accent-gold-dim)] mb-2">COST</h3>
               <div className="flex flex-wrap gap-2">
                 {costOptions.map(cost => {
                   const isSelected = selectedCost === cost;
@@ -252,10 +251,10 @@ export default function AdminGeneralsPage() {
                     <button
                       key={cost}
                       onClick={() => setSelectedCost(selectedCost === cost ? null : cost)}
-                      className={`w-8 h-8 rounded text-sm font-bold border transition-colors ${
+                      className={`w-8 h-8 text-sm font-bold border transition-colors ${
                         isSelected
-                          ? 'bg-amber-700 border-amber-600 text-white'
-                          : 'border-stone-600 text-stone-400 hover:border-stone-500'
+                          ? 'bg-[var(--accent-gold)] border-[var(--accent-gold)] text-[var(--bg)]'
+                          : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
                       }`}
                     >
                       {cost}
@@ -267,7 +266,7 @@ export default function AdminGeneralsPage() {
 
             {/* Troop Filter */}
             <div>
-              <h3 className="text-sm font-medium text-amber-400 mb-2">Binh chủng (S/A)</h3>
+              <h3 className="text-sm font-medium text-[var(--accent-gold-dim)] mb-2">Binh chủng (S/A)</h3>
               <div className="flex flex-wrap gap-2">
                 {troopTypes.map(type => {
                   const isSelected = selectedTroops.includes(type);
@@ -275,10 +274,10 @@ export default function AdminGeneralsPage() {
                     <button
                       key={type}
                       onClick={() => toggleTroop(type)}
-                      className={`flex items-center gap-1 px-2 py-1.5 rounded border transition-colors ${
+                      className={`flex items-center gap-1 px-2 py-1.5 border transition-colors ${
                         isSelected
-                          ? 'bg-amber-700/50 border-amber-600 text-amber-100'
-                          : 'border-stone-600 text-stone-400 hover:border-stone-500'
+                          ? 'bg-[var(--bg-tertiary)] border-[var(--accent-gold-dim)] text-[var(--accent-gold)]'
+                          : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
                       }`}
                     >
                       <TroopIcon type={type} size={16} />
@@ -291,10 +290,10 @@ export default function AdminGeneralsPage() {
           </div>
 
           {/* Clear Filters */}
-          <div className="mt-4 pt-3 border-t border-stone-700 flex justify-end">
+          <div className="mt-4 pt-3 border-t border-[var(--border)] flex justify-end">
             <button
               onClick={clearFilters}
-              className="text-sm text-stone-400 hover:text-amber-400 transition-colors"
+              className="text-sm text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors"
             >
               Xóa bộ lọc
             </button>
@@ -302,49 +301,49 @@ export default function AdminGeneralsPage() {
         </div>
 
         {loading ? (
-          <div className="text-center text-stone-400 py-8">Đang tải...</div>
+          <div className="text-center text-[var(--text-secondary)] py-8">Đang tải...</div>
         ) : (
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg overflow-hidden">
+          <div className="card overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-stone-700">
-                  <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Ảnh</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Tên</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Phe</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-stone-400">Phí</th>
-                  <th className="px-4 py-3 text-center text-sm font-medium text-stone-400">Trạng thái</th>
-                  <th className="px-4 py-3 text-right text-sm font-medium text-stone-400">Thao tác</th>
+                <tr className="border-b border-[var(--border)]">
+                  <th className="px-4 py-3 text-left text-sm font-medium text-[var(--text-tertiary)]">Ảnh</th>
+                  <th className="px-4 py-3 text-left text-sm font-medium text-[var(--text-tertiary)]">Tên</th>
+                  <th className="px-4 py-3 text-left text-sm font-medium text-[var(--text-tertiary)]">Thế lực</th>
+                  <th className="px-4 py-3 text-left text-sm font-medium text-[var(--text-tertiary)]">COST</th>
+                  <th className="px-4 py-3 text-center text-sm font-medium text-[var(--text-tertiary)]">Trạng thái</th>
+                  <th className="px-4 py-3 text-right text-sm font-medium text-[var(--text-tertiary)]">Thao tác</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-stone-700">
+              <tbody className="divide-y divide-[var(--border)]">
                 {filteredGenerals.map((general) => (
-                  <tr key={general.slug} className="hover:bg-stone-700/30">
+                  <tr key={general.slug} className="hover:bg-[var(--bg-tertiary)]">
                     <td className="px-4 py-3">
                       {general.image ? (
                         <img
                           src={general.image}
                           alt={general.name.vi}
-                          className="w-10 h-10 object-cover rounded"
+                          className="w-10 h-10 object-cover"
                         />
                       ) : (
-                        <div className="w-10 h-10 bg-stone-700 rounded flex items-center justify-center text-stone-500 text-xs">
+                        <div className="w-10 h-10 bg-[var(--bg-tertiary)] flex items-center justify-center text-[var(--text-tertiary)] text-xs">
                           N/A
                         </div>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-white font-medium">{general.name.vi}</td>
-                    <td className="px-4 py-3 text-stone-400">
+                    <td className="px-4 py-3 text-[var(--text-primary)] font-medium">{general.name.vi}</td>
+                    <td className="px-4 py-3 text-[var(--text-secondary)]">
                       {factionNames[general.faction_id as FactionId]?.vi || general.faction_id}
                     </td>
-                    <td className="px-4 py-3 text-amber-400 font-bold">{general.cost}</td>
+                    <td className="px-4 py-3 text-[var(--accent-gold)] font-bold">{general.cost}</td>
                     <td className="px-4 py-3 text-center">
                       <button
                         onClick={() => handleToggleStatus(general)}
                         disabled={togglingStatus === general.id}
-                        className={`px-2 py-1 rounded text-xs font-medium transition-all ${
+                        className={`px-2 py-1 text-xs font-medium transition-all ${
                           general.status === 'complete'
-                            ? 'bg-green-600/30 text-green-300 hover:bg-green-600/50'
-                            : 'bg-orange-600/30 text-orange-300 hover:bg-orange-600/50'
+                            ? 'bg-green-600/20 text-green-400 hover:bg-green-600/30'
+                            : 'bg-orange-600/20 text-orange-400 hover:bg-orange-600/30'
                         } disabled:opacity-50`}
                       >
                         {togglingStatus === general.id ? '...' : general.status === 'complete' ? '✓ OK' : '⚠ Cần cập nhật'}
@@ -354,14 +353,14 @@ export default function AdminGeneralsPage() {
                       <div className="flex items-center justify-end gap-2">
                         <Link
                           href={`/admin/generals/${general.slug}`}
-                          className="px-3 py-1 text-sm text-amber-400 hover:text-amber-300 border border-amber-700 rounded hover:border-amber-600 transition-colors"
+                          className="px-3 py-1 text-sm text-[var(--accent-gold)] hover:text-[var(--accent-gold-bright)] border border-[var(--accent-gold-dim)] hover:border-[var(--accent-gold)] transition-colors"
                         >
                           Sửa
                         </Link>
                         <button
                           onClick={() => handleDelete(general.slug, general.name.vi)}
                           disabled={deleting === general.slug}
-                          className="px-3 py-1 text-sm text-red-400 hover:text-red-300 border border-red-700 rounded hover:border-red-600 transition-colors disabled:opacity-50"
+                          className="px-3 py-1 text-sm text-[var(--accent-red-bright)] hover:text-red-400 border border-[var(--accent-red)] hover:border-[var(--accent-red-bright)] transition-colors disabled:opacity-50"
                         >
                           {deleting === general.slug ? '...' : 'Xóa'}
                         </button>
@@ -373,8 +372,8 @@ export default function AdminGeneralsPage() {
             </table>
 
             {filteredGenerals.length === 0 && (
-              <div className="text-center text-stone-400 py-8">
-                Không tìm thấy tướng
+              <div className="text-center text-[var(--text-secondary)] py-8">
+                Không tìm thấy võ tướng
               </div>
             )}
           </div>

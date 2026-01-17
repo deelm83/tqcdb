@@ -3,9 +3,12 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { fetchGenerals, fetchSkills, General, Skill } from '@/lib/api';
-import { factionNames, FactionId } from '@/lib/generals';
+import { factionNames, FactionId, factionColors } from '@/lib/generals';
+import { qualityColors } from '@/lib/skills';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export default function Home() {
+  usePageTitle('Trang chủ');
   const [search, setSearch] = useState('');
   const [generals, setGenerals] = useState<General[]>([]);
   const [skills, setSkills] = useState<Skill[]>([]);
@@ -33,14 +36,14 @@ export default function Home() {
           fetchGenerals({ search }),
           fetchSkills(search),
         ]);
-        setGenerals(generalsData.slice(0, 10));
-        setSkills(skillsData.slice(0, 10));
+        setGenerals(generalsData.slice(0, 5));
+        setSkills(skillsData.slice(0, 5));
       } catch (err) {
         console.error('Search error:', err);
       } finally {
         setLoading(false);
       }
-    }, 300);
+    }, 200);
 
     return () => clearTimeout(timer);
   }, [search]);
@@ -48,199 +51,160 @@ export default function Home() {
   const totalResults = generals.length + skills.length;
 
   return (
-    <div className="min-h-[calc(100vh-64px)] flex flex-col">
-      {/* Hero Section */}
-      <div className={`relative transition-all duration-500 ${hasSearched ? '' : 'flex-1 flex flex-col justify-center'}`}>
-        {/* Background Image - Only show when not searching */}
-        {!hasSearched && (
-          <div className="absolute inset-0 overflow-hidden">
-            <img
-              src="/images/home-banner.png"
-              alt=""
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e14] via-[#0a0e14]/70 to-[#0a0e14]/40" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0e14]/60 via-transparent to-[#0a0e14]/60" />
-          </div>
-        )}
-
-        <div className="relative max-w-4xl mx-auto px-4 py-12">
-
-          {/* Title - only show when not searching */}
+    <main className="min-h-screen">
+      {/* Hero */}
+      <section className={`transition-all duration-500 ease-out ${hasSearched ? 'pt-16 pb-8' : 'min-h-screen flex items-center justify-center'}`}>
+        <div className="w-full max-w-2xl mx-auto px-6">
+          {/* Logo */}
           {!hasSearched && (
-            <div className="text-center mb-10">
-              <h1
-                className="text-5xl md:text-6xl text-[#f0c96e] mb-4"
-                style={{
-                  fontFamily: 'var(--font-great-vibes), cursive',
-                  textShadow: '2px 2px 8px rgba(0,0,0,0.8)',
-                }}
-              >
-                Tam Quốc Chí
+            <div className="text-center mb-12">
+              <h1 className="text-4xl font-bold tracking-wider text-[var(--accent-gold)] mb-3">
+                TAMQUOC.GG
               </h1>
-              <p className="text-[#b8a990] text-lg tracking-widest uppercase">
-                Chiến Lược Database
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="h-px w-16 bg-gradient-to-r from-transparent to-[var(--accent-gold-dim)]" />
+                <span className="text-[var(--text-tertiary)] text-xs uppercase tracking-[0.3em]">Cơ sở dữ liệu</span>
+                <div className="h-px w-16 bg-gradient-to-l from-transparent to-[var(--accent-gold-dim)]" />
+              </div>
+              <p className="text-[var(--text-secondary)]">
+                Tam Quốc Chí Chiến Lược
               </p>
             </div>
           )}
 
-          {/* Search Box */}
-          <div className="max-w-2xl mx-auto mb-8">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#d4a74a]/30 via-[#f0c96e]/30 to-[#d4a74a]/30 rounded-full blur opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300" />
-              <div className="relative">
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Tìm kiếm tướng hoặc chiến pháp..."
-                  className="w-full px-6 py-4 rounded-full bg-[#1a2130]/90 backdrop-blur-sm border-2 border-[#2a3548] text-[#e8dcc8] placeholder-[#6b7280] focus:outline-none focus:border-[#d4a74a] transition-all text-lg shadow-2xl"
-                />
-                <div className="absolute right-5 top-1/2 -translate-y-1/2">
-                  {loading ? (
-                    <span className="w-6 h-6 border-2 border-[#d4a74a]/30 border-t-[#d4a74a] rounded-full animate-spin block" />
-                  ) : (
-                    <svg className="w-6 h-6 text-[#6b7280]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                  )}
-                </div>
-              </div>
+          {/* Search */}
+          <div className="relative">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)]">
+              {loading ? (
+                <div className="spinner" />
+              ) : (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
+              )}
             </div>
+            <input
+              ref={inputRef}
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Tìm võ tướng và chiến pháp..."
+              className="w-full h-14 pl-12 pr-4 bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:border-[var(--accent-gold)] focus:outline-none"
+            />
           </div>
 
-          {/* Quick Links - only show when not searching */}
+          {/* Quick Links */}
           {!hasSearched && (
-            <div className="flex justify-center gap-6">
-              <Link
-                href="/generals"
-                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-[#1a2130]/80 border border-[#2a3548] hover:border-[#d4a74a]/50 hover:bg-[#1a2130] transition-all text-[#b8a990] hover:text-[#f0c96e]"
-              >
-                <span>⚔️</span>
-                <span>Danh sách tướng</span>
+            <div className="flex justify-center gap-4 mt-8">
+              <Link href="/generals" className="btn-primary">
+                Xem võ tướng
               </Link>
-              <Link
-                href="/skills"
-                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-[#1a2130]/80 border border-[#2a3548] hover:border-[#d4a74a]/50 hover:bg-[#1a2130] transition-all text-[#b8a990] hover:text-[#f0c96e]"
-              >
-                <span>📜</span>
-                <span>Chiến pháp</span>
+              <Link href="/skills" className="btn-secondary">
+                Xem chiến pháp
               </Link>
             </div>
           )}
-
         </div>
-      </div>
+      </section>
 
-      {/* Search Results */}
+      {/* Results */}
       {hasSearched && (
-        <div className="flex-1 max-w-4xl mx-auto w-full px-4 pb-8">
-          <div className="text-sm text-[#6b7280] mb-6">
-            {loading ? 'Đang tìm kiếm...' : `Tìm thấy ${totalResults} kết quả`}
+        <section className="max-w-2xl mx-auto px-6 pb-16 animate-in">
+          <div className="text-[13px] text-[var(--text-tertiary)] mb-6 uppercase tracking-wider">
+            {loading ? 'Đang tìm...' : `${totalResults} kết quả`}
           </div>
 
-          {/* Generals Results */}
+          {/* Officers */}
           {generals.length > 0 && (
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold text-[#d4a74a] mb-4 flex items-center gap-2">
-                <span>⚔️</span>
-                <span>Tướng</span>
-                <span className="text-sm font-normal text-[#6b7280]">({generals.length})</span>
-              </h2>
-              <div className="grid gap-3">
+            <div className="mb-10">
+              <h2 className="section-header">Võ tướng</h2>
+              <div className="space-y-2">
                 {generals.map((general) => {
                   const factionId = general.faction_id as FactionId;
-                  const factionName = factionNames[factionId]?.vi || '';
                   return (
                     <Link
                       key={general.id}
                       href={`/generals/${general.slug || general.id}`}
-                      className="block p-4 rounded-xl bg-gradient-to-r from-[#1a2130] to-[#12171f] border border-[#2a3548] hover:border-[#6b5a3e] hover:shadow-lg hover:shadow-[#d4a74a]/5 transition-all group"
+                      className="card flex items-center gap-4 p-4"
                     >
-                      <div className="flex items-center gap-4">
-                        <div className="w-14 h-16 rounded-lg overflow-hidden bg-[#2a3548] flex-shrink-0 border border-[#3a4558] group-hover:border-[#6b5a3e] transition-colors">
-                          <img
-                            src={general.image || '/images/general-placeholder.svg'}
-                            alt={general.name.vi}
-                            className="w-full h-full object-cover"
-                          />
+                      <div className="w-12 h-12 overflow-hidden bg-[var(--bg-tertiary)] flex-shrink-0">
+                        <img
+                          src={general.image || '/images/general-placeholder.svg'}
+                          alt=""
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-[15px] font-medium text-[var(--text-primary)]">
+                          {general.name.vi}
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="font-semibold text-[#e8dcc8] group-hover:text-[#f0c96e] transition-colors text-lg">
-                            {general.name.vi}
-                          </div>
-                          <div className="text-sm text-[#6b7280]">
-                            {factionName} · Cost {general.cost}
-                          </div>
-                        </div>
-                        <div className="text-[#6b7280] group-hover:text-[#d4a74a] transition-colors">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
+                        <div className="text-[13px] text-[var(--text-secondary)]">
+                          <span className={factionColors[factionId]?.text}>{factionNames[factionId]?.vi}</span>
+                          <span className="mx-2 text-[var(--text-tertiary)]">·</span>
+                          <span>Cost {general.cost}</span>
                         </div>
                       </div>
+                      <svg className="w-5 h-5 text-[var(--accent-gold-dim)]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
                     </Link>
                   );
                 })}
               </div>
-              {generals.length >= 10 && (
+              {generals.length >= 5 && (
                 <Link
                   href={`/generals?search=${encodeURIComponent(search)}`}
-                  className="block text-center mt-4 text-sm text-[#a67c32] hover:text-[#f0c96e] transition-colors"
+                  className="inline-block mt-4 text-[13px] text-[var(--accent-gold)] hover:text-[var(--accent-gold-bright)]"
                 >
-                  Xem thêm kết quả tướng →
+                  Xem tất cả võ tướng →
                 </Link>
               )}
             </div>
           )}
 
-          {/* Skills Results */}
+          {/* Tactics */}
           {skills.length > 0 && (
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold text-[#d4a74a] mb-4 flex items-center gap-2">
-                <span>📜</span>
-                <span>Chiến Pháp</span>
-                <span className="text-sm font-normal text-[#6b7280]">({skills.length})</span>
-              </h2>
-              <div className="grid gap-3">
+            <div className="mb-10">
+              <h2 className="section-header">Chiến pháp</h2>
+              <div className="space-y-2">
                 {skills.map((skill) => (
                   <Link
                     key={skill.name.cn}
                     href={`/skills?skill=${encodeURIComponent(skill.slug || skill.id.toString())}`}
-                    className="block p-4 rounded-xl bg-gradient-to-r from-[#1a2130] to-[#12171f] border border-[#2a3548] hover:border-[#6b5a3e] hover:shadow-lg hover:shadow-[#d4a74a]/5 transition-all group"
+                    className="card flex items-center justify-between p-4"
                   >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="font-semibold text-[#e8dcc8] group-hover:text-[#f0c96e] transition-colors text-lg">
-                          {skill.name.vi || skill.name.cn}
-                        </div>
-                        <div className="text-sm text-[#6b7280]">
-                          {skill.type?.name?.vi || skill.type?.id} {skill.quality && `· ${skill.quality}`}
-                        </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-[15px] font-medium text-[var(--text-primary)]">
+                        {skill.name.vi || skill.name.cn}
                       </div>
-                      <div className="flex items-center gap-4">
+                      <div className="text-[13px] text-[var(--text-secondary)]">
+                        {skill.type?.name?.vi}
                         {skill.trigger_rate && (
-                          <span className="text-sm text-[#b8a990] bg-[#2a3548] px-3 py-1 rounded-full">
-                            {skill.trigger_rate}%
-                          </span>
+                          <>
+                            <span className="mx-2 text-[var(--text-tertiary)]">·</span>
+                            <span>{skill.trigger_rate}%</span>
+                          </>
                         )}
-                        <div className="text-[#6b7280] group-hover:text-[#d4a74a] transition-colors">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
                       </div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <span className={`text-[13px] font-semibold ${skill.quality ? qualityColors[skill.quality] : 'text-[var(--text-tertiary)]'}`}>
+                        {skill.quality || '-'}
+                      </span>
+                      <svg className="w-5 h-5 text-[var(--accent-gold-dim)]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
                     </div>
                   </Link>
                 ))}
               </div>
-              {skills.length >= 10 && (
+              {skills.length >= 5 && (
                 <Link
                   href={`/skills?search=${encodeURIComponent(search)}`}
-                  className="block text-center mt-4 text-sm text-[#a67c32] hover:text-[#f0c96e] transition-colors"
+                  className="inline-block mt-4 text-[13px] text-[var(--accent-gold)] hover:text-[var(--accent-gold-bright)]"
                 >
-                  Xem thêm kết quả chiến pháp →
+                  Xem tất cả chiến pháp →
                 </Link>
               )}
             </div>
@@ -249,13 +213,12 @@ export default function Home() {
           {/* No Results */}
           {!loading && totalResults === 0 && (
             <div className="text-center py-16">
-              <div className="text-6xl mb-6">🔍</div>
-              <h3 className="text-xl font-semibold text-[#e8dcc8] mb-3">Không tìm thấy kết quả</h3>
-              <p className="text-[#6b7280]">Thử tìm kiếm với từ khóa khác</p>
+              <p className="text-[var(--text-secondary)]">Không tìm thấy kết quả</p>
+              <p className="text-[13px] text-[var(--text-tertiary)] mt-2">Thử từ khóa khác</p>
             </div>
           )}
-        </div>
+        </section>
       )}
-    </div>
+    </main>
   );
 }
