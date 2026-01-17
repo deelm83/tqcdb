@@ -113,6 +113,9 @@ model Skill {
   // Status flag: "needs_update" or "complete"
   status            String   @default("needs_update")
 
+  // Reference screenshots for editing
+  screenshots       String[] @default([])
+
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")
 

@@ -43,6 +43,7 @@ export interface General {
   inherited_skill_name?: string;
   innate_skill_id?: number | null;
   inherited_skill_id?: number | null;
+  status?: string;
 }
 
 export interface Skill {
@@ -67,6 +68,9 @@ export interface Skill {
   exchange_generals?: string[];
   exchange_general_ids?: string[];
   exchange_count?: number;
+  status?: string;
+  updated_at?: string;
+  screenshots?: string[];
 }
 
 export interface GeneralsFilter {

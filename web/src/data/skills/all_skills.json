@@ -1,0 +1,6314 @@
+[
+  {
+    "name": {
+      "cn": "一力拒守",
+      "vi": "Nhất Lực [拒] Thủ"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "严颜"
+    ],
+    "inheritance_from": [
+      "严颜",
+      "周泰"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "一身是胆",
+      "vi": "Nhất Thân [是] [胆]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "赵云"
+    ],
+    "innate_to": [
+      "赵云"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "一骑当千",
+      "vi": "Nhất Kỵ Đương Thiên"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "吕布"
+    ],
+    "inheritance_from": [
+      "吕布"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "七步成诗",
+      "vi": "七 步 Thành 诗"
+    },
+    "type": {
+      "id": "internal",
+      "name": {
+        "cn": "internal",
+        "vi": "Nội chính"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%B8%83%E6%AD%A5%E6%88%90%E8%AF%97",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "曹植",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "曹植"
+    ],
+    "innate_to": [
+      "曹植"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "武将委任为锻造官时，提升锻造出高阶装备的几率9%",
+      "vi": "võ tướngbổ nhiệmlà quan rèn khi, tăng rèn ra cao cấptrang bị xác suất9%"
+    }
+  },
+  {
+    "name": {
+      "cn": "万箭齐发",
+      "vi": "Vạn Tiễn Tề Phát"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 40,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%B8%87%E7%AE%AD%E9%BD%90%E5%8F%91",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "黄忠",
+      "夏侯渊"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，对敌军全体造成兵刃攻击（伤害率140%），并有50%概率造成溃逃状态，每回合持续造成伤害（伤害率120%，受武力影响），持续1回合",
+      "vi": "chuẩn bị 1 lượt, đối với toàn bộ địch gây sát thương vật lý (tỉ lệ sát thương 140%), và có 50% xác suất gây trạng thái hoảng loạn, mỗi lượt kéo dài gây sát thương (tỉ lệ sát thương 120%, chịu vũ lực ảnh hưởng), kéo dài 1 lượt"
+    },
+    "army_types": [
+      "archer"
+    ],
+    "target": "敌军群体（3人）",
+    "target_vi": "Nhóm địch (3 người)"
+  },
+  {
+    "name": {
+      "cn": "临战先登",
+      "vi": "Lâm Chiến Tiên Đăng"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 100,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%B8%B4%E6%88%98%E5%85%88%E7%99%BB",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "乐进"
+    ],
+    "innate_to": [
+      "乐进"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "对敌军群体（2人）造成兵刃攻击（伤害率150%），之后自己进入虚弱状态（无法造成伤害），持续1回合",
+      "vi": "đối với nhóm địch (2 người) gây sát thương vật lý (tỉ lệ sát thương 150%), sau đó bản thân rơi vào trạng thái suy yếu (không thể gây sát thương), kéo dài 1 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2人）",
+    "target_vi": "Nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "临机制胜",
+      "vi": "Lâm Cơ Chế Thắng"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 55,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%B8%B4%E6%9C%BA%E5%88%B6%E8%83%9C",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "朵思大王",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "伊籍"
+    ],
+    "inheritance_from": [
+      "伊籍",
+      "朵思大王"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "对敌军群体（2人）施加中毒状态，每回合持续造成伤害（伤害率120%，受智力影响），持续2回合，若敌军已有中毒状态，则使其随机获得灼烧（受智力影响）、叛逃（受武力或智力最高一项影响，无视防御）、沙暴（受智力影响）状态中的一种，每回合持续造成伤害（伤害率120%），持续2回合，该战法发动后会进入1回合冷却",
+      "vi": "đối với nhóm địch (2 người)施加trạng thái trúng độc, mỗi lượt kéo dài gây sát thương (tỉ lệ sát thương 120%, chịu trí lực ảnh hưởng), kéo dài 2 lượt, nếu địch 已có trạng thái trúng độc, thì khiến 其ngẫu nhiên nhận được 灼烧 (chịu trí lực ảnh hưởng)、phản bội (chịu vũ lực hoặc trí lực nhất 高一项 ảnh hưởng, bỏ qua phòng ngự)、bão cát (chịu trí lực ảnh hưởng) trạng thái中 一种, mỗi lượt kéo dài gây sát thương (tỉ lệ sát thương 120%), kéo dài 2 lượt, 该chiến phápphát động后会rơi vào 1 lượt冷 lại"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2人）",
+    "target_vi": "Nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "义心昭烈",
+      "vi": "Nghĩa 心 昭 Liệt"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%B9%89%E5%BF%83%E6%98%AD%E7%83%88",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "刘备"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，自身造成治疗效果时，使目标受到主动战法伤害降低14%（受智力影响），持续1回合，当自身兵力首次低于40%时，使我军全体受到伤害时会分摊50%伤害，持续1回合",
+      "vi": "战斗中, bản thân gây hồi phụchiệu quả khi, khiến mục tiêuchịu chiến pháp chủ độngsát thươnggiảm 14% (chịu trí lực ảnh hưởng), kéo dài 1 lượt, 当bản thân binh lựclần đầu低于40% khi, khiến toàn bộ quân ta chịu sát thương khi 会分摊50%sát thương, kéo dài 1 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自身",
+    "target_vi": "Bản thân"
+  },
+  {
+    "name": {
+      "cn": "义胆雄心",
+      "vi": "Nghĩa [胆] Hùng Tâm"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "姜维"
+    ],
+    "innate_to": [
+      "姜维"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "乘敌不虞",
+      "vi": "Thừa Địch Bất 虞"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 35,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%B9%98%E6%95%8C%E4%B8%8D%E8%99%9E",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "庞统"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，使敌军主将进入虚弱（无法造成伤害）状态，持续2回合，并使我军主将进入休整状态（每回合恢复一次兵力，回复率108%，受智力影响），持续2回合",
+      "vi": "chuẩn bị 1 lượt, khiến địch 主将rơi vào suy yếu (không thể gây sát thương) trạng thái, kéo dài 2 lượt, và khiến quân ta 主将rơi vào trạng thái nghỉ ngơi (mỗi lượthồi phục一 lầnbinh lực, 回复率108%, chịu trí lực ảnh hưởng), kéo dài 2 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军主将",
+    "target_vi": "địch 主将"
+  },
+  {
+    "name": {
+      "cn": "乘胜长驱",
+      "vi": "[乘] Thắng Trường [驱]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "陆抗"
+    ],
+    "innate_to": [
+      "高览"
+    ],
+    "inheritance_from": [
+      "陆抗"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "乱世奸雄",
+      "vi": "Loạn Thế Gian Hùng"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%B9%B1%E4%B8%96%E5%A5%B8%E9%9B%84",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "曹操"
+    ],
+    "innate_to": [
+      "曹操"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，使友军群体（2人）造成的兵刃伤害和谋略伤害提高16%（受智力影响），自己受到的兵刃伤害和谋略伤害降低18%（受智力影响），如果自己为主将，副将造成伤害时，会为主将恢复其伤害量10%的兵力",
+      "vi": "战斗中, khiến đồng minh nhóm (2 người) gây sát thương vật lý和sát thương mưu lượctăng 16% (chịu trí lực ảnh hưởng), bản thân chịu sát thương vật lý和sát thương mưu lượcgiảm 18% (chịu trí lực ảnh hưởng), nếu bản thân là 主将, 副将gây sát thương khi, 会là 主将hồi phục其sát thương量10% binh lực"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "我军群体（2人）",
+    "target_vi": "Nhóm quân ta (2 người)"
+  },
+  {
+    "name": {
+      "cn": "云聚影从",
+      "vi": "Vân [聚] [影] Tùng"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "董白"
+    ],
+    "innate_to": [
+      "董白"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "五雷轰顶",
+      "vi": "五 Lôi 轰 顶"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 45,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%BA%94%E9%9B%B7%E8%BD%B0%E9%A1%B6",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "张角"
+    ],
+    "innate_to": [
+      "张角"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，对敌军随机单体造成谋略攻击（伤害率136%，受智力影响）并由30%概率使其进入震慑状态（无法行动），持续1回合，共触发5次，每次独立选择目标；自身为主将时，若目标处于水攻状态、沙暴状态时，每多一种提高20%震慑概率",
+      "vi": "chuẩn bị 1 lượt, đối với địch ngẫu nhiên đơn thể gây sát thương mưu lược (tỉ lệ sát thương 136%, chịu trí lực ảnh hưởng), và 由30% xác suất khiến 其rơi vào chấn nhiếptrạng thái (không thể 行动), kéo dài 1 lượt, 共kích hoạt5 lần, mỗi lần独立chọnmục tiêu; bản thân là 主将 khi, nếu mục tiêu处于水攻trạng thái、bão cáttrạng thái khi, mỗi 多一种tăng 20%chấn nhiếp xác suất"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军随机单体",
+    "target_vi": "địch ngẫu nhiên đơn thể"
+  },
+  {
+    "name": {
+      "cn": "仁德载世",
+      "vi": "仁 德 载 Thế"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%BB%81%E5%BE%B7%E8%BD%BD%E4%B8%96",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "刘备"
+    ],
+    "innate_to": [
+      "刘备"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "每回合治疗我军群体（2人，治疗率68%，受智力影响），并使其受到伤害降低4%，持续1回合，且有10%概率对敌军单体施加虚弱（无法造成伤害）状态，持续1回合，自身为主将，施加虚弱状态的概率提高至25%",
+      "vi": "mỗi lượthồi phụcnhóm quân ta (2 người, hồi phục率68%, chịu trí lực ảnh hưởng), và khiến 其chịu sát thươnggiảm 4%, kéo dài 1 lượt, 且có 10% xác suất đối với đơn thể địch 施加suy yếu (không thể gây sát thương) trạng thái, kéo dài 1 lượt, bản thân là 主将, 施加trạng thái suy yếu xác suất tăng 至25%"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "我军群体（2人）",
+    "target_vi": "Nhóm quân ta (2 người)"
+  },
+  {
+    "name": {
+      "cn": "以逸待劳",
+      "vi": "[以] [逸] [待] [劳]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "法正"
+    ],
+    "innate_to": [
+      "法正"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "伪书相间",
+      "vi": "Ngụy Thư Tương Gian"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 45,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%BC%AA%E4%B9%A6%E7%9B%B8%E9%97%B4",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "贾诩"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "对敌军单体造成谋略伤害(伤害率206%,受智力影响),若目标处于混乱状态则使目标对其友军单体发动攻击(伤害率186%,类型取决于目标武力、智力较高的一项),否则施加混乱(攻击和战法无差别选择目标)状态,持续1回合。",
+      "vi": "đối với đơn thể địch gây sát thương mưu lược(tỉ lệ sát thương 206%,chịu trí lực ảnh hưởng),nếu mục tiêu处于trạng thái hỗn loạn thì khiến mục tiêuđối với 其đồng minh đơn thể phát độngtấn công(tỉ lệ sát thương 186%,类型取决于mục tiêuvũ lực、trí lực较高 一项),否 thì 施加hỗn loạn(tấn công和chiến phápkhông 差别chọnmục tiêu) trạng thái, kéo dài 1 lượt."
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体",
+    "target_vi": "Đơn thể địch"
+  },
+  {
+    "name": {
+      "cn": "倾国倾城",
+      "vi": "[倾] Quốc [倾] Thành"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "貂蝉"
+    ],
+    "inheritance_from": [
+      "貂蝉"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "傲倪王侯",
+      "vi": "傲 倪 王 侯"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%82%B2%E5%80%AA%E7%8E%8B%E4%BE%AF",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "许攸"
+    ],
+    "innate_to": [
+      "许攸"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，发现15个敌军破绽，破绽会分布在全体敌军中，敌军目标受到普通攻击时会触发一个破绽，使该目标降低3%武力、智力、统率、速度（受智力影响），可叠加，单个目标的破绽全部触发时，使其进入1回合虚弱状态且受到伤害提高15%（受智力影响），持续2回合，场上所有破绽触发后，敌军群体（2人）武力、智力、统率、速度降低20%（受智力影响）",
+      "vi": "战斗中, 发现15个địch 破绽, 破绽会分布 trong toàn bộ địch 中, địch mục tiêuchịu 普通tấn công khi 会kích hoạt一个破绽, khiến 该mục tiêugiảm 3%vũ lực、trí lực、thống suất、tốc độ (chịu trí lực ảnh hưởng), có thể cộng dồn, 单个mục tiêu 破绽全部kích hoạt khi, khiến 其rơi vào 1 lượttrạng thái suy yếu且chịu sát thươngtăng 15% (chịu trí lực ảnh hưởng), kéo dài 2 lượt, 场上所có 破绽kích hoạt后, nhóm địch (2 người) vũ lực、trí lực、thống suất、tốc độgiảm 20% (chịu trí lực ảnh hưởng)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军全体",
+    "target_vi": "Toàn bộ địch"
+  },
+  {
+    "name": {
+      "cn": "先成其虑",
+      "vi": "Tiên Thành Kỳ Lự"
+    },
+    "type": {
+      "id": "assault",
+      "name": {
+        "cn": "assault",
+        "vi": "Đột kích"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 45,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%85%88%E6%88%90%E5%85%B6%E8%99%91",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "sp郭嘉",
+      "邹氏"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "普通攻击之后，对攻击目标再次造成一次谋略攻击（伤害率145%，受智力影响）并使自身主动战法的发动几率提高15%，持续1回合",
+      "vi": "普通tấn công, sau đó, đối với tấn côngmục tiêulần nữagây 一 lầnsát thương mưu lược (tỉ lệ sát thương 145%, chịu trí lực ảnh hưởng), và khiến bản thân chiến pháp chủ động phát độngxác suấttăng 15%, kéo dài 1 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体及自己",
+    "target_vi": "đơn thể địch và bản thân"
+  },
+  {
+    "name": {
+      "cn": "克敌制胜",
+      "vi": "Khắc Địch Chế Thắng"
+    },
+    "type": {
+      "id": "assault",
+      "name": {
+        "cn": "assault",
+        "vi": "Đột kích"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 40,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%85%8B%E6%95%8C%E5%88%B6%E8%83%9C",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "于禁",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "于禁",
+      "程普"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "普通攻击之后，对攻击目标再次造成一次谋略伤害（伤害率180%，受智力影响）；若目标处于溃逃或中毒状态，则有70%概率使目标进入虚弱（无法造成伤害）状态，持续1回合",
+      "vi": "普通tấn công, sau đó, đối với tấn côngmục tiêulần nữagây 一 lầnsát thương mưu lược (tỉ lệ sát thương 180%, chịu trí lực ảnh hưởng); nếu mục tiêu处于hoảng loạn hoặc trạng thái trúng độc, thì có 70% xác suất khiến mục tiêurơi vào suy yếu (không thể gây sát thương) trạng thái, kéo dài 1 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体",
+    "target_vi": "Đơn thể địch"
+  },
+  {
+    "name": {
+      "cn": "克遵画一",
+      "vi": "Khắc Tuân Họa Nhất"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "蒋琬"
+    ],
+    "innate_to": [
+      "蒋琬"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "八门金锁阵",
+      "vi": "八 门 金 锁 Trận"
+    },
+    "type": {
+      "id": "formation",
+      "name": {
+        "cn": "formation",
+        "vi": "Trận pháp"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%85%AB%E9%97%A8%E9%87%91%E9%94%81%E9%98%B5",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "曹仁"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗前3回合，使敌军群体（2人）造成的伤害降低30%（受智力影响），并使我军主将获得先攻状态（优先行动）",
+      "vi": "战斗前3 lượt, khiến nhóm địch (2 người) gây sát thươnggiảm 30% (chịu trí lực ảnh hưởng), và khiến quân ta 主将nhận được trạng thái tiên công (优先行动)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "我军全体",
+    "target_vi": "Toàn bộ quân ta"
+  },
+  {
+    "name": {
+      "cn": "兴云布雨",
+      "vi": "兴 云 布 雨"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%85%B4%E4%BA%91%E5%B8%83%E9%9B%A8",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "于吉"
+    ],
+    "innate_to": [
+      "于吉"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗第2回合开始，使敌军全体进入水攻状态，每回合持续造成伤害（伤害率72%，受智力影响），并使其受到伤害增加10%，持续5回合",
+      "vi": "战斗第2 lượtbắt đầu, khiến toàn bộ địch rơi vào 水攻trạng thái, mỗi lượt kéo dài gây sát thương (tỉ lệ sát thương 72%, chịu trí lực ảnh hưởng), và khiến 其chịu sát thươngtăng thêm 10%, kéo dài 5 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军全体",
+    "target_vi": "Toàn bộ địch"
+  },
+  {
+    "name": {
+      "cn": "兵无常势",
+      "vi": "Binh Vô [常] Thế"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "田丰"
+    ],
+    "inheritance_from": [
+      "田丰",
+      "祝融夫人"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "兵锋",
+      "vi": "Binh Phong"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 35,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%85%B5%E9%94%8B",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "孟获",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "孟获",
+      "张昭"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "使自己及友军单体进入连击（每回合可以普通攻击2次）状态，持续1回合",
+      "vi": "khiến bản thân và đồng minh đơn thể rơi vào liên kích (mỗi lượtcó thể 普通tấn công2 lần) trạng thái, kéo dài 1 lượt"
+    },
+    "army_types": [
+      "archer"
+    ],
+    "target": "自己及友军单体",
+    "target_vi": "bản thân và đồng minh đơn thể"
+  },
+  {
+    "name": {
+      "cn": "刀出如霆",
+      "vi": "Đao [出] [如] [霆]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "关兴"
+    ],
+    "innate_to": [
+      "关兴"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "刚烈不屈",
+      "vi": "Cương Liệt Bất Khuất"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%88%9A%E7%83%88%E4%B8%8D%E5%B1%88",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "夏侯惇"
+    ],
+    "innate_to": [
+      "夏侯惇"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中， 使自己统率提升38点，受到兵刃伤害时有40%几率对敌军群体（2人）造成兵刃伤害（伤害率84%）",
+      "vi": "战斗中, khiến bản thân thống suấttăng 38 điểm, chịu sát thương vật lý khi có 40%xác suấtđối với nhóm địch (2 người) gây sát thương vật lý (tỉ lệ sát thương 84%)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己",
+    "target_vi": "bản thân"
+  },
+  {
+    "name": {
+      "cn": "刮骨疗毒",
+      "vi": "[刮] Cốt Liệu Độc"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "华佗"
+    ],
+    "inheritance_from": [
+      "华佗"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "功勋克举",
+      "vi": "[功] [勋] Khắc [举]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "张昭"
+    ],
+    "innate_to": [
+      "张昭"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "勇冠三军",
+      "vi": "Dũng Quan Tam Quân"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "颜良"
+    ],
+    "innate_to": [
+      "颜良"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "勇烈持重",
+      "vi": "Dũng Liệt [持] [重]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "程普"
+    ],
+    "innate_to": [
+      "程普"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "勇者得前",
+      "vi": "Dũng Giả Đắc Tiền"
+    },
+    "type": {
+      "id": "assault",
+      "name": {
+        "cn": "assault",
+        "vi": "Đột kích"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 45,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%8B%87%E8%80%85%E5%BE%97%E5%89%8D",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "张辽",
+      "张姬"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "普通攻击之后使自己获得1次抵御，可免疫伤害，并使下一个主动战法的伤害提升80%",
+      "vi": "普通tấn công, sau đó khiến bản thân nhận được 1 lần抵御, có thể miễn dịch sát thương, và khiến 下一个chiến pháp chủ động sát thươngtăng 80%"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体",
+    "target_vi": "Đơn thể địch"
+  },
+  {
+    "name": {
+      "cn": "十二奇谋",
+      "vi": "Thập 二 Kỳ Mưu"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 45,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%8D%81%E4%BA%8C%E5%A5%87%E8%B0%8B",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "荀攸",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "荀攸"
+    ],
+    "innate_to": [
+      "荀攸"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "移除敌军群体（1-2）人增益状态，提高我军全体1回合6%主动战法发动率（受智力影响）并使其下次发动主动战法后，对敌军单体造成谋略伤害（伤害率102%，受智力影响）",
+      "vi": "loại bỏ nhóm địch (1-2) người增益trạng thái, tăng toàn bộ quân ta 1 lượt6%chiến pháp chủ độngphát động率 (chịu trí lực ảnh hưởng), và khiến 其lần sauphát độngchiến pháp chủ động后, đối với đơn thể địch gây sát thương mưu lược (tỉ lệ sát thương 102%, chịu trí lực ảnh hưởng)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（1-2人）",
+    "target_vi": "nhóm địch (1-2 người)"
+  },
+  {
+    "name": {
+      "cn": "十胜十败",
+      "vi": "Thập Thắng Thập Bại"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%8D%81%E8%83%9C%E5%8D%81%E8%B4%A5",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "郭嘉"
+    ],
+    "innate_to": [
+      "郭嘉"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗前2回合，使我军主将获得洞察（免疫所有控制效果）状态，受到的伤害降低50%",
+      "vi": "战斗前2 lượt, khiến quân ta 主将nhận được thấu thị (miễn dịch 所có 控制hiệu quả) trạng thái, chịu sát thươnggiảm 50%"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "友军主将",
+    "target_vi": "đồng minh 主将"
+  },
+  {
+    "name": {
+      "cn": "十面埋伏",
+      "vi": "Thập 面 埋 伏"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 35,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%8D%81%E9%9D%A2%E5%9F%8B%E4%BC%8F",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "程昱"
+    ],
+    "innate_to": [
+      "程昱",
+      "孙坚"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "对有负面状态的敌军造成谋略攻击（伤害率96%，受智力影响），随后对敌军群体（2人）施加禁疗（无法恢复兵力）及叛逃状态，每回合持续造成伤害（伤害率74%，受武力或智力最高一项影响，无视防御），持续2回合",
+      "vi": "đối với có 负面trạng thái địch gây sát thương mưu lược (tỉ lệ sát thương 96%, chịu trí lực ảnh hưởng), 随后đối với nhóm địch (2 người)施加cấm hồi máu (không thể hồi phụcbinh lực) và phản bộitrạng thái, mỗi lượt kéo dài gây sát thương (tỉ lệ sát thương 74%, chịu vũ lực hoặc trí lực nhất 高一项 ảnh hưởng, bỏ qua phòng ngự), kéo dài 2 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2人）",
+    "target_vi": "Nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "南蛮渠魁",
+      "vi": "Nam Man Cừ Khôi"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%8D%97%E8%9B%AE%E6%B8%A0%E9%AD%81",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "孟获",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "孟获"
+    ],
+    "innate_to": [
+      "孟获"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，每回合行动时有49%几率对敌军全体造成兵刃伤害（伤害率106%），若未生效则提高7%发动概率，自身受到7次普通攻击后会进入1回合震慑（无法行动）状态；自身为主将时，每回合有15%（部队每多1名蛮族武将额外提高15%）概率使全体蛮族造成的伤害提高15%（受自身损失兵力影响，最多80%），持续1回合",
+      "vi": "战斗中, mỗi lượt行动 khi có 49%xác suấtđối với toàn bộ địch gây sát thương vật lý (tỉ lệ sát thương 106%), nếu 未có hiệu lực thì tăng 7%phát động xác suất, bản thân chịu 7 lần普通tấn công后会rơi vào 1 lượtchấn nhiếp (không thể 行动) trạng thái; bản thân là 主将 khi, mỗi lượtcó 15% (部队mỗi 多1名蛮族võ tướngthêm tăng 15%) xác suất khiến toàn bộ 蛮族gây sát thươngtăng 15% (chịu bản thân 损失binh lực ảnh hưởng, tối đa 80%), kéo dài 1 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军全体",
+    "target_vi": "Toàn bộ địch"
+  },
+  {
+    "name": {
+      "cn": "卧薪尝胆",
+      "vi": "[卧] [薪] [尝] [胆]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "孙权"
+    ],
+    "inheritance_from": [
+      "孙权"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "古之恶来",
+      "vi": "Cổ Chi Ác Lai"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%8F%A4%E4%B9%8B%E6%81%B6%E6%9D%A5",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "典韦"
+    ],
+    "innate_to": [
+      "典韦"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "我军主将即将受到普通攻击时,自身会对攻击者进行一次猛击(伤害率80%)并使其造成兵刃伤害降低18%，持续1回合,随后为我军主将承担此次普通攻击。",
+      "vi": "quân ta 主将即将chịu 普通tấn công khi,bản thân 会đối với tấn công者进行一 lần猛击(tỉ lệ sát thương 80%), và khiến 其gây sát thương vật lýgiảm 18%, kéo dài 1 lượt,随后là quân ta 主将承担此 lần普通tấn công."
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "我军主将",
+    "target_vi": "quân ta 主将"
+  },
+  {
+    "name": {
+      "cn": "合军聚众",
+      "vi": "Hợp Quân Tụ Chúng"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%90%88%E5%86%9B%E8%81%9A%E4%BC%97",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "徐晃",
+      "袁绍"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，使自己获得休整状态，每回合恢复一定兵力（回复率124%)",
+      "vi": "战斗中, khiến bản thân nhận được trạng thái nghỉ ngơi, mỗi lượthồi phục一定binh lực (回复率124%)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己",
+    "target_vi": "bản thân"
+  },
+  {
+    "name": {
+      "cn": "四面楚歌",
+      "vi": "四 面 楚 歌"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 50,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%9B%9B%E9%9D%A2%E6%A5%9A%E6%AD%8C",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "荀彧",
+      "李儒"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，对敌军群体（2人）施加中毒状态，每回合持续造成伤害（伤害率144%，受智力影响），持续2回合",
+      "vi": "chuẩn bị 1 lượt, đối với nhóm địch (2 người)施加trạng thái trúng độc, mỗi lượt kéo dài gây sát thương (tỉ lệ sát thương 144%, chịu trí lực ảnh hưởng), kéo dài 2 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2人）",
+    "target_vi": "Nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "围师必阙",
+      "vi": "[围] Sư [必] [阙]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "sp朱儁"
+    ],
+    "innate_to": [
+      "sp朱儁"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "固若金汤",
+      "vi": "Cố 若 金 汤"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 45,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%9B%BA%E8%8B%A5%E9%87%91%E6%B1%A4",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "曹仁"
+    ],
+    "innate_to": [
+      "曹仁"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "使自己获得洞察（免疫所有控制效果）状态并嘲讽（强迫目标普通攻击自己）敌军全体，同时提高自身150统率，持续2回合",
+      "vi": "khiến bản thân nhận được thấu thị (miễn dịch 所có 控制hiệu quả) trạng thái, và khiêu khích (强迫mục tiêu普通tấn côngbản thân ) toàn bộ địch, đồng thờităng bản thân 150thống suất, kéo dài 2 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己",
+    "target_vi": "bản thân"
+  },
+  {
+    "name": {
+      "cn": "国士将风",
+      "vi": "Quốc Sĩ Tướng [风]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "凌统"
+    ],
+    "innate_to": [
+      "凌统"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "国色",
+      "vi": "Quốc Sắc"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "大乔"
+    ],
+    "innate_to": [
+      "大乔"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "坐断东南",
+      "vi": "Tọa [断] Đông Nam"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "孙权"
+    ],
+    "innate_to": [
+      "孙权"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "垂心万物",
+      "vi": "垂 心 Vạn 物"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%9E%82%E5%BF%83%E4%B8%87%E7%89%A9",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "王元姬"
+    ],
+    "innate_to": [
+      "王元姬"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，奇数回合有70%概率（受智力影响）使我军武力最高的武将造成兵刃伤害提高20%（受智力影响，持续到其行动前），若目标不处于连击状态则令其尝试对敌军单体发动一次普通攻击，否则自身对敌军单体造成谋略伤害（伤害率188%，受智力影响），偶数回合有70%概率（受智力影响）恢复我军群体（2人）兵力（治疗率86%，受智力影响）",
+      "vi": "战斗中, 奇数 lượt có 70% xác suất (chịu trí lực ảnh hưởng) khiến quân ta vũ lực nhất 高 võ tướnggây sát thương vật lýtăng 20% (chịu trí lực ảnh hưởng, kéo dài đến 其行动前), nếu mục tiêukhông 处于liên kíchtrạng thái thì 令其尝试đối với đơn thể địch phát động一 lần普通tấn công, 否 thì bản thân đối với đơn thể địch gây sát thương mưu lược (tỉ lệ sát thương 188%, chịu trí lực ảnh hưởng), 偶数 lượt có 70% xác suất (chịu trí lực ảnh hưởng) hồi phụcnhóm quân ta (2 người) binh lực (hồi phục率86%, chịu trí lực ảnh hưởng)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "友军单体",
+    "target_vi": "Đơn thể đồng minh"
+  },
+  {
+    "name": {
+      "cn": "士争先赴",
+      "vi": "Sĩ [争] Tiên [赴]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "张苞"
+    ],
+    "inheritance_from": [
+      "张苞",
+      "关兴"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "士别三日",
+      "vi": "Sĩ [别] Tam Nhật"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "吕蒙"
+    ],
+    "inheritance_from": [
+      "吕蒙"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "处兹不惑",
+      "vi": "[处] [兹] [不] [惑]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "徐庶"
+    ],
+    "innate_to": [
+      "徐庶"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "大戟士",
+      "vi": "Đại Kích Sĩ"
+    },
+    "type": {
+      "id": "troop",
+      "name": {
+        "cn": "troop",
+        "vi": "Binh chủng"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%A4%A7%E6%88%9F%E5%A3%AB",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "张郃"
+    ],
+    "innate_to": [
+      "张郃"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "将枪兵进阶为横冲直撞的大戟士：我军全体武力提高14点，进行普通攻击时，有35%几率对敌军单体造成兵刃伤害（伤害率122%）；若张郃统领，则发动几率提高为40%",
+      "vi": "将thương binh进阶là 横冲直撞 大戟士: toàn bộ quân ta vũ lựctăng 14 điểm, 进行普通tấn công khi, có 35%xác suấtđối với đơn thể địch gây sát thương vật lý (tỉ lệ sát thương 122%); nếu 张郃统领, thì phát độngxác suấttăng là 40%"
+    },
+    "army_types": [
+      "spear"
+    ],
+    "target": "我军全体",
+    "target_vi": "Toàn bộ quân ta"
+  },
+  {
+    "name": {
+      "cn": "天下无双",
+      "vi": "Thiên Hạ Vô Song"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "吕布"
+    ],
+    "innate_to": [
+      "吕布"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "天香",
+      "vi": "Thiên Hương"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "小乔"
+    ],
+    "innate_to": [
+      "小乔"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "夺魂挟魄",
+      "vi": "[夺] Hồn [挟] Phách"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "小乔"
+    ],
+    "inheritance_from": [
+      "小乔",
+      "蔡文姬"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "奇兵间道",
+      "vi": "[奇] Binh [间] Đạo"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "魏延"
+    ],
+    "innate_to": [
+      "魏延"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "奇施经略",
+      "vi": "[奇] [施] [经] [略]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "张纮"
+    ],
+    "innate_to": [
+      "张纮"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "奇计良谋",
+      "vi": "[奇] Kế Lương Mưu"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "蒋琬"
+    ],
+    "inheritance_from": [
+      "蒋琬",
+      "鲁肃"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "奋矛英姿",
+      "vi": "Phấn Mâu Anh [姿]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "张姬"
+    ],
+    "innate_to": [
+      "张姬"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "威谋靡亢",
+      "vi": "Uy Mưu [靡] [亢]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "魏延"
+    ],
+    "inheritance_from": [
+      "魏延",
+      "沮授"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "威震华夏",
+      "vi": "Uy Chấn Hoa Hạ"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 35,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%A8%81%E9%9C%87%E5%8D%8E%E5%A4%8F",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "关羽"
+    ],
+    "innate_to": [
+      "关羽"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，对敌军全体进行猛攻（伤害率146%），使其有50%概率进入缴械（无法进行普通攻击）、计穷（无法发动主动战法）状态，独立判定，持续1回合，并使自己造成的兵刃伤害提升36%，持续2回合；自身为主将时，造成控制效果的概率提高65%",
+      "vi": "chuẩn bị 1 lượt, đối với toàn bộ địch 进行猛攻 (tỉ lệ sát thương 146%), khiến 其có 50% xác suất rơi vào tước vũ khí (không thể 进行普通tấn công)、kế cùng (không thể phát độngchiến pháp chủ động) trạng thái, 独立判定, kéo dài 1 lượt, và khiến bản thân gây sát thương vật lýtăng 36%, kéo dài 2 lượt; bản thân là 主将 khi, gây 控制hiệu quả xác suất tăng 65%"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体",
+    "target_vi": "Nhóm địch"
+  },
+  {
+    "name": {
+      "cn": "守而必固",
+      "vi": "Thủ Nhi Tất Cố"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%AE%88%E8%80%8C%E5%BF%85%E5%9B%BA",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "曹植",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "曹植",
+      "程昱"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗开始时，嘲讽敌军主将（强迫目标普通攻击自己），并使自己的统率提升40点，持续4回合",
+      "vi": "战斗bắt đầu khi, khiêu khíchđịch 主将 (强迫mục tiêu普通tấn côngbản thân ), và khiến bản thân thống suấttăng 40 điểm, kéo dài 4 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军主将",
+    "target_vi": "địch 主将"
+  },
+  {
+    "name": {
+      "cn": "定谋贵决",
+      "vi": "Định Mưu 贵 Quyết"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 40,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%AE%9A%E8%B0%8B%E8%B4%B5%E5%86%B3",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "许攸"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "使敌军兵力最高单体嘲讽我军全体，并使其受到伤害提高20%，持续1回合",
+      "vi": "khiến địch binh lực nhất 高đơn thể khiêu khíchtoàn bộ quân ta, và khiến 其chịu sát thươngtăng 20%, kéo dài 1 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体",
+    "target_vi": "Đơn thể địch"
+  },
+  {
+    "name": {
+      "cn": "将行其疾",
+      "vi": "Tướng Hành Kỳ Tật"
+    },
+    "type": {
+      "id": "assault",
+      "name": {
+        "cn": "assault",
+        "vi": "Đột kích"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 60,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%B0%86%E8%A1%8C%E5%85%B6%E7%96%BE",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "夏侯渊"
+    ],
+    "innate_to": [
+      "夏侯渊"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "普通攻击之后，对随机敌军单体发动一次兵刃攻击（伤害率158%）；若命中敌军主将，则使其进入计穷（无法发动主动战法）状态，持续2回合",
+      "vi": "普通tấn công, sau đó, đối với ngẫu nhiên đơn thể địch phát động一 lầnsát thương vật lý (tỉ lệ sát thương 158%); nếu 命中địch 主将, thì khiến 其rơi vào kế cùng (không thể phát độngchiến pháp chủ động) trạng thái, kéo dài 2 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体",
+    "target_vi": "Đơn thể địch"
+  },
+  {
+    "name": {
+      "cn": "将门虎女",
+      "vi": "Tướng Môn Hổ Nữ"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "关银屏"
+    ],
+    "innate_to": [
+      "关银屏"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "工神",
+      "vi": "[工] Thần"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "黄月英"
+    ],
+    "innate_to": [
+      "黄月英"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "弓腰姬",
+      "vi": "Cung [腰] Cơ"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "孙尚香"
+    ],
+    "innate_to": [
+      "孙尚香"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "形机军略",
+      "vi": "Hình Cơ Quân [略]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "姜维"
+    ],
+    "inheritance_from": [
+      "姜维",
+      "袁术"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "忠勇义烈",
+      "vi": "Trung Dũng Nghĩa Liệt"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%BF%A0%E5%8B%87%E4%B9%89%E7%83%88",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "sp庞德",
+      "sp关羽"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，自身每回合有60%概率获得以下效果：主动战法发动率提升6%（受武力影响）；武力、统帅、智力提升45%；28%倒戈，持续1回合，每种效果独立判定",
+      "vi": "战斗中, bản thân mỗi lượtcó 60% xác suất nhận được 以下hiệu quả: chiến pháp chủ độngphát động率tăng 6% (chịu vũ lực ảnh hưởng); vũ lực、统帅、trí lựctăng 45%; 28%倒戈, kéo dài 1 lượt, mỗi 种hiệu quả独立判定"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己",
+    "target_vi": "bản thân"
+  },
+  {
+    "name": {
+      "cn": "戮力上国",
+      "vi": "戮 力 上 国"
+    },
+    "type": {
+      "id": "internal",
+      "name": {
+        "cn": "internal",
+        "vi": "Nội chính"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%88%AE%E5%8A%9B%E4%B8%8A%E5%9B%BD",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "曹丕",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "曹丕"
+    ],
+    "innate_to": [
+      "曹丕"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "委任为主政官时，城建设施升级时间降低30%",
+      "vi": "bổ nhiệmlà 主政官 khi, 城建设施升级 khi 间giảm 30%"
+    }
+  },
+  {
+    "name": {
+      "cn": "所向披靡",
+      "vi": "Sở Hướng Phi Mỹ"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 30,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%89%80%E5%90%91%E6%8A%AB%E9%9D%A1",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "马超",
+      "许褚"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，对敌军全体发动一次兵刃攻击（伤害率246%）",
+      "vi": "chuẩn bị 1 lượt, đối với toàn bộ địch phát động一 lầnsát thương vật lý (tỉ lệ sát thương 246%)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军全体",
+    "target_vi": "Toàn bộ địch"
+  },
+  {
+    "name": {
+      "cn": "才辩机捷",
+      "vi": "Tài Biện Cơ Tiệp"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%89%8D%E8%BE%A9%E6%9C%BA%E6%8D%B7",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "伊籍"
+    ],
+    "inheritance_from": [
+      "伊籍"
+    ],
+    "innate_to": [
+      "伊籍"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "使自身施加的灼烧、水攻、中毒、溃逃、沙暴、叛逃状态伤害提高90%，休整和急救的恢复量提高30%",
+      "vi": "khiến bản thân 施加 灼烧、水攻、trúng độc、hoảng loạn、bão cát、phản bộitrạng tháisát thươngtăng 90%, nghỉ ngơi和急救 hồi phục量tăng 30%"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己",
+    "target_vi": "bản thân"
+  },
+  {
+    "name": {
+      "cn": "折冲御侮",
+      "vi": "Chiết Xung Ngự Vũ"
+    },
+    "type": {
+      "id": "assault",
+      "name": {
+        "cn": "assault",
+        "vi": "Đột kích"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 45,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%8A%98%E5%86%B2%E5%BE%A1%E4%BE%AE",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "典韦",
+      "太史慈"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "普通攻击之后，使随机敌军单体降低100点统率和智力，持续2回合；若自己不是主将，则额外使我军主将获得2次抵御，可免疫伤害，持续2回合。",
+      "vi": "普通tấn công, sau đó, khiến ngẫu nhiên đơn thể địch giảm 100 điểmthống suất和trí lực, kéo dài 2 lượt; nếu bản thân không 是主将, thì thêm khiến quân ta 主将nhận được 2 lần抵御, có thể miễn dịch sát thương, kéo dài 2 lượt."
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体",
+    "target_vi": "Đơn thể địch"
+  },
+  {
+    "name": {
+      "cn": "抬棺决战",
+      "vi": "抬 棺 Quyết Chiến"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 30,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%8A%AC%E6%A3%BA%E5%86%B3%E6%88%98",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "庞德"
+    ],
+    "innate_to": [
+      "庞德"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，移除敌军群体（2人）的增益效果，随后造成兵刃攻击（伤害率255%）",
+      "vi": "chuẩn bị 1 lượt, loại bỏ nhóm địch (2 người) 增益hiệu quả, 随后gây sát thương vật lý (tỉ lệ sát thương 255%)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2人）",
+    "target_vi": "Nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "持军毅重",
+      "vi": "持 Quân 毅 重"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 35,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%8C%81%E5%86%9B%E6%AF%85%E9%87%8D",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "于禁",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "于禁"
+    ],
+    "innate_to": [
+      "于禁"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "使自己下次受到兵刃伤害提高40%，持续一回合，提高自身56点武力，持续3回合，并对敌军群体（2人）造成猛烈一击（伤害率184%）",
+      "vi": "khiến bản thân lần sauchịu sát thương vật lýtăng 40%, kéo dài 一 lượt, tăng bản thân 56 điểmvũ lực, kéo dài 3 lượt, và đối với nhóm địch (2 người) gây 猛烈一击 (tỉ lệ sát thương 184%)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己及敌军群体（2人）",
+    "target_vi": "bản thân và nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "挫锐",
+      "vi": "Tỏa Nhuệ"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%8C%AB%E9%94%90",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "陈群",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "孙坚",
+      "陈群"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗前3回合，使敌军单体进入虚弱状态，造成伤害时有65%几率无法造成伤害",
+      "vi": "战斗前3 lượt, khiến đơn thể địch rơi vào trạng thái suy yếu, gây sát thương khi có 65%xác suấtkhông thể gây sát thương"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体",
+    "target_vi": "Đơn thể địch"
+  },
+  {
+    "name": {
+      "cn": "振军击营",
+      "vi": "[振] Quân Kích [营]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "高览"
+    ],
+    "inheritance_from": [
+      "高览"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "搦战群雄",
+      "vi": "[搦] Chiến Quần Hùng"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "华雄"
+    ],
+    "innate_to": [
+      "华雄"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "文武双全",
+      "vi": "Văn Vũ Song Toàn"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%96%87%E6%AD%A6%E5%8F%8C%E5%85%A8",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "钟会"
+    ],
+    "inheritance_from": [
+      "邓艾",
+      "钟会"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，自己每次造成谋略伤害时，增加30点智力，最多叠加5次；每次造成兵刃伤害时，增加30点武力，最多叠加5次",
+      "vi": "战斗中, bản thân mỗi lầngây sát thương mưu lược khi, tăng thêm 30 điểmtrí lực, tối đa cộng dồn5 lần; mỗi lầngây sát thương vật lý khi, tăng thêm 30 điểmvũ lực, tối đa cộng dồn5 lần"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己",
+    "target_vi": "bản thân"
+  },
+  {
+    "name": {
+      "cn": "无当飞军",
+      "vi": "Vô Đương Phi Quân"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "王平"
+    ],
+    "innate_to": [
+      "王平"
+    ],
+    "inheritance_from": [
+      "王平"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "晓知良木",
+      "vi": "[晓] [知] Lương Mộc"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "蔡邕"
+    ],
+    "innate_to": [
+      "蔡邕"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "智计",
+      "vi": "Trí Kế"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "张纮"
+    ],
+    "inheritance_from": [
+      "张纮",
+      "陈宫"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "暂避其锋",
+      "vi": "暂 避 Kỳ Phong"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%9A%82%E9%81%BF%E5%85%B6%E9%94%8B",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "徐庶",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "庞德",
+      "徐庶"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗开始后前3回合， 使我军智力最高的武将受到兵刃伤害降低40%（受智力影响），使我军武力最高的武将受到的谋略伤害降低40%（受智力影响）",
+      "vi": "战斗bắt đầu后前3 lượt, khiến quân ta trí lực nhất 高 võ tướngchịu sát thương vật lýgiảm 40% (chịu trí lực ảnh hưởng), khiến quân ta vũ lực nhất 高 võ tướngchịu sát thương mưu lượcgiảm 40% (chịu trí lực ảnh hưởng)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2人）",
+    "target_vi": "Nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "暗度陈仓",
+      "vi": "Ám 度 陈 仓"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 50,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%9A%97%E5%BA%A6%E9%99%88%E4%BB%93",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "邓艾"
+    ],
+    "innate_to": [
+      "邓艾"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，对敌军单体造成谋略攻击（伤害率260%，受智力影响）并使其进入震慑状态（无法行动），持续2回合",
+      "vi": "chuẩn bị 1 lượt, đối với đơn thể địch gây sát thương mưu lược (tỉ lệ sát thương 260%, chịu trí lực ảnh hưởng), và khiến 其rơi vào chấn nhiếptrạng thái (không thể 行动), kéo dài 2 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体",
+    "target_vi": "Đơn thể địch"
+  },
+  {
+    "name": {
+      "cn": "暗箭难防",
+      "vi": "Ám [箭] Nan Phòng"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "马忠"
+    ],
+    "innate_to": [
+      "马忠"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "暴戾无仁",
+      "vi": "[暴] [戾] Vô Nhân"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "董卓"
+    ],
+    "inheritance_from": [
+      "董卓"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "机鉴先识",
+      "vi": "Cơ Giám Tiên Thức"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%9C%BA%E9%89%B4%E5%85%88%E8%AF%86",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "sp荀彧",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "sp荀彧"
+    ],
+    "innate_to": [
+      "sp荀彧"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备回合使我军群体(2-3人)获得2次警戒,随后每回合有42%概率(受智力影响)使我军群体(2-3人)获得1次警戒(持续3回合,可重复获得4次):受到的伤害超过自身可携带最大兵力的6%时(最低100兵力),使该次伤害降低40%(受智力影响)并消耗一次警戒;自身为主将时,战斗前2回合,使我军全体受到缴械、计穷、混乱、震慑状态时,有75%概率同时施加给敌军单体,每回合每人最多生效一次",
+      "vi": "chuẩn bị lượt khiến nhóm quân ta (2-3 người) nhận được 2 lần警戒,随后mỗi lượtcó 42% xác suất (chịu trí lực ảnh hưởng) khiến nhóm quân ta (2-3 người) nhận được 1 lần警戒( kéo dài 3 lượt,có thể 重复nhận được 4 lần):chịu sát thương超过bản thân có thể 携带 nhất 大binh lực 6% khi ( nhất 低100binh lực),khiến 该 lầnsát thươnggiảm 40%(chịu trí lực ảnh hưởng), và 消耗一 lần警戒;bản thân là 主将 khi,战斗前2 lượt,khiến toàn bộ quân ta chịu tước vũ khí、kế cùng、hỗn loạn、chấn nhiếptrạng thái khi,có 75% xác suất đồng thời施加 cho đơn thể địch,mỗi lượtmỗi ngườitối đa có hiệu lực一 lần"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "我军群体（2-3人）",
+    "target_vi": "nhóm quân ta (2-3 người)"
+  },
+  {
+    "name": {
+      "cn": "杯蛇鬼车",
+      "vi": "杯 蛇 鬼 车"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 50,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%9D%AF%E8%9B%87%E9%AC%BC%E8%BD%A6",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "左慈",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "于吉",
+      "左慈"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，对敌军群体（2人）发动一次谋略攻击（伤害率153%），并为我军群体（2人）恢复一定兵力（回复率102%，受智力影响）",
+      "vi": "chuẩn bị 1 lượt, đối với nhóm địch (2 người) phát động一 lầnsát thương mưu lược (tỉ lệ sát thương 153%), và là nhóm quân ta (2 người) hồi phục一定binh lực (回复率102%, chịu trí lực ảnh hưởng)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群和我军群体",
+    "target_vi": "địch 群和nhóm quân ta"
+  },
+  {
+    "name": {
+      "cn": "枪舞如风",
+      "vi": "Thương Vũ [如] [风]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "张苞"
+    ],
+    "innate_to": [
+      "张苞"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "校胜帷幄",
+      "vi": "[校] Thắng Vi [幄]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "陆抗"
+    ],
+    "innate_to": [
+      "陆抗"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "梦中弑臣",
+      "vi": "Mộng Trung Thí Thần"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%A2%A6%E4%B8%AD%E5%BC%91%E8%87%A3",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "曹操"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗前2回合，如果自己为主将，则使随机副将为自己分担40%伤害。战斗第3回合起，自己行动时如果有负面状态，则获得50%概率反击状态(伤害率150%)，直到战斗结束",
+      "vi": "战斗前2 lượt, nếu bản thân là 主将, thì khiến ngẫu nhiên 副将là bản thân 分担40%sát thương. 战斗第3 lượt起, bản thân 行动 khi nếu có 负面trạng thái, thì nhận được 50% xác suất phản kíchtrạng thái(tỉ lệ sát thương 150%), 直 đến 战斗kết thúc"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己",
+    "target_vi": "bản thân"
+  },
+  {
+    "name": {
+      "cn": "槊血纵横",
+      "vi": "Sóc Huyết Túng Hoành"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%A7%8A%E8%A1%80%E7%BA%B5%E6%A8%AA",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "马超"
+    ],
+    "innate_to": [
+      "马超"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，使自己获得34点武力及54%群攻（普通攻击时对目标同部队其他武将造成伤害）效果，自身为主将时，群攻值为60%",
+      "vi": "战斗中, khiến bản thân nhận được 34 điểmvũ lực và 54%群攻 (普通tấn công khi đối với mục tiêu同部队其他võ tướnggây sát thương) hiệu quả, bản thân là 主将 khi, 群攻值là 60%"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "spear",
+      "siege"
+    ],
+    "target": "自己",
+    "target_vi": "bản thân"
+  },
+  {
+    "name": {
+      "cn": "横戈跃马",
+      "vi": "Hoành 戈 跃 马"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%A8%AA%E6%88%88%E8%B7%83%E9%A9%AC",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "凌统",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "郝昭",
+      "凌统"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗前3回合，使双方全体造成的谋略伤害降低30%；第三回合起，使我军全体造成的兵刃伤害提升20%（受速度影响），持续到战斗结束",
+      "vi": "战斗前3 lượt, khiến 双方toàn bộ gây sát thương mưu lượcgiảm 30%; 第三 lượt 起, khiến toàn bộ quân ta gây sát thương vật lýtăng 20% (chịu tốc độ ảnh hưởng), kéo dài đến 战斗kết thúc"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "双方全体",
+    "target_vi": "双方toàn bộ"
+  },
+  {
+    "name": {
+      "cn": "横扫千军",
+      "vi": "Hoành Tảo Thiên Quân"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 40,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%A8%AA%E6%89%AB%E5%8D%83%E5%86%9B",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "关羽",
+      "赵云"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "对敌军全体造成100%兵刃伤害，若目标已处于缴械或计穷状态则有30%概率使目标处于震慑状态（无法行动），持续1回合",
+      "vi": "đối với toàn bộ địch gây 100%sát thương vật lý, nếu mục tiêu已处于tước vũ khí hoặc trạng thái kế cùng thì có 30% xác suất khiến mục tiêu处于chấn nhiếptrạng thái (không thể 行动), kéo dài 1 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军全体",
+    "target_vi": "Toàn bộ địch"
+  },
+  {
+    "name": {
+      "cn": "死战不退",
+      "vi": "Tử Chiến Bất Thoái"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%AD%BB%E6%88%98%E4%B8%8D%E9%80%80",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "sp庞德"
+    ],
+    "innate_to": [
+      "sp庞德"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，使自己免疫混乱；自身受到伤害时，有80%概率获得一层蓄威效果，可积攒20层；普攻后，有50%概率（受武力影响）消耗一层蓄威对敌军单体造成一次兵刃伤害（伤害率130%），触发后可继续判定，每次触发后几率降低8%，每次普攻后最多触发5次",
+      "vi": "战斗中, khiến bản thân miễn dịch hỗn loạn; bản thân chịu sát thương khi, có 80% xác suất nhận được 一 tầng蓄威hiệu quả, có thể 积攒20 tầng; 普攻后, có 50% xác suất (chịu vũ lực ảnh hưởng)消耗一 tầng蓄威đối với đơn thể địch gây 一 lầnsát thương vật lý (tỉ lệ sát thương 130%), kích hoạt后có thể 继续判定, mỗi lầnkích hoạt后xác suấtgiảm 8%, mỗi lần普攻后tối đa kích hoạt5 lần"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己",
+    "target_vi": "bản thân"
+  },
+  {
+    "name": {
+      "cn": "毒泉拒蜀",
+      "vi": "Độc Tuyền [拒] Thục"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "朵思大王"
+    ],
+    "innate_to": [
+      "朵思大王"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "水淹七军",
+      "vi": "Thủy 淹 七 Quân"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 50,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%B0%B4%E6%B7%B9%E4%B8%83%E5%86%9B",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "sp关羽"
+    ],
+    "innate_to": [
+      "sp关羽"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "对敌军群体（2人）施加水攻状态（伤害率96%，受武力影响，自身为主将时，伤害率提升至108%），持续2回合；第二次及之后施放前，使敌军群体（2-3人）受到兵刃伤害提升20%（受武力影响），持续1回合；第三次及之后施放时，有40%概率（受武力影响）立即结算敌军全体的水攻状态（不清除状态）；第四次施放后，对有水攻状态的敌军造成兵刃伤害（伤害率208%）",
+      "vi": "đối với nhóm địch (2 người)施加水攻trạng thái (tỉ lệ sát thương 96%, chịu vũ lực ảnh hưởng, bản thân là 主将 khi, tỉ lệ sát thương tăng 至108%), kéo dài 2 lượt; 第二 lần và, sau đó 施放前, khiến nhóm địch (2-3 người) chịu sát thương vật lýtăng 20% (chịu vũ lực ảnh hưởng), kéo dài 1 lượt; 第三 lần và, sau đó 施放 khi, có 40% xác suất (chịu vũ lực ảnh hưởng) ngay lập tức结算toàn bộ địch 水攻trạng thái (không xóa bỏ trạng thái); 第四 lần施放后, đối với có 水攻trạng thái địch gây sát thương vật lý (tỉ lệ sát thương 208%)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2人）",
+    "target_vi": "Nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "水镜先生",
+      "vi": "Thủy Kính Tiên Sinh"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "司马徵"
+    ],
+    "innate_to": [
+      "司马徵"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "江东小霸王",
+      "vi": "Giang Đông Tiểu Bá Vương"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "孙策"
+    ],
+    "innate_to": [
+      "孙策"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "江天长焰",
+      "vi": "Giang Thiên Trường Diễm"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%B1%9F%E5%A4%A9%E9%95%BF%E7%84%B0",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "sp周瑜"
+    ],
+    "innate_to": [
+      "sp周瑜"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，每回合使敌军全体受到谋略伤害提高4%（受智力影响），可叠加，并有几率（25%，没有一名敌军处于灼烧或水攻状态时，提高4%）对敌军单体造成谋略伤害（伤害率146%，受智力影响）；自身为主将时，基础概率提高至35%且该次攻击目标将锁定敌军兵力最低单体",
+      "vi": "战斗中, mỗi lượtkhiến toàn bộ địch chịu sát thương mưu lượctăng 4% (chịu trí lực ảnh hưởng), có thể cộng dồn, và có xác suất (25%, 没có 一名địch 处于灼烧 hoặc 水攻trạng thái khi, tăng 4%) đối với đơn thể địch gây sát thương mưu lược (tỉ lệ sát thương 146%, chịu trí lực ảnh hưởng); bản thân là 主将 khi, 基础 xác suất tăng 至35%且该 lầntấn côngmục tiêu将锁定địch binh lực nhất 低đơn thể"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军全体负面，敌军单体伤害",
+    "target_vi": "toàn bộ địch 负面, đơn thể địch sát thương"
+  },
+  {
+    "name": {
+      "cn": "沉断机谋",
+      "vi": "Trầm Đoạn Cơ Mưu"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 40,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%B2%89%E6%96%AD%E6%9C%BA%E8%B0%8B",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "张春华",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "张春华"
+    ],
+    "innate_to": [
+      "张春华"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "使敌军群体（2人）统率、智力降低30%， 持续2回合，并造成谋略伤害（伤害率156%，受智力影响）",
+      "vi": "khiến nhóm địch (2 người) thống suất、trí lựcgiảm 30%, kéo dài 2 lượt, và gây sát thương mưu lược (tỉ lệ sát thương 156%, chịu trí lực ảnh hưởng)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2人）",
+    "target_vi": "Nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "沉沙决水",
+      "vi": "Trầm Sa Quyết Thủy"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 40,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%B2%89%E6%B2%99%E5%86%B3%E6%B0%B4",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "法正",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "郭嘉",
+      "法正"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，对敌军群体（2人）施加水攻状态，每回合持续造成伤害（伤害率126%，受智力影响），并使其受到的谋略伤害提升25%，持续2回合",
+      "vi": "chuẩn bị 1 lượt, đối với nhóm địch (2 người)施加水攻trạng thái, mỗi lượt kéo dài gây sát thương (tỉ lệ sát thương 126%, chịu trí lực ảnh hưởng), và khiến 其chịu sát thương mưu lượctăng 25%, kéo dài 2 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2人）",
+    "target_vi": "Nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "济贫好施",
+      "vi": "[济] [贫] Hảo [施]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "鲁肃"
+    ],
+    "innate_to": [
+      "鲁肃"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "清流雅望",
+      "vi": "清 Lưu 雅 望"
+    },
+    "type": {
+      "id": "internal",
+      "name": {
+        "cn": "internal",
+        "vi": "Nội chính"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%B8%85%E6%B5%81%E9%9B%85%E6%9C%9B",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "陈群",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "陈群"
+    ],
+    "innate_to": [
+      "陈群"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "武将委任为冶铁官时，铁矿产量提升3%",
+      "vi": "võ tướngbổ nhiệmlà 冶铁官 khi, 铁矿产量tăng 3%"
+    }
+  },
+  {
+    "name": {
+      "cn": "溯江摇橹",
+      "vi": "[溯] Giang [摇] [橹]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "sp吕蒙"
+    ],
+    "innate_to": [
+      "sp吕蒙"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "火烧连营",
+      "vi": "[火] [烧] [连] [营]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "陆逊"
+    ],
+    "innate_to": [
+      "陆逊"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "火神英风",
+      "vi": "[火] Thần Anh [风]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "祝融夫人"
+    ],
+    "innate_to": [
+      "祝融夫人"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "焰逐风飞",
+      "vi": "Diễm Trục Phong Phi"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 35,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%84%B0%E9%80%90%E9%A3%8E%E9%A3%9E",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "sp周瑜",
+      "sp诸葛亮"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "对敌军单体造成谋略伤害（伤害率226%，受智力影响）及震慑状态（无法行动）并有40%概率使其受到谋略伤害提高12%（受智力影响），持续1回合",
+      "vi": "đối với đơn thể địch gây sát thương mưu lược (tỉ lệ sát thương 226%, chịu trí lực ảnh hưởng) và chấn nhiếptrạng thái (không thể 行动), và có 40% xác suất khiến 其chịu sát thương mưu lượctăng 12% (chịu trí lực ảnh hưởng), kéo dài 1 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体",
+    "target_vi": "Đơn thể địch"
+  },
+  {
+    "name": {
+      "cn": "熯天炽地",
+      "vi": "[熯] Thiên [炽] Địa"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "陆逊"
+    ],
+    "inheritance_from": [
+      "陆逊"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "燕人咆哮",
+      "vi": "[燕] Nhân [咆] [哮]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "张飞"
+    ],
+    "innate_to": [
+      "张飞"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "狮子奋迅",
+      "vi": "[狮] Tử Phấn [迅]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "吕玲绮"
+    ],
+    "innate_to": [
+      "吕玲绮"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "王佐之才",
+      "vi": "王 佐 Chi Tài"
+    },
+    "type": {
+      "id": "internal",
+      "name": {
+        "cn": "internal",
+        "vi": "Nội chính"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%8E%8B%E4%BD%90%E4%B9%8B%E6%89%8D",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "荀彧"
+    ],
+    "innate_to": [
+      "荀彧"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "提升武将72政治",
+      "vi": "tăng võ tướng72政治"
+    }
+  },
+  {
+    "name": {
+      "cn": "用武通神",
+      "vi": "Dụng Vũ Thông Thần"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%94%A8%E6%AD%A6%E9%80%9A%E7%A5%9E",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "司马懿",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "司马懿"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗开始的第2、4、6、8回合，对敌军群体（2人）逐渐造成75%、105%、135%、165%谋略伤害（受智力影响）",
+      "vi": "战斗bắt đầu 第2、4、6、8 lượt, đối với nhóm địch (2 người)逐渐gây 75%、105%、135%、165%sát thương mưu lược (chịu trí lực ảnh hưởng)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2人）",
+    "target_vi": "Nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "登锋陷阵",
+      "vi": "[登] [锋] [陷] Trận"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "文丑"
+    ],
+    "innate_to": [
+      "文丑"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "白毦兵",
+      "vi": "Bạch [毦] Binh"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "陈到"
+    ],
+    "innate_to": [
+      "陈到"
+    ],
+    "inheritance_from": [
+      "陈到"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "白衣渡江",
+      "vi": "Bạch [衣] [渡] Giang"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "吕蒙"
+    ],
+    "innate_to": [
+      "吕蒙"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "白马义从",
+      "vi": "Bạch Mã Nghĩa Tùng"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "公孙瓒"
+    ],
+    "innate_to": [
+      "公孙瓒"
+    ],
+    "inheritance_from": [
+      "公孙瓒"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "百步穿杨",
+      "vi": "Bách Bộ [穿] Dương"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "黄忠"
+    ],
+    "innate_to": [
+      "黄忠"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "百计多谋",
+      "vi": "Bách Kế [多] Mưu"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "陈宫"
+    ],
+    "innate_to": [
+      "陈宫"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "百骑劫营",
+      "vi": "Bách Kỵ [劫] [营]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "甘宁"
+    ],
+    "inheritance_from": [
+      "甘宁"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "益其金鼓",
+      "vi": "[益] [其] Kim [鼓]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "sp吕蒙"
+    ],
+    "inheritance_from": [
+      "sp吕蒙",
+      "董白"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "监统震军",
+      "vi": "[监] Thống Chấn Quân"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "沮授"
+    ],
+    "innate_to": [
+      "沮授"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "盛气凌敌",
+      "vi": "盛 Khí 凌 Địch"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%9B%9B%E6%B0%94%E5%87%8C%E6%95%8C",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "颜良",
+      "其疾如风",
+      "不动如山",
+      "曹丕",
+      "坐骑"
+    ],
+    "inheritance_from": [
+      "曹丕",
+      "颜良"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗开始后前2回合，使敌军群体（2人）每回合都有90%的几率陷入缴械状态，无法进行普通攻击",
+      "vi": "战斗bắt đầu后前2 lượt, khiến nhóm địch (2 người) mỗi lượt đều có 90% xác suất陷入tước vũ khítrạng thái, không thể 进行普通tấn công"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2人）",
+    "target_vi": "Nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "瞋目横矛",
+      "vi": "[瞋] Mục [横] Mâu"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "张飞"
+    ],
+    "inheritance_from": [
+      "张飞"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "破军威胜",
+      "vi": "Phá Quân Uy Thắng"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 40,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%A0%B4%E5%86%9B%E5%A8%81%E8%83%9C",
+    "associated_generals": [
+      "王双",
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "满宠",
+      "王双"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "降低敌军单体70点统率（受武力影响），持续2回合，并对其造成兵刃伤害（伤害率228%）",
+      "vi": "giảm đơn thể địch 70 điểmthống suất (chịu vũ lực ảnh hưởng), kéo dài 2 lượt, và đối với 其gây sát thương vật lý (tỉ lệ sát thương 228%)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体",
+    "target_vi": "Đơn thể địch"
+  },
+  {
+    "name": {
+      "cn": "破阵催坚",
+      "vi": "Phá Trận [催] Kiên"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "文丑"
+    ],
+    "inheritance_from": [
+      "文丑"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "破阵摧坚",
+      "vi": "Phá Trận [摧] Kiên"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "孙策"
+    ],
+    "inheritance_from": [
+      "孙策"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "神射",
+      "vi": "Thần Xạ"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%A5%9E%E5%B0%84",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "太史慈"
+    ],
+    "innate_to": [
+      "太史慈"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，使自己获得连击状态，每回合可以普通攻击2次，并使普通攻击目标统率降低25，可叠加，持续2回合",
+      "vi": "战斗中, khiến bản thân nhận được liên kíchtrạng thái, mỗi lượtcó thể 普通tấn công2 lần, và khiến 普通tấn côngmục tiêuthống suấtgiảm 25, có thể cộng dồn, kéo dài 2 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己",
+    "target_vi": "bản thân"
+  },
+  {
+    "name": {
+      "cn": "神机妙算",
+      "vi": "Thần Cơ Diệu Toán"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%A5%9E%E6%9C%BA%E5%A6%99%E7%AE%97",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "诸葛亮",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "诸葛亮"
+    ],
+    "innate_to": [
+      "诸葛亮"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "敌军群体（2人）发动主动战法时，有35%几率令其失败并对其造成谋略伤害（伤害率100%，受智力影响），自身为主将时，该次伤害会基于双方智力之差额外提高",
+      "vi": "nhóm địch (2 người) phát độngchiến pháp chủ động khi, có 35%xác suất令其失败, và đối với 其gây sát thương mưu lược (tỉ lệ sát thương 100%, chịu trí lực ảnh hưởng), bản thân là 主将 khi, 该 lầnsát thương会 dựa trên 双方trí lực之差thêm tăng"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2人）",
+    "target_vi": "Nhóm địch (2 người)"
+  },
+  {
+    "name": {
+      "cn": "神机莫测",
+      "vi": "Thần Cơ Mạc Trắc"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 65,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%A5%9E%E6%9C%BA%E8%8E%AB%E6%B5%8B",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "贾诩"
+    ],
+    "innate_to": [
+      "贾诩"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "使敌军单体混乱2回合，并对自身外的敌我全体依次判定：若未混乱则有35%概率使其混乱2回合；友军已混乱时，解除其负面状态（自身为主将时，提高其12%造成伤害，受智力影响，持续2回合）；敌军已混乱时，对其造成谋略攻击（伤害率175%，受智力影响）",
+      "vi": "khiến đơn thể địch hỗn loạn2 lượt, và đối với bản thân 外 敌我toàn bộ 依 lần判定: nếu 未hỗn loạn thì có 35% xác suất khiến 其hỗn loạn2 lượt; đồng minh 已hỗn loạn khi, 解除其负面trạng thái (bản thân là 主将 khi, tăng 其12%gây sát thương, chịu trí lực ảnh hưởng, kéo dài 2 lượt); địch 已hỗn loạn khi, đối với 其gây sát thương mưu lược (tỉ lệ sát thương 175%, chịu trí lực ảnh hưởng)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "双方全体",
+    "target_vi": "双方toàn bộ"
+  },
+  {
+    "name": {
+      "cn": "神火计",
+      "vi": "Thần [火] Kế"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "周瑜"
+    ],
+    "innate_to": [
+      "周瑜"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "窃幸乘宠",
+      "vi": "[窃] [幸] [乘] Sủng"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "张让"
+    ],
+    "innate_to": [
+      "张让"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "竭力佐谋",
+      "vi": "竭 力 佐 Mưu"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 55,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%AB%AD%E5%8A%9B%E4%BD%90%E8%B0%8B",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "张让",
+      "sp荀彧",
+      "坐骑"
+    ],
+    "inheritance_from": [
+      "sp荀彧",
+      "张让"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "使敌军智力最高单体智力降低20%,并有70%概率使自身本回合非自带主动战法发动率提高100%,持续1回合",
+      "vi": "khiến địch trí lực nhất 高đơn thể trí lựcgiảm 20%,, và có 70% xác suất khiến bản thân 本 lượt 非自带chiến pháp chủ độngphát động率tăng 100%, kéo dài 1 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体及自身",
+    "target_vi": "đơn thể địch và bản thân"
+  },
+  {
+    "name": {
+      "cn": "竭忠尽智",
+      "vi": "Kiệt Trung [尽] Trí"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "田丰"
+    ],
+    "innate_to": [
+      "田丰"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "符命自立",
+      "vi": "[符] [命] [自] Lập"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "袁术"
+    ],
+    "innate_to": [
+      "袁术"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "箕形阵",
+      "vi": "[箕] Hình Trận"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "关银屏"
+    ],
+    "inheritance_from": [
+      "关银屏",
+      "sp袁绍"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "精练策数",
+      "vi": "Tinh 练 策 数"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 45,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%B2%BE%E7%BB%83%E7%AD%96%E6%95%B0",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "钟会",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "钟会"
+    ],
+    "innate_to": [
+      "钟会"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，对敌军群体（2-3人）造成谋略攻击（伤害率210%，受智力影响），并缴械（无法进行普通攻击），持续2回合",
+      "vi": "chuẩn bị 1 lượt, đối với nhóm địch (2-3 người) gây sát thương mưu lược (tỉ lệ sát thương 210%, chịu trí lực ảnh hưởng), và tước vũ khí (không thể 进行普通tấn công), kéo dài 2 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军群体（2-3人）",
+    "target_vi": "nhóm địch (2-3 người)"
+  },
+  {
+    "name": {
+      "cn": "累世立名",
+      "vi": "[累] Thế Lập Danh"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "袁绍"
+    ],
+    "innate_to": [
+      "袁绍"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "经天纬地",
+      "vi": "经 Thiên 纬 Địa"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%BB%8F%E5%A4%A9%E7%BA%AC%E5%9C%B0",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "sp郭嘉"
+    ],
+    "innate_to": [
+      "sp郭嘉"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，我军全体发动主动战法及突击战法时，自身有70%概率（受智力影响）会对敌军全体发动谋略攻击（伤害率100%，受智力影响），若由自身触发，则额外有50%概率使我军群体（2人）获得10%攻心（造成谋略伤害时，恢复自身基于伤害量的一定兵力），持续2回合，可叠加3次攻心值；自身为主将时，攻心效果提高至20%",
+      "vi": "战斗中, toàn bộ quân ta phát độngchiến pháp chủ động và 突击chiến pháp khi, bản thân có 70% xác suất (chịu trí lực ảnh hưởng)会đối với toàn bộ địch phát độngsát thương mưu lược (tỉ lệ sát thương 100%, chịu trí lực ảnh hưởng), nếu 由bản thân kích hoạt, thì thêm có 50% xác suất khiến nhóm quân ta (2 người) nhận được 10%攻心 (gây sát thương mưu lược khi, hồi phụcbản thân dựa trên sát thương量 一定binh lực), kéo dài 2 lượt, có thể cộng dồn3 lần攻心值; bản thân là 主将 khi, 攻心hiệu quảtăng 至20%"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "我军全体及自己",
+    "target_vi": "toàn bộ quân ta và bản thân"
+  },
+  {
+    "name": {
+      "cn": "经术政要",
+      "vi": "[经] Thuật Chánh [要]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "蔡邕"
+    ],
+    "inheritance_from": [
+      "蔡邕"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "结盟",
+      "vi": "[结] [盟]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "孙尚香"
+    ],
+    "inheritance_from": [
+      "孙尚香"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "绝地反击",
+      "vi": "Tuyệt Địa Phản Kích"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%BB%9D%E5%9C%B0%E5%8F%8D%E5%87%BB",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "夏侯惇",
+      "吕玲绮"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，自己每次受到兵刃伤害后，武力提升6点，最大叠加10次；第5回合时，根据叠加次数对敌军全体造成兵刃伤害（伤害率120%，每次提高14%伤害率）",
+      "vi": "战斗中, bản thân mỗi lầnchịu sát thương vật lý后, vũ lựctăng 6 điểm, nhất 大cộng dồn10 lần; 第5 lượt khi, theo cộng dồn lần数đối với toàn bộ địch gây sát thương vật lý (tỉ lệ sát thương 120%, mỗi lầntăng 14%tỉ lệ sát thương )"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "spear"
+    ],
+    "target": "敌军全体",
+    "target_vi": "Toàn bộ địch"
+  },
+  {
+    "name": {
+      "cn": "肉身铁壁",
+      "vi": "Nhục Thân Thiết [壁]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "周泰"
+    ],
+    "innate_to": [
+      "周泰"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "胡笳余音",
+      "vi": "[胡] [笳] [余] Âm"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "蔡文姬"
+    ],
+    "innate_to": [
+      "蔡文姬"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "舌战群儒",
+      "vi": "舌 Chiến 群 儒"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%88%8C%E6%88%98%E7%BE%A4%E5%84%92",
+    "inheritance_from": [
+      "诸葛亮"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "敌军尝试发动主动战法时，有25%几率令其发动几率降低5%（受智力影响），并提高自己及随机友军主动战法4%（受智力影响）发动几率，持续1回合",
+      "vi": "địch 尝试phát độngchiến pháp chủ động khi, có 25%xác suất令其phát độngxác suấtgiảm 5% (chịu trí lực ảnh hưởng), và tăng bản thân và ngẫu nhiên đồng minh chiến pháp chủ động4% (chịu trí lực ảnh hưởng) phát độngxác suất, kéo dài 1 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军全体",
+    "target_vi": "Toàn bộ địch"
+  },
+  {
+    "name": {
+      "cn": "花容月貌",
+      "vi": "花 容 月 貌"
+    },
+    "type": {
+      "id": "internal",
+      "name": {
+        "cn": "internal",
+        "vi": "Nội chính"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%8A%B1%E5%AE%B9%E6%9C%88%E8%B2%8C",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "甄姬"
+    ],
+    "innate_to": [
+      "甄姬"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "武将委任为练兵使时，练兵获得经验提升6%",
+      "vi": "võ tướngbổ nhiệmlà 练兵khiến khi, 练兵nhận được 经验tăng 6%"
+    }
+  },
+  {
+    "name": {
+      "cn": "苦肉计",
+      "vi": "Khổ Nhục Kế"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "黄盖"
+    ],
+    "innate_to": [
+      "黄盖"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "藤甲兵",
+      "vi": "[藤] Giáp Binh"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "兀突骨"
+    ],
+    "innate_to": [
+      "兀突骨"
+    ],
+    "inheritance_from": [
+      "兀突骨"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "虎痴",
+      "vi": "Hổ Si"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%99%8E%E7%97%B4",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "许褚"
+    ],
+    "innate_to": [
+      "许褚"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，每回合选择一名敌军单体，自身发动的所有攻击都会锁定该目标，对其造成的伤害提高33%（受武力影响），如果击败目标会使自身获得破阵状态（造成伤害时无视目标的统率和智力），直到战斗结束",
+      "vi": "战斗中, mỗi lượtchọn一名đơn thể địch, bản thân phát động 所có tấn công đều 会锁定该mục tiêu, đối với 其gây sát thươngtăng 33% (chịu vũ lực ảnh hưởng), nếu 击败mục tiêu会khiến bản thân nhận được 破阵trạng thái (gây sát thương khi bỏ qua mục tiêu thống suất和trí lực), 直 đến 战斗kết thúc"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军全体",
+    "target_vi": "Toàn bộ địch"
+  },
+  {
+    "name": {
+      "cn": "虎豹骑",
+      "vi": "Hổ Báo Kỵ"
+    },
+    "type": {
+      "id": "troop",
+      "name": {
+        "cn": "troop",
+        "vi": "Binh chủng"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%99%8E%E8%B1%B9%E9%AA%91",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "曹纯"
+    ],
+    "innate_to": [
+      "曹纯"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "将骑兵进阶为天下骁锐的虎豹骑：我军全体提高40点武力，战斗前三回合，我军全体突击战法发动率提高10%，若曹纯统领时，提升的发动概率额外受武力影响",
+      "vi": "将kỵ binh进阶là 天下骁锐 虎豹骑: toàn bộ quân ta tăng 40 điểmvũ lực, 战斗前三 lượt, toàn bộ quân ta 突击chiến phápphát động率tăng 10%, nếu 曹纯统领 khi, tăng phát động xác suất thêm chịu vũ lực ảnh hưởng"
+    },
+    "army_types": [
+      "cavalry"
+    ],
+    "target": "我军全体",
+    "target_vi": "Toàn bộ quân ta"
+  },
+  {
+    "name": {
+      "cn": "西凉铁骑",
+      "vi": "Tây [凉] Thiết Kỵ"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "马腾"
+    ],
+    "innate_to": [
+      "马腾"
+    ],
+    "inheritance_from": [
+      "马腾"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "誓守无降",
+      "vi": "[誓] Thủ Vô Giáng"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "严颜"
+    ],
+    "innate_to": [
+      "严颜"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "诱敌深入",
+      "vi": "[诱] Địch Thâm [入]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "华雄"
+    ],
+    "inheritance_from": [
+      "华雄",
+      "司马徵"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "象兵",
+      "vi": "Tượng Binh"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "木鹿大王"
+    ],
+    "innate_to": [
+      "木鹿大王"
+    ],
+    "inheritance_from": [
+      "木鹿大王"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "运筹决算",
+      "vi": "Vận Trù Quyết Toán"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 55,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%BF%90%E7%AD%B9%E5%86%B3%E7%AE%97",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "荀攸",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "张春华"
+    ],
+    "inheritance_from": [
+      "张春华",
+      "荀攸"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，对敌军全体发动一次谋略攻击（伤害率176%，受智力影响）",
+      "vi": "chuẩn bị 1 lượt, đối với toàn bộ địch phát động一 lầnsát thương mưu lược (tỉ lệ sát thương 176%, chịu trí lực ảnh hưởng)"
+    },
+    "army_types": [
+      "cavalry",
+      "archer"
+    ],
+    "target": "敌军全体",
+    "target_vi": "Toàn bộ địch"
+  },
+  {
+    "name": {
+      "cn": "连环计",
+      "vi": "Liên 环 Kế"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 35,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%BF%9E%E7%8E%AF%E8%AE%A1",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "庞统"
+    ],
+    "innate_to": [
+      "庞统"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，对敌军全体施放铁索连环，使其任一目标受到伤害时会反馈15%（受智力影响）伤害给其他单位，持续2回合，并发动谋略攻击（伤害率156%，受智力影响）",
+      "vi": "chuẩn bị 1 lượt, đối với toàn bộ địch 施放铁索连环, khiến 其任一mục tiêuchịu sát thương khi 会反馈15% (chịu trí lực ảnh hưởng) sát thương cho 其他单位, kéo dài 2 lượt, và phát độngsát thương mưu lược (tỉ lệ sát thương 156%, chịu trí lực ảnh hưởng)"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军全体",
+    "target_vi": "Toàn bộ địch"
+  },
+  {
+    "name": {
+      "cn": "速乘其利",
+      "vi": "Tốc Thừa Kỳ Lợi"
+    },
+    "type": {
+      "id": "assault",
+      "name": {
+        "cn": "assault",
+        "vi": "Đột kích"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 35,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%80%9F%E4%B9%98%E5%85%B6%E5%88%A9",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "王元姬",
+      "sp朱儁"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "普通攻击之后，对目标发动一次兵刃攻击（伤害率185%）并计穷（无法发动主动战法）1回合",
+      "vi": "普通tấn công, sau đó, đối với mục tiêuphát động一 lầnsát thương vật lý (tỉ lệ sát thương 185%), và kế cùng (không thể phát độngchiến pháp chủ động)1 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体",
+    "target_vi": "Đơn thể địch"
+  },
+  {
+    "name": {
+      "cn": "酒池肉林",
+      "vi": "[酒] [池] Nhục Lâm"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "董卓"
+    ],
+    "innate_to": [
+      "董卓"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "金丹秘术",
+      "vi": "Kim [丹] [秘] Thuật"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "左慈"
+    ],
+    "innate_to": [
+      "左慈"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "金城汤池",
+      "vi": "金 城 汤 池"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%87%91%E5%9F%8E%E6%B1%A4%E6%B1%A0",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "郝昭"
+    ],
+    "innate_to": [
+      "郝昭"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "无法发动普通攻击（无法被净化），每2回合轮流执行:治疗我军群体（2人，治疗率98%，受智力影响）；对敌军群体造成兵刃伤害（伤害率102%）及灼烧状态，每回合持续造成伤害（伤害率72%，受智力影响），持续1回合",
+      "vi": "không thể phát động普通tấn công (không thể bị 净化), mỗi 2 lượt轮流thực hiện:hồi phụcnhóm quân ta (2 người, hồi phục率98%, chịu trí lực ảnh hưởng); đối với nhóm địch gây sát thương vật lý (tỉ lệ sát thương 102%) và 灼烧trạng thái, mỗi lượt kéo dài gây sát thương (tỉ lệ sát thương 72%, chịu trí lực ảnh hưởng), kéo dài 1 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "我军群体及敌军群体",
+    "target_vi": "nhóm quân ta và nhóm địch"
+  },
+  {
+    "name": {
+      "cn": "锋矢阵",
+      "vi": "Phong 矢 Trận"
+    },
+    "type": {
+      "id": "formation",
+      "name": {
+        "cn": "formation",
+        "vi": "Trận pháp"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%94%8B%E7%9F%A2%E9%98%B5",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "黄月英",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "乐进",
+      "黄月英"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，使我军主将造成的伤害提升30%，受到的伤害提升20%；我军副将造成的伤害降低15%，受到的伤害降低25%",
+      "vi": "战斗中, khiến quân ta 主将gây sát thươngtăng 30%, chịu sát thươngtăng 20%; quân ta 副将gây sát thươnggiảm 15%, chịu sát thươnggiảm 25%"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "spear"
+    ],
+    "target": "我军全体",
+    "target_vi": "Toàn bộ quân ta"
+  },
+  {
+    "name": {
+      "cn": "锋芒毕露",
+      "vi": "[锋] [芒] [毕] Lộ"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "马忠"
+    ],
+    "inheritance_from": [
+      "马忠"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "锦囊妙计",
+      "vi": "锦 Nang Diệu Kế"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%94%A6%E5%9B%8A%E5%A6%99%E8%AE%A1",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "sp诸葛亮"
+    ],
+    "innate_to": [
+      "sp诸葛亮"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，奇数回合有32%概率（受智力影响），偶数回合有75%概率（受智力影响）使友军单体的自带主动战法发动率提高100%且有25%概率跳过1回合准备，持续1回合；自身为主将时，触发时额外对敌军单体造成谋略伤害（伤害率45%，受智力及双方智力差影响）并使跳过概率提高至80%",
+      "vi": "战斗中, 奇数 lượt có 32% xác suất (chịu trí lực ảnh hưởng), 偶数 lượt có 75% xác suất (chịu trí lực ảnh hưởng) khiến đồng minh đơn thể 自带chiến pháp chủ độngphát động率tăng 100%且có 25% xác suất 跳过1 lượtchuẩn bị, kéo dài 1 lượt; bản thân là 主将 khi, kích hoạt khi thêm đối với đơn thể địch gây sát thương mưu lược (tỉ lệ sát thương 45%, chịu trí lực và 双方trí lực差 ảnh hưởng), và khiến 跳过 xác suất tăng 至80%"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "友军单体",
+    "target_vi": "Đơn thể đồng minh"
+  },
+  {
+    "name": {
+      "cn": "锦帆百翎",
+      "vi": "[锦] [帆] Bách [翎]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "甘宁"
+    ],
+    "innate_to": [
+      "甘宁"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "镇扼防拒",
+      "vi": "镇 扼 Phòng 拒"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%95%87%E6%89%BC%E9%98%B2%E6%8B%92",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "郝昭"
+    ],
+    "innate_to": [
+      "满宠"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "每回合有50%概率（受智力影响）使我军单体（优先选除自己之外的副将）援护所有友军并获得休整状态（每回合恢复一次兵力，治疗率192%，受智力影响），持续1回合，同时使其在1回合内受到普通攻击时，有55%概率（受智力影响）移除攻击者的增益状态",
+      "vi": "mỗi lượtcó 50% xác suất (chịu trí lực ảnh hưởng) khiến đơn thể quân ta (优先选除bản thân 之外 副将) viện hộ所có đồng minh, và nhận được trạng thái nghỉ ngơi (mỗi lượthồi phục一 lầnbinh lực, hồi phục率192%, chịu trí lực ảnh hưởng), kéo dài 1 lượt, đồng thờikhiến 其 trong 1 lượt内chịu 普通tấn công khi, có 55% xác suất (chịu trí lực ảnh hưởng) loại bỏ tấn công者 增益trạng thái"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "我军单体",
+    "target_vi": "Đơn thể quân ta"
+  },
+  {
+    "name": {
+      "cn": "长驱直入",
+      "vi": "Trường Khu Trực Nhập"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%95%BF%E9%A9%B1%E7%9B%B4%E5%85%A5",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "徐晃"
+    ],
+    "innate_to": [
+      "徐晃"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，每次造成兵刃伤害后，使自己造成的兵刃伤害提升15%，最大叠加5次；叠加5次后，使我军全体受到伤害降低16%（受武力影响），持续2回合",
+      "vi": "战斗中, mỗi lầngây sát thương vật lý后, khiến bản thân gây sát thương vật lýtăng 15%, nhất 大cộng dồn5 lần; cộng dồn5 lần后, khiến toàn bộ quân ta chịu sát thươnggiảm 16% (chịu vũ lực ảnh hưởng), kéo dài 2 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己",
+    "target_vi": "bản thân"
+  },
+  {
+    "name": {
+      "cn": "闭月",
+      "vi": "Bế Nguyệt"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "貂蝉"
+    ],
+    "innate_to": [
+      "貂蝉"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "陷阵突袭",
+      "vi": "Hãm Trận Đột Tập"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%99%B7%E9%98%B5%E7%AA%81%E8%A2%AD",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "张辽"
+    ],
+    "innate_to": [
+      "张辽"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗中，使自己的普通攻击目标有68%几率锁定为敌军主将， 自身突击战法的发动几率提高15%并使自己成功发动突击战法后，对目标额外发动一次兵刃攻击（伤害率95%；自身为主将时，获得6%倒戈",
+      "vi": "战斗中, khiến bản thân 普通tấn côngmục tiêucó 68%xác suất锁定là địch 主将, bản thân 突击chiến pháp phát độngxác suấttăng 15%, và khiến bản thân 成功phát động突击chiến pháp后, đối với mục tiêuthêm phát động一 lầnsát thương vật lý (tỉ lệ sát thương 95%; bản thân là 主将 khi, nhận được 6%倒戈"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己",
+    "target_vi": "bản thân"
+  },
+  {
+    "name": {
+      "cn": "陷阵营",
+      "vi": "[陷] Trận [营]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "高顺"
+    ],
+    "innate_to": [
+      "高顺"
+    ],
+    "inheritance_from": [
+      "高顺"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "震骇四境",
+      "vi": "Chấn 骇 四 境"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 35,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%9C%87%E9%AA%87%E5%9B%9B%E5%A2%83",
+    "associated_generals": [
+      "王双",
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "王双"
+    ],
+    "innate_to": [
+      "王双"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "发动2次对敌军单体的兵刃攻击（伤害率178%），分别造成使其首次受到兵刃伤害提高30%（受物理影响）及计穷（无法发动主动战法）状态，持续1回合，每次目标独立选择",
+      "vi": "phát động2 lầnđối với đơn thể địch sát thương vật lý (tỉ lệ sát thương 178%), 分别gây khiến 其lần đầuchịu sát thương vật lýtăng 30% (chịu 物理 ảnh hưởng) và kế cùng (không thể phát độngchiến pháp chủ động) trạng thái, kéo dài 1 lượt, mỗi lầnmục tiêu独立chọn"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "敌军单体",
+    "target_vi": "Đơn thể địch"
+  },
+  {
+    "name": {
+      "cn": "青囊",
+      "vi": "Thanh [囊]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "华佗"
+    ],
+    "innate_to": [
+      "华佗"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "顾盼生姿",
+      "vi": "[顾] [盼] Sinh [姿]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "邹氏"
+    ],
+    "innate_to": [
+      "邹氏"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "风助火势",
+      "vi": "[风] [助] [火] Thế"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "associated_generals": [
+      "周瑜"
+    ],
+    "inheritance_from": [
+      "周瑜",
+      "黄盖"
+    ],
+    "acquisition": [
+      "inheritance"
+    ]
+  },
+  {
+    "name": {
+      "cn": "高橹连营",
+      "vi": "Cao [橹] [连] [营]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "sp袁绍"
+    ],
+    "innate_to": [
+      "sp袁绍"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "魅惑",
+      "vi": "Mị Hoặc"
+    },
+    "type": {
+      "id": "passive",
+      "name": {
+        "cn": "passive",
+        "vi": "Bị động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%AD%85%E6%83%91",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "被动",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "甄姬",
+      "大乔"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "自己受到普通攻击时，有22.5%几率使攻击者进入混乱（攻击和战法无差别选择目标）、计穷（无法发动主动战法）、虚弱（无法造成伤害）状态的一种，持续1回合，自身为女性时，触发几率额外受智力影响",
+      "vi": "bản thân chịu 普通tấn công khi, có 22.5%xác suấtkhiến tấn công者rơi vào hỗn loạn (tấn công和chiến phápkhông 差别chọnmục tiêu)、kế cùng (không thể phát độngchiến pháp chủ động)、suy yếu (không thể gây sát thương) trạng thái 一种, kéo dài 1 lượt, bản thân là 女性 khi, kích hoạtxác suấtthêm chịu trí lực ảnh hưởng"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "普攻来源",
+    "target_vi": "普攻来源"
+  },
+  {
+    "name": {
+      "cn": "鸩毒",
+      "vi": "[鸩] Độc"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "李儒"
+    ],
+    "innate_to": [
+      "李儒"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "鸱苕英姿",
+      "vi": "[鸱] [苕] Anh [姿]"
+    },
+    "type": {
+      "id": "unknown",
+      "name": {
+        "cn": "unknown",
+        "vi": "Không xác định"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "associated_generals": [
+      "马云禄"
+    ],
+    "innate_to": [
+      "马云禄"
+    ],
+    "acquisition": [
+      "innate"
+    ]
+  },
+  {
+    "name": {
+      "cn": "鹰视狼顾",
+      "vi": "Ưng Thị Lang Cố"
+    },
+    "type": {
+      "id": "command",
+      "name": {
+        "cn": "command",
+        "vi": "Chỉ huy"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": null,
+    "source_type": "innate",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%B9%B0%E8%A7%86%E7%8B%BC%E9%A1%BE",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "司马懿",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑"
+    ],
+    "inheritance_from": [
+      "司马懿"
+    ],
+    "innate_to": [
+      "司马懿"
+    ],
+    "acquisition": [
+      "innate",
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "战斗前4回合，每回合有80%概率使自身获得7%攻心或奇谋几率（每种效果最多叠加2次）；第5回合起，每回合有80%概率对1-2个敌军单体造成谋略伤害（伤害率154%，受智力影响）；自身为主将时，获得16%奇谋几率",
+      "vi": "战斗前4 lượt, mỗi lượtcó 80% xác suất khiến bản thân nhận được 7%攻心 hoặc kỳ mưuxác suất (mỗi 种hiệu quảtối đa cộng dồn2 lần); 第5 lượt起, mỗi lượtcó 80% xác suất đối với 1-2个đơn thể địch gây sát thương mưu lược (tỉ lệ sát thương 154%, chịu trí lực ảnh hưởng); bản thân là 主将 khi, nhận được 16%kỳ mưuxác suất"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "先增益自身后对敌军群体（1-2人）",
+    "target_vi": "先增益bản thân 后đối với nhóm địch (1-2 người)"
+  },
+  {
+    "name": {
+      "cn": "黄天泰平",
+      "vi": "黄 Thiên 泰 平"
+    },
+    "type": {
+      "id": "active",
+      "name": {
+        "cn": "active",
+        "vi": "Chủ động"
+      }
+    },
+    "quality": "S",
+    "trigger_rate": 35,
+    "source_type": "inherited",
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%BB%84%E5%A4%A9%E6%B3%B0%E5%B9%B3",
+    "associated_generals": [
+      "创建新页面",
+      "枪兵队",
+      "其疾如风",
+      "不动如山",
+      "坐骑",
+      "城内建筑",
+      "动如雷霆"
+    ],
+    "inheritance_from": [
+      "张角"
+    ],
+    "acquisition": [
+      "inheritance"
+    ],
+    "effect": {
+      "cn": "准备1回合，以自己进入混乱（攻击和战法无差别选择目标）状态为代价，使敌军群体（2人）进入计穷（无法发动主动战法）状态，持续2回合",
+      "vi": "chuẩn bị 1 lượt, 以bản thân rơi vào hỗn loạn (tấn công和chiến phápkhông 差别chọnmục tiêu) trạng tháilà 代价, khiến nhóm địch (2 người) rơi vào kế cùng (không thể phát độngchiến pháp chủ động) trạng thái, kéo dài 2 lượt"
+    },
+    "army_types": [
+      "cavalry",
+      "shield",
+      "archer",
+      "spear",
+      "siege"
+    ],
+    "target": "自己及敌军群体（2人）",
+    "target_vi": "bản thân và nhóm địch (2 người)"
+  }
+]

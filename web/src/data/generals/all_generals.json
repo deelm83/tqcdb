@@ -1,0 +1,7132 @@
+[
+  {
+    "faction_id": "wei",
+    "id": "sp荀彧",
+    "name": {
+      "cn": "sp荀彧",
+      "vi": "S P Tuân Úc"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/Sp%E8%8D%80%E5%BD%A7",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "机鉴先识",
+        "vi": "Cơ Giám Tiên Thức"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "竭力佐谋",
+        "vi": "Kiệt Lực Tá Mưu"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/0_s_p_tuan_uc.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "典韦",
+    "name": {
+      "cn": "典韦",
+      "vi": "Điển Vi"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%85%B8%E9%9F%A6",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "盾 武"
+      ],
+      "vi": [
+        "Thuẫn [ ] Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "古之恶来",
+        "vi": "Cổ Chi Ác Lai"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "折冲御侮",
+        "vi": "[折] [冲] Ngự [侮]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/1_dien_vi.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "贾诩",
+    "name": {
+      "cn": "贾诩",
+      "vi": "Giả Hu"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%B4%BE%E8%AF%A9",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "控 谋"
+      ],
+      "vi": [
+        "Khống [ ] Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "神机莫测",
+        "vi": "Thần Cơ [莫] [测]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "伪书相间",
+        "vi": "Ngụy Thư [相] [间]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/2_gia_hu.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "司马懿",
+    "name": {
+      "cn": "司马懿",
+      "vi": "Tư Mã Ý"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%8F%B8%E9%A9%AC%E6%87%BF",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "谋"
+      ],
+      "vi": [
+        "Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "鹰视狼顾",
+        "vi": "[鹰] [视] [狼] [顾]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "用武通神",
+        "vi": "[用] Võ [通] Thần"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/3_tu_ma_y.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "曹操",
+    "name": {
+      "cn": "曹操",
+      "vi": "Tào Tháo"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%9B%B9%E6%93%8D",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "辅 盾"
+      ],
+      "vi": [
+        "[辅] [ ] Thuẫn"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "乱世奸雄",
+        "vi": "Loạn Thế Gian Hùng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "梦中弑臣",
+        "vi": "[梦] Trung [弑] [臣]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/4_tao_thao.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "张辽",
+    "name": {
+      "cn": "张辽",
+      "vi": "Trương Liêu"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%BC%A0%E8%BE%BD",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "陷阵突袭",
+        "vi": "[陷] Trận Đột [袭]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "勇者得前",
+        "vi": "Dũng [者] Đắc Tiền"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/5_truong_lieu.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "sp庞德",
+    "name": {
+      "cn": "sp庞德",
+      "vi": "S P Bàng Đức"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/Sp%E5%BA%9E%E5%BE%B7",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "死战不退",
+        "vi": "Tử Chiến [不] [退]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "忠勇义烈",
+        "vi": "Trung Dũng Nghĩa Liệt"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/6_s_p_bang_duc.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "sp郭嘉",
+    "name": {
+      "cn": "sp郭嘉",
+      "vi": "S P Quách Gia"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/Sp%E9%83%AD%E5%98%89",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "经天纬地",
+        "vi": "[经] Thiên [纬] Địa"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "先成其虑",
+        "vi": "Tiên [成] [其] [虑]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/7_s_p_quach_gia.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "陈群",
+    "name": {
+      "cn": "陈群",
+      "vi": "Trần Quần"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%99%88%E7%BE%A4",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "政"
+      ],
+      "vi": [
+        "Chánh"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "清流雅望",
+        "vi": "Thanh Lưu [雅] [望]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "挫锐",
+        "vi": "[挫] Nhuệ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/8_tran_quan.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "曹植",
+    "name": {
+      "cn": "曹植",
+      "vi": "Tào Thực"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%9B%B9%E6%A4%8D",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "魅"
+      ],
+      "vi": [
+        "[魅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "七步成诗",
+        "vi": "Thất Bộ [成] Thi"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "守而必固",
+        "vi": "Thủ [而] [必] Cố"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/9_tao_thuc.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "许褚",
+    "name": {
+      "cn": "许褚",
+      "vi": "Hứa Chử"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%AE%B8%E8%A4%9A",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "虎痴",
+        "vi": "Hổ [痴]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "所向披靡",
+        "vi": "[所] [向] [披] [靡]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/10_hua_chu.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "张郃",
+    "name": {
+      "cn": "张郃",
+      "vi": "Trương [郃]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%BC%A0%E9%83%83",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "大戟士",
+        "vi": "Đại Kích Sĩ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "大戟士",
+        "vi": "Đại Kích Sĩ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/11_truong.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "郝昭",
+    "name": {
+      "cn": "郝昭",
+      "vi": "[郝] [昭]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%83%9D%E6%98%AD",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "医 兼"
+      ],
+      "vi": [
+        "[医] [ ] [兼]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "金城汤池",
+        "vi": "Kim Thành [汤] [池]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "横戈跃马",
+        "vi": "[横] Qua [跃] Mã"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "wei",
+    "id": "曹仁",
+    "name": {
+      "cn": "曹仁",
+      "vi": "Tào Nhân"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%9B%B9%E4%BB%81",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "盾"
+      ],
+      "vi": [
+        "Thuẫn"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "固若金汤",
+        "vi": "Cố Nhược Kim [汤]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "八门金锁阵",
+        "vi": "Bát Môn Kim [锁] Trận"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/13_tao_nhan.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "甄姬",
+    "name": {
+      "cn": "甄姬",
+      "vi": "[甄] Cơ"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%94%84%E5%A7%AC",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "魅"
+      ],
+      "vi": [
+        "[魅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "花容月貌",
+        "vi": "Hoa Dung Nguyệt [貌]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "魅惑",
+        "vi": "[魅] [惑]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/14_co.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "程昱",
+    "name": {
+      "cn": "程昱",
+      "vi": "Trình Dục"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%A8%8B%E6%98%B1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "谋"
+      ],
+      "vi": [
+        "Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "十面埋伏",
+        "vi": "Thập Diện [埋] Phục"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "守而必固",
+        "vi": "Thủ [而] [必] Cố"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/15_trinh_duc.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "荀彧",
+    "name": {
+      "cn": "荀彧",
+      "vi": "Tuân Úc"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%8D%80%E5%BD%A7",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "政"
+      ],
+      "vi": [
+        "Chánh"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "王佐之才",
+        "vi": "Vương Tá Chi Tài"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "四面楚歌",
+        "vi": "Tứ Diện [楚] Ca"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/16_tuan_uc.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "荀攸",
+    "name": {
+      "cn": "荀攸",
+      "vi": "Tuân Du"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%8D%80%E6%94%B8",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "谋 辅"
+      ],
+      "vi": [
+        "Mưu [ ] [辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "十二奇谋",
+        "vi": "Thập Nhị [奇] Mưu"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "运筹决算",
+        "vi": "[运] [筹] [决] Toán"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/17_tuan_du.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "徐晃",
+    "name": {
+      "cn": "徐晃",
+      "vi": "Từ Hoảng"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%BE%90%E6%99%83",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "长驱直入",
+        "vi": "Trường [驱] [直] [入]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "合军聚众",
+        "vi": "Hợp Quân [聚] [众]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/18_tu_hoang.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "夏侯惇",
+    "name": {
+      "cn": "夏侯惇",
+      "vi": "Hạ Hầu Đôn"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%A4%8F%E4%BE%AF%E6%83%87",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "刚烈不屈",
+        "vi": "[刚] Liệt [不] [屈]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "绝地反击",
+        "vi": "Tuyệt Địa [反] Kích"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/19_ha_hau_don.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "庞德",
+    "name": {
+      "cn": "庞德",
+      "vi": "Bàng Đức"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%BA%9E%E5%BE%B7",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "抬棺决战",
+        "vi": "[抬] [棺] [决] Chiến"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "暂避其锋",
+        "vi": "[暂] Tỵ [其] [锋]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/20_bang_duc.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "钟会",
+    "name": {
+      "cn": "钟会",
+      "vi": "Chung Hội"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%92%9F%E4%BC%9A",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "谋 控"
+      ],
+      "vi": [
+        "Mưu [ ] Khống"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "精练策数",
+        "vi": "[精] Luyện Sách [数]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "文武双全",
+        "vi": "Văn Võ Song Toàn"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/21_chung_hoi.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "满宠",
+    "name": {
+      "cn": "满宠",
+      "vi": "Mãn Sủng"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%BB%A1%E5%AE%A0",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "辅"
+      ],
+      "vi": [
+        "[辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "镇扼防拒",
+        "vi": "Trấn [扼] Phòng [拒]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "破军威胜",
+        "vi": "Phá Quân Uy Thắng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "wei",
+    "id": "王双",
+    "name": {
+      "cn": "王双",
+      "vi": "Vương Song"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%8E%8B%E5%8F%8C",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "震骇四境",
+        "vi": "Chấn [骇] Tứ [境]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "破军威胜",
+        "vi": "Phá Quân Uy Thắng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "wei",
+    "id": "王元姬",
+    "name": {
+      "cn": "王元姬",
+      "vi": "Vương [元] Cơ"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E7%8E%8B%E5%85%83%E5%A7%AC",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "辅"
+      ],
+      "vi": [
+        "[辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "垂心万物",
+        "vi": "[垂] Tâm Vạn [物]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "速乘其利",
+        "vi": "[速] [乘] [其] Lợi"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "wei",
+    "id": "曹纯",
+    "name": {
+      "cn": "曹纯",
+      "vi": "Tào [纯]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%9B%B9%E7%BA%AF",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "虎豹骑",
+        "vi": "Hổ [豹] Kỵ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "虎豹骑",
+        "vi": "Hổ [豹] Kỵ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/25_tao.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "于禁",
+    "name": {
+      "cn": "于禁",
+      "vi": "Vu Cấm"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%BA%8E%E7%A6%81",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "持军毅重",
+        "vi": "[持] Quân Nghị [重]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "克敌制胜",
+        "vi": "Khắc Địch Chế Thắng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/26_vu_cam.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "乐进",
+    "name": {
+      "cn": "乐进",
+      "vi": "Nhạc Tiến"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%B9%90%E8%BF%9B",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "临战先登",
+        "vi": "[临] Chiến Tiên [登]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "锋矢阵",
+        "vi": "[锋] [矢] Trận"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/27_nhac_tien.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "邓艾",
+    "name": {
+      "cn": "邓艾",
+      "vi": "Đặng Ngải"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%82%93%E8%89%BE",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "控"
+      ],
+      "vi": [
+        "Khống"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "暗度陈仓",
+        "vi": "Ám [度] Trần [仓]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "文武双全",
+        "vi": "Văn Võ Song Toàn"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/28_dang_ngai.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "夏侯渊",
+    "name": {
+      "cn": "夏侯渊",
+      "vi": "Hạ Hầu Uyên"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%A4%8F%E4%BE%AF%E6%B8%8A",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "将行其疾",
+        "vi": "Tướng Hành [其] [疾]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "万箭齐发",
+        "vi": "Vạn [箭] Tề Phát"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/29_ha_hau_uyen.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "郭嘉",
+    "name": {
+      "cn": "郭嘉",
+      "vi": "Quách Gia"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%83%AD%E5%98%89",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "辅"
+      ],
+      "vi": [
+        "[辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "十胜十败",
+        "vi": "Thập Thắng Thập [败]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "沉沙决水",
+        "vi": "Trầm Sa [决] Thủy"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/30_quach_gia.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "曹丕",
+    "name": {
+      "cn": "曹丕",
+      "vi": "Tào [丕]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E6%9B%B9%E4%B8%95",
+    "cost": 4,
+    "tags": {
+      "cn": [
+        "政"
+      ],
+      "vi": [
+        "Chánh"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "戮力上国",
+        "vi": "[戮] Lực Thượng Quốc"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "盛气凌敌",
+        "vi": "Thịnh Khí Lăng Địch"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/25_tao.jpg"
+  },
+  {
+    "faction_id": "wei",
+    "id": "张春华",
+    "name": {
+      "cn": "张春华",
+      "vi": "Trương Xuân Hoa"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%BC%A0%E6%98%A5%E5%8D%8E",
+    "cost": 3,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "沉断机谋",
+        "vi": "Trầm [断] Cơ Mưu"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "运筹决算",
+        "vi": "[运] [筹] [决] Toán"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/32_truong_xuan_hoa.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "刘备",
+    "name": {
+      "cn": "刘备",
+      "vi": "Lưu Bị"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%88%98%E5%A4%87",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "医 控"
+      ],
+      "vi": [
+        "[医] [ ] Khống"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "仁德载世",
+        "vi": "Nhân Đức [载] Thế"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "义心昭烈",
+        "vi": "Nghĩa Tâm [昭] Liệt"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/33_luu_bi.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "庞统",
+    "name": {
+      "cn": "庞统",
+      "vi": "Bàng Thống"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%BA%9E%E7%BB%9F",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "谋"
+      ],
+      "vi": [
+        "Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "连环计",
+        "vi": "[连] [环] Kế"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "乘敌不虞",
+        "vi": "[乘] Địch [不] Ngu"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/34_bang_thong.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "马超",
+    "name": {
+      "cn": "马超",
+      "vi": "Mã Siêu"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E9%A9%AC%E8%B6%85",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "槊血纵横",
+        "vi": "Sóc Huyết [纵] [横]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "所向披靡",
+        "vi": "[所] [向] [披] [靡]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/35_ma_sieu.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "诸葛亮",
+    "name": {
+      "cn": "诸葛亮",
+      "vi": "Gia Cát Lượng"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%AF%B8%E8%91%9B%E4%BA%AE",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "控 谋"
+      ],
+      "vi": [
+        "Khống [ ] Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "神机妙算",
+        "vi": "Thần Cơ [妙] Toán"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "舌战群儒",
+        "vi": "Thiệt Chiến Quần Nho"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/36_gia_cat_luong.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "关羽",
+    "name": {
+      "cn": "关羽",
+      "vi": "Quan Vũ"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%85%B3%E7%BE%BD",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "战 控"
+      ],
+      "vi": [
+        "Chiến [ ] Khống"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "威震华夏",
+        "vi": "Uy Chấn Hoa Hạ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "横扫千军",
+        "vi": "[横] [扫] Thiên Quân"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/37_quan_vu.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "sp诸葛亮",
+    "name": {
+      "cn": "sp诸葛亮",
+      "vi": "S P Gia Cát Lượng"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/Sp%E8%AF%B8%E8%91%9B%E4%BA%AE",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "辅"
+      ],
+      "vi": [
+        "[辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "锦囊妙计",
+        "vi": "[锦] [囊] [妙] Kế"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "焰逐风飞",
+        "vi": "[焰] [逐] [风] Phi"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/38_s_p_gia_cat_luong.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "严颜",
+    "name": {
+      "cn": "严颜",
+      "vi": "Nghiêm Nhan"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E4%B8%A5%E9%A2%9C&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "辅 控"
+      ],
+      "vi": [
+        "[辅] [ ] Khống"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "誓守无降",
+        "vi": "[誓] Thủ Vô Giáng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "一力拒守",
+        "vi": "Nhất Lực [拒] Thủ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/39_nghiem_nhan.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "张苞",
+    "name": {
+      "cn": "张苞",
+      "vi": "Trương Bao"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%BC%A0%E8%8B%9E&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "战 辅"
+      ],
+      "vi": [
+        "Chiến [ ] [辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "枪舞如风",
+        "vi": "Thương Vũ [如] [风]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "士争先赴",
+        "vi": "Sĩ [争] Tiên [赴]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "shu",
+    "id": "关兴",
+    "name": {
+      "cn": "关兴",
+      "vi": "Quan Hưng"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%85%B3%E5%85%B4&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "刀出如霆",
+        "vi": "Đao [出] [如] [霆]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "士争先赴",
+        "vi": "Sĩ [争] Tiên [赴]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "shu",
+    "id": "关银屏",
+    "name": {
+      "cn": "关银屏",
+      "vi": "Quan Ngân [屏]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%85%B3%E9%93%B6%E5%B1%8F&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "战 控"
+      ],
+      "vi": [
+        "Chiến [ ] Khống"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "将门虎女",
+        "vi": "Tướng Môn Hổ Nữ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "箕形阵",
+        "vi": "[箕] Hình Trận"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "shu",
+    "id": "马云禄",
+    "name": {
+      "cn": "马云禄",
+      "vi": "Mã Vân [禄]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%A9%AC%E4%BA%91%E7%A6%84&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "鸱苕英姿",
+        "vi": "[鸱] [苕] Anh [姿]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "乘敌不虞",
+        "vi": "[乘] Địch [不] Ngu"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/43_ma_van.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "陈到",
+    "name": {
+      "cn": "陈到",
+      "vi": "Trần [到]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%99%88%E5%88%B0&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "白毦兵",
+        "vi": "Bạch [毦] Binh"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "白毦兵",
+        "vi": "Bạch [毦] Binh"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/44_tran.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "姜维",
+    "name": {
+      "cn": "姜维",
+      "vi": "Khương Duy"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%A7%9C%E7%BB%B4&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "兼"
+      ],
+      "vi": [
+        "[兼]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "义胆雄心",
+        "vi": "Nghĩa [胆] Hùng Tâm"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "形机军略",
+        "vi": "Hình Cơ Quân [略]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/45_khuong_duy.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "魏延",
+    "name": {
+      "cn": "魏延",
+      "vi": "Ngụy Diên"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%AD%8F%E5%BB%B6&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "奇兵间道",
+        "vi": "[奇] Binh [间] Đạo"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "威谋靡亢",
+        "vi": "Uy Mưu [靡] [亢]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "shu",
+    "id": "黄忠",
+    "name": {
+      "cn": "黄忠",
+      "vi": "Hoàng Trung"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%BB%84%E5%BF%A0&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "百步穿杨",
+        "vi": "Bách Bộ [穿] Dương"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "万箭齐发",
+        "vi": "Vạn [箭] Tề Phát"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/47_hoang_trung.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "赵云",
+    "name": {
+      "cn": "赵云",
+      "vi": "Triệu Vân"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E8%B5%B5%E4%BA%91&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "一身是胆",
+        "vi": "Nhất Thân [是] [胆]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "横扫千军",
+        "vi": "[横] [扫] Thiên Quân"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/48_trieu_van.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "张飞",
+    "name": {
+      "cn": "张飞",
+      "vi": "Trương Phi"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%BC%A0%E9%A3%9E&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "燕人咆哮",
+        "vi": "[燕] Nhân [咆] [哮]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "瞋目横矛",
+        "vi": "[瞋] Mục [横] Mâu"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/49_truong_phi.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "蒋琬",
+    "name": {
+      "cn": "蒋琬",
+      "vi": "Tưởng Uyển"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E8%92%8B%E7%90%AC&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "政"
+      ],
+      "vi": [
+        "Chánh"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "克遵画一",
+        "vi": "Khắc Tuân Họa Nhất"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "奇计良谋",
+        "vi": "[奇] Kế Lương Mưu"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/50_tuong_uyen.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "王平",
+    "name": {
+      "cn": "王平",
+      "vi": "Vương Bình"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E7%8E%8B%E5%B9%B3&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "无当飞军",
+        "vi": "Vô Đương Phi Quân"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "无当飞军",
+        "vi": "Vô Đương Phi Quân"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/51_vuong_binh.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "徐庶",
+    "name": {
+      "cn": "徐庶",
+      "vi": "Từ [庶]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%BE%90%E5%BA%B6&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "谋"
+      ],
+      "vi": [
+        "Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "处兹不惑",
+        "vi": "[处] [兹] [不] [惑]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "暂避其锋",
+        "vi": "[暂] Tỵ [其] [锋]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/52_tu.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "张姬",
+    "name": {
+      "cn": "张姬",
+      "vi": "Trương Cơ"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%BC%A0%E5%A7%AC&action=edit&redlink=1",
+    "cost": 4,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "奋矛英姿",
+        "vi": "Phấn Mâu Anh [姿]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "勇者得前",
+        "vi": "Dũng [者] Đắc Tiền"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/53_truong_co.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "黄月英",
+    "name": {
+      "cn": "黄月英",
+      "vi": "Hoàng Nguyệt Anh"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%BB%84%E6%9C%88%E8%8B%B1&action=edit&redlink=1",
+    "cost": 4,
+    "tags": {
+      "cn": [
+        "辅"
+      ],
+      "vi": [
+        "[辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "工神",
+        "vi": "[工] Thần"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "锋矢阵",
+        "vi": "[锋] [矢] Trận"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/54_hoang_nguyet_anh.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "法正",
+    "name": {
+      "cn": "法正",
+      "vi": "Pháp Chánh"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E6%B3%95%E6%AD%A3&action=edit&redlink=1",
+    "cost": 4,
+    "tags": {
+      "cn": [
+        "医 辅"
+      ],
+      "vi": [
+        "[医] [ ] [辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "以逸待劳",
+        "vi": "[以] [逸] [待] [劳]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "沉沙决水",
+        "vi": "Trầm Sa [决] Thủy"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/55_phap_chanh.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "sp关羽",
+    "name": {
+      "cn": "sp关羽",
+      "vi": "S P Quan Vũ"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/Sp%E5%85%B3%E7%BE%BD",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "水淹七军",
+        "vi": "Thủy [淹] Thất Quân"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "忠勇义烈",
+        "vi": "Trung Dũng Nghĩa Liệt"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/56_s_p_quan_vu.jpg"
+  },
+  {
+    "faction_id": "shu",
+    "id": "伊籍",
+    "name": {
+      "cn": "伊籍",
+      "vi": "Y Tịch"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%BC%8A%E7%B1%8D",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "谋"
+      ],
+      "vi": [
+        "Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "才辩机捷",
+        "vi": "Tài [辩] Cơ [捷]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "临机制胜",
+        "vi": "[临] Cơ Chế Thắng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "wu",
+    "id": "孙尚香",
+    "name": {
+      "cn": "孙尚香",
+      "vi": "Tôn Thượng Hương"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%AD%99%E5%B0%9A%E9%A6%99&action=edit&redlink=1",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "弓腰姬",
+        "vi": "Cung [腰] Cơ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "结盟",
+        "vi": "[结] [盟]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/58_ton_thuong_huong.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "张纮",
+    "name": {
+      "cn": "张纮",
+      "vi": "Trương [纮]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%BC%A0%E7%BA%AE&action=edit&redlink=1",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "政"
+      ],
+      "vi": [
+        "Chánh"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "奇施经略",
+        "vi": "[奇] [施] [经] [略]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "智计",
+        "vi": "Trí Kế"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/11_truong.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "张昭",
+    "name": {
+      "cn": "张昭",
+      "vi": "Trương [昭]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%BC%A0%E6%98%AD&action=edit&redlink=1",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "政"
+      ],
+      "vi": [
+        "Chánh"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "功勋克举",
+        "vi": "[功] [勋] Khắc [举]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "兵锋",
+        "vi": "Binh [锋]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/11_truong.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "陆逊",
+    "name": {
+      "cn": "陆逊",
+      "vi": "Lục Tốn"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%99%86%E9%80%8A&action=edit&redlink=1",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "谋"
+      ],
+      "vi": [
+        "Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "火烧连营",
+        "vi": "[火] [烧] [连] [营]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "熯天炽地",
+        "vi": "[熯] Thiên [炽] Địa"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/61_luc_ton.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "sp周瑜",
+    "name": {
+      "cn": "sp周瑜",
+      "vi": "S P Chu Du"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/SP%E5%91%A8%E7%91%9C",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "谋"
+      ],
+      "vi": [
+        "Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "江天长焰",
+        "vi": "Giang Thiên Trường [焰]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "焰逐风飞",
+        "vi": "[焰] [逐] [风] Phi"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/62_s_p_chu_du.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "凌统",
+    "name": {
+      "cn": "凌统",
+      "vi": "Lăng Thống"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%87%8C%E7%BB%9F&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "辅 武"
+      ],
+      "vi": [
+        "[辅] [ ] Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "国士将风",
+        "vi": "Quốc Sĩ Tướng [风]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "横戈跃马",
+        "vi": "[横] Qua [跃] Mã"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/63_lang_thong.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "鲁肃",
+    "name": {
+      "cn": "鲁肃",
+      "vi": "Lỗ Túc"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%B2%81%E8%82%83&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "辅 医"
+      ],
+      "vi": [
+        "[辅] [ ] [医]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "济贫好施",
+        "vi": "[济] [贫] Hảo [施]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "奇计良谋",
+        "vi": "[奇] Kế Lương Mưu"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/64_lo_tuc.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "孙权",
+    "name": {
+      "cn": "孙权",
+      "vi": "Tôn Quyền"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%AD%99%E6%9D%83&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "坐断东南",
+        "vi": "Tọa [断] Đông Nam"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "卧薪尝胆",
+        "vi": "[卧] [薪] [尝] [胆]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/65_ton_quyen.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "甘宁",
+    "name": {
+      "cn": "甘宁",
+      "vi": "Cam Ninh"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E7%94%98%E5%AE%81&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "锦帆百翎",
+        "vi": "[锦] [帆] Bách [翎]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "百骑劫营",
+        "vi": "Bách Kỵ [劫] [营]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/66_cam_ninh.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "周泰",
+    "name": {
+      "cn": "周泰",
+      "vi": "Chu [泰]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%91%A8%E6%B3%B0&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "盾"
+      ],
+      "vi": [
+        "Thuẫn"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "肉身铁壁",
+        "vi": "Nhục Thân Thiết [壁]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "一力拒守",
+        "vi": "Nhất Lực [拒] Thủ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/67_chu.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "吕蒙",
+    "name": {
+      "cn": "吕蒙",
+      "vi": "Lữ [蒙]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%90%95%E8%92%99&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "控 兼"
+      ],
+      "vi": [
+        "Khống [ ] [兼]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "白衣渡江",
+        "vi": "Bạch [衣] [渡] Giang"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "士别三日",
+        "vi": "Sĩ [别] Tam Nhật"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/68_lu.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "太史慈",
+    "name": {
+      "cn": "太史慈",
+      "vi": "Thái Sử Từ"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%A4%AA%E5%8F%B2%E6%85%88",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "神射",
+        "vi": "Thần [射]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "折冲御侮",
+        "vi": "[折] [冲] Ngự [侮]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/69_thai_su_tu.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "孙坚",
+    "name": {
+      "cn": "孙坚",
+      "vi": "Tôn Kiên"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%AD%99%E5%9D%9A&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "盾"
+      ],
+      "vi": [
+        "Thuẫn"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "十面埋伏",
+        "vi": "Thập Diện [埋] Phục"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "挫锐",
+        "vi": "[挫] Nhuệ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/70_ton_kien.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "陆抗",
+    "name": {
+      "cn": "陆抗",
+      "vi": "Lục Kháng"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%99%86%E6%8A%97&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "辅 盾"
+      ],
+      "vi": [
+        "[辅] [ ] Thuẫn"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "校胜帷幄",
+        "vi": "[校] Thắng Vi [幄]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "乘胜长驱",
+        "vi": "[乘] Thắng Trường [驱]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/71_luc_khang.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "周瑜",
+    "name": {
+      "cn": "周瑜",
+      "vi": "Chu Du"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%91%A8%E7%91%9C&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "谋"
+      ],
+      "vi": [
+        "Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "神火计",
+        "vi": "Thần [火] Kế"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "风助火势",
+        "vi": "[风] [助] [火] Thế"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/72_chu_du.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "黄盖",
+    "name": {
+      "cn": "黄盖",
+      "vi": "Hoàng [盖]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%BB%84%E7%9B%96&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "控 盾"
+      ],
+      "vi": [
+        "Khống [ ] Thuẫn"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "苦肉计",
+        "vi": "Khổ Nhục Kế"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "风助火势",
+        "vi": "[风] [助] [火] Thế"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/73_hoang.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "程普",
+    "name": {
+      "cn": "程普",
+      "vi": "Trình Phổ"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E7%A8%8B%E6%99%AE&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "盾 控"
+      ],
+      "vi": [
+        "Thuẫn [ ] Khống"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "勇烈持重",
+        "vi": "Dũng Liệt [持] [重]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "克敌制胜",
+        "vi": "Khắc Địch Chế Thắng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/74_trinh_pho.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "孙策",
+    "name": {
+      "cn": "孙策",
+      "vi": "Tôn Sách"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%AD%99%E7%AD%96&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "江东小霸王",
+        "vi": "Giang Đông Tiểu Bá Vương"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "破阵摧坚",
+        "vi": "Phá Trận [摧] Kiên"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/75_ton_sach.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "大乔",
+    "name": {
+      "cn": "大乔",
+      "vi": "Đại Kiều"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%A4%A7%E4%B9%94&action=edit&redlink=1",
+    "cost": 4,
+    "tags": {
+      "cn": [
+        "魅"
+      ],
+      "vi": [
+        "[魅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "国色",
+        "vi": "Quốc Sắc"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "魅惑",
+        "vi": "[魅] [惑]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/76_dai_kieu.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "小乔",
+    "name": {
+      "cn": "小乔",
+      "vi": "Tiểu Kiều"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%B0%8F%E4%B9%94&action=edit&redlink=1",
+    "cost": 3,
+    "tags": {
+      "cn": [
+        "魅"
+      ],
+      "vi": [
+        "[魅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "天香",
+        "vi": "Thiên Hương"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "夺魂挟魄",
+        "vi": "[夺] Hồn [挟] Phách"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/77_tieu_kieu.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "sp吕蒙",
+    "name": {
+      "cn": "sp吕蒙",
+      "vi": "S P Lữ [蒙]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=Sp%E5%90%95%E8%92%99&action=edit&redlink=1",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "控 兼"
+      ],
+      "vi": [
+        "Khống [ ] [兼]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "溯江摇橹",
+        "vi": "[溯] Giang [摇] [橹]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "益其金鼓",
+        "vi": "[益] [其] Kim [鼓]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/78_s_p_lu.jpg"
+  },
+  {
+    "faction_id": "wu",
+    "id": "马忠",
+    "name": {
+      "cn": "马忠",
+      "vi": "Mã Trung"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%A9%AC%E5%BF%A0&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "战 控"
+      ],
+      "vi": [
+        "Chiến [ ] Khống"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "暗箭难防",
+        "vi": "Ám [箭] Nan Phòng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "锋芒毕露",
+        "vi": "[锋] [芒] [毕] Lộ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "qun",
+    "id": "sp朱儁",
+    "name": {
+      "cn": "sp朱儁",
+      "vi": "S P Chu [儁]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=Sp%E6%9C%B1%E5%84%81&action=edit&redlink=1",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "兼"
+      ],
+      "vi": [
+        "[兼]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "围师必阙",
+        "vi": "[围] Sư [必] [阙]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "速乘其利",
+        "vi": "[速] [乘] [其] Lợi"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "qun",
+    "id": "sp袁绍",
+    "name": {
+      "cn": "sp袁绍",
+      "vi": "S P Viên Thiệu"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=Sp%E8%A2%81%E7%BB%8D&action=edit&redlink=1",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "高橹连营",
+        "vi": "Cao [橹] [连] [营]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "箕形阵",
+        "vi": "[箕] Hình Trận"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/81_s_p_vien_thieu.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "袁术",
+    "name": {
+      "cn": "袁术",
+      "vi": "Viên Thuật"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E8%A2%81%E6%9C%AF&action=edit&redlink=1",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "兼"
+      ],
+      "vi": [
+        "[兼]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "符命自立",
+        "vi": "[符] [命] [自] Lập"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "形机军略",
+        "vi": "Hình Cơ Quân [略]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/82_vien_thuat.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "孟获",
+    "name": {
+      "cn": "孟获",
+      "vi": "Mạnh Hoạch"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%AD%9F%E8%8E%B7",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "蛮 战 盾"
+      ],
+      "vi": [
+        "[蛮] [ ] Chiến [ ] Thuẫn"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "南蛮渠魁",
+        "vi": "Nam [蛮] [渠] [魁]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "兵锋",
+        "vi": "Binh [锋]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/83_manh_hoach.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "于吉",
+    "name": {
+      "cn": "于吉",
+      "vi": "Vu Cát"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E4%BA%8E%E5%90%89",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "仙 谋"
+      ],
+      "vi": [
+        "Tiên [ ] Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "兴云布雨",
+        "vi": "Hưng Vân Bố [雨]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "杯蛇鬼车",
+        "vi": "[杯] Xà Quỷ [车]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/84_vu_cat.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "董卓",
+    "name": {
+      "cn": "董卓",
+      "vi": "Đổng Trác"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E8%91%A3%E5%8D%93&action=edit&redlink=1",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "战 盾"
+      ],
+      "vi": [
+        "Chiến [ ] Thuẫn"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "酒池肉林",
+        "vi": "[酒] [池] Nhục Lâm"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "暴戾无仁",
+        "vi": "[暴] [戾] Vô Nhân"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/85_dong_trac.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "吕布",
+    "name": {
+      "cn": "吕布",
+      "vi": "Lữ Bố"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%90%95%E5%B8%83&action=edit&redlink=1",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "天下无双",
+        "vi": "Thiên Hạ Vô Song"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "一骑当千",
+        "vi": "Nhất Kỵ Đương Thiên"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/86_lu_bo.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "许攸",
+    "name": {
+      "cn": "许攸",
+      "vi": "Hứa Du"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E8%AE%B8%E6%94%B8",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "辅"
+      ],
+      "vi": [
+        "[辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "傲倪王侯",
+        "vi": "[傲] [倪] Vương Hầu"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "定谋贵决",
+        "vi": "Định Mưu [贵] [决]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "qun",
+    "id": "蔡邕",
+    "name": {
+      "cn": "蔡邕",
+      "vi": "Thái [邕]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E8%94%A1%E9%82%95&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "政"
+      ],
+      "vi": [
+        "Chánh"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "晓知良木",
+        "vi": "[晓] [知] Lương Mộc"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "经术政要",
+        "vi": "[经] Thuật Chánh [要]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "qun",
+    "id": "朵思大王",
+    "name": {
+      "cn": "朵思大王",
+      "vi": "Đóa Tư Đại Vương"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E6%9C%B5%E6%80%9D%E5%A4%A7%E7%8E%8B&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "蛮 谋"
+      ],
+      "vi": [
+        "[蛮] [ ] Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "毒泉拒蜀",
+        "vi": "Độc Tuyền [拒] Thục"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "临机制胜",
+        "vi": "[临] Cơ Chế Thắng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "qun",
+    "id": "沮授",
+    "name": {
+      "cn": "沮授",
+      "vi": "Thư Thụ"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E6%B2%AE%E6%8E%88&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "谋"
+      ],
+      "vi": [
+        "Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "监统震军",
+        "vi": "[监] Thống Chấn Quân"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "威谋靡亢",
+        "vi": "Uy Mưu [靡] [亢]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "qun",
+    "id": "田丰",
+    "name": {
+      "cn": "田丰",
+      "vi": "Điền Phong"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E7%94%B0%E4%B8%B0&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "控 辅"
+      ],
+      "vi": [
+        "Khống [ ] [辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "竭忠尽智",
+        "vi": "Kiệt Trung [尽] Trí"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "兵无常势",
+        "vi": "Binh Vô [常] Thế"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/91_dien_phong.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "吕玲绮",
+    "name": {
+      "cn": "吕玲绮",
+      "vi": "Lữ Linh [绮]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%90%95%E7%8E%B2%E7%BB%AE&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "狮子奋迅",
+        "vi": "[狮] Tử Phấn [迅]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "绝地反击",
+        "vi": "Tuyệt Địa [反] Kích"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "qun",
+    "id": "祝融夫人",
+    "name": {
+      "cn": "祝融夫人",
+      "vi": "Chúc Dung Phu Nhân"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E7%A5%9D%E8%9E%8D%E5%A4%AB%E4%BA%BA&action=edit&redlink=1",
+    "cost": 7,
+    "tags": {
+      "cn": [
+        "蛮 武 医"
+      ],
+      "vi": [
+        "[蛮] [ ] Võ [ ] [医]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "火神英风",
+        "vi": "[火] Thần Anh [风]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "兵无常势",
+        "vi": "Binh Vô [常] Thế"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/93_chuc_dung_phu_nhan.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "兀突骨",
+    "name": {
+      "cn": "兀突骨",
+      "vi": "Ngột Đột Cốt"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%85%80%E7%AA%81%E9%AA%A8&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "蛮 盾"
+      ],
+      "vi": [
+        "[蛮] [ ] Thuẫn"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "藤甲兵",
+        "vi": "[藤] Giáp Binh"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "藤甲兵",
+        "vi": "[藤] Giáp Binh"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/94_ngot_dot_cot.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "公孙瓒",
+    "name": {
+      "cn": "公孙瓒",
+      "vi": "Công Tôn Toản"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%85%AC%E5%AD%99%E7%93%92&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "辅 武"
+      ],
+      "vi": [
+        "[辅] [ ] Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "白马义从",
+        "vi": "Bạch Mã Nghĩa Tùng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "白马义从",
+        "vi": "Bạch Mã Nghĩa Tùng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/95_cong_ton_toan.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "袁绍",
+    "name": {
+      "cn": "袁绍",
+      "vi": "Viên Thiệu"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E8%A2%81%E7%BB%8D&action=edit&redlink=1",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "累世立名",
+        "vi": "[累] Thế Lập Danh"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "合军聚众",
+        "vi": "Hợp Quân [聚] [众]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/96_vien_thieu.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "张角",
+    "name": {
+      "cn": "张角",
+      "vi": "Trương Giác"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/%E5%BC%A0%E8%A7%92",
+    "cost": 6,
+    "tags": {
+      "cn": [
+        "黄 谋"
+      ],
+      "vi": [
+        "Hoàng [ ] Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "五雷轰顶",
+        "vi": "Ngũ [雷] [轰] [顶]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "黄天泰平",
+        "vi": "Hoàng Thiên [泰] Bình"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/97_truong_giac.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "张让",
+    "name": {
+      "cn": "张让",
+      "vi": "Trương [让]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%BC%A0%E8%AE%A9&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "谋"
+      ],
+      "vi": [
+        "Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "窃幸乘宠",
+        "vi": "[窃] [幸] [乘] Sủng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "竭力佐谋",
+        "vi": "Kiệt Lực Tá Mưu"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/11_truong.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "高览",
+    "name": {
+      "cn": "高览",
+      "vi": "Cao [览]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%AB%98%E8%A7%88&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "乘胜长驱",
+        "vi": "[乘] Thắng Trường [驱]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "振军击营",
+        "vi": "[振] Quân Kích [营]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/99_cao.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "木鹿大王",
+    "name": {
+      "cn": "木鹿大王",
+      "vi": "Mộc [鹿] Đại Vương"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E6%9C%A8%E9%B9%BF%E5%A4%A7%E7%8E%8B&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "蛮 战"
+      ],
+      "vi": [
+        "[蛮] [ ] Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "象兵",
+        "vi": "Tượng Binh"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "象兵",
+        "vi": "Tượng Binh"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/100_moc_dai_vuong.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "李儒",
+    "name": {
+      "cn": "李儒",
+      "vi": "Lý Nho"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E6%9D%8E%E5%84%92&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "谋 辅"
+      ],
+      "vi": [
+        "Mưu [ ] [辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "鸩毒",
+        "vi": "[鸩] Độc"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "四面楚歌",
+        "vi": "Tứ Diện [楚] Ca"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "A"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "B"
+      }
+    },
+    "image": "/images/generals/101_ly_nho.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "高顺",
+    "name": {
+      "cn": "高顺",
+      "vi": "Cao Thuận"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%AB%98%E9%A1%BA&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "盾"
+      ],
+      "vi": [
+        "Thuẫn"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "陷阵营",
+        "vi": "[陷] Trận [营]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "陷阵营",
+        "vi": "[陷] Trận [营]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "S"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "S"
+      }
+    },
+    "image": "/images/generals/102_cao_thuan.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "马腾",
+    "name": {
+      "cn": "马腾",
+      "vi": "Mã [腾]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%A9%AC%E8%85%BE&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "西凉铁骑",
+        "vi": "Tây [凉] Thiết Kỵ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "西凉铁骑",
+        "vi": "Tây [凉] Thiết Kỵ"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/103_ma.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "文丑",
+    "name": {
+      "cn": "文丑",
+      "vi": "Văn Sửu"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E6%96%87%E4%B8%91&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "战 控"
+      ],
+      "vi": [
+        "Chiến [ ] Khống"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "登锋陷阵",
+        "vi": "[登] [锋] [陷] Trận"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "破阵催坚",
+        "vi": "Phá Trận [催] Kiên"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/104_van_suu.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "华雄",
+    "name": {
+      "cn": "华雄",
+      "vi": "Hoa Hùng"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%8D%8E%E9%9B%84&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "武"
+      ],
+      "vi": [
+        "Võ"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "搦战群雄",
+        "vi": "[搦] Chiến Quần Hùng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "诱敌深入",
+        "vi": "[诱] Địch Thâm [入]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "S"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/105_hoa_hung.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "颜良",
+    "name": {
+      "cn": "颜良",
+      "vi": "Nhan Lương"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%A2%9C%E8%89%AF&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "战"
+      ],
+      "vi": [
+        "Chiến"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "勇冠三军",
+        "vi": "Dũng Quan Tam Quân"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "盛气凌敌",
+        "vi": "Thịnh Khí Lăng Địch"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "A"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "S"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/106_nhan_luong.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "华佗",
+    "name": {
+      "cn": "华佗",
+      "vi": "Hoa Đà"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%8D%8E%E4%BD%97&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "仙 医"
+      ],
+      "vi": [
+        "Tiên [ ] [医]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "青囊",
+        "vi": "Thanh [囊]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "刮骨疗毒",
+        "vi": "[刮] Cốt Liệu Độc"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/107_hoa_da.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "左慈",
+    "name": {
+      "cn": "左慈",
+      "vi": "Tả Từ"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%B7%A6%E6%85%88&action=edit&redlink=1",
+    "cost": 5,
+    "tags": {
+      "cn": [
+        "仙 医"
+      ],
+      "vi": [
+        "Tiên [ ] [医]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "金丹秘术",
+        "vi": "Kim [丹] [秘] Thuật"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "杯蛇鬼车",
+        "vi": "[杯] Xà Quỷ [车]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/108_ta_tu.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "貂蝉",
+    "name": {
+      "cn": "貂蝉",
+      "vi": "Điêu Thuyền"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E8%B2%82%E8%9D%89&action=edit&redlink=1",
+    "cost": 4,
+    "tags": {
+      "cn": [
+        "控"
+      ],
+      "vi": [
+        "Khống"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "闭月",
+        "vi": "Bế Nguyệt"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "倾国倾城",
+        "vi": "[倾] Quốc [倾] Thành"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/109_dieu_thuyen.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "陈宫",
+    "name": {
+      "cn": "陈宫",
+      "vi": "Trần Cung"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%99%88%E5%AE%AB&action=edit&redlink=1",
+    "cost": 4,
+    "tags": {
+      "cn": [
+        "谋"
+      ],
+      "vi": [
+        "Mưu"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "百计多谋",
+        "vi": "Bách Kế [多] Mưu"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "智计",
+        "vi": "Trí Kế"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "A"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "S"
+      },
+      "spear": {
+        "grade": "A"
+      },
+      "siege": {
+        "grade": "A"
+      }
+    },
+    "image": "/images/generals/110_tran_cung.jpg"
+  },
+  {
+    "faction_id": "qun",
+    "id": "司马徵",
+    "name": {
+      "cn": "司马徵",
+      "vi": "Tư Mã [徵]"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E5%8F%B8%E9%A9%AC%E5%BE%B5&action=edit&redlink=1",
+    "cost": 4,
+    "tags": {
+      "cn": [
+        "魅"
+      ],
+      "vi": [
+        "[魅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "水镜先生",
+        "vi": "Thủy Kính Tiên Sinh"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "诱敌深入",
+        "vi": "[诱] Địch Thâm [入]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "B"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "qun",
+    "id": "邹氏",
+    "name": {
+      "cn": "邹氏",
+      "vi": "Trâu Thị"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E9%82%B9%E6%B0%8F&action=edit&redlink=1",
+    "cost": 3,
+    "tags": {
+      "cn": [
+        "控"
+      ],
+      "vi": [
+        "Khống"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "顾盼生姿",
+        "vi": "[顾] [盼] Sinh [姿]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "先成其虑",
+        "vi": "Tiên [成] [其] [虑]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "B"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "qun",
+    "id": "董白",
+    "name": {
+      "cn": "董白",
+      "vi": "Đổng Bạch"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E8%91%A3%E7%99%BD&action=edit&redlink=1",
+    "cost": 3,
+    "tags": {
+      "cn": [
+        "辅"
+      ],
+      "vi": [
+        "[辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "云聚影从",
+        "vi": "Vân [聚] [影] Tùng"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "益其金鼓",
+        "vi": "[益] [其] Kim [鼓]"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "C"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "B"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": null
+  },
+  {
+    "faction_id": "qun",
+    "id": "蔡文姬",
+    "name": {
+      "cn": "蔡文姬",
+      "vi": "Thái Văn Cơ"
+    },
+    "wiki_url": "https://wiki.biligame.com/sgzzlb/index.php?title=%E8%94%A1%E6%96%87%E5%A7%AC&action=edit&redlink=1",
+    "cost": 3,
+    "tags": {
+      "cn": [
+        "医 辅"
+      ],
+      "vi": [
+        "[医] [ ] [辅]"
+      ]
+    },
+    "innate_skill": {
+      "name": {
+        "cn": "胡笳余音",
+        "vi": "[胡] [笳] [余] Âm"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "inherited_skill": {
+      "name": {
+        "cn": "夺魂挟魄",
+        "vi": "[夺] Hồn [挟] Phách"
+      },
+      "type": {
+        "id": "unknown",
+        "name": {
+          "cn": "",
+          "vi": ""
+        }
+      }
+    },
+    "troop_compatibility": {
+      "cavalry": {
+        "grade": "B"
+      },
+      "shield": {
+        "grade": "C"
+      },
+      "archer": {
+        "grade": "C"
+      },
+      "spear": {
+        "grade": "C"
+      },
+      "siege": {
+        "grade": "C"
+      }
+    },
+    "image": "/images/generals/114_thai_van_co.jpg"
+  }
+]

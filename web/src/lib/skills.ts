@@ -54,22 +54,24 @@ export const skillTypeNames: Record<SkillTypeId, { cn: string; vi: string }> = {
   unknown: { cn: '未知', vi: 'Khác' },
 };
 
-export const skillTypeColors: Record<SkillTypeId, { bg: string; text: string; border: string }> = {
-  command: { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-200' },
-  active: { bg: 'bg-red-50', text: 'text-red-700', border: 'border-red-200' },
-  assault: { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200' },
-  passive: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200' },
-  formation: { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-200' },
-  troop: { bg: 'bg-yellow-50', text: 'text-yellow-700', border: 'border-yellow-200' },
-  internal: { bg: 'bg-pink-50', text: 'text-pink-700', border: 'border-pink-200' },
-  unknown: { bg: 'bg-gray-50', text: 'text-gray-700', border: 'border-gray-200' },
+// Skill type colors - TW3K inspired
+export const skillTypeColors: Record<SkillTypeId, { text: string }> = {
+  command: { text: 'text-yellow-400' },
+  active: { text: 'text-red-400' },
+  assault: { text: 'text-orange-400' },
+  passive: { text: 'text-blue-400' },
+  formation: { text: 'text-purple-400' },
+  troop: { text: 'text-green-400' },
+  internal: { text: 'text-cyan-400' },
+  unknown: { text: 'text-[var(--text-tertiary)]' },
 };
 
+// Quality colors - gold for S, red for A
 export const qualityColors: Record<string, string> = {
-  S: 'text-orange-500',
-  A: 'text-purple-500',
-  B: 'text-blue-500',
-  C: 'text-gray-500',
+  S: 'text-[var(--accent-gold)]',
+  A: 'text-[var(--accent-red-bright)]',
+  B: 'text-blue-400',
+  C: 'text-[var(--text-tertiary)]',
 };
 
 // Map of skill Chinese names to full skill data for quick lookup

@@ -61,11 +61,12 @@ export function filterGenerals(generals: General[], filters: FilterOptions): Gen
   });
 }
 
-export const factionColors: Record<FactionId, { bg: string; text: string; border: string }> = {
-  wei: { bg: 'bg-blue-100', text: 'text-blue-800', border: 'border-blue-300' },
-  shu: { bg: 'bg-green-100', text: 'text-green-800', border: 'border-green-300' },
-  wu: { bg: 'bg-red-100', text: 'text-red-800', border: 'border-red-300' },
-  qun: { bg: 'bg-yellow-100', text: 'text-yellow-800', border: 'border-yellow-300' },
+// Faction colors - TW3K inspired
+export const factionColors: Record<FactionId, { text: string }> = {
+  wei: { text: 'text-blue-400' },
+  shu: { text: 'text-green-400' },
+  wu: { text: 'text-red-400' },
+  qun: { text: 'text-yellow-400' },
 };
 
 export const factionNames: Record<FactionId, { cn: string; vi: string; en: string }> = {
@@ -75,11 +76,12 @@ export const factionNames: Record<FactionId, { cn: string; vi: string; en: strin
   qun: { cn: '群', vi: 'Quần', en: 'Qun' },
 };
 
+// Grade colors - gold for S, red for A, etc
 export const gradeColors: Record<Grade, string> = {
-  'S': 'text-amber-500 font-bold',
-  'A': 'text-purple-500 font-semibold',
-  'B': 'text-blue-500',
-  'C': 'text-gray-500',
+  'S': 'text-[var(--accent-gold)]',
+  'A': 'text-[var(--accent-red-bright)]',
+  'B': 'text-blue-400',
+  'C': 'text-[var(--text-tertiary)]',
 };
 
 export const troopTypeNames: Record<TroopType, { cn: string; vi: string; en: string }> = {

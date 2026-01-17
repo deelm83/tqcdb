@@ -142,6 +142,7 @@ router.get('/:id', async (req, res) => {
       exchange_count: skill.exchangeCount,
       status: skill.status,
       updated_at: skill.updatedAt,
+      screenshots: skill.screenshots || [],
     };
 
     res.json(transformed);

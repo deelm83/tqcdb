@@ -60,7 +60,29 @@
       "Bash(npm run db:generate:*)",
       "Bash(taskkill //F //PID 3880)",
       "Bash(git -C /c/Users/mashix/Desktop/codes/tqcdb status)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(findstr:*)",
+      "Bash(tasklist:*)",
+      "Bash(cmd //c \"taskkill /F /PID 15048\")",
+      "Bash(python scripts/process_skill_images.py:*)",
+      "Bash(py:*)",
+      "Bash(py3 --version:*)",
+      "Bash(node scripts/process-skill-images.js:*)",
+      "Bash(node -r dotenv/config scripts/process-skill-images.js:*)",
+      "Bash(node scripts/import-skills-json.js:*)",
+      "Bash(powershell -Command \"Get-Content ''database\\\\backup.sql'' | Select-Object -Skip 126 -First 118 | Set-Content ''database\\\\generals_restore.sql'' -Encoding UTF8\")",
+      "Bash(taskkill:*)",
+      "Bash(exit 0)",
+      "Bash(timeout /t 5 /nobreak)",
+      "Bash(dir:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(powershell -Command \"Get-Content ''web\\\\src\\\\app\\\\admin\\\\skills\\\\[id]\\\\page.tsx'' | Select-Object -Skip 1104 -First 15\")",
+      "Bash(grep:*)",
+      "WebFetch(domain:www.totalwar.com)",
+      "WebFetch(domain:www.behance.net)",
+      "Bash(git commit:*)",
+      "Bash(git config:*)",
+      "Bash(git push:*)"
     ]
   }
 }
