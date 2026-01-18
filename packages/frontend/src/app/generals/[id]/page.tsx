@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { factionNames, factionColors, troopTypeNames, gradeColors, FactionId, Grade } from '@/lib/generals';
 import { skillTypeNames, skillTypeColors, qualityColors, SkillTypeId } from '@/lib/skills';
@@ -11,6 +11,257 @@ import { TroopIcon, ArmyIcon, ArmyIconType } from '@/components/icons/TroopIcons
 import { usePageTitle } from '@/hooks/usePageTitle';
 
 const troopTypes: TroopType[] = ['cavalry', 'shield', 'archer', 'spear', 'siege'];
+
+// Stats configuration
+const STAT_KEYS = ['attack', 'command', 'intelligence', 'politics', 'speed', 'charm'] as const;
+type StatKey = typeof STAT_KEYS[number];
+
+const STAT_LABELS: Record<StatKey, string> = {
+  attack: 'Võ lực',
+  command: 'Thống suất',
+  intelligence: 'Trí lực',
+  politics: 'Chính trị',
+  speed: 'Tốc độ',
+  charm: 'Mị lực',
+};
+
+// Milestone levels that give 10 extra points each (at level 10, 20, 30, 40)
+const MILESTONE_LEVELS = [10, 20, 30, 40];
+
+// Advanced Stats Calculator Component
+function StatsCalculator({ general }: { general: General }) {
+  const [isAdvanced, setIsAdvanced] = useState(false);
+  const [level, setLevel] = useState(50);
+  const [stars, setStars] = useState(0);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const [hasCollectiveCard, setHasCollectiveCard] = useState(false);
+  const [extraPoints, setExtraPoints] = useState<Record<StatKey, number>>({
+    attack: 0,
+    command: 0,
+    intelligence: 0,
+    politics: 0,
+    speed: 0,
+    charm: 0,
+  });
+
+  // Calculate total extra points available
+  const totalExtraPoints = useMemo(() => {
+    const milestonePts = MILESTONE_LEVELS.filter(m => level >= m).length * 10;
+    const starPts = stars * 10;
+    const animatedPts = isAnimated ? 10 : 0;
+    const cardPts = hasCollectiveCard ? 10 : 0;
+    return milestonePts + starPts + animatedPts + cardPts;
+  }, [level, stars, isAnimated, hasCollectiveCard]);
+
+  // Calculate used extra points
+  const usedExtraPoints = useMemo(() => {
+    return Object.values(extraPoints).reduce((sum, pts) => sum + pts, 0);
+  }, [extraPoints]);
+
+  // Remaining points to distribute
+  const remainingPoints = totalExtraPoints - usedExtraPoints;
+
+  // Calculate final stats
+  const calculatedStats = useMemo(() => {
+    const stats: Record<StatKey, { base: number; growth: number; final: number }> = {
+      attack: { base: general.base_attack || 0, growth: general.growth_attack || 0, final: 0 },
+      command: { base: general.base_command || 0, growth: general.growth_command || 0, final: 0 },
+      intelligence: { base: general.base_intelligence || 0, growth: general.growth_intelligence || 0, final: 0 },
+      politics: { base: general.base_politics || 0, growth: general.growth_politics || 0, final: 0 },
+      speed: { base: general.base_speed || 0, growth: general.growth_speed || 0, final: 0 },
+      charm: { base: general.base_charm || 0, growth: general.growth_charm || 0, final: 0 },
+    };
+
+    for (const key of STAT_KEYS) {
+      const { base, growth } = stats[key];
+      // Final = base + growth * (level - 1) + extra points
+      stats[key].final = Math.round((base + growth * (level - 1) + extraPoints[key]) * 100) / 100;
+    }
+
+    return stats;
+  }, [general, level, extraPoints]);
+
+  // Reset extra points when total changes
+  useEffect(() => {
+    if (usedExtraPoints > totalExtraPoints) {
+      setExtraPoints({ attack: 0, command: 0, intelligence: 0, politics: 0, speed: 0, charm: 0 });
+    }
+  }, [totalExtraPoints, usedExtraPoints]);
+
+  const adjustPoints = (stat: StatKey, delta: number) => {
+    const newValue = extraPoints[stat] + delta;
+    if (newValue < 0) return;
+    if (delta > 0 && remainingPoints < delta) return;
+    setExtraPoints(prev => ({ ...prev, [stat]: newValue }));
+  };
+
+  // Simple view
+  if (!isAdvanced) {
+    return (
+      <div className="card-gold p-5">
+        <div className="flex items-center justify-between mb-4">
+          <div className="text-[11px] text-[var(--accent-gold)] uppercase tracking-widest font-semibold">
+            Chỉ số
+          </div>
+          <button
+            onClick={() => setIsAdvanced(true)}
+            className="text-[11px] text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors uppercase tracking-wider"
+          >
+            Nâng cao →
+          </button>
+        </div>
+        <div className="grid grid-cols-3 gap-4">
+          {STAT_KEYS.map((key) => (
+            <div key={key} className="flex items-center justify-between gap-2 px-3 py-2 bg-[var(--bg-tertiary)] rounded border border-[var(--border)]">
+              <span className="text-[12px] text-[var(--text-secondary)]">{STAT_LABELS[key]}</span>
+              <div className="text-right">
+                <span className="text-[15px] font-bold text-[var(--text-primary)]">
+                  {calculatedStats[key].base || '-'}
+                </span>
+                {calculatedStats[key].growth > 0 && (
+                  <span className="text-[11px] text-green-400 ml-1">
+                    +{calculatedStats[key].growth}
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Advanced view
+  return (
+    <div className="card-gold p-4">
+      <div className="flex items-center justify-between mb-3">
+        <div className="text-[11px] text-[var(--accent-gold)] uppercase tracking-widest font-semibold">
+          Tính chỉ số
+        </div>
+        <button
+          onClick={() => setIsAdvanced(false)}
+          className="text-[11px] text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors"
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* Controls - Compact row */}
+      <div className="flex flex-wrap items-center gap-4 mb-4 pb-3 border-b border-[var(--border)]">
+        {/* Level */}
+        <div className="flex items-center gap-2">
+          <span className="text-[11px] text-[var(--text-tertiary)]">Cấp</span>
+          <div className="relative">
+            <input
+              type="text"
+              inputMode="numeric"
+              value={level}
+              onChange={(e) => {
+                const val = parseInt(e.target.value) || 1;
+                setLevel(Math.min(50, Math.max(1, val)));
+              }}
+              className="w-8 h-6 text-[12px] text-center font-bold text-[var(--accent-gold)] bg-transparent border-b border-[var(--border)] focus:border-[var(--accent-gold)] outline-none"
+            />
+          </div>
+        </div>
+
+        {/* Stars */}
+        <div className="flex items-center gap-2">
+          <span className="text-[11px] text-[var(--text-tertiary)]">Hột</span>
+          <div className="flex gap-1">
+            {[1, 2, 3, 4, 5].map((s) => (
+              <button
+                key={s}
+                onClick={() => setStars(stars >= s ? s - 1 : s)}
+                className={`w-4 h-4 rounded-full border-2 transition-colors ${
+                  stars >= s
+                    ? 'bg-red-500 border-red-500'
+                    : 'bg-transparent border-[var(--border)] hover:border-[var(--text-tertiary)]'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Animated Toggle */}
+        <label className="flex items-center gap-2 cursor-pointer">
+          <span className="text-[11px] text-[var(--text-tertiary)]">Hình động</span>
+          <button
+            onClick={() => setIsAnimated(!isAnimated)}
+            className={`w-8 h-4 rounded-full transition-colors relative ${
+              isAnimated ? 'bg-[var(--accent-gold)]' : 'bg-[var(--border)]'
+            }`}
+          >
+            <span className={`absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform ${
+              isAnimated ? 'left-4' : 'left-0.5'
+            }`} />
+          </button>
+        </label>
+
+        {/* Collective Card Toggle */}
+        <label className="flex items-center gap-2 cursor-pointer">
+          <span className="text-[11px] text-[var(--text-tertiary)]">Thẻ sưu tầm</span>
+          <button
+            onClick={() => setHasCollectiveCard(!hasCollectiveCard)}
+            className={`w-8 h-4 rounded-full transition-colors relative ${
+              hasCollectiveCard ? 'bg-[var(--accent-gold)]' : 'bg-[var(--border)]'
+            }`}
+          >
+            <span className={`absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform ${
+              hasCollectiveCard ? 'left-4' : 'left-0.5'
+            }`} />
+          </button>
+        </label>
+
+        {/* Remaining Points */}
+        <div className="flex items-center gap-2 ml-auto">
+          <span className="text-[11px] text-[var(--text-tertiary)]">Điểm tự do</span>
+          <span className={`text-[13px] font-bold ${remainingPoints > 0 ? 'text-green-400' : 'text-[var(--text-primary)]'}`}>
+            {remainingPoints}/{totalExtraPoints}
+          </span>
+        </div>
+      </div>
+
+      {/* Stats - Compact grid */}
+      <div className="grid grid-cols-3 gap-2">
+        {STAT_KEYS.map((key) => (
+          <div key={key} className="bg-[var(--bg-tertiary)] rounded px-2 py-2 border border-[var(--border)]">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[10px] text-[var(--text-tertiary)]">{STAT_LABELS[key]}</span>
+              <span className="text-[14px] font-bold text-[var(--accent-gold)]">
+                {Math.round(calculatedStats[key].final)}
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-[9px] text-[var(--text-tertiary)]">
+                {calculatedStats[key].base}+{calculatedStats[key].growth}/lv
+              </span>
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => adjustPoints(key, -10)}
+                  disabled={extraPoints[key] < 10}
+                  className="w-5 h-5 rounded text-[11px] bg-[var(--bg)] border border-[var(--border)] text-[var(--text-secondary)] disabled:opacity-30"
+                >
+                  -
+                </button>
+                <span className="text-[11px] font-semibold text-green-400 w-6 text-center">
+                  +{extraPoints[key]}
+                </span>
+                <button
+                  onClick={() => adjustPoints(key, 10)}
+                  disabled={remainingPoints < 10}
+                  className="w-5 h-5 rounded text-[11px] bg-[var(--bg)] border border-[var(--border)] text-[var(--text-secondary)] disabled:opacity-30"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 // Highlight special patterns in effect text
 function highlightEffectText(text: string): React.ReactNode {
@@ -74,7 +325,9 @@ function SkillCard({
             <span className={`pill ${qualityColors[skill.quality]}`}>{skill.quality}</span>
           )}
           {skill.trigger_rate && (
-            <span className="pill text-[var(--text-secondary)]">{skill.trigger_rate}%</span>
+            <span className="px-2 py-1 rounded bg-amber-500/20 text-amber-400 text-[12px] font-bold border border-amber-500/30">
+              {skill.trigger_rate}%
+            </span>
           )}
         </div>
       </div>
@@ -137,7 +390,7 @@ export default function GeneralDetailPage() {
         const data = await fetchGeneral(id);
         setGeneral(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Officer not found');
+        setError(err instanceof Error ? err.message : 'Không tìm thấy võ tướng');
       } finally {
         setLoading(false);
       }
@@ -182,7 +435,7 @@ export default function GeneralDetailPage() {
   return (
     <main className="max-w-5xl mx-auto px-6 py-8">
       {/* Breadcrumb */}
-      <div className="mb-8">
+      <div className="mb-6">
         <Link href="/generals" className="inline-flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] text-[13px] transition-colors uppercase tracking-wider">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -191,10 +444,66 @@ export default function GeneralDetailPage() {
         </Link>
       </div>
 
+      {/* Header */}
+      <div className="card-gold p-6 mb-8">
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          {/* Left: Name, Faction, Cost */}
+          <div className="flex items-center gap-4 flex-1">
+            {/* Cost Seal */}
+            <div className="cost-seal flex-shrink-0">
+              <div className="cost-seal-inner">
+                <span>{general.cost}</span>
+              </div>
+            </div>
+
+            <div>
+              {/* Name */}
+              <h1 className="font-serif text-2xl md:text-3xl font-bold text-[var(--text-primary)] leading-tight">
+                {general.name.vi}
+              </h1>
+              {/* Faction */}
+              <div className={`text-[13px] font-semibold uppercase tracking-wider mt-1 ${factionColor.text}`}>
+                {factionName.vi}
+              </div>
+            </div>
+          </div>
+
+          {/* Divider - vertical on desktop */}
+          <div className="hidden md:block w-px h-16 bg-[var(--border)]" />
+          <div className="md:hidden border-t border-[var(--border)]" />
+
+          {/* Right: Army Types */}
+          <div className="flex gap-2 flex-wrap">
+            {troopTypes.map(type => {
+              const grade = general.troop_compatibility?.[type]?.grade as Grade;
+              const gradeStyle = gradeColors[grade] || { text: 'text-[var(--text-tertiary)]', border: 'border-[var(--border)]', color: '#5c574f' };
+              return (
+                <div
+                  key={type}
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded bg-[var(--bg-tertiary)] border ${gradeStyle.border}`}
+                >
+                  <TroopIcon
+                    type={type}
+                    size={18}
+                    style={{ color: gradeStyle.color }}
+                  />
+                  <span className={`text-[11px] uppercase ${gradeStyle.text}`}>
+                    {troopTypeNames[type].vi}
+                  </span>
+                  <span className={`text-[13px] font-bold ${gradeStyle.text}`}>
+                    {grade || '-'}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
       {/* Main Content */}
       <div className="flex flex-col md:flex-row gap-8">
         {/* Portrait Card - Left Side */}
-        <div className="md:w-72 flex-shrink-0 space-y-4">
+        <div className="md:w-72 flex-shrink-0">
           {/* Portrait */}
           <div className="card overflow-hidden">
             <div className="relative aspect-[2.5/3.5]">
@@ -203,64 +512,23 @@ export default function GeneralDetailPage() {
                 alt={general.name.vi}
                 className="w-full h-full object-cover object-top"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-
-              {/* Cost badge */}
-              <div className="absolute top-4 left-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent-gold-bright)] to-[var(--accent-gold)] flex items-center justify-center shadow-lg">
-                  <span className="text-xl font-bold text-[var(--bg)]">{general.cost}</span>
-                </div>
-              </div>
-
-              {/* Faction badge */}
-              <div className="absolute top-4 right-4">
-                <div className={`px-3 py-1 bg-black/70 ${factionColor.text} text-[12px] font-semibold uppercase tracking-wider`}>
-                  {factionName.vi}
-                </div>
-              </div>
-
-              {/* Name */}
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <h1 className="text-2xl font-bold text-[var(--text-primary)]">{general.name.vi}</h1>
-              </div>
-            </div>
-          </div>
-
-          {/* Troop Compatibility */}
-          <div className="card-gold p-4">
-            <div className="text-[11px] text-[var(--accent-gold)] uppercase tracking-widest font-semibold mb-4">Tương thích binh chủng</div>
-            <div className="grid grid-cols-5 gap-2">
-              {troopTypes.map(type => {
-                const grade = general.troop_compatibility?.[type]?.grade as Grade;
-                const isHighGrade = grade === 'S' || grade === 'A';
-                return (
-                  <div key={type} className="flex flex-col items-center">
-                    <TroopIcon
-                      type={type}
-                      size={22}
-                      className={isHighGrade ? 'text-[var(--accent-gold)]' : 'text-[var(--text-tertiary)]'}
-                    />
-                    <span className="text-[10px] text-[var(--text-tertiary)] mt-1 uppercase">{troopTypeNames[type].en}</span>
-                    <span className={`text-[14px] font-bold ${gradeColors[grade] || 'text-[var(--text-tertiary)]'}`}>
-                      {grade || '-'}
-                    </span>
-                  </div>
-                );
-              })}
             </div>
           </div>
         </div>
 
         {/* Details Section - Right Side */}
         <div className="flex-1 space-y-4">
+          {/* Stats Calculator */}
+          <StatsCalculator general={general} />
+
           {/* Innate Skill */}
           {general.innate_skill && (
-            <SkillCard title="Innate Tactic" skill={general.innate_skill} />
+            <SkillCard title="Chiến pháp tự mang" skill={general.innate_skill} />
           )}
 
           {/* Inherited Skill */}
           {general.inherited_skill && (
-            <SkillCard title="Inherited Tactic" skill={general.inherited_skill} />
+            <SkillCard title="Chiến pháp kế thừa" skill={general.inherited_skill} />
           )}
         </div>
       </div>

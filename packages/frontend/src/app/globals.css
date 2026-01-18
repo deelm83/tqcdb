@@ -292,3 +292,83 @@ button {
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border);
 }
+
+/* Elegant serif font for general names */
+.font-serif {
+  font-family: var(--font-serif), 'Noto Serif', Georgia, serif;
+}
+
+/* Game-inspired faction banner */
+.faction-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 1px solid;
+  position: relative;
+}
+
+.faction-banner::before,
+.faction-banner::after {
+  content: '◆';
+  font-size: 8px;
+  opacity: 0.6;
+}
+
+.faction-banner-wei {
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.15) 0%, rgba(30, 64, 175, 0.25) 100%);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #60a5fa;
+}
+
+.faction-banner-shu {
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.15) 0%, rgba(21, 128, 61, 0.25) 100%);
+  border-color: rgba(34, 197, 94, 0.5);
+  color: #4ade80;
+}
+
+.faction-banner-wu {
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.15) 0%, rgba(185, 28, 28, 0.25) 100%);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #f87171;
+}
+
+.faction-banner-qun {
+  background: linear-gradient(180deg, rgba(234, 179, 8, 0.15) 0%, rgba(161, 98, 7, 0.25) 100%);
+  border-color: rgba(234, 179, 8, 0.5);
+  color: #fbbf24;
+}
+
+/* Game-inspired cost diamond */
+.cost-seal {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cost-seal-inner {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 900;
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+  color: #ffffff;
+  background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 50%, #450a0a 100%);
+  border: 2px solid #b91c1c;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 8px rgba(127, 29, 29, 0.6);
+}
+
+.cost-seal-inner span {
+  transform: rotate(-45deg);
+}

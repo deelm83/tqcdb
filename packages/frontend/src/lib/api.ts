@@ -7,10 +7,24 @@ export interface General {
   name: { cn: string; vi: string };
   faction_id: string;
   cost: number;
+  rarity?: string;
   wiki_url?: string;
   image?: string;
   image_full?: string;
   tags?: { cn: string[]; vi: string[] };
+  // Stats
+  base_attack?: number;
+  base_command?: number;
+  base_intelligence?: number;
+  base_politics?: number;
+  base_speed?: number;
+  base_charm?: number;
+  growth_attack?: number;
+  growth_command?: number;
+  growth_intelligence?: number;
+  growth_politics?: number;
+  growth_speed?: number;
+  growth_charm?: number;
   troop_compatibility?: {
     cavalry?: { grade: string };
     shield?: { grade: string };

@@ -22,12 +22,34 @@ model General {
   tagsCn          String[] @map("tags_cn")
   tagsVi          String[] @map("tags_vi")
 
+  // Rarity: N, R, SR, SSR, SP
+  rarity          String?
+
   // Troop compatibility grades
   cavalryGrade    String?  @map("cavalry_grade")
   shieldGrade     String?  @map("shield_grade")
   archerGrade     String?  @map("archer_grade")
   spearGrade      String?  @map("spear_grade")
   siegeGrade      String?  @map("siege_grade")
+
+  // Base stats (at level 1)
+  baseAttack       Float?   @map("base_attack")
+  baseCommand      Float?   @map("base_command")
+  baseIntelligence Float?   @map("base_intelligence")
+  basePolitics     Float?   @map("base_politics")
+  baseSpeed        Float?   @map("base_speed")
+  baseCharm        Float?   @map("base_charm")
+
+  // Stat growth per level
+  growthAttack       Float?   @map("growth_attack")
+  growthCommand      Float?   @map("growth_command")
+  growthIntelligence Float?   @map("growth_intelligence")
+  growthPolitics     Float?   @map("growth_politics")
+  growthSpeed        Float?   @map("growth_speed")
+  growthCharm        Float?   @map("growth_charm")
+
+  // Reference screenshot for manual editing
+  refScreenshot   String?  @map("ref_screenshot")
 
   // Skills - foreign key relations
   innateSkillId     Int?     @map("innate_skill_id")

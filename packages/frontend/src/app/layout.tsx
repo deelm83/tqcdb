@@ -3,6 +3,16 @@ import "./globals.css";
 import { ConditionalHeader, ConditionalBackToTop } from "@/components/ConditionalHeader";
 import ScrollToTop from "@/components/ScrollToTop";
 
+// Google Fonts - Noto Serif for elegant names
+import { Noto_Serif } from 'next/font/google';
+
+const serif = Noto_Serif({
+  weight: ['400', '700'],
+  subsets: ['latin', 'vietnamese'],
+  variable: '--font-serif',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: {
     default: "tamquoc.gg",
@@ -21,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body className="antialiased">
+      <body className={`antialiased ${serif.variable}`}>
         <ScrollToTop />
         <ConditionalHeader />
         {children}

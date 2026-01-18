@@ -76,20 +76,20 @@ export const factionNames: Record<FactionId, { cn: string; vi: string; en: strin
   qun: { cn: '群', vi: 'Quần', en: 'Qun' },
 };
 
-// Grade colors - gold for S, red for A, etc
-export const gradeColors: Record<Grade, string> = {
-  'S': 'text-[var(--accent-gold)]',
-  'A': 'text-[var(--accent-red-bright)]',
-  'B': 'text-blue-400',
-  'C': 'text-[var(--text-tertiary)]',
+// Grade colors - S orange, A purple, B light blue, C light cyan
+export const gradeColors: Record<Grade, { text: string; border: string; color: string }> = {
+  'S': { text: 'text-orange-400', border: 'border-orange-400', color: '#fb923c' },
+  'A': { text: 'text-purple-400', border: 'border-purple-400', color: '#c084fc' },
+  'B': { text: 'text-sky-400', border: 'border-sky-400', color: '#38bdf8' },
+  'C': { text: 'text-cyan-300', border: 'border-cyan-300', color: '#67e8f9' },
 };
 
 export const troopTypeNames: Record<TroopType, { cn: string; vi: string; en: string }> = {
   cavalry: { cn: '骑兵', vi: 'Kỵ', en: 'Cav' },
-  shield: { cn: '盾兵', vi: 'Thuẫn', en: 'Shd' },
+  shield: { cn: '盾兵', vi: 'Khiên', en: 'Shd' },
   archer: { cn: '弓兵', vi: 'Cung', en: 'Arc' },
   spear: { cn: '枪兵', vi: 'Thương', en: 'Spr' },
-  siege: { cn: '器械', vi: 'Khí', en: 'Sig' },
+  siege: { cn: '器械', vi: 'Xe', en: 'Sig' },
 };
 
 // Map of general Chinese names to their info for quick lookup

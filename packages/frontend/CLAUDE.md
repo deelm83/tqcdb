@@ -2,6 +2,15 @@
 
 Next.js 16 web application for Three Kingdoms Tactics Wiki.
 
+## IMPORTANT: UI Guidelines
+
+**Before making any UI changes, read `UI_GUIDELINES.md` and follow all rules strictly.**
+
+Key rules:
+- Site must be 100% Vietnamese (except specific words like "COST")
+- Use correct troop type translations (Kỵ, Khiên, Cung, Thương, Xe)
+- Use correct grade colors (S=orange, A=purple, B=sky, C=cyan)
+
 ## Tech Stack
 - **Framework**: Next.js 16.1 (App Router)
 - **UI**: React 19.2

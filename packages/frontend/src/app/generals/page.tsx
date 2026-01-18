@@ -92,7 +92,7 @@ export default function GeneralsPage() {
       {loading && (
         <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="card aspect-[2.5/3.5] animate-pulse" />
+            <div key={i} className="card aspect-[7/10] animate-pulse" />
           ))}
         </div>
       )}
