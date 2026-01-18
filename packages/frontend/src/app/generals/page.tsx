@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense, useCallback } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { FactionId } from '@/lib/generals';
 import { TroopType } from '@/types/general';
 import { fetchGenerals, General } from '@/lib/api';
@@ -9,15 +10,52 @@ import SearchBar from '@/components/SearchBar';
 import FilterPanel from '@/components/FilterPanel';
 import { usePageTitle } from '@/hooks/usePageTitle';
 
-export default function GeneralsPage() {
+function GeneralsContent() {
   usePageTitle('Võ tướng');
-  const [search, setSearch] = useState('');
-  const [selectedFactions, setSelectedFactions] = useState<FactionId[]>([]);
-  const [selectedCost, setSelectedCost] = useState<number | null>(null);
-  const [selectedTroops, setSelectedTroops] = useState<TroopType[]>([]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [generals, setGenerals] = useState<General[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Read filters from URL
+  const search = searchParams.get('q') || '';
+  const selectedFactions = (searchParams.get('factions')?.split(',').filter(Boolean) || []) as FactionId[];
+  const selectedCost = searchParams.get('cost') ? Number(searchParams.get('cost')) : null;
+  const selectedTroops = (searchParams.get('troops')?.split(',').filter(Boolean) || []) as TroopType[];
+
+  // Update URL with new filters
+  const updateFilters = useCallback((updates: Record<string, string | null>) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value === null || value === '') {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+
+    const queryString = params.toString();
+    router.replace(queryString ? `?${queryString}` : '', { scroll: false });
+  }, [searchParams, router]);
+
+  const setSearch = useCallback((value: string) => {
+    updateFilters({ q: value || null });
+  }, [updateFilters]);
+
+  const setSelectedFactions = useCallback((factions: FactionId[]) => {
+    updateFilters({ factions: factions.length > 0 ? factions.join(',') : null });
+  }, [updateFilters]);
+
+  const setSelectedCost = useCallback((cost: number | null) => {
+    updateFilters({ cost: cost !== null ? String(cost) : null });
+  }, [updateFilters]);
+
+  const setSelectedTroops = useCallback((troops: TroopType[]) => {
+    updateFilters({ troops: troops.length > 0 ? troops.join(',') : null });
+  }, [updateFilters]);
 
   useEffect(() => {
     async function loadGenerals() {
@@ -114,5 +152,29 @@ export default function GeneralsPage() {
         </div>
       )}
     </main>
+  );
+}
+
+export default function GeneralsPage() {
+  return (
+    <Suspense fallback={
+      <main className="max-w-6xl mx-auto px-6 py-8">
+        <div className="mb-8">
+          <div className="h-8 w-32 bg-[var(--bg-secondary)] animate-pulse" />
+          <div className="h-4 w-64 bg-[var(--bg-secondary)] animate-pulse mt-2" />
+        </div>
+        <div className="space-y-4 mb-8">
+          <div className="h-12 bg-[var(--bg-secondary)] animate-pulse" />
+          <div className="h-24 bg-[var(--bg-secondary)] animate-pulse" />
+        </div>
+        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className="card aspect-[7/10] animate-pulse" />
+          ))}
+        </div>
+      </main>
+    }>
+      <GeneralsContent />
+    </Suspense>
   );
 }

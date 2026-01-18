@@ -51,7 +51,26 @@
       "Bash(npm start)",
       "Bash(npm run dev:*)",
       "mcp__ide__getDiagnostics",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(pkill:*)",
+      "Bash(git pull:*)",
+      "Bash(python extract_generals.py:*)",
+      "Bash(echo $ANTHROPIC_API_KEY)",
+      "Bash(open:*)",
+      "Bash(python image-processing/extract_generals.py:*)",
+      "Bash(grep:*)",
+      "Bash(python data-import/import_general_stats.py:*)",
+      "Bash(PGPASSWORD=postgres psql:*)",
+      "Bash(git commit:*)",
+      "Bash(npx ts-node:*)",
+      "Bash(comm:*)",
+      "Bash(head:*)",
+      "Bash(for img in sp-quan-vu.png sp-luu-diep.png sp-chu-du.png sp-bang-duc.png sp-truong-luong.png sp-tao-chan.png sp-chu-tuan.png sp-vien-thieu.png sp-gia-cat-luong.png sp-quach-gia.png)",
+      "Bash(do if [ -f \"$img\" ])",
+      "Bash(then echo \"✓ $img exists\")",
+      "Bash(else echo \"✗ $img MISSING\")",
+      "Bash(fi)",
+      "Bash(done)"
     ]
   }
 }

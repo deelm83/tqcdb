@@ -26,6 +26,21 @@ const qualityStyles: Record<string, string> = {
   B: 'text-violet-400',
 };
 
+const TARGET_LABELS: Record<string, string> = {
+  self: 'Bản thân',
+  toi: 'Bản thân',
+  ally_1: 'Quân ta (1 người)',
+  ally_2: 'Quân ta (2 người)',
+  ally_1_2: 'Quân ta (1-2 người)',
+  ally_2_3: 'Quân ta (2-3 người)',
+  ally_all: 'Toàn thể quân ta',
+  enemy_1: 'Quân địch (1 người)',
+  enemy_2: 'Quân địch (2 người)',
+  enemy_1_2: 'Quân địch (1-2 người)',
+  enemy_2_3: 'Quân địch (2-3 người)',
+  enemy_all: 'Toàn thể quân địch',
+};
+
 // Highlight special patterns in effect text
 function highlightEffectText(text: string): React.ReactNode {
   if (!text) return null;
@@ -169,7 +184,7 @@ export default function SkillDetailPage() {
                   textShadow: '1px 1px 3px rgba(0,0,0,0.5)',
                 }}
               >
-                {skill.name.vi || skill.name.cn}
+                {skill.name}
               </h1>
 
               {/* Badges */}
@@ -194,20 +209,20 @@ export default function SkillDetailPage() {
           {/* Content */}
           <div className="p-6 space-y-6">
             {/* Effect */}
-            {(skill.effect?.vi || skill.effect?.cn) && (
+            {skill.effect && (
               <div className="p-5 bg-[#0a0e14]/50 rounded-xl border border-[#2a3548]/50">
                 <div className="text-xs text-[#d4a74a] uppercase tracking-wider mb-3">Hiệu ứng</div>
                 <div className="text-base text-[#b8a990] leading-relaxed">
-                  {highlightEffectText(skill.effect.vi || skill.effect.cn || '')}
+                  {highlightEffectText(skill.effect || '')}
                 </div>
               </div>
             )}
 
             {/* Target */}
-            {(skill.target_vi || skill.target) && (
+            {skill.target && (
               <div className="flex items-start gap-3">
                 <span className="text-[#6b7280] min-w-[100px]">Mục tiêu:</span>
-                <span className="text-[#b8a990]">{skill.target_vi || skill.target}</span>
+                <span className="text-[#b8a990]">{TARGET_LABELS[skill.target] || skill.target}</span>
               </div>
             )}
 

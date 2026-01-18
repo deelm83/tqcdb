@@ -71,19 +71,15 @@ export default function NewSkillPage() {
 
   const [form, setForm] = useState({
     slug: '',
-    nameCn: '',
-    nameVi: '',
+    name: '',
     typeId: '',
-    typeNameCn: '',
-    typeNameVi: '',
+    typeName: '',
     quality: '',
     triggerRate: 0,
     sourceType: '',
     wikiUrl: '',
-    effectCn: '',
-    effectVi: '',
+    effect: '',
     target: '',
-    targetVi: '',
     armyTypes: [] as string[],
     innateToGenerals: [] as string[],
     inheritanceFromGenerals: [] as string[],
@@ -97,7 +93,6 @@ export default function NewSkillPage() {
   });
   const [innateSearch, setInnateSearch] = useState('');
   const [inheritSearch, setInheritSearch] = useState('');
-  const [showChinese, setShowChinese] = useState(false);
 
   // Load generals for the picker
   useEffect(() => {
@@ -128,7 +123,7 @@ export default function NewSkillPage() {
     setForm((prev) => ({
       ...prev,
       typeId,
-      typeNameVi: typeInfo?.nameVi || '',
+      typeName: typeInfo?.nameVi || '',
     }));
   };
 
@@ -157,17 +152,13 @@ export default function NewSkillPage() {
         // Update form with extracted data
         setForm((prev) => ({
           ...prev,
-          nameCn: data.name?.cn || prev.nameCn,
-          nameVi: data.name?.vi || prev.nameVi,
+          name: data.name || prev.name,
           typeId: data.type?.id || prev.typeId,
-          typeNameCn: data.type?.name?.cn || prev.typeNameCn,
-          typeNameVi: data.type?.name?.vi || prev.typeNameVi,
+          typeName: data.type?.name || prev.typeName,
           quality: data.quality || prev.quality,
           triggerRate: data.trigger_rate ?? prev.triggerRate,
-          effectCn: data.effect?.cn || prev.effectCn,
-          effectVi: data.effect?.vi || prev.effectVi,
+          effect: data.effect || prev.effect,
           target: data.target || prev.target,
-          targetVi: data.target_vi || prev.targetVi,
           armyTypes: data.army_types?.length ? data.army_types : prev.armyTypes,
           innateToGenerals: data.innate_to?.length ? data.innate_to : prev.innateToGenerals,
           inheritanceFromGenerals: data.inheritance_from?.length ? data.inheritance_from : prev.inheritanceFromGenerals,
@@ -215,15 +206,14 @@ export default function NewSkillPage() {
     try {
       const result = await createSkill({
         slug: form.slug || undefined,
-        name: { cn: form.nameCn, vi: form.nameVi },
-        type: { id: form.typeId, name: { cn: form.typeNameCn, vi: form.typeNameVi } },
+        name: form.name,
+        type: { id: form.typeId, name: form.typeName },
         quality: form.quality || undefined,
         trigger_rate: form.triggerRate || undefined,
         source_type: form.sourceType || undefined,
         wiki_url: form.wikiUrl || undefined,
-        effect: (form.effectCn || form.effectVi) ? { cn: form.effectCn, vi: form.effectVi } : undefined,
+        effect: form.effect || undefined,
         target: form.target || undefined,
-        target_vi: form.targetVi || undefined,
         army_types: form.armyTypes,
         innate_to: form.innateToGenerals,
         inheritance_from: form.inheritanceFromGenerals,
@@ -278,7 +268,7 @@ export default function NewSkillPage() {
 
         <form onSubmit={handleSubmit}>
           {/* Skill Title - Display (only if name exists) */}
-          {(form.nameVi || form.quality || currentType) && (
+          {(form.name || form.quality || currentType) && (
             <div className="bg-stone-800/90 border border-amber-900/40 rounded-xl p-5 mb-5">
               <div className="flex items-center gap-3 mb-2">
                 {form.quality && (
@@ -295,47 +285,25 @@ export default function NewSkillPage() {
                   <span className="text-amber-400 text-sm font-medium">{form.triggerRate}%</span>
                 )}
               </div>
-              <h1 className="text-2xl font-bold text-amber-100">{form.nameVi || 'Chiến pháp mới'}</h1>
-              {showChinese && form.nameCn && <p className="text-stone-400 mt-1">{form.nameCn}</p>}
+              <h1 className="text-2xl font-bold text-amber-100">{form.name || 'Chiến pháp mới'}</h1>
             </div>
           )}
 
           {/* Basic Info Form */}
           <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5 mb-5">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-base font-semibold text-amber-100">Thông tin cơ bản</h2>
-              <button
-                type="button"
-                onClick={() => setShowChinese(!showChinese)}
-                className="text-xs text-stone-400 hover:text-amber-400 transition-colors"
-              >
-                {showChinese ? '− Ẩn tiếng Trung' : '+ Hiện tiếng Trung'}
-              </button>
-            </div>
+            <h2 className="text-base font-semibold text-amber-100 mb-4">Thông tin cơ bản</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className={showChinese ? '' : 'md:col-span-2'}>
+              <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-stone-300 mb-1">Tên *</label>
                 <input
                   type="text"
-                  value={form.nameVi}
-                  onChange={(e) => setForm((prev) => ({ ...prev, nameVi: e.target.value }))}
+                  value={form.name}
+                  onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
                   className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white focus:border-amber-500 focus:outline-none"
                   required
                 />
               </div>
-
-              {showChinese && (
-                <div>
-                  <label className="block text-sm font-medium text-stone-400 mb-1">Tên (CN)</label>
-                  <input
-                    type="text"
-                    value={form.nameCn}
-                    onChange={(e) => setForm((prev) => ({ ...prev, nameCn: e.target.value }))}
-                    className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-stone-300 focus:border-stone-500 focus:outline-none"
-                  />
-                </div>
-              )}
 
               <div>
                 <label className="block text-sm font-medium text-stone-300 mb-1">Loại *</label>
@@ -435,38 +403,18 @@ export default function NewSkillPage() {
                 <div className="space-y-3">
                   <div>
                     <textarea
-                      value={form.effectVi}
-                      onChange={(e) => setForm((prev) => ({ ...prev, effectVi: e.target.value }))}
+                      value={form.effect}
+                      onChange={(e) => setForm((prev) => ({ ...prev, effect: e.target.value }))}
                       className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white text-sm h-28 focus:border-amber-500 focus:outline-none transition-colors"
                       placeholder="Mô tả hiệu ứng..."
                     />
                   </div>
 
-                  {showChinese && (
-                    <div>
-                      <label className="block text-xs font-medium text-stone-400 mb-1">Tiếng Trung</label>
-                      <textarea
-                        value={form.effectCn}
-                        onChange={(e) => setForm((prev) => ({ ...prev, effectCn: e.target.value }))}
-                        className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-stone-300 text-sm h-20 focus:border-stone-500 focus:outline-none transition-colors"
-                        placeholder="中文描述..."
-                      />
-                    </div>
-                  )}
-
                   <div className="flex items-center gap-3">
                     <label className="text-sm font-medium text-stone-300">Mục tiêu:</label>
                     <select
                       value={form.target}
-                      onChange={(e) => {
-                        const targetId = e.target.value;
-                        const targetOption = TARGET_OPTIONS.find(t => t.id === targetId);
-                        setForm((prev) => ({
-                          ...prev,
-                          target: targetId,
-                          targetVi: targetOption?.label || ''
-                        }));
-                      }}
+                      onChange={(e) => setForm((prev) => ({ ...prev, target: e.target.value }))}
                       className="flex-1 max-w-xs px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white text-sm focus:border-amber-500 focus:outline-none"
                     >
                       <option value="">Chọn mục tiêu</option>
@@ -537,7 +485,7 @@ export default function NewSkillPage() {
                                 key={gId}
                                 className="inline-flex items-center gap-1 px-3 py-1.5 bg-amber-900/50 border border-amber-700/50 rounded-full text-sm text-amber-200"
                               >
-                                {general?.name?.vi || gId}
+                                {general?.name || gId}
                                 <button
                                   type="button"
                                   onClick={() => setForm(prev => ({ ...prev, innateGeneralIds: [] }))}
@@ -561,7 +509,7 @@ export default function NewSkillPage() {
                           {innateSearch && (
                             <div className="absolute z-10 mt-1 w-full max-h-48 overflow-auto bg-stone-800 border border-stone-600 rounded-lg shadow-xl">
                               {generals
-                                .filter(g => normalizeVietnamese(g.name.vi).includes(normalizeVietnamese(innateSearch)))
+                                .filter(g => normalizeVietnamese(g.name).includes(normalizeVietnamese(innateSearch)))
                                 .slice(0, 15)
                                 .map(g => (
                                   <button
@@ -573,7 +521,7 @@ export default function NewSkillPage() {
                                     }}
                                     className="w-full px-3 py-2 text-left hover:bg-stone-700 text-stone-200 text-sm border-b border-stone-700/50 last:border-0"
                                   >
-                                    {g.name.vi}
+                                    {g.name}
                                   </button>
                                 ))
                               }
@@ -599,7 +547,7 @@ export default function NewSkillPage() {
                                 key={gId}
                                 className="inline-flex items-center gap-1 px-2 py-1 bg-emerald-900/50 border border-emerald-700/50 rounded-full text-xs text-emerald-200"
                               >
-                                {general?.name?.vi || gId}
+                                {general?.name || gId}
                                 <button
                                   type="button"
                                   onClick={() => setForm(prev => ({
@@ -628,7 +576,7 @@ export default function NewSkillPage() {
                             {generals
                               .filter(g =>
                                 !form.inheritGeneralIds.includes(g.id) &&
-                                normalizeVietnamese(g.name.vi).includes(normalizeVietnamese(inheritSearch))
+                                normalizeVietnamese(g.name).includes(normalizeVietnamese(inheritSearch))
                               )
                               .slice(0, 15)
                               .map(g => (
@@ -641,7 +589,7 @@ export default function NewSkillPage() {
                                   }}
                                   className="w-full px-3 py-2 text-left hover:bg-stone-700 text-stone-200 text-sm border-b border-stone-700/50 last:border-0"
                                 >
-                                  {g.name.vi}
+                                  {g.name}
                                 </button>
                               ))
                             }
@@ -701,7 +649,7 @@ export default function NewSkillPage() {
                                 key={gId}
                                 className="inline-flex items-center gap-1 px-2 py-1 bg-cyan-900/50 border border-cyan-700/50 rounded-full text-xs text-cyan-200"
                               >
-                                {general?.name?.vi || gId}
+                                {general?.name || gId}
                                 <button
                                   type="button"
                                   onClick={() => setForm(prev => ({
@@ -731,7 +679,7 @@ export default function NewSkillPage() {
                             {generals
                               .filter(g =>
                                 !form.exchangeGeneralIds.includes(g.id) &&
-                                normalizeVietnamese(g.name.vi).includes(normalizeVietnamese(generalSearch))
+                                normalizeVietnamese(g.name).includes(normalizeVietnamese(generalSearch))
                               )
                               .slice(0, 15)
                               .map(g => (
@@ -744,7 +692,7 @@ export default function NewSkillPage() {
                                   }}
                                   className="w-full px-3 py-2 text-left hover:bg-stone-700 text-stone-200 text-sm border-b border-stone-700/50 last:border-0"
                                 >
-                                  {g.name.vi}
+                                  {g.name}
                                 </button>
                               ))
                             }

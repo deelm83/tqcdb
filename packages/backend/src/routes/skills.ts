@@ -29,9 +29,9 @@ interface SkillsQuery {
 }
 
 type SkillWithRelations = Skill & {
-  innateGeneralRelations: { general: { nameCn: string } }[];
-  inheritGeneralRelations: { general: { nameCn: string } }[];
-  exchangeGeneralRelations: { general: { nameCn: string } }[];
+  innateGeneralRelations: { general: { name: string } }[];
+  inheritGeneralRelations: { general: { name: string } }[];
+  exchangeGeneralRelations: { general: { name: string } }[];
 };
 
 // GET all skills with filtering
@@ -48,55 +48,52 @@ router.get('/', async (req: Request<object, object, object, SkillsQuery>, res: R
 
     let skills = await prisma.skill.findMany({
       where,
-      orderBy: { nameCn: 'asc' },
+      orderBy: { name: 'asc' },
       include: {
         innateGeneralRelations: {
-          include: { general: { select: { nameCn: true } } }
+          include: { general: { select: { name: true } } }
         },
         inheritGeneralRelations: {
-          include: { general: { select: { nameCn: true } } }
+          include: { general: { select: { name: true } } }
         },
         exchangeGeneralRelations: {
-          include: { general: { select: { nameCn: true } } }
+          include: { general: { select: { name: true } } }
         },
       },
     }) as SkillWithRelations[];
 
     // Apply Vietnamese diacritics-insensitive search filter
     if (search) {
-      skills = skills.filter(s =>
-        matchesSearch(s.nameVi, search) || matchesSearch(s.nameCn, search)
-      );
+      skills = skills.filter(s => matchesSearch(s.name, search));
     }
 
     // Transform to match frontend expected format
     const transformed = skills.map((s) => {
       // Prefer relation data, fall back to legacy arrays
       const innateGenerals = s.innateGeneralRelations.length > 0
-        ? s.innateGeneralRelations.map(r => r.general.nameCn)
+        ? s.innateGeneralRelations.map(r => r.general.name)
         : s.innateToGeneralNames;
       const inheritGenerals = s.inheritGeneralRelations.length > 0
-        ? s.inheritGeneralRelations.map(r => r.general.nameCn)
+        ? s.inheritGeneralRelations.map(r => r.general.name)
         : s.inheritanceFromGeneralNames;
       const exchangeGenerals = s.exchangeGeneralRelations.length > 0
-        ? s.exchangeGeneralRelations.map(r => r.general.nameCn)
+        ? s.exchangeGeneralRelations.map(r => r.general.name)
         : s.exchangeGenerals;
 
       return {
         id: s.id,
         slug: s.slug,
-        name: { cn: s.nameCn, vi: s.nameVi },
+        name: s.name,
         type: {
           id: s.typeId,
-          name: { cn: s.typeNameCn, vi: s.typeNameVi },
+          name: s.typeName,
         },
         quality: s.quality,
         trigger_rate: s.triggerRate,
         source_type: s.sourceType,
         wiki_url: s.wikiUrl,
-        effect: (s.effectCn || s.effectVi) ? { cn: s.effectCn, vi: s.effectVi } : null,
+        effect: s.effect,
         target: s.target,
-        target_vi: s.targetVi,
         army_types: s.armyTypes,
         innate_to: innateGenerals,
         inheritance_from: inheritGenerals,
@@ -148,16 +145,15 @@ router.get('/generals-map', async (_req: Request, res: Response) => {
       select: {
         id: true,
         slug: true,
-        nameCn: true,
-        nameVi: true,
+        name: true,
       },
     });
 
-    const map: Record<string, { id: string; vi: string | null }> = {};
+    const map: Record<string, { id: string; name: string }> = {};
     generals.forEach((g) => {
-      map[g.nameCn] = {
-        id: g.slug || g.id, // Use slug for URL, fallback to id
-        vi: g.nameVi,
+      map[g.name] = {
+        id: g.slug || g.id,
+        name: g.name,
       };
     });
 
@@ -175,13 +171,13 @@ router.get('/:identifier', async (req: Request<{ identifier: string }>, res: Res
 
     const includeRelations = {
       innateGeneralRelations: {
-        include: { general: { select: { nameCn: true } } }
+        include: { general: { select: { name: true } } }
       },
       inheritGeneralRelations: {
-        include: { general: { select: { nameCn: true } } }
+        include: { general: { select: { name: true } } }
       },
       exchangeGeneralRelations: {
-        include: { general: { select: { nameCn: true } } }
+        include: { general: { select: { name: true } } }
       },
     };
 
@@ -209,31 +205,30 @@ router.get('/:identifier', async (req: Request<{ identifier: string }>, res: Res
 
     // Prefer relation data, fall back to legacy arrays
     const innateGenerals = skill.innateGeneralRelations.length > 0
-      ? skill.innateGeneralRelations.map(r => r.general.nameCn)
+      ? skill.innateGeneralRelations.map(r => r.general.name)
       : skill.innateToGeneralNames;
     const inheritGenerals = skill.inheritGeneralRelations.length > 0
-      ? skill.inheritGeneralRelations.map(r => r.general.nameCn)
+      ? skill.inheritGeneralRelations.map(r => r.general.name)
       : skill.inheritanceFromGeneralNames;
     const exchangeGenerals = skill.exchangeGeneralRelations.length > 0
-      ? skill.exchangeGeneralRelations.map(r => r.general.nameCn)
+      ? skill.exchangeGeneralRelations.map(r => r.general.name)
       : skill.exchangeGenerals;
 
     // Transform to match frontend expected format
     const transformed = {
       id: skill.id,
       slug: skill.slug,
-      name: { cn: skill.nameCn, vi: skill.nameVi },
+      name: skill.name,
       type: {
         id: skill.typeId,
-        name: { cn: skill.typeNameCn, vi: skill.typeNameVi },
+        name: skill.typeName,
       },
       quality: skill.quality,
       trigger_rate: skill.triggerRate,
       source_type: skill.sourceType,
       wiki_url: skill.wikiUrl,
-      effect: (skill.effectCn || skill.effectVi) ? { cn: skill.effectCn, vi: skill.effectVi } : null,
+      effect: skill.effect,
       target: skill.target,
-      target_vi: skill.targetVi,
       army_types: skill.armyTypes,
       innate_to: innateGenerals,
       inheritance_from: inheritGenerals,

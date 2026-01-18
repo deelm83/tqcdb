@@ -71,7 +71,7 @@ export async function uploadGeneralImage(id: string, file: File): Promise<{ succ
 
 export interface SkillOption {
   id: number;
-  name: { cn: string; vi: string };
+  name: string;
   type_id: string;
   quality: string | null;
 }
@@ -111,14 +111,13 @@ export async function deleteSkill(id: string): Promise<{ success: boolean; messa
 }
 
 export interface ProcessedSkillData {
-  name?: { cn: string; vi: string };
-  type?: { id: string; name: { cn: string; vi: string } };
+  name?: string;
+  type?: { id: string; name: string };
   quality?: string;
   trigger_rate?: number;
   target?: string;
-  target_vi?: string;
   army_types?: string[];
-  effect?: { cn: string; vi: string };
+  effect?: string;
   innate_to?: string[];
   inheritance_from?: string[];
 }
@@ -136,6 +135,24 @@ export async function processSkillImage(file: File): Promise<{ success: boolean;
   if (!response.ok) {
     const data = await response.json().catch(() => ({}));
     throw new Error(data.error || 'Image processing failed');
+  }
+
+  return response.json();
+}
+
+export async function uploadSkillImage(id: string, file: File): Promise<{ success: boolean; filename: string; screenshots: string[] }> {
+  const formData = new FormData();
+  formData.append('image', file);
+
+  const response = await fetch(`${API_BASE_URL}/admin/skills/${encodeURIComponent(id)}/image`, {
+    method: 'POST',
+    credentials: 'include',
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const data = await response.json().catch(() => ({}));
+    throw new Error(data.error || 'Upload failed');
   }
 
   return response.json();

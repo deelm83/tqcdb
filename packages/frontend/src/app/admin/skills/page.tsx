@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense, useCallback } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { fetchAdminSkills, deleteSkill, updateSkill } from '@/lib/adminApi';
 import { Skill } from '@/lib/api';
 import { usePageTitle } from '@/hooks/usePageTitle';
@@ -33,18 +33,58 @@ function removeVietnameseDiacritics(str: string): string {
     .toLowerCase();
 }
 
-export default function AdminSkillsPage() {
+function AdminSkillsContent() {
   usePageTitle('Chiến pháp', true);
   const { isAuthenticated, isLoading } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [skills, setSkills] = useState<Skill[]>([]);
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState('');
-  const [selectedType, setSelectedType] = useState<string | null>(null);
-  const [selectedQuality, setSelectedQuality] = useState<string | null>(null);
-  const [selectedStatus, setSelectedStatus] = useState<StatusFilter>('all');
   const [deleting, setDeleting] = useState<number | null>(null);
   const [togglingStatus, setTogglingStatus] = useState<number | null>(null);
+
+  // Read filters from URL
+  const search = searchParams.get('q') || '';
+  const selectedType = searchParams.get('type') || null;
+  const selectedQuality = searchParams.get('quality') || null;
+  const selectedStatus = (searchParams.get('status') || 'all') as StatusFilter;
+
+  // Update URL with new filters
+  const updateFilters = useCallback((updates: Record<string, string | null>) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value === null || value === '' || value === 'all') {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+
+    const queryString = params.toString();
+    router.replace(queryString ? `?${queryString}` : '', { scroll: false });
+  }, [searchParams, router]);
+
+  const setSearch = useCallback((value: string) => {
+    updateFilters({ q: value || null });
+  }, [updateFilters]);
+
+  const setSelectedType = useCallback((value: string | null) => {
+    updateFilters({ type: value });
+  }, [updateFilters]);
+
+  const setSelectedQuality = useCallback((value: string | null) => {
+    updateFilters({ quality: value });
+  }, [updateFilters]);
+
+  const setSelectedStatus = useCallback((value: StatusFilter) => {
+    updateFilters({ status: value === 'all' ? null : value });
+  }, [updateFilters]);
+
+  const clearFilters = useCallback(() => {
+    router.replace('', { scroll: false });
+  }, [router]);
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -102,20 +142,12 @@ export default function AdminSkillsPage() {
     }
   };
 
-  const clearFilters = () => {
-    setSearch('');
-    setSelectedType(null);
-    setSelectedQuality(null);
-    setSelectedStatus('all');
-  };
-
   const filteredSkills = skills.filter((s) => {
     // Search filter (diacritics-insensitive)
     if (search) {
       const searchNormalized = removeVietnameseDiacritics(search);
       const matchesSearch =
-        removeVietnameseDiacritics(s.name.vi).includes(searchNormalized) ||
-        removeVietnameseDiacritics(s.name.cn).includes(searchNormalized) ||
+        removeVietnameseDiacritics(s.name).includes(searchNormalized) ||
         (s.slug && s.slug.toLowerCase().includes(searchNormalized));
       if (!matchesSearch) return false;
     }
@@ -137,6 +169,8 @@ export default function AdminSkillsPage() {
 
     return true;
   });
+
+  const hasFilters = search || selectedType || selectedQuality || selectedStatus !== 'all';
 
   if (isLoading || !isAuthenticated) {
     return null;
@@ -217,7 +251,7 @@ export default function AdminSkillsPage() {
               >
                 Hoàn thành
               </button>
-              {(selectedType || selectedQuality || search || selectedStatus !== 'all') && (
+              {hasFilters && (
                 <button
                   onClick={clearFilters}
                   className="ml-2 px-2 py-1 text-xs text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors"
@@ -284,7 +318,7 @@ export default function AdminSkillsPage() {
                         ) : (
                           <span className="w-2 h-2 rounded-full bg-orange-500 flex-shrink-0" title="Cần cập nhật"></span>
                         )}
-                        {skill.name.vi}
+                        {skill.name}
                       </div>
                     </td>
                     <td className="px-4 py-3">
@@ -298,7 +332,7 @@ export default function AdminSkillsPage() {
                         skill.type.id === 'troop' ? 'text-green-400' :
                         'text-[var(--text-tertiary)]'
                       }`}>
-                        {skill.type.name?.vi || skill.type.id}
+                        {skill.type.name || skill.type.id}
                       </span>
                     </td>
                     <td className="px-4 py-3">
@@ -334,7 +368,7 @@ export default function AdminSkillsPage() {
                           Sửa
                         </Link>
                         <button
-                          onClick={() => handleDelete(skill.id, skill.slug, skill.name.vi)}
+                          onClick={() => handleDelete(skill.id, skill.slug, skill.name)}
                           disabled={deleting === skill.id}
                           className="px-3 py-1 text-sm text-[var(--accent-red-bright)] hover:text-red-400 border border-[var(--accent-red)] hover:border-[var(--accent-red-bright)] transition-colors disabled:opacity-50"
                         >
@@ -356,5 +390,23 @@ export default function AdminSkillsPage() {
         )}
       </div>
     </main>
+  );
+}
+
+export default function AdminSkillsPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen bg-[var(--bg)] py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-8 w-48 bg-[var(--bg-secondary)] animate-pulse mb-6" />
+          <div className="card p-4 mb-6 space-y-4">
+            <div className="h-10 bg-[var(--bg-secondary)] animate-pulse" />
+            <div className="h-12 bg-[var(--bg-secondary)] animate-pulse" />
+          </div>
+        </div>
+      </main>
+    }>
+      <AdminSkillsContent />
+    </Suspense>
   );
 }

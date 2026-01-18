@@ -1,0 +1,1047 @@
+{
+  "bien_hy": {
+    "name_vi": "Biện Hỷ",
+    "name_cn": null,
+    "filename": "bien_hy.png"
+  },
+  "sp_bang_duc": {
+    "name_vi": "SP Bàng Đức",
+    "name_cn": "庞德",
+    "filename": "bang_duc.png"
+  },
+  "bang_duc": {
+    "name_vi": "Bàng Đức",
+    "name_cn": "庞德",
+    "filename": "bang_duc_2.png"
+  },
+  "bo_chat": {
+    "name_vi": "Bộ Chất",
+    "name_cn": "布才",
+    "filename": "bo_chat.png"
+  },
+  "bo_luyen_su": {
+    "name_vi": "Bộ Luyện Sư",
+    "name_cn": "步练师",
+    "filename": "bo_luyen_su.png"
+  },
+  "cam_ninh": {
+    "name_vi": "Cam Ninh",
+    "name_cn": "甘寧",
+    "filename": "cam_ninh.png"
+  },
+  "cao_lam": {
+    "name_vi": "Cao Lãm",
+    "name_cn": "曹覽",
+    "filename": "cao_lam.png"
+  },
+  "cao_thuan": {
+    "name_vi": "Cao Thuần",
+    "name_cn": "曹純",
+    "filename": "cao_thuan.png"
+  },
+  "sp_chu_du": {
+    "name_vi": "SP Chu Du",
+    "name_cn": "周瑜",
+    "filename": "chu_du.png"
+  },
+  "chu_du": {
+    "name_vi": "Chu Du",
+    "name_cn": "周瑜",
+    "filename": "chu_du_2.png"
+  },
+  "chu_hoan": {
+    "name_vi": "Chu Hoàn",
+    "name_cn": "朱桓",
+    "filename": "chu_hoan.png"
+  },
+  "chu_nhien": {
+    "name_vi": "Chu Nhiên",
+    "name_cn": "朱然",
+    "filename": "chu_nhien.png"
+  },
+  "chu_thai": {
+    "name_vi": "Chu Thái",
+    "name_cn": "朱泰",
+    "filename": "chu_thai.png"
+  },
+  "chu_thuong": {
+    "name_vi": "Chu Thương",
+    "name_cn": "朱商",
+    "filename": "chu_thuong.png"
+  },
+  "sp_chu_tuan": {
+    "name_vi": "SP Chu Tuấn",
+    "name_cn": "朱儁",
+    "filename": "chu_tuan.png"
+  },
+  "chu_tuan": {
+    "name_vi": "Chu Tuấn",
+    "name_cn": "朱儁",
+    "filename": "chu_tuan_2.png"
+  },
+  "chung_do": {
+    "name_vi": "Chung Do",
+    "name_cn": "钟会",
+    "filename": "chung_do.png"
+  },
+  "chung_hoi": {
+    "name_vi": "Chung Hội",
+    "name_cn": "钟会",
+    "filename": "chung_hoi.png"
+  },
+  "chan_co": {
+    "name_vi": "Chân Cơ",
+    "name_cn": "甄姬",
+    "filename": "chan_co.png"
+  },
+  "chuc_dung": {
+    "name_vi": "Chúc Dung",
+    "name_cn": "祝融",
+    "filename": "chuc_dung.png"
+  },
+  "cong_ton_toan": {
+    "name_vi": "Công Tôn Toản",
+    "name_cn": "公孙瓒",
+    "filename": "cong_ton_toan.png"
+  },
+  "co_ung": {
+    "name_vi": "Cố Ung",
+    "name_cn": "顾雍",
+    "filename": "co_ung.png"
+  },
+  "duong_tu": {
+    "name_vi": "Dương Tu",
+    "name_cn": "杨修",
+    "filename": "duong_tu.png"
+  },
+  "gia_cat_chiem": {
+    "name_vi": "Gia Cát Chiêm",
+    "name_cn": "諸葛瞻",
+    "filename": "gia_cat_chiem.png"
+  },
+  "gia_cat_can": {
+    "name_vi": "Gia Cát Cẩn",
+    "name_cn": "诸葛瑾",
+    "filename": "gia_cat_can.png"
+  },
+  "gia_cat_khac": {
+    "name_vi": "Gia Cát Khác",
+    "name_cn": null,
+    "filename": "gia_cat_khac.png"
+  },
+  "sp_gia_cat_luong": {
+    "name_vi": "SP Gia Cát Lượng",
+    "name_cn": "诸葛亮",
+    "filename": "gia_cat_luong.png"
+  },
+  "gia_cat_luong": {
+    "name_vi": "Gia Cát Lượng",
+    "name_cn": "诸葛亮",
+    "filename": "gia_cat_luong_2.png"
+  },
+  "gian_ung": {
+    "name_vi": "Giản Ung",
+    "name_cn": "簡雍",
+    "filename": "gian_ung.png"
+  },
+  "hoa_ham": {
+    "name_vi": "Hoa Hâm",
+    "name_cn": "华歆",
+    "filename": "hoa_ham.png"
+  },
+  "hoa_hung": {
+    "name_vi": "Hoa Hùng",
+    "name_cn": "花雄",
+    "filename": "hoa_hung.png"
+  },
+  "hoa_da": {
+    "name_vi": "Hoa Đà",
+    "name_cn": "华佗",
+    "filename": "hoa_da.png"
+  },
+  "hoang_cai": {
+    "name_vi": "Hoàng Cái",
+    "name_cn": "黄盖",
+    "filename": "hoang_cai.png"
+  },
+  "sp_hoang_nguyet_anh": {
+    "name_vi": "SP Hoàng Nguyệt Anh",
+    "name_cn": "黄月英",
+    "filename": "hoang_nguyet_anh.png"
+  },
+  "hoang_nguyet_anh": {
+    "name_vi": "Hoàng Nguyệt Anh",
+    "name_cn": null,
+    "filename": "hoang_nguyet_anh_2.png"
+  },
+  "hoang_pho_tung": {
+    "name_vi": "Hoàng Phổ Tung",
+    "name_cn": null,
+    "filename": "hoang_pho_tung.png"
+  },
+  "sp_hoang_pho_tung": {
+    "name_vi": "SP Hoàng Phổ Tung",
+    "name_cn": "皇甫嵩",
+    "filename": "hoang_phu_tung.png"
+  },
+  "hoang_quyen": {
+    "name_vi": "Hoàng Quyền",
+    "name_cn": "黄权",
+    "filename": "hoang_quyen.png"
+  },
+  "hoang_trung": {
+    "name_vi": "Hoàng Trung",
+    "name_cn": "黄忠",
+    "filename": "hoang_trung.png"
+  },
+  "huong_sung": {
+    "name_vi": "Hướng Sủng",
+    "name_cn": "黄忠",
+    "filename": "huong_sung.png"
+  },
+  "ham_trach": {
+    "name_vi": "Hám Trạch",
+    "name_cn": "韓德",
+    "filename": "ham_trach.png"
+  },
+  "han_toai": {
+    "name_vi": "Hàn Toại",
+    "name_cn": "韩遂",
+    "filename": "han_toai.png"
+  },
+  "han_duong": {
+    "name_vi": "Hàn Đương",
+    "name_cn": "韩当",
+    "filename": "han_duong.png"
+  },
+  "ha_hau_uyen": {
+    "name_vi": "Hạ Hầu Uyên",
+    "name_cn": "夏侯淵",
+    "filename": "ha_hau_uyen.png"
+  },
+  "ha_hau_an": {
+    "name_vi": "Hạ Hầu Ân",
+    "name_cn": "夏侯恩",
+    "filename": "ha_hau_an.png"
+  },
+  "ha_hau_don": {
+    "name_vi": "Hạ Hầu Đôn",
+    "name_cn": "夏侯惇",
+    "filename": "ha_hau_don.png"
+  },
+  "ha_tien": {
+    "name_vi": "Hà Tiến",
+    "name_cn": "夏侯淵",
+    "filename": "ha_tien.png"
+  },
+  "ho_xa_nhi": {
+    "name_vi": "Hồ Xa Nhi",
+    "name_cn": "虎舍儿",
+    "filename": "ho_xa_nhi.png"
+  },
+  "sp_hua_chu": {
+    "name_vi": "SP Hứa Chử",
+    "name_cn": "许褚",
+    "filename": "hua_chu.png"
+  },
+  "hua_chu": {
+    "name_vi": "Hứa Chử",
+    "name_cn": "許褚",
+    "filename": "hua_chu_2.png"
+  },
+  "hua_du": {
+    "name_vi": "Hứa Du",
+    "name_cn": "许攸",
+    "filename": "hua_du.png"
+  },
+  "khuc_nghia": {
+    "name_vi": "Khúc Nghĩa",
+    "name_cn": null,
+    "filename": "khuc_nghia.png"
+  },
+  "khuong_duy": {
+    "name_vi": "Khương Duy",
+    "name_cn": "姜维",
+    "filename": "khuong_duy.png"
+  },
+  "khong_dung": {
+    "name_vi": "Khổng Dung",
+    "name_cn": "孔融",
+    "filename": "khong_dung.png"
+  },
+  "ky_linh": {
+    "name_vi": "Kỷ Linh",
+    "name_cn": "紀靈",
+    "filename": "ky_linh.png"
+  },
+  "lieu_hoa": {
+    "name_vi": "Liêu Hóa",
+    "name_cn": "廖化",
+    "filename": "lieu_hoa.png"
+  },
+  "ly_nghiem": {
+    "name_vi": "Lý Nghiêm",
+    "name_cn": null,
+    "filename": "ly_nghiem.png"
+  },
+  "ly_nho": {
+    "name_vi": "Lý Nho",
+    "name_cn": "李儒",
+    "filename": "ly_nho.png"
+  },
+  "ly_thoi": {
+    "name_vi": "Lý Thôi",
+    "name_cn": "李催",
+    "filename": "ly_thoi.png"
+  },
+  "ly_dien": {
+    "name_vi": "Lý Điển",
+    "name_cn": "李典",
+    "filename": "ly_dien.png"
+  },
+  "luu_ba": {
+    "name_vi": "Lưu Ba",
+    "name_cn": "劉巴",
+    "filename": "luu_ba.png"
+  },
+  "luu_bieu": {
+    "name_vi": "Lưu Biểu",
+    "name_cn": "刘表",
+    "filename": "luu_bieu.png"
+  },
+  "luu_bi": {
+    "name_vi": "Lưu Bị",
+    "name_cn": "刘备",
+    "filename": "luu_bi.png"
+  },
+  "sp_luu_diep": {
+    "name_vi": "SP Lưu Diệp",
+    "name_cn": "劉曄",
+    "filename": "luu_diep.png"
+  },
+  "luu_diep": {
+    "name_vi": "Lưu Diệp",
+    "name_cn": "劉曄",
+    "filename": "luu_diep_2.png"
+  },
+  "luu_do": {
+    "name_vi": "Lưu Do",
+    "name_cn": "刘度",
+    "filename": "luu_do.png"
+  },
+  "luu_phong": {
+    "name_vi": "Lưu Phong",
+    "name_cn": "刘封",
+    "filename": "luu_phong.png"
+  },
+  "luu_thien": {
+    "name_vi": "Lưu Thiện",
+    "name_cn": "刘禅",
+    "filename": "luu_thien.png"
+  },
+  "lo_truc": {
+    "name_vi": "Lô Trực",
+    "name_cn": "鲁肃",
+    "filename": "lo_truc.png"
+  },
+  "luc_khang": {
+    "name_vi": "Lục Kháng",
+    "name_cn": "陆抗",
+    "filename": "luc_khang.png"
+  },
+  "luc_ton": {
+    "name_vi": "Lục Tốn",
+    "name_cn": "陆逊",
+    "filename": "luc_ton.png"
+  },
+  "lu_bo": {
+    "name_vi": "Lữ Bố",
+    "name_cn": "呂布",
+    "filename": "lu_bo.png"
+  },
+  "lu_kien": {
+    "name_vi": "Lữ Kiến",
+    "name_cn": "吕建",
+    "filename": "lu_kien.png"
+  },
+  "lu_linh_y": {
+    "name_vi": "Lữ Linh Ỷ",
+    "name_cn": "呂玲綺",
+    "filename": "lu_linh_y.png"
+  },
+  "lu_mong": {
+    "name_vi": "Lữ Mông",
+    "name_cn": "呂蒙",
+    "filename": "lu_mong.png"
+  },
+  "sp_lu_mong": {
+    "name_vi": "SP Lữ Mông",
+    "name_cn": "吕蒙",
+    "filename": "lu_mong_2.png"
+  },
+  "lu_pham": {
+    "name_vi": "Lữ Phạm",
+    "name_cn": "呂範",
+    "filename": "lu_pham.png"
+  },
+  "mao_gioi": {
+    "name_vi": "Mao Giới",
+    "name_cn": "毛玠",
+    "filename": "mao_gioi.png"
+  },
+  "ma_luong": {
+    "name_vi": "Mã Lương",
+    "name_cn": "马良",
+    "filename": "ma_luong.png"
+  },
+  "ma_quan": {
+    "name_vi": "Mã Quân",
+    "name_cn": "马均",
+    "filename": "ma_quan.png"
+  },
+  "ma_sieu": {
+    "name_vi": "Mã Siêu",
+    "name_cn": "马超",
+    "filename": "ma_sieu.png"
+  },
+  "sp_ma_sieu": {
+    "name_vi": "SP Mã Siêu",
+    "name_cn": "马超",
+    "filename": "ma_sieu_2.png"
+  },
+  "ma_thiet": {
+    "name_vi": "Mã Thiết",
+    "name_cn": "马铁",
+    "filename": "ma_thiet.png"
+  },
+  "ma_trung": {
+    "name_vi": "Mã Trung",
+    "name_cn": "马忠",
+    "filename": "ma_trung.png"
+  },
+  "ma_tac": {
+    "name_vi": "Mã Tắc",
+    "name_cn": "马谡",
+    "filename": "ma_tac.png"
+  },
+  "ma_dai": {
+    "name_vi": "Mã Đại",
+    "name_cn": "马岱",
+    "filename": "ma_dai.png"
+  },
+  "ma_dang": {
+    "name_vi": "Mã Đằng",
+    "name_cn": "馬騰",
+    "filename": "ma_dang.png"
+  },
+  "man_sung": {
+    "name_vi": "Mãn Sủng",
+    "name_cn": "满宠",
+    "filename": "man_sung.png"
+  },
+  "manh_hoach": {
+    "name_vi": "Mạnh Hoạch",
+    "name_cn": "孟获",
+    "filename": "manh_hoach.png"
+  },
+  "my_phuong": {
+    "name_vi": "My Phương",
+    "name_cn": null,
+    "filename": "my_phuong.png"
+  },
+  "my_truc": {
+    "name_vi": "My Trúc",
+    "name_cn": null,
+    "filename": "my_truc.png"
+  },
+  "nghiem_nhan": {
+    "name_vi": "Nghiêm Nhan",
+    "name_cn": "严颜",
+    "filename": "nghiem_nhan.png"
+  },
+  "ngu_phien": {
+    "name_vi": "Ngu Phiên",
+    "name_cn": "虞翻",
+    "filename": "ngu_phien.png"
+  },
+  "ngo_y": {
+    "name_vi": "Ngô Ý",
+    "name_cn": "吴懿",
+    "filename": "ngo_y.png"
+  },
+  "ngot_dot_cot": {
+    "name_vi": "Ngột Đột Cốt",
+    "name_cn": "兀突骨",
+    "filename": "ngot_dot_cot.png"
+  },
+  "nguy_dien": {
+    "name_vi": "Ngụy Diên",
+    "name_cn": "魏延",
+    "filename": "nguy_dien.png"
+  },
+  "nhan_luong": {
+    "name_vi": "Nhan Lương",
+    "name_cn": "颜良",
+    "filename": "nhan_luong.png"
+  },
+  "nhac_tien": {
+    "name_vi": "Nhạc Tiến",
+    "name_cn": "岳進",
+    "filename": "nhac_tien.png"
+  },
+  "phan_chuong": {
+    "name_vi": "Phan Chương",
+    "name_cn": "潘璋",
+    "filename": "phan_chuong.png"
+  },
+  "phan_phung": {
+    "name_vi": "Phan Phụng",
+    "name_cn": null,
+    "filename": "phan_phung.png"
+  },
+  "phan_tuan": {
+    "name_vi": "Phan Tuấn",
+    "name_cn": null,
+    "filename": "phan_tuan.png"
+  },
+  "phi_y": {
+    "name_vi": "Phí Y",
+    "name_cn": "费祎",
+    "filename": "phi_y.png"
+  },
+  "phap_chinh": {
+    "name_vi": "Pháp Chính",
+    "name_cn": "法正",
+    "filename": "phap_chinh.png"
+  },
+  "phi_thi": {
+    "name_vi": "Phí Thi",
+    "name_cn": "費詩",
+    "filename": "phi_thi.png"
+  },
+  "pho_si_nhan": {
+    "name_vi": "Phó Sĩ Nhân",
+    "name_cn": "傅士仁",
+    "filename": "pho_si_nhan.png"
+  },
+  "phung_ky": {
+    "name_vi": "Phùng Kỳ",
+    "name_cn": "冯纪",
+    "filename": "phung_ky.png"
+  },
+  "quan_binh": {
+    "name_vi": "Quan Bình",
+    "name_cn": "关平",
+    "filename": "quan_binh.png"
+  },
+  "quan_hung": {
+    "name_vi": "Quan Hưng",
+    "name_cn": null,
+    "filename": "quan_hung.png"
+  },
+  "quan_ngan_binh": {
+    "name_vi": "Quan Ngân Bình",
+    "name_cn": null,
+    "filename": "quan_ngan_binh.png"
+  },
+  "sp_quan_vu": {
+    "name_vi": "SP Quan Vũ",
+    "name_cn": "关羽",
+    "filename": "quan_vu.png"
+  },
+  "quan_vu": {
+    "name_vi": "Quan Vũ",
+    "name_cn": "关羽",
+    "filename": "quan_vu_2.png"
+  },
+  "sp_quach_gia": {
+    "name_vi": "SP Quách Gia",
+    "name_cn": "郭嘉",
+    "filename": "quach_gia.png"
+  },
+  "quach_gia": {
+    "name_vi": "Quách Gia",
+    "name_cn": "郭嘉",
+    "filename": "quach_gia_2.png"
+  },
+  "quach_hoai": {
+    "name_vi": "Quách Hoài",
+    "name_cn": "郭淮",
+    "filename": "quach_hoai.png"
+  },
+  "quach_do": {
+    "name_vi": "Quách Đồ",
+    "name_cn": "郭图",
+    "filename": "quach_do.png"
+  },
+  "quach_di": {
+    "name_vi": "Quách Dĩ",
+    "name_cn": "郭汜",
+    "filename": "quach_ui.png"
+  },
+  "quan_hoi": {
+    "name_vi": "Quản Hợi",
+    "name_cn": "管亥",
+    "filename": "quan_hoi.png"
+  },
+  "sa_ma_kha": {
+    "name_vi": "Sa Ma Kha",
+    "name_cn": "司馬懿",
+    "filename": "sa_ma_kha.png"
+  },
+  "thu_thu": {
+    "name_vi": "Thư Thụ",
+    "name_cn": "朱治",
+    "filename": "thu_thuy.png"
+  },
+  "thai_su_tu": {
+    "name_vi": "Thái Sử Từ",
+    "name_cn": "太史慈",
+    "filename": "thai_su_tu.png"
+  },
+  "thai_ung": {
+    "name_vi": "Thái Ung",
+    "name_cn": "太戎",
+    "filename": "thai_ung.png"
+  },
+  "thai_van_co": {
+    "name_vi": "Thái Văn Cơ",
+    "name_cn": null,
+    "filename": "thai_van_co.png"
+  },
+  "tham_phoi": {
+    "name_vi": "Thẩm Phối",
+    "name_cn": "沈配",
+    "filename": "tham_phoi.png"
+  },
+  "tieu_kieu": {
+    "name_vi": "Tiểu Kiều",
+    "name_cn": "小乔",
+    "filename": "tieu_kieu.png"
+  },
+  "toan_tong": {
+    "name_vi": "Toàn Tông",
+    "name_cn": "全琮",
+    "filename": "toan_tong.png"
+  },
+  "trinh_pho": {
+    "name_vi": "Trinh Phổ",
+    "name_cn": "甄宓",
+    "filename": "trinh_pho.png"
+  },
+  "trieu_van": {
+    "name_vi": "Triệu Vân",
+    "name_cn": "赵云",
+    "filename": "trieu_van.png"
+  },
+  "trau_thi": {
+    "name_vi": "Trâu Thị",
+    "name_cn": "貂蝉",
+    "filename": "trau_thi.png"
+  },
+  "truong_bao": {
+    "name_vi": "Trương Bào",
+    "name_cn": "张苞",
+    "filename": "truong_bao.png"
+  },
+  "sp_truong_bao": {
+    "name_vi": "SP Trương Bảo",
+    "name_cn": "张苞",
+    "filename": "truong_bao_2.png"
+  },
+  "truong_bao_2": {
+    "name_vi": "Trương Bảo",
+    "name_cn": "张苞",
+    "filename": "truong_bao_3.png"
+  },
+  "truong_chieu": {
+    "name_vi": "Trương Chiêu",
+    "name_cn": "张昭",
+    "filename": "truong_chieu.png"
+  },
+  "truong_cap": {
+    "name_vi": "Trương Cáp",
+    "name_cn": "張郃",
+    "filename": "truong_cap.png"
+  },
+  "truong_giac": {
+    "name_vi": "Trương Giác",
+    "name_cn": "张角",
+    "filename": "truong_giac.png"
+  },
+  "sp_truong_luong": {
+    "name_vi": "SP Trương Lương",
+    "name_cn": "张良",
+    "filename": "truong_luong.png"
+  },
+  "truong_luong": {
+    "name_vi": "Trương Lương",
+    "name_cn": "张良",
+    "filename": "truong_luong_2.png"
+  },
+  "truong_lo": {
+    "name_vi": "Trương Lỗ",
+    "name_cn": "张鲁",
+    "filename": "truong_lo.png"
+  },
+  "truong_man_thanh": {
+    "name_vi": "Trương Mạn Thành",
+    "name_cn": "张曼成",
+    "filename": "truong_man_thanh.png"
+  },
+  "truong_nhiem": {
+    "name_vi": "Trương Nhiệm",
+    "name_cn": "张廉",
+    "filename": "truong_nhiem.png"
+  },
+  "truong_nhuong": {
+    "name_vi": "Trương Nhượng",
+    "name_cn": "张让",
+    "filename": "truong_nhuong.png"
+  },
+  "truong_phi": {
+    "name_vi": "Trương Phi",
+    "name_cn": "张飞",
+    "filename": "truong_phi.png"
+  },
+  "truong_tu": {
+    "name_vi": "Trương Tú",
+    "name_cn": "张绣",
+    "filename": "truong_tu.png"
+  },
+  "truong_xuan_hoa": {
+    "name_vi": "Trương Xuân Hoa",
+    "name_cn": "张春华",
+    "filename": "truong_xuan_hoa.png"
+  },
+  "truong_yen": {
+    "name_vi": "Trương Yến",
+    "name_cn": "张燕",
+    "filename": "truong_yen.png"
+  },
+  "tran_lam": {
+    "name_vi": "Trần Lâm",
+    "name_cn": null,
+    "filename": "tran_lam.png"
+  },
+  "tran_quan": {
+    "name_vi": "Trần Quần",
+    "name_cn": null,
+    "filename": "tran_quan.png"
+  },
+  "tran_vu": {
+    "name_vi": "Trần Vũ",
+    "name_cn": null,
+    "filename": "tran_vu.png"
+  },
+  "tran_dao": {
+    "name_vi": "Trần Đáo",
+    "name_cn": null,
+    "filename": "tran_dao.png"
+  },
+  "trinh_duc": {
+    "name_vi": "Trình Dục",
+    "name_cn": "郑育",
+    "filename": "trinh_duc.png"
+  },
+  "tuan_du": {
+    "name_vi": "Tuân Du",
+    "name_cn": "荀彧",
+    "filename": "tuan_du.png"
+  },
+  "tuan_uc": {
+    "name_vi": "Tuân Úc",
+    "name_cn": "荀彧",
+    "filename": "tuan_uc.png"
+  },
+  "sp_tuan_uc": {
+    "name_vi": "SP Tuấn Úc",
+    "name_cn": "荀彧",
+    "filename": "tuan_uc_2.png"
+  },
+  "tang_ba": {
+    "name_vi": "Tang Bá",
+    "name_cn": "臧霸",
+    "filename": "tang_ba.png"
+  },
+  "sp_tao_chan": {
+    "name_vi": "SP Tào Chân",
+    "name_cn": "曹真",
+    "filename": "tao_chan.png"
+  },
+  "tao_chan": {
+    "name_vi": "Tào Chân",
+    "name_cn": "曹真",
+    "filename": "tao_chan_2.png"
+  },
+  "tao_chuong": {
+    "name_vi": "Tào Chương",
+    "name_cn": "曹彰",
+    "filename": "tao_chuong.png"
+  },
+  "tao_huu": {
+    "name_vi": "Tào Hưu",
+    "name_cn": "曹休",
+    "filename": "tao_huu.png"
+  },
+  "tao_hong": {
+    "name_vi": "Tào Hồng",
+    "name_cn": "曹洪",
+    "filename": "tao_hong.png"
+  },
+  "tao_nhan": {
+    "name_vi": "Tào Nhân",
+    "name_cn": "曹仁",
+    "filename": "tao_nhan.png"
+  },
+  "tao_phi": {
+    "name_vi": "Tào Phi",
+    "name_cn": "曹丕",
+    "filename": "tao_phi.png"
+  },
+  "tao_thuan": {
+    "name_vi": "Tào Thuần",
+    "name_cn": "曹純",
+    "filename": "tao_thuan.png"
+  },
+  "tao_thao": {
+    "name_vi": "Tào Tháo",
+    "name_cn": "曹操",
+    "filename": "tao_thao.png"
+  },
+  "tao_thuc": {
+    "name_vi": "Tào Thực",
+    "name_cn": "曹植",
+    "filename": "tao_thuc.png"
+  },
+  "ton_can": {
+    "name_vi": "Tôn Càn",
+    "name_cn": "孙坚",
+    "filename": "ton_can.png"
+  },
+  "ton_hao": {
+    "name_vi": "Tôn Hạo",
+    "name_cn": "孫皓",
+    "filename": "ton_hao.png"
+  },
+  "ton_kien": {
+    "name_vi": "Tôn Kiên",
+    "name_cn": "孙坚",
+    "filename": "ton_kien.png"
+  },
+  "sp_ton_kien": {
+    "name_vi": "SP Tôn Kiên",
+    "name_cn": "孫堅",
+    "filename": "ton_kien_2.png"
+  },
+  "ton_quyen": {
+    "name_vi": "Tôn Quyền",
+    "name_cn": "孫權",
+    "filename": "ton_quyen.png"
+  },
+  "ton_sach": {
+    "name_vi": "Tôn Sách",
+    "name_cn": "孙策",
+    "filename": "ton_sach.png"
+  },
+  "tu_ma_huy": {
+    "name_vi": "Tư Mã Huy",
+    "name_cn": "司马徽",
+    "filename": "tu_ma_huy.png"
+  },
+  "tuong_kham": {
+    "name_vi": "Tưởng Khâm",
+    "name_cn": "蒋钦",
+    "filename": "tuong_kham.png"
+  },
+  "ta_tu": {
+    "name_vi": "Tả Từ",
+    "name_cn": "左慈",
+    "filename": "ta_tu.png"
+  },
+  "tong_hien": {
+    "name_vi": "Tống Hiến",
+    "name_cn": "宗憲",
+    "filename": "tong_hien.png"
+  },
+  "tu_hoang": {
+    "name_vi": "Từ Hoảng",
+    "name_cn": "徐晃",
+    "filename": "tu_hoang.png"
+  },
+  "tu_thinh": {
+    "name_vi": "Tử Thịnh",
+    "name_cn": null,
+    "filename": "tu_thinh.png"
+  },
+  "tu_thu": {
+    "name_vi": "Tử Thứ",
+    "name_cn": "子思",
+    "filename": "tu_thu.png"
+  },
+  "sp_vien_thieu": {
+    "name_vi": "SP Viên Thiệu",
+    "name_cn": "袁绍",
+    "filename": "vien_thieu.png"
+  },
+  "vien_thieu": {
+    "name_vi": "Viên Thiệu",
+    "name_cn": "袁绍",
+    "filename": "vien_thieu_2.png"
+  },
+  "vien_thuat": {
+    "name_vi": "Viên Thuật",
+    "name_cn": "袁術",
+    "filename": "vien_thuat.png"
+  },
+  "van_sinh": {
+    "name_vi": "Văn Sính",
+    "name_cn": "文醜",
+    "filename": "van_sinh.png"
+  },
+  "vu_cat": {
+    "name_vi": "Vu Cát",
+    "name_cn": null,
+    "filename": "vu_cat.png"
+  },
+  "vu_cam": {
+    "name_vi": "Vu Cấm",
+    "name_cn": "于禁",
+    "filename": "vu_cam.png"
+  },
+  "vuong_binh": {
+    "name_vi": "Vương Bình",
+    "name_cn": "王平",
+    "filename": "vuong_binh.png"
+  },
+  "vuong_doan": {
+    "name_vi": "Vương Doãn",
+    "name_cn": "王惇",
+    "filename": "vuong_doan.png"
+  },
+  "vuong_di": {
+    "name_vi": "Vương Dị",
+    "name_cn": "王异",
+    "filename": "vuong_di.png"
+  },
+  "vuong_lang": {
+    "name_vi": "Vương Lãng",
+    "name_cn": "王朗",
+    "filename": "vuong_lang.png"
+  },
+  "vuong_nguyen_co": {
+    "name_vi": "Vương Nguyên Cơ",
+    "name_cn": "王元姬",
+    "filename": "vuong_nguyen_co.png"
+  },
+  "vuong_song": {
+    "name_vi": "Vương Song",
+    "name_cn": "王双",
+    "filename": "vuong_song.png"
+  },
+  "van_xu": {
+    "name_vi": "Văn Xú",
+    "name_cn": null,
+    "filename": "wan_xiu.png"
+  },
+  "xa_tru": {
+    "name_vi": "Xa Trụ",
+    "name_cn": "夏侯惇",
+    "filename": "xa_tru.png"
+  },
+  "y_tich": {
+    "name_vi": "Y Tịch",
+    "name_cn": "伊籍",
+    "filename": "y_tich.png"
+  },
+  "dinh_nguyen": {
+    "name_vi": "Đinh Nguyên",
+    "name_cn": null,
+    "filename": "dinh_nguyen.png"
+  },
+  "dinh_phung": {
+    "name_vi": "Đinh Phụng",
+    "name_cn": "丁奉",
+    "filename": "dinh_phung.png"
+  },
+  "sp_dieu_thuyen": {
+    "name_vi": "SP Điêu Thuyền",
+    "name_cn": "貂蝉",
+    "filename": "dieu_thuyen.png"
+  },
+  "dieu_thuyen": {
+    "name_vi": "Điêu Thuyền",
+    "name_cn": "貂蝉",
+    "filename": "dieu_thuyen_2.png"
+  },
+  "dien_phong": {
+    "name_vi": "Điền Phong",
+    "name_cn": "田豐",
+    "filename": "dien_phong.png"
+  },
+  "sp_dien_vi": {
+    "name_vi": "SP Điển Vi",
+    "name_cn": "田豐",
+    "filename": "dien_vi.png"
+  },
+  "dien_vi": {
+    "name_vi": "Điển Vi",
+    "name_cn": "田豫",
+    "filename": "dien_vi_2.png"
+  },
+  "dao_khiem": {
+    "name_vi": "Đào Khiêm",
+    "name_cn": null,
+    "filename": "dao_khiem.png"
+  },
+  "dai_kieu": {
+    "name_vi": "Đại Kiều",
+    "name_cn": "大乔",
+    "filename": "dai_kieu.png"
+  },
+  "dang_chi": {
+    "name_vi": "Đặng Chí",
+    "name_cn": "邓芝",
+    "filename": "dang_chi.png"
+  },
+  "dang_ngai": {
+    "name_vi": "Đặng Ngãi",
+    "name_cn": "邓艾",
+    "filename": "dang_ngai.png"
+  },
+  "doa_tu_dai_vuong": {
+    "name_vi": "Đóa Tư Đại Vương",
+    "name_cn": "多思大王",
+    "filename": "doa_tu_dai_vuong.png"
+  },
+  "dong_bach": {
+    "name_vi": "Đổng Bạch",
+    "name_cn": "董白",
+    "filename": "dong_bach.png"
+  },
+  "dong_chieu": {
+    "name_vi": "Đổng Chiêu",
+    "name_cn": "董昭",
+    "filename": "dong_chieu.png"
+  },
+  "dong_trac": {
+    "name_vi": "Đổng Trác",
+    "name_cn": "董卓",
+    "filename": "dong_trac.png"
+  },
+  "sp_dong_trac": {
+    "name_vi": "SP Đổng Trác",
+    "name_cn": "董卓",
+    "filename": "dong_trac_2.png"
+  },
+  "dong_tap": {
+    "name_vi": "Đổng Tập",
+    "name_cn": "董卓",
+    "filename": "dong_tap.png"
+  },
+  "dong_doan": {
+    "name_vi": "Đổng Đoãn",
+    "name_cn": "董端",
+    "filename": "dong_doan.png"
+  }
+}

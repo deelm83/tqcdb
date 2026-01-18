@@ -6,6 +6,21 @@ import { SkillTypeId, skillTypeNames, skillTypeColors, qualityColors } from '@/l
 import { Skill } from '@/lib/api';
 import { ArmyIcon, ArmyIconType } from '@/components/icons/TroopIcons';
 
+const TARGET_LABELS: Record<string, string> = {
+  self: 'Bản thân',
+  toi: 'Bản thân',
+  ally_1: 'Quân ta (1 người)',
+  ally_2: 'Quân ta (2 người)',
+  ally_1_2: 'Quân ta (1-2 người)',
+  ally_2_3: 'Quân ta (2-3 người)',
+  ally_all: 'Toàn thể quân ta',
+  enemy_1: 'Quân địch (1 người)',
+  enemy_2: 'Quân địch (2 người)',
+  enemy_1_2: 'Quân địch (1-2 người)',
+  enemy_2_3: 'Quân địch (2-3 người)',
+  enemy_all: 'Toàn thể quân địch',
+};
+
 // Highlight special patterns in effect text
 function highlightEffectText(text: string): React.ReactNode {
   if (!text) return null;
@@ -92,7 +107,7 @@ export default function SkillModal({ skill, generalsByName, onClose }: SkillModa
         {/* Header */}
         <div className="px-6 py-5 border-b border-[var(--border)]">
           <h2 className="text-xl font-bold text-[var(--text-primary)] pr-8">
-            {skill.name.vi || skill.name.cn}
+            {skill.name}
           </h2>
           <div className="flex flex-wrap gap-2 mt-3">
             <span className={`pill ${typeColor.text}`}>{typeName.vi}</span>
@@ -108,20 +123,20 @@ export default function SkillModal({ skill, generalsByName, onClose }: SkillModa
         {/* Content */}
         <div className="p-6 space-y-5">
           {/* Effect */}
-          {(skill.effect?.vi || skill.effect?.cn) && (
+          {skill.effect && (
             <div>
               <div className="text-[11px] text-[var(--accent-gold)] uppercase tracking-widest font-semibold mb-3">Hiệu ứng</div>
               <div className="text-[15px] text-[var(--text-secondary)] leading-relaxed">
-                {highlightEffectText(skill.effect.vi || skill.effect.cn || '')}
+                {highlightEffectText(skill.effect || '')}
               </div>
             </div>
           )}
 
           {/* Target */}
-          {(skill.target_vi || skill.target) && (
+          {skill.target && (
             <div className="flex items-start gap-3">
               <span className="text-[13px] text-[var(--accent-gold-dim)] min-w-[80px] uppercase tracking-wider">Mục tiêu</span>
-              <span className="text-[15px] text-[var(--text-secondary)]">{skill.target_vi || skill.target}</span>
+              <span className="text-[15px] text-[var(--text-secondary)]">{TARGET_LABELS[skill.target] || skill.target}</span>
             </div>
           )}
 

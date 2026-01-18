@@ -18,17 +18,16 @@ router.get('/skills/list', async (_req: Request, res: Response) => {
     const skills = await prisma.skill.findMany({
       select: {
         id: true,
-        nameCn: true,
-        nameVi: true,
+        name: true,
         typeId: true,
         quality: true,
       },
-      orderBy: { nameCn: 'asc' },
+      orderBy: { name: 'asc' },
     });
 
     const transformed = skills.map((s) => ({
       id: s.id,
-      name: { cn: s.nameCn, vi: s.nameVi },
+      name: s.name,
       type_id: s.typeId,
       quality: s.quality,
     }));
@@ -94,13 +93,13 @@ router.get('/', async (_req: Request, res: Response) => {
         innateSkill: true,
         inheritedSkill: true,
       },
-      orderBy: { nameCn: 'asc' },
+      orderBy: { cost: 'desc' },
     }) as GeneralWithSkills[];
 
     const transformed = generals.map((g) => ({
       id: g.id,
       slug: g.slug,
-      name: { cn: g.nameCn, vi: g.nameVi },
+      name: g.name,
       faction_id: g.factionId,
       cost: g.cost,
       image: g.image,
@@ -114,8 +113,8 @@ router.get('/', async (_req: Request, res: Response) => {
       },
       innate_skill_id: g.innateSkillId,
       inherited_skill_id: g.inheritedSkillId,
-      innate_skill: g.innateSkill ? { id: g.innateSkill.id, name: { cn: g.innateSkill.nameCn, vi: g.innateSkill.nameVi } } : null,
-      inherited_skill: g.inheritedSkill ? { id: g.inheritedSkill.id, name: { cn: g.inheritedSkill.nameCn, vi: g.inheritedSkill.nameVi } } : null,
+      innate_skill: g.innateSkill ? { id: g.innateSkill.id, name: g.innateSkill.name } : null,
+      inherited_skill: g.inheritedSkill ? { id: g.inheritedSkill.id, name: g.inheritedSkill.name } : null,
       status: g.status,
     }));
 
@@ -149,13 +148,13 @@ router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
     const transformed = {
       id: general.id,
       slug: general.slug,
-      name: { cn: general.nameCn, vi: general.nameVi },
+      name: general.name,
       faction_id: general.factionId,
       cost: general.cost,
       wiki_url: general.wikiUrl,
       image: general.image,
       image_full: general.imageFull,
-      tags: { cn: general.tagsCn, vi: general.tagsVi },
+      tags: general.tags,
       troop_compatibility: {
         cavalry: { grade: general.cavalryGrade },
         shield: { grade: general.shieldGrade },
@@ -165,8 +164,26 @@ router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
       },
       innate_skill_id: general.innateSkillId,
       inherited_skill_id: general.inheritedSkillId,
-      innate_skill: general.innateSkill ? { id: general.innateSkill.id, name: { cn: general.innateSkill.nameCn, vi: general.innateSkill.nameVi } } : null,
-      inherited_skill: general.inheritedSkill ? { id: general.inheritedSkill.id, name: { cn: general.inheritedSkill.nameCn, vi: general.inheritedSkill.nameVi } } : null,
+      innate_skill: general.innateSkill ? {
+        id: general.innateSkill.id,
+        slug: general.innateSkill.slug,
+        name: general.innateSkill.name,
+        type: { id: general.innateSkill.typeId, name: general.innateSkill.typeName },
+        quality: general.innateSkill.quality,
+        trigger_rate: general.innateSkill.triggerRate,
+        effect: general.innateSkill.effect,
+        target: general.innateSkill.target,
+      } : null,
+      inherited_skill: general.inheritedSkill ? {
+        id: general.inheritedSkill.id,
+        slug: general.inheritedSkill.slug,
+        name: general.inheritedSkill.name,
+        type: { id: general.inheritedSkill.typeId, name: general.inheritedSkill.typeName },
+        quality: general.inheritedSkill.quality,
+        trigger_rate: general.inheritedSkill.triggerRate,
+        effect: general.inheritedSkill.effect,
+        target: general.inheritedSkill.target,
+      } : null,
       status: general.status,
     };
 
@@ -180,9 +197,7 @@ router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
 interface CreateGeneralBody {
   id?: string;
   slug?: string;
-  name?: { cn?: string; vi?: string };
-  nameCn?: string;
-  nameVi?: string;
+  name?: string;
   faction_id?: string;
   factionId?: string;
   cost?: number;
@@ -191,9 +206,7 @@ interface CreateGeneralBody {
   image?: string;
   image_full?: string;
   imageFull?: string;
-  tags?: { cn?: string[]; vi?: string[] };
-  tagsCn?: string[];
-  tagsVi?: string[];
+  tags?: string[];
   troop_compatibility?: {
     cavalry?: { grade?: string };
     shield?: { grade?: string };
@@ -219,8 +232,8 @@ router.post('/', async (req: Request<object, object, CreateGeneralBody>, res: Re
     const data = req.body;
 
     // Generate slug if not provided
-    const nameCn = data.name?.cn || data.nameCn || '';
-    const slug = data.slug || generateSlug(data.name?.vi || nameCn);
+    const name = data.name || '';
+    const slug = data.slug || generateSlug(name);
 
     // Check for duplicate slug
     const existing = await prisma.general.findUnique({ where: { slug } });
@@ -231,17 +244,15 @@ router.post('/', async (req: Request<object, object, CreateGeneralBody>, res: Re
 
     const general = await prisma.general.create({
       data: {
-        id: data.id || nameCn || slug,
+        id: data.id || slug,
         slug,
-        nameCn,
-        nameVi: data.name?.vi || data.nameVi || '',
+        name,
         factionId: data.faction_id || data.factionId || '',
         cost: data.cost || 0,
         wikiUrl: data.wiki_url || data.wikiUrl || null,
         image: data.image || null,
         imageFull: data.image_full || data.imageFull || null,
-        tagsCn: data.tags?.cn || data.tagsCn || [],
-        tagsVi: data.tags?.vi || data.tagsVi || [],
+        tags: data.tags || [],
         cavalryGrade: data.troop_compatibility?.cavalry?.grade || data.cavalryGrade || null,
         shieldGrade: data.troop_compatibility?.shield?.grade || data.shieldGrade || null,
         archerGrade: data.troop_compatibility?.archer?.grade || data.archerGrade || null,
@@ -278,29 +289,86 @@ router.put('/:id', async (req: Request<{ id: string }, object, CreateGeneralBody
       return;
     }
 
+    const newInnateSkillId = data.innate_skill_id !== undefined ? data.innate_skill_id : (data.innateSkillId !== undefined ? data.innateSkillId : existing.innateSkillId);
+    const newInheritedSkillId = data.inherited_skill_id !== undefined ? data.inherited_skill_id : (data.inheritedSkillId !== undefined ? data.inheritedSkillId : existing.inheritedSkillId);
+
     const general = await prisma.general.update({
       where: { id: existing.id },
       data: {
         slug: data.slug || existing.slug,
-        nameCn: data.name?.cn || data.nameCn || existing.nameCn,
-        nameVi: data.name?.vi || data.nameVi || existing.nameVi,
+        name: data.name || existing.name,
         factionId: data.faction_id || data.factionId || existing.factionId,
         cost: data.cost ?? existing.cost,
         wikiUrl: data.wiki_url || data.wikiUrl || existing.wikiUrl,
         image: data.image || existing.image,
         imageFull: data.image_full || data.imageFull || existing.imageFull,
-        tagsCn: data.tags?.cn || data.tagsCn || existing.tagsCn,
-        tagsVi: data.tags?.vi || data.tagsVi || existing.tagsVi,
+        tags: data.tags || existing.tags,
         cavalryGrade: data.troop_compatibility?.cavalry?.grade || data.cavalryGrade || existing.cavalryGrade,
         shieldGrade: data.troop_compatibility?.shield?.grade || data.shieldGrade || existing.shieldGrade,
         archerGrade: data.troop_compatibility?.archer?.grade || data.archerGrade || existing.archerGrade,
         spearGrade: data.troop_compatibility?.spear?.grade || data.spearGrade || existing.spearGrade,
         siegeGrade: data.troop_compatibility?.siege?.grade || data.siegeGrade || existing.siegeGrade,
-        innateSkillId: data.innate_skill_id !== undefined ? data.innate_skill_id : (data.innateSkillId !== undefined ? data.innateSkillId : existing.innateSkillId),
-        inheritedSkillId: data.inherited_skill_id !== undefined ? data.inherited_skill_id : (data.inheritedSkillId !== undefined ? data.inheritedSkillId : existing.inheritedSkillId),
+        innateSkillId: newInnateSkillId,
+        inheritedSkillId: newInheritedSkillId,
         status: data.status ?? existing.status,
       },
     });
+
+    // Update skill_innate_generals relation table
+    if (newInnateSkillId !== existing.innateSkillId) {
+      // Remove old relation if exists
+      if (existing.innateSkillId) {
+        await prisma.skillInnateGeneral.deleteMany({
+          where: { skillId: existing.innateSkillId, generalId: existing.id },
+        });
+      }
+      // Add new relation if skill is set
+      if (newInnateSkillId) {
+        await prisma.skillInnateGeneral.upsert({
+          where: { skillId_generalId: { skillId: newInnateSkillId, generalId: existing.id } },
+          update: {},
+          create: { skillId: newInnateSkillId, generalId: existing.id },
+        });
+      }
+    }
+
+    // Update skill_inherit_generals relation table
+    if (newInheritedSkillId !== existing.inheritedSkillId) {
+      // Remove old relation if exists
+      if (existing.inheritedSkillId) {
+        await prisma.skillInheritGeneral.deleteMany({
+          where: { skillId: existing.inheritedSkillId, generalId: existing.id },
+        });
+      }
+      // Add new relation if skill is set
+      if (newInheritedSkillId) {
+        await prisma.skillInheritGeneral.upsert({
+          where: { skillId_generalId: { skillId: newInheritedSkillId, generalId: existing.id } },
+          update: {},
+          create: { skillId: newInheritedSkillId, generalId: existing.id },
+        });
+        // Also update the skill's acquisitionType to 'inherit' (prefer inherit over innate)
+        await prisma.skill.update({
+          where: { id: newInheritedSkillId },
+          data: { acquisitionType: 'inherit' },
+        });
+      }
+    }
+
+    // Update innate skill's acquisitionType if not already set to inherit
+    if (newInnateSkillId && newInnateSkillId !== existing.innateSkillId) {
+      const skill = await prisma.skill.findUnique({
+        where: { id: newInnateSkillId },
+        select: { acquisitionType: true },
+      });
+      // Only set to 'innate' if acquisitionType is not already 'inherit'
+      if (!skill?.acquisitionType || skill.acquisitionType !== 'inherit') {
+        await prisma.skill.update({
+          where: { id: newInnateSkillId },
+          data: { acquisitionType: 'innate' },
+        });
+      }
+    }
 
     res.json({ success: true, general });
   } catch (error) {

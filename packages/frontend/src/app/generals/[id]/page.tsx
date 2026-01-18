@@ -25,6 +25,21 @@ const STAT_LABELS: Record<StatKey, string> = {
   charm: 'Mị lực',
 };
 
+const TARGET_LABELS: Record<string, string> = {
+  self: 'Bản thân',
+  toi: 'Bản thân',
+  ally_1: 'Quân ta (1 người)',
+  ally_2: 'Quân ta (2 người)',
+  ally_1_2: 'Quân ta (1-2 người)',
+  ally_2_3: 'Quân ta (2-3 người)',
+  ally_all: 'Toàn thể quân ta',
+  enemy_1: 'Quân địch (1 người)',
+  enemy_2: 'Quân địch (2 người)',
+  enemy_1_2: 'Quân địch (1-2 người)',
+  enemy_2_3: 'Quân địch (2-3 người)',
+  enemy_all: 'Toàn thể quân địch',
+};
+
 // Milestone levels that give 10 extra points each (at level 10, 20, 30, 40)
 const MILESTONE_LEVELS = [10, 20, 30, 40];
 
@@ -334,21 +349,21 @@ function SkillCard({
 
       {/* Skill Name */}
       <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">
-        {skill.name.vi || skill.name.cn}
+        {skill.name}
       </h3>
 
       {/* Effect Description */}
       {skill.effect && (
         <div className="text-[15px] text-[var(--text-secondary)] leading-relaxed mb-4">
-          {highlightEffectText(skill.effect.vi || skill.effect.cn || '')}
+          {highlightEffectText(skill.effect || '')}
         </div>
       )}
 
       {/* Target */}
-      {(skill.target_vi || skill.target) && (
+      {(skill.target) && (
         <div className="flex items-start gap-3 text-[13px] mb-3">
           <span className="text-[var(--accent-gold-dim)] uppercase tracking-wider">Mục tiêu:</span>
-          <span className="text-[var(--text-secondary)]">{skill.target_vi || skill.target}</span>
+          <span className="text-[var(--text-secondary)]">{TARGET_LABELS[skill.target] || skill.target}</span>
         </div>
       )}
 
@@ -380,7 +395,7 @@ export default function GeneralDetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  usePageTitle(general?.name?.vi || 'Võ tướng');
+  usePageTitle(general?.name || 'Võ tướng');
 
   useEffect(() => {
     async function loadGeneral() {
@@ -459,7 +474,7 @@ export default function GeneralDetailPage() {
             <div>
               {/* Name */}
               <h1 className="font-serif text-2xl md:text-3xl font-bold text-[var(--text-primary)] leading-tight">
-                {general.name.vi}
+                {general.name}
               </h1>
               {/* Faction */}
               <div className={`text-[13px] font-semibold uppercase tracking-wider mt-1 ${factionColor.text}`}>
@@ -509,7 +524,7 @@ export default function GeneralDetailPage() {
             <div className="relative aspect-[2.5/3.5]">
               <img
                 src={general.image_full || general.image || '/images/general-placeholder.svg'}
-                alt={general.name.vi}
+                alt={general.name}
                 className="w-full h-full object-cover object-top"
               />
             </div>

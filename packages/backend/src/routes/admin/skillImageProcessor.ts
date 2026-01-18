@@ -64,14 +64,13 @@ router.post('/', upload.single('image'), async (req: Request, res: Response) => 
               text: `Analyze this game skill screenshot and extract the skill information. Return ONLY a JSON object with the following structure (no markdown, no explanation):
 
 {
-  "name": {"cn": "Chinese name", "vi": "Vietnamese name"},
-  "type": {"id": "type_id", "name": {"cn": "Chinese type", "vi": "Vietnamese type"}},
+  "name": "Vietnamese skill name",
+  "type": {"id": "type_id", "name": "Vietnamese type name"},
   "quality": "S/A/B/C",
   "trigger_rate": number or null,
-  "target": "Chinese target description",
-  "target_vi": "Vietnamese target description",
+  "target": "target_id",
   "army_types": ["cavalry", "shield", "archer", "spear", "siege"],
-  "effect": {"cn": "Chinese effect text", "vi": "Vietnamese effect text"},
+  "effect": "Vietnamese effect text",
   "innate_to": ["general names who have this as innate skill"],
   "inheritance_from": ["general names who can pass this skill"]
 }
@@ -113,9 +112,9 @@ TARGET - Look for "Mục tiêu:" label. Map to these target IDs:
 - "enemy_1_2" = 1-2名敌军 / 1-2 địch
 - "enemy_2_3" = 2-3名敌军 / 2-3 địch
 
-For "target" field, return the target ID (e.g., "ally_all", "enemy_2"). For "target_vi" field, return the Vietnamese label.
+For "target" field, return the target ID (e.g., "ally_all", "enemy_2").
 
-Extract all visible information. If a field is not visible, use null or empty array. For effect text, preserve the exact text including numbers and percentages.`,
+Extract all visible information. If a field is not visible, use null or empty array. For effect text, preserve the exact Vietnamese text including numbers and percentages.`,
             },
           ],
         },

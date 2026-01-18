@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense, useCallback } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { fetchAdminGenerals, deleteGeneral, updateGeneral } from '@/lib/adminApi';
 import { General } from '@/lib/api';
 
@@ -17,19 +17,69 @@ const factions: FactionId[] = ['wei', 'shu', 'wu', 'qun'];
 const troopTypes: TroopType[] = ['cavalry', 'shield', 'archer', 'spear', 'siege'];
 const costOptions = [1, 2, 3, 4, 5, 6, 7];
 
-export default function AdminGeneralsPage() {
+function AdminGeneralsContent() {
   usePageTitle('Võ tướng', true);
   const { isAuthenticated, isLoading } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [generals, setGenerals] = useState<General[]>([]);
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState('');
-  const [selectedFactions, setSelectedFactions] = useState<FactionId[]>([]);
-  const [selectedCost, setSelectedCost] = useState<number | null>(null);
-  const [selectedTroops, setSelectedTroops] = useState<TroopType[]>([]);
-  const [selectedStatus, setSelectedStatus] = useState<StatusFilter>('all');
   const [deleting, setDeleting] = useState<string | null>(null);
   const [togglingStatus, setTogglingStatus] = useState<string | null>(null);
+
+  // Read filters from URL
+  const search = searchParams.get('q') || '';
+  const selectedFactions = (searchParams.get('factions')?.split(',').filter(Boolean) || []) as FactionId[];
+  const selectedCost = searchParams.get('cost') ? Number(searchParams.get('cost')) : null;
+  const selectedTroops = (searchParams.get('troops')?.split(',').filter(Boolean) || []) as TroopType[];
+  const selectedStatus = (searchParams.get('status') || 'all') as StatusFilter;
+
+  // Update URL with new filters
+  const updateFilters = useCallback((updates: Record<string, string | null>) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value === null || value === '' || value === 'all') {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+
+    const queryString = params.toString();
+    router.replace(queryString ? `?${queryString}` : '', { scroll: false });
+  }, [searchParams, router]);
+
+  const setSearch = useCallback((value: string) => {
+    updateFilters({ q: value || null });
+  }, [updateFilters]);
+
+  const setSelectedStatus = useCallback((value: StatusFilter) => {
+    updateFilters({ status: value === 'all' ? null : value });
+  }, [updateFilters]);
+
+  const setSelectedCost = useCallback((value: number | null) => {
+    updateFilters({ cost: value !== null ? String(value) : null });
+  }, [updateFilters]);
+
+  const toggleFaction = useCallback((faction: FactionId) => {
+    const newFactions = selectedFactions.includes(faction)
+      ? selectedFactions.filter(f => f !== faction)
+      : [...selectedFactions, faction];
+    updateFilters({ factions: newFactions.length > 0 ? newFactions.join(',') : null });
+  }, [selectedFactions, updateFilters]);
+
+  const toggleTroop = useCallback((troop: TroopType) => {
+    const newTroops = selectedTroops.includes(troop)
+      ? selectedTroops.filter(t => t !== troop)
+      : [...selectedTroops, troop];
+    updateFilters({ troops: newTroops.length > 0 ? newTroops.join(',') : null });
+  }, [selectedTroops, updateFilters]);
+
+  const clearFilters = useCallback(() => {
+    router.replace('', { scroll: false });
+  }, [router]);
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -71,22 +121,6 @@ export default function AdminGeneralsPage() {
     }
   };
 
-  const toggleFaction = (faction: FactionId) => {
-    if (selectedFactions.includes(faction)) {
-      setSelectedFactions(selectedFactions.filter(f => f !== faction));
-    } else {
-      setSelectedFactions([...selectedFactions, faction]);
-    }
-  };
-
-  const toggleTroop = (troop: TroopType) => {
-    if (selectedTroops.includes(troop)) {
-      setSelectedTroops(selectedTroops.filter(t => t !== troop));
-    } else {
-      setSelectedTroops([...selectedTroops, troop]);
-    }
-  };
-
   const handleToggleStatus = async (general: General) => {
     const newStatus = general.status === 'complete' ? 'needs_update' : 'complete';
     setTogglingStatus(general.id);
@@ -103,21 +137,14 @@ export default function AdminGeneralsPage() {
     }
   };
 
-  const clearFilters = () => {
-    setSearch('');
-    setSelectedFactions([]);
-    setSelectedCost(null);
-    setSelectedTroops([]);
-    setSelectedStatus('all');
-  };
-
-  const filteredGenerals = generals.filter((g) => {
+  const filteredGenerals = [...generals]
+    .sort((a, b) => b.cost - a.cost)
+    .filter((g) => {
     // Search filter
     if (search) {
       const searchLower = search.toLowerCase();
       const matchesSearch =
-        g.name.vi.toLowerCase().includes(searchLower) ||
-        g.name.cn.toLowerCase().includes(searchLower) ||
+        g.name.toLowerCase().includes(searchLower) ||
         g.slug.toLowerCase().includes(searchLower);
       if (!matchesSearch) return false;
     }
@@ -154,6 +181,8 @@ export default function AdminGeneralsPage() {
 
     return true;
   });
+
+  const hasFilters = search || selectedFactions.length > 0 || selectedCost !== null || selectedTroops.length > 0 || selectedStatus !== 'all';
 
   if (isLoading || !isAuthenticated) {
     return null;
@@ -290,14 +319,16 @@ export default function AdminGeneralsPage() {
           </div>
 
           {/* Clear Filters */}
-          <div className="mt-4 pt-3 border-t border-[var(--border)] flex justify-end">
-            <button
-              onClick={clearFilters}
-              className="text-sm text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors"
-            >
-              Xóa bộ lọc
-            </button>
-          </div>
+          {hasFilters && (
+            <div className="mt-4 pt-3 border-t border-[var(--border)] flex justify-end">
+              <button
+                onClick={clearFilters}
+                className="text-sm text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors"
+              >
+                Xóa bộ lọc
+              </button>
+            </div>
+          )}
         </div>
 
         {loading ? (
@@ -322,7 +353,7 @@ export default function AdminGeneralsPage() {
                       {general.image ? (
                         <img
                           src={general.image}
-                          alt={general.name.vi}
+                          alt={general.name}
                           className="w-10 h-10 object-cover"
                         />
                       ) : (
@@ -331,7 +362,7 @@ export default function AdminGeneralsPage() {
                         </div>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-[var(--text-primary)] font-medium">{general.name.vi}</td>
+                    <td className="px-4 py-3 text-[var(--text-primary)] font-medium">{general.name}</td>
                     <td className="px-4 py-3 text-[var(--text-secondary)]">
                       {factionNames[general.faction_id as FactionId]?.vi || general.faction_id}
                     </td>
@@ -358,7 +389,7 @@ export default function AdminGeneralsPage() {
                           Sửa
                         </Link>
                         <button
-                          onClick={() => handleDelete(general.slug, general.name.vi)}
+                          onClick={() => handleDelete(general.slug, general.name)}
                           disabled={deleting === general.slug}
                           className="px-3 py-1 text-sm text-[var(--accent-red-bright)] hover:text-red-400 border border-[var(--accent-red)] hover:border-[var(--accent-red-bright)] transition-colors disabled:opacity-50"
                         >
@@ -380,5 +411,23 @@ export default function AdminGeneralsPage() {
         )}
       </div>
     </main>
+  );
+}
+
+export default function AdminGeneralsPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen bg-[var(--bg)] py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-8 w-48 bg-[var(--bg-secondary)] animate-pulse mb-6" />
+          <div className="card p-4 mb-6 space-y-4">
+            <div className="h-10 bg-[var(--bg-secondary)] animate-pulse" />
+            <div className="h-20 bg-[var(--bg-secondary)] animate-pulse" />
+          </div>
+        </div>
+      </main>
+    }>
+      <AdminGeneralsContent />
+    </Suspense>
   );
 }

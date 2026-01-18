@@ -26,15 +26,13 @@ export default function NewGeneralPage() {
 
   const [form, setForm] = useState({
     slug: '',
-    nameCn: '',
-    nameVi: '',
+    name: '',
     factionId: '',
     cost: 3,
     wikiUrl: '',
     image: '',
     imageFull: '',
-    tagsCn: [] as string[],
-    tagsVi: [] as string[],
+    tags: [] as string[],
     cavalryGrade: '',
     shieldGrade: '',
     archerGrade: '',
@@ -61,13 +59,13 @@ export default function NewGeneralPage() {
     try {
       const result = await createGeneral({
         slug: form.slug || undefined,
-        name: { cn: form.nameCn, vi: form.nameVi },
+        name: form.name,
         faction_id: form.factionId,
         cost: form.cost,
         wiki_url: form.wikiUrl || undefined,
         image: form.image || undefined,
         image_full: form.imageFull || undefined,
-        tags: { cn: form.tagsCn, vi: form.tagsVi },
+        tags: form.tags,
         troop_compatibility: {
           cavalry: { grade: form.cavalryGrade },
           shield: { grade: form.shieldGrade },
@@ -139,23 +137,12 @@ export default function NewGeneralPage() {
                 </select>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Name (CN) *</label>
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-stone-300 mb-1">Tên *</label>
                 <input
                   type="text"
-                  value={form.nameCn}
-                  onChange={(e) => setForm((prev) => ({ ...prev, nameCn: e.target.value }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Name (VI) *</label>
-                <input
-                  type="text"
-                  value={form.nameVi}
-                  onChange={(e) => setForm((prev) => ({ ...prev, nameVi: e.target.value }))}
+                  value={form.name}
+                  onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
                   className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
                   required
                 />
@@ -264,26 +251,14 @@ export default function NewGeneralPage() {
           <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-6">
             <h2 className="text-lg font-semibold text-amber-100 mb-4">Tags</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Tags (CN) - comma separated</label>
-                <input
-                  type="text"
-                  value={form.tagsCn.join(', ')}
-                  onChange={(e) => setForm((prev) => ({ ...prev, tagsCn: e.target.value.split(',').map(t => t.trim()).filter(Boolean) }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Tags (VI) - comma separated</label>
-                <input
-                  type="text"
-                  value={form.tagsVi.join(', ')}
-                  onChange={(e) => setForm((prev) => ({ ...prev, tagsVi: e.target.value.split(',').map(t => t.trim()).filter(Boolean) }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
-                />
-              </div>
+            <div>
+              <label className="block text-sm font-medium text-stone-300 mb-1">Tags (phân cách bởi dấu phẩy)</label>
+              <input
+                type="text"
+                value={form.tags.join(', ')}
+                onChange={(e) => setForm((prev) => ({ ...prev, tags: e.target.value.split(',').map(t => t.trim()).filter(Boolean) }))}
+                className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+              />
             </div>
           </div>
 

@@ -4,14 +4,14 @@ export interface General {
   index?: number;
   id: string;
   slug: string;
-  name: { cn: string; vi: string };
+  name: string;
   faction_id: string;
   cost: number;
   rarity?: string;
   wiki_url?: string;
   image?: string;
   image_full?: string;
-  tags?: { cn: string[]; vi: string[] };
+  tags?: string[];
   // Stats
   base_attack?: number;
   base_command?: number;
@@ -33,23 +33,21 @@ export interface General {
     siege?: { grade: string };
   };
   innate_skill?: {
-    name: { cn: string; vi: string };
-    type?: { id: string; name: { cn: string; vi: string } };
+    name: string;
+    type?: { id: string; name: string };
     quality?: string;
     trigger_rate?: number;
-    effect?: { cn: string; vi: string };
+    effect?: string;
     target?: string;
-    target_vi?: string;
     army_types?: string[];
   };
   inherited_skill?: {
-    name: { cn: string; vi: string };
-    type?: { id: string; name: { cn: string; vi: string } };
+    name: string;
+    type?: { id: string; name: string };
     quality?: string;
     trigger_rate?: number;
-    effect?: { cn: string; vi: string };
+    effect?: string;
     target?: string;
-    target_vi?: string;
     army_types?: string[];
   };
   // Admin fields
@@ -63,15 +61,14 @@ export interface General {
 export interface Skill {
   id: number;
   slug?: string;
-  name: { cn: string; vi: string };
-  type: { id: string; name: { cn: string; vi: string } };
+  name: string;
+  type: { id: string; name: string };
   quality?: string;
   trigger_rate?: number;
   source_type?: string;
   wiki_url?: string;
-  effect?: { cn: string; vi?: string };
+  effect?: string;
   target?: string;
-  target_vi?: string;
   army_types?: string[];
   innate_to?: string[];
   inheritance_from?: string[];

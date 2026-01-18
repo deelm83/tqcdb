@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { SkillTypeId, skillTypeNames, skillTypeColors, qualityColors } from '@/lib/skills';
 import { fetchSkills, fetchSkillTypeCounts, fetchGeneralsMap, fetchSkill, Skill } from '@/lib/api';
@@ -14,10 +14,12 @@ function SkillsContent() {
   usePageTitle('Chiến pháp');
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  // Read filters from URL
+  const search = searchParams.get('q') || '';
+  const activeTab = (searchParams.get('type') || 'all') as SkillTypeId | 'all';
   const skillParam = searchParams.get('skill');
 
-  const [search, setSearch] = useState('');
-  const [activeTab, setActiveTab] = useState<SkillTypeId | 'all'>('all');
   const [skills, setSkills] = useState<Skill[]>([]);
   const [allSkills, setAllSkills] = useState<Skill[]>([]);
   const [typeCounts, setTypeCounts] = useState<Record<string, number>>({ all: 0 });
@@ -26,12 +28,35 @@ function SkillsContent() {
   const [error, setError] = useState<string | null>(null);
   const [modalSkill, setModalSkill] = useState<Skill | null>(null);
 
+  // Update URL with new filters
+  const updateFilters = useCallback((updates: Record<string, string | null>) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value === null || value === '' || (key === 'type' && value === 'all')) {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+
+    const queryString = params.toString();
+    router.replace(queryString ? `?${queryString}` : '/skills', { scroll: false });
+  }, [searchParams, router]);
+
+  const setSearch = useCallback((value: string) => {
+    updateFilters({ q: value || null });
+  }, [updateFilters]);
+
+  const setActiveTab = useCallback((value: SkillTypeId | 'all') => {
+    updateFilters({ type: value === 'all' ? null : value });
+  }, [updateFilters]);
+
   const selectedSkillFromList = skillParam
     ? allSkills.find(s =>
         s.slug === skillParam ||
         s.id?.toString() === skillParam ||
-        s.name.cn === skillParam ||
-        s.name.vi === skillParam
+        s.name === skillParam
       )
     : null;
 
@@ -95,11 +120,16 @@ function SkillsContent() {
 
   const openSkillModal = (skill: Skill) => {
     const identifier = skill.slug || skill.id.toString();
-    router.push(`/skills?skill=${encodeURIComponent(identifier)}`, { scroll: false });
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('skill', identifier);
+    router.push(`/skills?${params.toString()}`, { scroll: false });
   };
 
   const closeSkillModal = () => {
-    router.push('/skills', { scroll: false });
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete('skill');
+    const queryString = params.toString();
+    router.push(queryString ? `/skills?${queryString}` : '/skills', { scroll: false });
   };
 
   const getTabName = (type: SkillTypeId | 'all') => {
@@ -188,7 +218,7 @@ function SkillsContent() {
               >
                 <div className="flex-1 min-w-0">
                   <div className="text-[15px] font-semibold text-[var(--text-primary)]">
-                    {skill.name.vi}
+                    {skill.name}
                   </div>
                   <div className="flex items-center gap-3 mt-1">
                     <span className={`text-[13px] ${typeColor.text}`}>{typeName.vi}</span>

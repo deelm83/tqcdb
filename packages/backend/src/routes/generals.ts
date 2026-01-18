@@ -29,13 +29,12 @@ function transformSkill(skill: Skill | null) {
   return {
     id: skill.id,
     slug: skill.slug,
-    name: { cn: skill.nameCn, vi: skill.nameVi },
-    type: { id: skill.typeId, name: { cn: skill.typeNameCn, vi: skill.typeNameVi } },
+    name: skill.name,
+    type: { id: skill.typeId, name: skill.typeName },
     quality: skill.quality,
     trigger_rate: skill.triggerRate,
-    effect: { cn: skill.effectCn, vi: skill.effectVi },
+    effect: skill.effect,
     target: skill.target,
-    target_vi: skill.targetVi,
     army_types: skill.armyTypes,
   };
 }
@@ -114,9 +113,7 @@ router.get('/', async (req: Request<object, object, object, GeneralsQuery>, res:
 
     // Apply Vietnamese diacritics-insensitive search filter
     if (search) {
-      generals = generals.filter(g =>
-        matchesSearch(g.nameVi, search) || matchesSearch(g.nameCn, search)
-      );
+      generals = generals.filter(g => matchesSearch(g.name, search));
     }
 
     // Transform to match frontend expected format
@@ -124,13 +121,13 @@ router.get('/', async (req: Request<object, object, object, GeneralsQuery>, res:
       index,
       id: g.id,
       slug: g.slug,
-      name: { cn: g.nameCn, vi: g.nameVi },
+      name: g.name,
       faction_id: g.factionId,
       cost: g.cost,
       wiki_url: g.wikiUrl,
       image: g.image,
       image_full: g.imageFull,
-      tags: { cn: g.tagsCn, vi: g.tagsVi },
+      tags: g.tags,
       troop_compatibility: {
         cavalry: { grade: g.cavalryGrade },
         shield: { grade: g.shieldGrade },
@@ -220,14 +217,14 @@ router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
     const transformed = {
       id: general.id,
       slug: general.slug,
-      name: { cn: general.nameCn, vi: general.nameVi },
+      name: general.name,
       faction_id: general.factionId,
       cost: general.cost,
       rarity: general.rarity,
       wiki_url: general.wikiUrl,
       image: general.image,
       image_full: general.imageFull,
-      tags: { cn: general.tagsCn, vi: general.tagsVi },
+      tags: general.tags,
       // Stats
       base_attack: general.baseAttack,
       base_command: general.baseCommand,

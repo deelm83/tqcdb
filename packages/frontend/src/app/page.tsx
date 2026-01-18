@@ -137,7 +137,7 @@ export default function Home() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-[15px] font-medium text-[var(--text-primary)]">
-                          {general.name.vi}
+                          {general.name}
                         </div>
                         <div className="text-[13px] text-[var(--text-secondary)]">
                           <span className={factionColors[factionId]?.text}>{factionNames[factionId]?.vi}</span>
@@ -170,16 +170,16 @@ export default function Home() {
               <div className="space-y-2">
                 {skills.map((skill) => (
                   <Link
-                    key={skill.name.cn}
+                    key={skill.name}
                     href={`/skills?skill=${encodeURIComponent(skill.slug || skill.id.toString())}`}
                     className="card flex items-center justify-between p-4"
                   >
                     <div className="flex-1 min-w-0">
                       <div className="text-[15px] font-medium text-[var(--text-primary)]">
-                        {skill.name.vi || skill.name.cn}
+                        {skill.name}
                       </div>
                       <div className="text-[13px] text-[var(--text-secondary)]">
-                        {skill.type?.name?.vi}
+                        {skill.type?.name}
                         {skill.trigger_rate && (
                           <>
                             <span className="mx-2 text-[var(--text-tertiary)]">·</span>
