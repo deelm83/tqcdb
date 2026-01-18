@@ -1,0 +1,534 @@
+'use client';
+
+import { useEffect, useState, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
+import { fetchAdminSkills, fetchAdminGenerals, updateSkill, deleteSkill } from '@/lib/adminApi';
+import { showToast } from '@/components/Toast';
+import Link from 'next/link';
+import { General, Skill } from '@/lib/api';
+import { usePageTitle } from '@/hooks/usePageTitle';
+
+const TARGET_OPTIONS = [
+  { id: '', label: 'Chưa chọn' },
+  { id: 'self', label: 'Bản thân' },
+  { id: 'ally_1', label: '1 đồng minh' },
+  { id: 'ally_2', label: '2 đồng minh' },
+  { id: 'ally_all', label: 'Tất cả quân ta' },
+  { id: 'ally_1_2', label: '1-2 đồng minh' },
+  { id: 'ally_2_3', label: '2-3 đồng minh' },
+  { id: 'enemy_1', label: '1 địch' },
+  { id: 'enemy_2', label: '2 địch' },
+  { id: 'enemy_all', label: 'Tất cả địch' },
+  { id: 'enemy_1_2', label: '1-2 địch' },
+  { id: 'enemy_2_3', label: '2-3 địch' },
+];
+
+function normalizeVietnamese(str: string): string {
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/đ/g, 'd')
+    .replace(/Đ/g, 'D')
+    .toLowerCase();
+}
+
+interface SkillEdit {
+  id: number;
+  slug: string;
+  name: string;
+  target: string;
+  acquisitionType: string;
+  innateGeneralIds: string[];
+  inheritGeneralIds: string[];
+  exchangeGeneralIds: string[];
+  exchangeCount: number;
+  screenshots: string[];
+  saving: boolean;
+  changed: boolean;
+}
+
+const ITEMS_PER_PAGE = 20;
+
+export default function MassEditSkillsPage() {
+  usePageTitle('Sửa nhanh chiến pháp', true);
+  const { isAuthenticated, isLoading: authLoading } = useAuth();
+  const router = useRouter();
+
+  const [skills, setSkills] = useState<SkillEdit[]>([]);
+  const [generals, setGenerals] = useState<General[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [modalImage, setModalImage] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    if (!authLoading && !isAuthenticated) {
+      router.push('/admin/login');
+    }
+  }, [isAuthenticated, authLoading, router]);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const [skillsData, generalsData] = await Promise.all([
+          fetchAdminSkills(),
+          fetchAdminGenerals(),
+        ]);
+
+        // Sort alphabetically once on load
+        const sortedSkills = skillsData
+          .map((s: any) => ({
+            id: s.id,
+            slug: s.slug || '',
+            name: s.name || '',
+            target: s.target || '',
+            acquisitionType: s.acquisition_type || '',
+            innateGeneralIds: s.innate_general_ids || [],
+            inheritGeneralIds: s.inherit_general_ids || [],
+            exchangeGeneralIds: s.exchange_general_ids || [],
+            exchangeCount: s.exchange_count || 0,
+            screenshots: s.screenshots || [],
+            saving: false,
+            changed: false,
+          }))
+          .sort((a: SkillEdit, b: SkillEdit) =>
+            normalizeVietnamese(a.name).localeCompare(normalizeVietnamese(b.name))
+          );
+        setSkills(sortedSkills);
+        setGenerals(generalsData);
+      } catch (err) {
+        console.error('Failed to load data:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (isAuthenticated) {
+      loadData();
+    }
+  }, [isAuthenticated]);
+
+  const updateSkillField = useCallback((id: number, field: keyof SkillEdit, value: any) => {
+    setSkills(prev => prev.map(s =>
+      s.id === id ? { ...s, [field]: value, changed: true } : s
+    ));
+  }, []);
+
+  const saveSkill = useCallback(async (skill: SkillEdit) => {
+    setSkills(prev => prev.map(s => s.id === skill.id ? { ...s, saving: true } : s));
+
+    try {
+      await updateSkill(String(skill.id), {
+        name: skill.name,
+        target: skill.target || null,
+        acquisition_type: skill.acquisitionType || null,
+        innate_general_ids: skill.innateGeneralIds,
+        inherit_general_ids: skill.inheritGeneralIds,
+        exchange_general_ids: skill.exchangeGeneralIds,
+        exchange_count: skill.exchangeCount || null,
+      } as any);
+
+      setSkills(prev => prev.map(s =>
+        s.id === skill.id ? { ...s, saving: false, changed: false } : s
+      ));
+      showToast('Đã lưu', 'success');
+    } catch (err: any) {
+      setSkills(prev => prev.map(s => s.id === skill.id ? { ...s, saving: false } : s));
+      showToast(err.message || 'Lỗi khi lưu', 'error');
+    }
+  }, []);
+
+  const handleDeleteSkill = useCallback(async (skill: SkillEdit) => {
+    if (!confirm(`Xóa chiến pháp "${skill.name}"?`)) return;
+
+    try {
+      await deleteSkill(String(skill.id));
+      setSkills(prev => prev.filter(s => s.id !== skill.id));
+      showToast('Đã xóa', 'success');
+    } catch (err: any) {
+      showToast(err.message || 'Lỗi khi xóa', 'error');
+    }
+  }, []);
+
+  // Filter only - sorting is done once on load to keep order stable during editing
+  const filteredSkills = skills
+    .filter(s => !searchQuery || normalizeVietnamese(s.name).includes(normalizeVietnamese(searchQuery)));
+
+  const totalPages = Math.ceil(filteredSkills.length / ITEMS_PER_PAGE);
+  const paginatedSkills = filteredSkills.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  // Reset to page 1 when search changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
+
+  if (authLoading || !isAuthenticated) {
+    return null;
+  }
+
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-6">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            <Link
+              href="/admin/skills"
+              className="flex items-center gap-1 text-stone-400 hover:text-white text-sm transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Quay lại
+            </Link>
+            <h1 className="text-xl font-bold text-amber-100">Sửa nhanh chiến pháp</h1>
+          </div>
+          <div className="text-sm text-stone-400">
+            {filteredSkills.length > 0 ? (
+              <>
+                {(currentPage - 1) * ITEMS_PER_PAGE + 1}-{Math.min(currentPage * ITEMS_PER_PAGE, filteredSkills.length)} / {filteredSkills.length} chiến pháp
+              </>
+            ) : (
+              '0 chiến pháp'
+            )}
+          </div>
+        </div>
+
+        {/* Search and Pagination */}
+        <div className="flex flex-wrap items-center gap-4 mb-4">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Tìm theo tên..."
+            className="flex-1 min-w-[200px] max-w-md px-4 py-2 bg-stone-800 border border-stone-600 rounded-lg text-white placeholder-stone-500 focus:border-amber-500 focus:outline-none"
+          />
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="px-3 py-2 bg-stone-700 hover:bg-stone-600 disabled:bg-stone-800 disabled:text-stone-600 text-stone-300 rounded text-sm transition-colors"
+              >
+                ←
+              </button>
+              <div className="flex items-center gap-1">
+                {Array.from({ length: totalPages }, (_, i) => i + 1)
+                  .filter(page => {
+                    // Show first, last, current, and neighbors
+                    if (page === 1 || page === totalPages) return true;
+                    if (Math.abs(page - currentPage) <= 1) return true;
+                    return false;
+                  })
+                  .map((page, idx, arr) => (
+                    <span key={page} className="flex items-center">
+                      {idx > 0 && arr[idx - 1] !== page - 1 && (
+                        <span className="text-stone-500 px-1">...</span>
+                      )}
+                      <button
+                        onClick={() => setCurrentPage(page)}
+                        className={`w-8 h-8 rounded text-sm transition-colors ${
+                          currentPage === page
+                            ? 'bg-amber-600 text-white'
+                            : 'bg-stone-700 hover:bg-stone-600 text-stone-300'
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    </span>
+                  ))}
+              </div>
+              <button
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+                className="px-3 py-2 bg-stone-700 hover:bg-stone-600 disabled:bg-stone-800 disabled:text-stone-600 text-stone-300 rounded text-sm transition-colors"
+              >
+                →
+              </button>
+            </div>
+          )}
+        </div>
+
+        {loading ? (
+          <div className="text-center text-stone-400 py-8">Đang tải...</div>
+        ) : (
+          <div className="space-y-3">
+            {paginatedSkills.map((skill) => (
+              <SkillRow
+                key={skill.id}
+                skill={skill}
+                generals={generals}
+                onUpdate={updateSkillField}
+                onSave={saveSkill}
+                onDelete={handleDeleteSkill}
+                onImageClick={setModalImage}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Image Modal */}
+        {modalImage && (
+          <div
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+            onClick={() => setModalImage(null)}
+          >
+            <div className="relative max-w-4xl max-h-[90vh]">
+              <button
+                onClick={() => setModalImage(null)}
+                className="absolute -top-10 right-0 text-white hover:text-amber-400 transition-colors"
+              >
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <img
+                src={modalImage}
+                alt="Screenshot"
+                className="max-w-full max-h-[85vh] object-contain rounded-lg"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </main>
+  );
+}
+
+interface SkillRowProps {
+  skill: SkillEdit;
+  generals: General[];
+  onUpdate: (id: number, field: keyof SkillEdit, value: any) => void;
+  onSave: (skill: SkillEdit) => void;
+  onDelete: (skill: SkillEdit) => void;
+  onImageClick: (url: string) => void;
+}
+
+function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }: SkillRowProps) {
+  const [generalSearch, setGeneralSearch] = useState('');
+  const [showDropdown, setShowDropdown] = useState<'innate' | 'inherit' | 'exchange' | null>(null);
+
+  const getGeneralName = (id: string) => {
+    const general = generals.find(g => g.id === id);
+    return general?.name || id;
+  };
+
+  const filteredGenerals = generals.filter(g =>
+    normalizeVietnamese(g.name).includes(normalizeVietnamese(generalSearch))
+  );
+
+  const addGeneral = (type: 'innate' | 'inherit' | 'exchange', generalId: string) => {
+    const field = type === 'innate' ? 'innateGeneralIds' : type === 'inherit' ? 'inheritGeneralIds' : 'exchangeGeneralIds';
+    const current = skill[field] as string[];
+    if (!current.includes(generalId)) {
+      onUpdate(skill.id, field, [...current, generalId]);
+      // Also update acquisition type
+      onUpdate(skill.id, 'acquisitionType', type);
+    }
+    setGeneralSearch('');
+    setShowDropdown(null);
+  };
+
+  const removeGeneral = (type: 'innate' | 'inherit' | 'exchange', generalId: string) => {
+    const field = type === 'innate' ? 'innateGeneralIds' : type === 'inherit' ? 'inheritGeneralIds' : 'exchangeGeneralIds';
+    const current = skill[field] as string[];
+    onUpdate(skill.id, field, current.filter(id => id !== generalId));
+  };
+
+  return (
+    <div className={`bg-stone-800/90 border rounded-lg p-4 ${skill.changed ? 'border-amber-500' : 'border-stone-700'}`}>
+      <div className="flex flex-col gap-3">
+        {/* Top row: Screenshot + Actions */}
+        <div className="flex gap-4">
+          {/* Screenshot - wider for horizontal images */}
+          <div className="flex-1">
+            {skill.screenshots.length > 0 ? (
+              <div
+                className="relative rounded-lg overflow-hidden cursor-pointer hover:ring-2 hover:ring-amber-500 transition-all bg-stone-900"
+                onClick={() => onImageClick(`/images/skills/${skill.screenshots[0]}`)}
+              >
+                <img
+                  src={`/images/skills/${skill.screenshots[0]}`}
+                  alt={skill.name}
+                  className="w-full h-auto max-h-48 object-contain"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = 'none';
+                  }}
+                />
+                {skill.screenshots.length > 1 && (
+                  <div className="absolute bottom-1 right-1 bg-black/70 text-xs text-stone-300 px-1.5 py-0.5 rounded">
+                    +{skill.screenshots.length - 1} ảnh
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="h-24 rounded-lg bg-stone-900 flex items-center justify-center text-stone-600 text-xs">
+                No image
+              </div>
+            )}
+          </div>
+
+          {/* Actions */}
+          <div className="flex-shrink-0 flex flex-col gap-2">
+            <button
+              onClick={() => onSave(skill)}
+              disabled={skill.saving || !skill.changed}
+              className={`px-4 py-2 rounded text-sm font-medium transition-all ${
+                skill.changed
+                  ? 'bg-amber-600 hover:bg-amber-500 text-white'
+                  : 'bg-stone-700 text-stone-500 cursor-not-allowed'
+              }`}
+            >
+              {skill.saving ? '...' : 'Lưu'}
+            </button>
+            <Link
+              href={`/admin/skills/${skill.slug || skill.id}`}
+              className="px-4 py-2 bg-stone-700 hover:bg-stone-600 text-stone-300 rounded text-sm text-center transition-colors"
+            >
+              Chi tiết
+            </Link>
+            <button
+              onClick={() => onDelete(skill)}
+              className="px-4 py-2 bg-red-900/50 hover:bg-red-700 text-red-300 hover:text-white rounded text-sm transition-colors"
+            >
+              Xóa
+            </button>
+          </div>
+        </div>
+
+        {/* Fields */}
+        <div className="flex-1 space-y-3">
+          {/* Name */}
+          <div className="flex items-center gap-2">
+            <label className="text-xs text-stone-400 w-16">Tên:</label>
+            <input
+              type="text"
+              value={skill.name}
+              onChange={(e) => onUpdate(skill.id, 'name', e.target.value)}
+              className="flex-1 px-3 py-1.5 bg-stone-900/50 border border-stone-600 rounded text-white text-sm focus:border-amber-500 focus:outline-none"
+            />
+          </div>
+
+          {/* Target */}
+          <div className="flex items-center gap-2">
+            <label className="text-xs text-stone-400 w-16">Mục tiêu:</label>
+            <select
+              value={skill.target}
+              onChange={(e) => onUpdate(skill.id, 'target', e.target.value)}
+              className="flex-1 max-w-xs px-3 py-1.5 bg-stone-900/50 border border-stone-600 rounded text-white text-sm focus:border-amber-500 focus:outline-none"
+            >
+              {TARGET_OPTIONS.map(opt => (
+                <option key={opt.id} value={opt.id}>{opt.label}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Acquisition Type */}
+          <div className="flex items-start gap-2">
+            <label className="text-xs text-stone-400 w-16 pt-1.5">Nguồn:</label>
+            <div className="flex-1">
+              {/* Type Tabs */}
+              <div className="flex gap-1 mb-2">
+                {[
+                  { id: 'innate', label: 'Tự mang', icon: '★' },
+                  { id: 'inherit', label: 'Kế thừa', icon: '↓' },
+                  { id: 'exchange', label: 'Đổi tướng', icon: '⇄' },
+                ].map((type) => (
+                  <button
+                    key={type.id}
+                    type="button"
+                    onClick={() => onUpdate(skill.id, 'acquisitionType', skill.acquisitionType === type.id ? '' : type.id)}
+                    className={`px-2 py-1 rounded text-xs font-medium transition-all ${
+                      skill.acquisitionType === type.id
+                        ? 'bg-amber-700 text-white'
+                        : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                    }`}
+                  >
+                    <span className="mr-1">{type.icon}</span>
+                    {type.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Generals for selected type */}
+              {skill.acquisitionType && (
+                <div className="relative">
+                  {/* Selected generals */}
+                  <div className="flex flex-wrap gap-1 mb-1">
+                    {(skill.acquisitionType === 'innate' ? skill.innateGeneralIds :
+                      skill.acquisitionType === 'inherit' ? skill.inheritGeneralIds :
+                      skill.exchangeGeneralIds).map(gId => (
+                      <span
+                        key={gId}
+                        className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-900/50 border border-amber-700/50 rounded text-xs text-amber-200"
+                      >
+                        {getGeneralName(gId)}
+                        <button
+                          type="button"
+                          onClick={() => removeGeneral(skill.acquisitionType as any, gId)}
+                          className="text-amber-400 hover:text-white"
+                        >
+                          ×
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Add general */}
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={showDropdown === skill.acquisitionType ? generalSearch : ''}
+                      onChange={(e) => {
+                        setGeneralSearch(e.target.value);
+                        setShowDropdown(skill.acquisitionType as any);
+                      }}
+                      onFocus={() => setShowDropdown(skill.acquisitionType as any)}
+                      placeholder="Thêm tướng..."
+                      className="w-48 px-2 py-1 bg-stone-900/50 border border-stone-600 rounded text-white text-xs focus:border-amber-500 focus:outline-none"
+                    />
+                    {showDropdown === skill.acquisitionType && generalSearch && (
+                      <div className="absolute z-20 mt-1 w-48 max-h-40 overflow-auto bg-stone-800 border border-stone-600 rounded shadow-xl">
+                        {filteredGenerals.slice(0, 10).map(g => (
+                          <button
+                            key={g.id}
+                            type="button"
+                            onClick={() => addGeneral(skill.acquisitionType as any, g.id)}
+                            className="w-full px-2 py-1.5 text-left hover:bg-stone-700 text-stone-200 text-xs border-b border-stone-700/50 last:border-0"
+                          >
+                            {g.name}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Exchange count */}
+                  {skill.acquisitionType === 'exchange' && (
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-xs text-stone-500">Số lượng:</span>
+                      <input
+                        type="number"
+                        value={skill.exchangeCount || ''}
+                        onChange={(e) => onUpdate(skill.id, 'exchangeCount', parseInt(e.target.value) || 0)}
+                        className="w-16 px-2 py-1 bg-stone-900/50 border border-stone-600 rounded text-sm text-white text-center"
+                        min={1}
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

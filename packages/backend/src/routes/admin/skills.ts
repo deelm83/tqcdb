@@ -1,17 +1,50 @@
 import express, { Request, Response } from 'express';
 import { PrismaClient, Prisma, Skill, General } from '@prisma/client';
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
 import { requireAuth } from '../../middleware/auth';
 
 const router = express.Router();
 const prisma = new PrismaClient();
 
+// Configure multer for skill image uploads
+const storage = multer.diskStorage({
+  destination: (_req, _file, cb) => {
+    const uploadDir = path.join(__dirname, '../../../../web/public/images/skills');
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    cb(null, uploadDir);
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const timestamp = Date.now();
+    const slug = req.params.id || 'new';
+    cb(null, `${slug}-${timestamp}${ext}`);
+  },
+});
+
+const upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+  fileFilter: (_req, file, cb) => {
+    const allowed = /\.(jpg|jpeg|png|gif|webp)$/i;
+    if (allowed.test(path.extname(file.originalname))) {
+      cb(null, true);
+    } else {
+      cb(new Error('Chỉ chấp nhận file ảnh (jpg, png, gif, webp)'));
+    }
+  },
+});
+
 // Apply auth middleware to all routes
 router.use(requireAuth);
 
 // Helper to generate slug from Vietnamese name
-function generateSlug(nameVi: string | null | undefined): string {
-  if (!nameVi) return '';
-  return nameVi
+function generateSlug(name: string | null | undefined): string {
+  if (!name) return '';
+  return name
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/đ/g, 'd')
@@ -53,21 +86,33 @@ type SkillWithRelations = Skill & {
 router.get('/', async (_req: Request, res: Response) => {
   try {
     const skills = await prisma.skill.findMany({
-      orderBy: { nameCn: 'asc' },
+      orderBy: { name: 'asc' },
+      include: {
+        innateGeneralRelations: { select: { generalId: true } },
+        inheritGeneralRelations: { select: { generalId: true } },
+        exchangeGeneralRelations: { select: { generalId: true } },
+      },
     });
 
     const transformed = skills.map((s) => ({
       id: s.id,
       slug: s.slug,
-      name: { cn: s.nameCn, vi: s.nameVi },
+      name: s.name,
       type: {
         id: s.typeId,
-        name: { cn: s.typeNameCn, vi: s.typeNameVi },
+        name: s.typeName,
       },
       quality: s.quality,
       trigger_rate: s.triggerRate,
+      target: s.target,
+      acquisition_type: s.acquisitionType,
+      innate_general_ids: s.innateGeneralRelations.map(r => r.generalId),
+      inherit_general_ids: s.inheritGeneralRelations.map(r => r.generalId),
+      exchange_general_ids: s.exchangeGeneralRelations.map(r => r.generalId),
+      exchange_count: s.exchangeCount,
       status: s.status,
       updated_at: s.updatedAt,
+      screenshots: s.screenshots || [],
     }));
 
     res.json(transformed);
@@ -123,18 +168,17 @@ router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
     const transformed = {
       id: skill.id,
       slug: skill.slug,
-      name: { cn: skill.nameCn, vi: skill.nameVi },
+      name: skill.name,
       type: {
         id: skill.typeId,
-        name: { cn: skill.typeNameCn, vi: skill.typeNameVi },
+        name: skill.typeName,
       },
       quality: skill.quality,
       trigger_rate: skill.triggerRate,
       source_type: skill.sourceType,
       wiki_url: skill.wikiUrl,
-      effect: (skill.effectCn || skill.effectVi) ? { cn: skill.effectCn, vi: skill.effectVi } : null,
+      effect: skill.effect,
       target: skill.target,
-      target_vi: skill.targetVi,
       army_types: skill.armyTypes,
       innate_to: skill.innateToGeneralNames, // Legacy string array
       inheritance_from: skill.inheritanceFromGeneralNames, // Legacy string array
@@ -159,13 +203,10 @@ router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
 
 interface CreateSkillBody {
   slug?: string;
-  name?: { cn?: string; vi?: string };
-  nameCn?: string;
-  nameVi?: string;
-  type?: { id?: string; name?: { cn?: string; vi?: string } };
+  name?: string;
+  type?: { id?: string; name?: string };
   typeId?: string;
-  typeNameCn?: string;
-  typeNameVi?: string;
+  typeName?: string;
   quality?: string;
   trigger_rate?: number;
   triggerRate?: number;
@@ -173,12 +214,8 @@ interface CreateSkillBody {
   sourceType?: string;
   wiki_url?: string;
   wikiUrl?: string;
-  effect?: { cn?: string; vi?: string };
-  effectCn?: string;
-  effectVi?: string;
+  effect?: string;
   target?: string;
-  target_vi?: string;
-  targetVi?: string;
   army_types?: string[];
   armyTypes?: string[];
   innate_to?: string[];
@@ -197,6 +234,7 @@ interface CreateSkillBody {
   innate_general_ids?: string[];
   inherit_general_ids?: string[];
   status?: string;
+  screenshots?: string[];
 }
 
 // POST /api/admin/skills - Create skill
@@ -205,7 +243,8 @@ router.post('/', async (req: Request<object, object, CreateSkillBody>, res: Resp
     const data = req.body;
 
     // Generate slug if not provided
-    const slug = data.slug || generateSlug(data.name?.vi || data.nameVi || null);
+    const name = data.name || '';
+    const slug = data.slug || generateSlug(name);
 
     // Check for duplicate slug if provided
     if (slug) {
@@ -216,56 +255,68 @@ router.post('/', async (req: Request<object, object, CreateSkillBody>, res: Resp
       }
     }
 
-    // Check for duplicate Chinese name
-    const nameCn = data.name?.cn || data.nameCn;
-    if (nameCn) {
-      const existingName = await prisma.skill.findUnique({ where: { nameCn } });
-      if (existingName) {
-        res.status(400).json({ error: 'Tên chiến pháp (CN) đã tồn tại' });
-        return;
-      }
-    }
-
     // Get general IDs if provided
     const exchangeGeneralIds = data.exchange_general_ids || [];
     const innateGeneralIds = data.innate_general_ids || [];
     const inheritGeneralIds = data.inherit_general_ids || [];
 
-    const skill = await prisma.skill.create({
-      data: {
-        slug,
-        nameCn: nameCn || '',
-        nameVi: data.name?.vi || data.nameVi || '',
-        typeId: data.type?.id || data.typeId || 'unknown',
-        typeNameCn: data.type?.name?.cn || data.typeNameCn || null,
-        typeNameVi: data.type?.name?.vi || data.typeNameVi || null,
-        quality: data.quality || null,
-        triggerRate: data.trigger_rate || data.triggerRate || null,
-        sourceType: data.source_type || data.sourceType || null,
-        wikiUrl: data.wiki_url || data.wikiUrl || null,
-        effectCn: data.effect?.cn || data.effectCn || null,
-        effectVi: data.effect?.vi || data.effectVi || null,
-        target: data.target || null,
-        targetVi: data.target_vi || data.targetVi || null,
-        armyTypes: data.army_types || data.armyTypes || [],
-        innateToGeneralNames: data.innate_to || data.innateToGenerals || [],
-        inheritanceFromGeneralNames: data.inheritance_from || data.inheritanceFromGenerals || [],
-        acquisitionType: data.acquisition_type || data.acquisitionType || null,
-        exchangeType: data.exchange_type || data.exchangeType || null,
-        exchangeGenerals: data.exchange_generals || data.exchangeGenerals || [],
-        exchangeCount: data.exchange_count ?? data.exchangeCount ?? null,
-        status: data.status || 'needs_update',
-        // Create general relations if provided
-        exchangeGeneralRelations: exchangeGeneralIds.length > 0 ? {
-          create: exchangeGeneralIds.map(generalId => ({ generalId }))
-        } : undefined,
-        innateGeneralRelations: innateGeneralIds.length > 0 ? {
-          create: innateGeneralIds.map(generalId => ({ generalId }))
-        } : undefined,
-        inheritGeneralRelations: inheritGeneralIds.length > 0 ? {
-          create: inheritGeneralIds.map(generalId => ({ generalId }))
-        } : undefined,
-      },
+    const skill = await prisma.$transaction(async (tx) => {
+      const createdSkill = await tx.skill.create({
+        data: {
+          slug,
+          name,
+          typeId: data.type?.id || data.typeId || 'unknown',
+          typeName: data.type?.name || data.typeName || null,
+          quality: data.quality || null,
+          triggerRate: data.trigger_rate || data.triggerRate || null,
+          sourceType: data.source_type || data.sourceType || null,
+          wikiUrl: data.wiki_url || data.wikiUrl || null,
+          effect: data.effect || null,
+          target: data.target || null,
+          armyTypes: data.army_types || data.armyTypes || [],
+          innateToGeneralNames: data.innate_to || data.innateToGenerals || [],
+          inheritanceFromGeneralNames: data.inheritance_from || data.inheritanceFromGenerals || [],
+          acquisitionType: data.acquisition_type || data.acquisitionType || null,
+          exchangeType: data.exchange_type || data.exchangeType || null,
+          exchangeGenerals: data.exchange_generals || data.exchangeGenerals || [],
+          exchangeCount: data.exchange_count ?? data.exchangeCount ?? null,
+          status: data.status || 'needs_update',
+          // Create general relations if provided
+          exchangeGeneralRelations: exchangeGeneralIds.length > 0 ? {
+            create: exchangeGeneralIds.map(generalId => ({ generalId }))
+          } : undefined,
+          innateGeneralRelations: innateGeneralIds.length > 0 ? {
+            create: innateGeneralIds.map(generalId => ({ generalId }))
+          } : undefined,
+          inheritGeneralRelations: inheritGeneralIds.length > 0 ? {
+            create: inheritGeneralIds.map(generalId => ({ generalId }))
+          } : undefined,
+        },
+      });
+
+      // Update generals' innateSkillId field
+      for (const generalId of innateGeneralIds) {
+        await tx.general.update({
+          where: { id: generalId },
+          data: {
+            innateSkillId: createdSkill.id,
+            innateSkillName: createdSkill.name,
+          }
+        });
+      }
+
+      // Update generals' inheritedSkillId field
+      for (const generalId of inheritGeneralIds) {
+        await tx.general.update({
+          where: { id: generalId },
+          data: {
+            inheritedSkillId: createdSkill.id,
+            inheritedSkillName: createdSkill.name,
+          }
+        });
+      }
+
+      return createdSkill;
     });
 
     res.status(201).json({ success: true, skill });
@@ -310,13 +361,13 @@ router.put('/:id', async (req: Request<{ id: string }, object, CreateSkillBody>,
     let inheritGeneralNames = data.inheritance_from ?? data.inheritanceFromGenerals;
     let exchangeGeneralNames = data.exchange_generals;
 
-    // If relation IDs are provided, fetch the Chinese names to sync legacy arrays
+    // If relation IDs are provided, fetch the names to sync legacy arrays
     if (data.innate_general_ids !== undefined && innateGeneralIds.length > 0) {
       const generals = await prisma.general.findMany({
         where: { id: { in: innateGeneralIds } },
-        select: { nameCn: true }
+        select: { name: true }
       });
-      innateGeneralNames = generals.map(g => g.nameCn);
+      innateGeneralNames = generals.map(g => g.name);
     } else if (data.innate_general_ids !== undefined) {
       innateGeneralNames = []; // Clear if empty array was passed
     }
@@ -324,9 +375,9 @@ router.put('/:id', async (req: Request<{ id: string }, object, CreateSkillBody>,
     if (data.inherit_general_ids !== undefined && inheritGeneralIds.length > 0) {
       const generals = await prisma.general.findMany({
         where: { id: { in: inheritGeneralIds } },
-        select: { nameCn: true }
+        select: { name: true }
       });
-      inheritGeneralNames = generals.map(g => g.nameCn);
+      inheritGeneralNames = generals.map(g => g.name);
     } else if (data.inherit_general_ids !== undefined) {
       inheritGeneralNames = []; // Clear if empty array was passed
     }
@@ -334,9 +385,9 @@ router.put('/:id', async (req: Request<{ id: string }, object, CreateSkillBody>,
     if (data.exchange_general_ids !== undefined && exchangeGeneralIds.length > 0) {
       const generals = await prisma.general.findMany({
         where: { id: { in: exchangeGeneralIds } },
-        select: { nameCn: true }
+        select: { name: true }
       });
-      exchangeGeneralNames = generals.map(g => g.nameCn);
+      exchangeGeneralNames = generals.map(g => g.name);
     } else if (data.exchange_general_ids !== undefined) {
       exchangeGeneralNames = []; // Clear if empty array was passed
     }
@@ -350,39 +401,57 @@ router.put('/:id', async (req: Request<{ id: string }, object, CreateSkillBody>,
         });
       }
       if (data.innate_general_ids !== undefined) {
+        // Clear innateSkillId from generals that previously had this skill as innate
+        const oldInnateRelations = await tx.skillInnateGeneral.findMany({
+          where: { skillId: existing!.id },
+          select: { generalId: true }
+        });
+        for (const rel of oldInnateRelations) {
+          await tx.general.update({
+            where: { id: rel.generalId },
+            data: { innateSkillId: null, innateSkillName: null }
+          });
+        }
         await tx.skillInnateGeneral.deleteMany({
           where: { skillId: existing!.id }
         });
       }
       if (data.inherit_general_ids !== undefined) {
+        // Clear inheritedSkillId from generals that previously had this skill as inherited
+        const oldInheritRelations = await tx.skillInheritGeneral.findMany({
+          where: { skillId: existing!.id },
+          select: { generalId: true }
+        });
+        for (const rel of oldInheritRelations) {
+          await tx.general.update({
+            where: { id: rel.generalId },
+            data: { inheritedSkillId: null, inheritedSkillName: null }
+          });
+        }
         await tx.skillInheritGeneral.deleteMany({
           where: { skillId: existing!.id }
         });
       }
 
       // Generate slug if not provided and doesn't exist
-      const nameVi = data.name?.vi ?? data.nameVi ?? existing!.nameVi;
-      const baseSlug = data.slug || existing!.slug || generateSlug(nameVi);
+      const name = data.name ?? existing!.name;
+      const baseSlug = data.slug || existing!.slug || generateSlug(name);
       const newSlug = await generateUniqueSlug(baseSlug, existing!.id);
 
-      // Update skill - use ?? for fields that should preserve null/empty values
+      // Update skill
       const updatedSkill = await tx.skill.update({
         where: { id: existing!.id },
         data: {
           slug: newSlug,
-          nameCn: data.name?.cn ?? data.nameCn ?? existing!.nameCn,
-          nameVi: data.name?.vi ?? data.nameVi ?? existing!.nameVi,
+          name: data.name ?? existing!.name,
           typeId: data.type?.id ?? data.typeId ?? existing!.typeId,
-          typeNameCn: data.type?.name?.cn ?? data.typeNameCn ?? existing!.typeNameCn,
-          typeNameVi: data.type?.name?.vi ?? data.typeNameVi ?? existing!.typeNameVi,
+          typeName: data.type?.name ?? data.typeName ?? existing!.typeName,
           quality: data.quality ?? existing!.quality,
           triggerRate: data.trigger_rate ?? data.triggerRate ?? existing!.triggerRate,
           sourceType: data.source_type ?? data.sourceType ?? existing!.sourceType,
           wikiUrl: data.wiki_url ?? data.wikiUrl ?? existing!.wikiUrl,
-          effectCn: data.effect?.cn ?? data.effectCn ?? existing!.effectCn,
-          effectVi: data.effect?.vi ?? data.effectVi ?? existing!.effectVi,
+          effect: data.effect ?? existing!.effect,
           target: data.target ?? existing!.target,
-          targetVi: data.target_vi ?? data.targetVi ?? existing!.targetVi,
           armyTypes: data.army_types ?? data.armyTypes ?? existing!.armyTypes,
           innateToGeneralNames: innateGeneralNames ?? existing!.innateToGeneralNames,
           inheritanceFromGeneralNames: inheritGeneralNames ?? existing!.inheritanceFromGeneralNames,
@@ -391,6 +460,7 @@ router.put('/:id', async (req: Request<{ id: string }, object, CreateSkillBody>,
           exchangeGenerals: exchangeGeneralNames ?? existing!.exchangeGenerals,
           exchangeCount: data.exchange_count ?? data.exchangeCount ?? existing!.exchangeCount,
           status: data.status ?? existing!.status,
+          screenshots: data.screenshots ?? existing!.screenshots,
         },
       });
 
@@ -410,6 +480,16 @@ router.put('/:id', async (req: Request<{ id: string }, object, CreateSkillBody>,
             generalId
           }))
         });
+        // Also update the general's innateSkillId field
+        for (const generalId of innateGeneralIds) {
+          await tx.general.update({
+            where: { id: generalId },
+            data: {
+              innateSkillId: existing!.id,
+              innateSkillName: updatedSkill.name,
+            }
+          });
+        }
       }
       if (inheritGeneralIds.length > 0) {
         await tx.skillInheritGeneral.createMany({
@@ -418,6 +498,16 @@ router.put('/:id', async (req: Request<{ id: string }, object, CreateSkillBody>,
             generalId
           }))
         });
+        // Also update the general's inheritedSkillId field
+        for (const generalId of inheritGeneralIds) {
+          await tx.general.update({
+            where: { id: generalId },
+            data: {
+              inheritedSkillId: existing!.id,
+              inheritedSkillName: updatedSkill.name,
+            }
+          });
+        }
       }
 
       return updatedSkill;
@@ -462,6 +552,52 @@ router.delete('/:id', async (req: Request<{ id: string }>, res: Response) => {
   } catch (error) {
     console.error('Error deleting skill:', error);
     res.status(500).json({ error: 'Không thể xóa chiến pháp' });
+  }
+});
+
+// POST /api/admin/skills/:id/image - Upload skill image
+router.post('/:id/image', upload.single('image'), async (req: Request<{ id: string }>, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    if (!req.file) {
+      res.status(400).json({ error: 'Không có file ảnh' });
+      return;
+    }
+
+    // Find existing skill by slug or id
+    let existing = await prisma.skill.findUnique({
+      where: { slug: id },
+    });
+
+    if (!existing) {
+      const numId = parseInt(id);
+      if (!isNaN(numId)) {
+        existing = await prisma.skill.findUnique({
+          where: { id: numId },
+        });
+      }
+    }
+
+    if (!existing) {
+      res.status(404).json({ error: 'Không tìm thấy chiến pháp' });
+      return;
+    }
+
+    const filename = req.file.filename;
+
+    // Add to screenshots array
+    const screenshots = [...(existing.screenshots || []), filename];
+
+    await prisma.skill.update({
+      where: { id: existing.id },
+      data: { screenshots },
+    });
+
+    res.json({ success: true, filename, screenshots });
+  } catch (error) {
+    console.error('Error uploading skill image:', error);
+    res.status(500).json({ error: 'Không thể upload ảnh' });
   }
 });
 
