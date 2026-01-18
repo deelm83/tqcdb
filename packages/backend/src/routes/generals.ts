@@ -1,11 +1,11 @@
-const express = require('express');
-const { PrismaClient } = require('@prisma/client');
+import express, { Request, Response } from 'express';
+import { PrismaClient, Skill, General } from '@prisma/client';
 
 const router = express.Router();
 const prisma = new PrismaClient();
 
 // Remove Vietnamese diacritics for search
-function removeVietnameseDiacritics(str) {
+function removeVietnameseDiacritics(str: string | null): string {
   if (!str) return '';
   return str
     .normalize('NFD')
@@ -16,7 +16,7 @@ function removeVietnameseDiacritics(str) {
 }
 
 // Check if name matches search term (with diacritics removed)
-function matchesSearch(name, searchTerm) {
+function matchesSearch(name: string | null, searchTerm: string): boolean {
   if (!name || !searchTerm) return false;
   const normalizedName = removeVietnameseDiacritics(name);
   const normalizedSearch = removeVietnameseDiacritics(searchTerm);
@@ -24,7 +24,7 @@ function matchesSearch(name, searchTerm) {
 }
 
 // Transform skill to frontend format
-function transformSkill(skill) {
+function transformSkill(skill: Skill | null) {
   if (!skill) return null;
   return {
     id: skill.id,
@@ -40,8 +40,21 @@ function transformSkill(skill) {
   };
 }
 
+interface GeneralsQuery {
+  search?: string;
+  factions?: string;
+  costs?: string;
+  minCost?: string;
+  maxCost?: string;
+  cavalry?: string;
+  shield?: string;
+  archer?: string;
+  spear?: string;
+  siege?: string;
+}
+
 // GET all generals with filtering
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request<object, object, object, GeneralsQuery>, res: Response) => {
   try {
     const {
       search,
@@ -56,7 +69,11 @@ router.get('/', async (req, res) => {
       siege,
     } = req.query;
 
-    const where = {};
+    const where: {
+      factionId?: { in: string[] };
+      cost?: { in?: number[]; gte?: number; lte?: number };
+      AND?: object[];
+    } = {};
 
     // Faction filter
     if (factions) {
@@ -75,7 +92,7 @@ router.get('/', async (req, res) => {
     }
 
     // Troop compatibility filters (A or S grade)
-    const troopFilters = [];
+    const troopFilters: object[] = [];
     if (cavalry === 'true') troopFilters.push({ cavalryGrade: { in: ['S', 'A'] } });
     if (shield === 'true') troopFilters.push({ shieldGrade: { in: ['S', 'A'] } });
     if (archer === 'true') troopFilters.push({ archerGrade: { in: ['S', 'A'] } });
@@ -132,8 +149,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+type GeneralWithRelations = General & {
+  innateSkill: Skill | null;
+  inheritedSkill: Skill | null;
+  innateSkillSources: { skill: Skill }[];
+  inheritSkillSources: { skill: Skill }[];
+};
+
 // GET general by ID, slug, or index
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
   try {
     const { id } = req.params;
 
@@ -149,7 +173,7 @@ router.get('/:id', async (req, res) => {
       },
     };
 
-    let general;
+    let general: GeneralWithRelations | null = null;
 
     // Check if id is a number (index-based lookup)
     if (/^\d+$/.test(id)) {
@@ -157,36 +181,37 @@ router.get('/:id', async (req, res) => {
       const generals = await prisma.general.findMany({
         include: includeRelations,
         orderBy: { cost: 'desc' },
-      });
+      }) as GeneralWithRelations[];
       general = generals[index] || null;
     } else {
       // Try slug lookup first
       general = await prisma.general.findUnique({
         where: { slug: id },
         include: includeRelations,
-      });
+      }) as GeneralWithRelations | null;
 
       // If not found, try string ID lookup (Chinese name)
       if (!general) {
         general = await prisma.general.findUnique({
           where: { id: decodeURIComponent(id) },
           include: includeRelations,
-        });
+        }) as GeneralWithRelations | null;
       }
     }
 
     if (!general) {
-      return res.status(404).json({ error: 'Không tìm thấy tướng' });
+      res.status(404).json({ error: 'Không tìm thấy tướng' });
+      return;
     }
 
     // Get innate skill: prefer direct FK, then check reverse relation
-    let innateSkill = general.innateSkill;
+    let innateSkill: Skill | null = general.innateSkill;
     if (!innateSkill && general.innateSkillSources.length > 0) {
       innateSkill = general.innateSkillSources[0].skill;
     }
 
     // Get inherited skill: prefer direct FK, then check reverse relation
-    let inheritedSkill = general.inheritedSkill;
+    let inheritedSkill: Skill | null = general.inheritedSkill;
     if (!inheritedSkill && general.inheritSkillSources.length > 0) {
       inheritedSkill = general.inheritSkillSources[0].skill;
     }
@@ -235,13 +260,13 @@ router.get('/:id', async (req, res) => {
 });
 
 // GET total count
-router.get('/stats/count', async (req, res) => {
+router.get('/stats/count', async (_req: Request, res: Response) => {
   try {
     const count = await prisma.general.count();
     res.json({ count });
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Không thể đếm số tướng' });
   }
 });
 
-module.exports = router;
+export default router;

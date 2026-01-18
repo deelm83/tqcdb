@@ -1,20 +1,26 @@
-const express = require('express');
-const { generateToken, requireAuth } = require('../middleware/auth');
+import express, { Request, Response } from 'express';
+import { generateToken, requireAuth } from '../middleware/auth';
 
 const router = express.Router();
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '1234';
 
+interface LoginBody {
+  password?: string;
+}
+
 // POST /api/auth/login
-router.post('/login', (req, res) => {
+router.post('/login', (req: Request<object, object, LoginBody>, res: Response) => {
   const { password } = req.body;
 
   if (!password) {
-    return res.status(400).json({ error: 'Vui lòng nhập mật khẩu' });
+    res.status(400).json({ error: 'Vui lòng nhập mật khẩu' });
+    return;
   }
 
   if (password !== ADMIN_PASSWORD) {
-    return res.status(401).json({ error: 'Mật khẩu không đúng' });
+    res.status(401).json({ error: 'Mật khẩu không đúng' });
+    return;
   }
 
   const token = generateToken();
@@ -31,14 +37,14 @@ router.post('/login', (req, res) => {
 });
 
 // POST /api/auth/logout
-router.post('/logout', (req, res) => {
+router.post('/logout', (_req: Request, res: Response) => {
   res.clearCookie('adminToken');
   res.json({ success: true, message: 'Đã đăng xuất' });
 });
 
 // GET /api/auth/check
-router.get('/check', requireAuth, (req, res) => {
+router.get('/check', requireAuth, (req: Request, res: Response) => {
   res.json({ authenticated: true, admin: req.admin });
 });
 
-module.exports = router;
+export default router;

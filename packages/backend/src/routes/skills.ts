@@ -1,11 +1,11 @@
-const express = require('express');
-const { PrismaClient } = require('@prisma/client');
+import express, { Request, Response } from 'express';
+import { PrismaClient, Skill } from '@prisma/client';
 
 const router = express.Router();
 const prisma = new PrismaClient();
 
 // Remove Vietnamese diacritics for search
-function removeVietnameseDiacritics(str) {
+function removeVietnameseDiacritics(str: string | null): string {
   if (!str) return '';
   return str
     .normalize('NFD')
@@ -16,22 +16,30 @@ function removeVietnameseDiacritics(str) {
 }
 
 // Check if name matches search term (with diacritics removed)
-function matchesSearch(name, searchTerm) {
+function matchesSearch(name: string | null, searchTerm: string): boolean {
   if (!name || !searchTerm) return false;
   const normalizedName = removeVietnameseDiacritics(name);
   const normalizedSearch = removeVietnameseDiacritics(searchTerm);
   return normalizedName.includes(normalizedSearch);
 }
 
+interface SkillsQuery {
+  search?: string;
+  type?: string;
+}
+
+type SkillWithRelations = Skill & {
+  innateGeneralRelations: { general: { nameCn: string } }[];
+  inheritGeneralRelations: { general: { nameCn: string } }[];
+  exchangeGeneralRelations: { general: { nameCn: string } }[];
+};
+
 // GET all skills with filtering
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request<object, object, object, SkillsQuery>, res: Response) => {
   try {
     const { search, type } = req.query;
 
-    const where = {};
-
-    // Note: Search filter is applied in JavaScript after fetching
-    // to support Vietnamese diacritics-insensitive search
+    const where: { typeId?: string } = {};
 
     // Type filter
     if (type && type !== 'all') {
@@ -52,7 +60,7 @@ router.get('/', async (req, res) => {
           include: { general: { select: { nameCn: true } } }
         },
       },
-    });
+    }) as SkillWithRelations[];
 
     // Apply Vietnamese diacritics-insensitive search filter
     if (search) {
@@ -107,7 +115,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET skill type counts
-router.get('/stats/type-counts', async (req, res) => {
+router.get('/stats/type-counts', async (_req: Request, res: Response) => {
   try {
     const counts = await prisma.skill.groupBy({
       by: ['typeId'],
@@ -116,12 +124,14 @@ router.get('/stats/type-counts', async (req, res) => {
 
     const total = await prisma.skill.count();
 
-    const result = {
+    const result: Record<string, number> = {
       all: total,
     };
 
     for (const item of counts) {
-      result[item.typeId] = item._count.typeId;
+      if (item.typeId) {
+        result[item.typeId] = item._count.typeId;
+      }
     }
 
     res.json(result);
@@ -132,7 +142,7 @@ router.get('/stats/type-counts', async (req, res) => {
 });
 
 // GET generals map (for linking in frontend)
-router.get('/generals-map', async (req, res) => {
+router.get('/generals-map', async (_req: Request, res: Response) => {
   try {
     const generals = await prisma.general.findMany({
       select: {
@@ -143,7 +153,7 @@ router.get('/generals-map', async (req, res) => {
       },
     });
 
-    const map = {};
+    const map: Record<string, { id: string; vi: string | null }> = {};
     generals.forEach((g) => {
       map[g.nameCn] = {
         id: g.slug || g.id, // Use slug for URL, fallback to id
@@ -159,7 +169,7 @@ router.get('/generals-map', async (req, res) => {
 });
 
 // GET skill by slug or id (MUST be last to not catch other routes)
-router.get('/:identifier', async (req, res) => {
+router.get('/:identifier', async (req: Request<{ identifier: string }>, res: Response) => {
   try {
     const { identifier } = req.params;
 
@@ -179,7 +189,7 @@ router.get('/:identifier', async (req, res) => {
     let skill = await prisma.skill.findUnique({
       where: { slug: identifier },
       include: includeRelations,
-    });
+    }) as SkillWithRelations | null;
 
     if (!skill) {
       // Try by id
@@ -188,12 +198,13 @@ router.get('/:identifier', async (req, res) => {
         skill = await prisma.skill.findUnique({
           where: { id },
           include: includeRelations,
-        });
+        }) as SkillWithRelations | null;
       }
     }
 
     if (!skill) {
-      return res.status(404).json({ error: 'Không tìm thấy chiến pháp' });
+      res.status(404).json({ error: 'Không tìm thấy chiến pháp' });
+      return;
     }
 
     // Prefer relation data, fall back to legacy arrays
@@ -239,4 +250,4 @@ router.get('/:identifier', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

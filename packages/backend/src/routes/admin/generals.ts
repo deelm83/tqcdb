@@ -1,9 +1,9 @@
-const express = require('express');
-const { PrismaClient } = require('@prisma/client');
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
-const { requireAuth } = require('../../middleware/auth');
+import express, { Request, Response } from 'express';
+import { PrismaClient, General, Skill } from '@prisma/client';
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
+import { requireAuth } from '../../middleware/auth';
 
 const router = express.Router();
 const prisma = new PrismaClient();
@@ -13,7 +13,7 @@ router.use(requireAuth);
 
 // GET /api/admin/generals/skills/list - Get all skills for dropdown
 // NOTE: This route must be defined BEFORE /:id to avoid being caught by the dynamic route
-router.get('/skills/list', async (req, res) => {
+router.get('/skills/list', async (_req: Request, res: Response) => {
   try {
     const skills = await prisma.skill.findMany({
       select: {
@@ -42,7 +42,7 @@ router.get('/skills/list', async (req, res) => {
 
 // Configure multer for image uploads
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+  destination: (_req, _file, cb) => {
     const uploadDir = path.join(__dirname, '../../../../web/public/images/generals');
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
@@ -59,7 +59,7 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
-  fileFilter: (req, file, cb) => {
+  fileFilter: (_req, file, cb) => {
     const allowed = /\.(jpg|jpeg|png|gif|webp)$/i;
     if (allowed.test(path.extname(file.originalname))) {
       cb(null, true);
@@ -70,7 +70,7 @@ const upload = multer({
 });
 
 // Helper to generate slug from Vietnamese name
-function generateSlug(nameVi) {
+function generateSlug(nameVi: string): string {
   return nameVi
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
@@ -81,8 +81,13 @@ function generateSlug(nameVi) {
     .replace(/^-|-$/g, '');
 }
 
+type GeneralWithSkills = General & {
+  innateSkill: Skill | null;
+  inheritedSkill: Skill | null;
+};
+
 // GET /api/admin/generals - List all generals
-router.get('/', async (req, res) => {
+router.get('/', async (_req: Request, res: Response) => {
   try {
     const generals = await prisma.general.findMany({
       include: {
@@ -90,7 +95,7 @@ router.get('/', async (req, res) => {
         inheritedSkill: true,
       },
       orderBy: { nameCn: 'asc' },
-    });
+    }) as GeneralWithSkills[];
 
     const transformed = generals.map((g) => ({
       id: g.id,
@@ -122,7 +127,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET /api/admin/generals/:id - Get single general
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
   try {
     const { id } = req.params;
 
@@ -134,10 +139,11 @@ router.get('/:id', async (req, res) => {
         innateSkill: true,
         inheritedSkill: true,
       },
-    });
+    }) as GeneralWithSkills | null;
 
     if (!general) {
-      return res.status(404).json({ error: 'Không tìm thấy tướng' });
+      res.status(404).json({ error: 'Không tìm thấy tướng' });
+      return;
     }
 
     const transformed = {
@@ -171,40 +177,78 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+interface CreateGeneralBody {
+  id?: string;
+  slug?: string;
+  name?: { cn?: string; vi?: string };
+  nameCn?: string;
+  nameVi?: string;
+  faction_id?: string;
+  factionId?: string;
+  cost?: number;
+  wiki_url?: string;
+  wikiUrl?: string;
+  image?: string;
+  image_full?: string;
+  imageFull?: string;
+  tags?: { cn?: string[]; vi?: string[] };
+  tagsCn?: string[];
+  tagsVi?: string[];
+  troop_compatibility?: {
+    cavalry?: { grade?: string };
+    shield?: { grade?: string };
+    archer?: { grade?: string };
+    spear?: { grade?: string };
+    siege?: { grade?: string };
+  };
+  cavalryGrade?: string;
+  shieldGrade?: string;
+  archerGrade?: string;
+  spearGrade?: string;
+  siegeGrade?: string;
+  innate_skill_id?: number | null;
+  innateSkillId?: number | null;
+  inherited_skill_id?: number | null;
+  inheritedSkillId?: number | null;
+  status?: string;
+}
+
 // POST /api/admin/generals - Create general
-router.post('/', async (req, res) => {
+router.post('/', async (req: Request<object, object, CreateGeneralBody>, res: Response) => {
   try {
     const data = req.body;
 
     // Generate slug if not provided
-    const slug = data.slug || generateSlug(data.name?.vi || data.nameCn);
+    const nameCn = data.name?.cn || data.nameCn || '';
+    const slug = data.slug || generateSlug(data.name?.vi || nameCn);
 
     // Check for duplicate slug
     const existing = await prisma.general.findUnique({ where: { slug } });
     if (existing) {
-      return res.status(400).json({ error: 'Slug đã tồn tại' });
+      res.status(400).json({ error: 'Slug đã tồn tại' });
+      return;
     }
 
     const general = await prisma.general.create({
       data: {
-        id: data.id || data.name?.cn || slug,
+        id: data.id || nameCn || slug,
         slug,
-        nameCn: data.name?.cn || data.nameCn,
-        nameVi: data.name?.vi || data.nameVi,
-        factionId: data.faction_id || data.factionId,
-        cost: data.cost,
-        wikiUrl: data.wiki_url || data.wikiUrl,
-        image: data.image,
-        imageFull: data.image_full || data.imageFull,
+        nameCn,
+        nameVi: data.name?.vi || data.nameVi || '',
+        factionId: data.faction_id || data.factionId || '',
+        cost: data.cost || 0,
+        wikiUrl: data.wiki_url || data.wikiUrl || null,
+        image: data.image || null,
+        imageFull: data.image_full || data.imageFull || null,
         tagsCn: data.tags?.cn || data.tagsCn || [],
         tagsVi: data.tags?.vi || data.tagsVi || [],
-        cavalryGrade: data.troop_compatibility?.cavalry?.grade || data.cavalryGrade,
-        shieldGrade: data.troop_compatibility?.shield?.grade || data.shieldGrade,
-        archerGrade: data.troop_compatibility?.archer?.grade || data.archerGrade,
-        spearGrade: data.troop_compatibility?.spear?.grade || data.spearGrade,
-        siegeGrade: data.troop_compatibility?.siege?.grade || data.siegeGrade,
-        innateSkillId: data.innate_skill_id || data.innateSkillId || null,
-        inheritedSkillId: data.inherited_skill_id || data.inheritedSkillId || null,
+        cavalryGrade: data.troop_compatibility?.cavalry?.grade || data.cavalryGrade || null,
+        shieldGrade: data.troop_compatibility?.shield?.grade || data.shieldGrade || null,
+        archerGrade: data.troop_compatibility?.archer?.grade || data.archerGrade || null,
+        spearGrade: data.troop_compatibility?.spear?.grade || data.spearGrade || null,
+        siegeGrade: data.troop_compatibility?.siege?.grade || data.siegeGrade || null,
+        innateSkillId: data.innate_skill_id ?? data.innateSkillId ?? null,
+        inheritedSkillId: data.inherited_skill_id ?? data.inheritedSkillId ?? null,
         status: data.status || 'needs_update',
       },
     });
@@ -217,7 +261,7 @@ router.post('/', async (req, res) => {
 });
 
 // PUT /api/admin/generals/:id - Update general
-router.put('/:id', async (req, res) => {
+router.put('/:id', async (req: Request<{ id: string }, object, CreateGeneralBody>, res: Response) => {
   try {
     const { id } = req.params;
     const data = req.body;
@@ -230,7 +274,8 @@ router.put('/:id', async (req, res) => {
     });
 
     if (!existing) {
-      return res.status(404).json({ error: 'Không tìm thấy tướng' });
+      res.status(404).json({ error: 'Không tìm thấy tướng' });
+      return;
     }
 
     const general = await prisma.general.update({
@@ -265,7 +310,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE /api/admin/generals/:id - Delete general
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req: Request<{ id: string }>, res: Response) => {
   try {
     const { id } = req.params;
 
@@ -277,7 +322,8 @@ router.delete('/:id', async (req, res) => {
     });
 
     if (!existing) {
-      return res.status(404).json({ error: 'Không tìm thấy tướng' });
+      res.status(404).json({ error: 'Không tìm thấy tướng' });
+      return;
     }
 
     await prisma.general.delete({
@@ -292,12 +338,13 @@ router.delete('/:id', async (req, res) => {
 });
 
 // POST /api/admin/generals/:id/image - Upload image
-router.post('/:id/image', upload.single('image'), async (req, res) => {
+router.post('/:id/image', upload.single('image'), async (req: Request<{ id: string }>, res: Response) => {
   try {
     const { id } = req.params;
 
     if (!req.file) {
-      return res.status(400).json({ error: 'Không có file ảnh' });
+      res.status(400).json({ error: 'Không có file ảnh' });
+      return;
     }
 
     // Find existing general
@@ -308,7 +355,8 @@ router.post('/:id/image', upload.single('image'), async (req, res) => {
     });
 
     if (!existing) {
-      return res.status(404).json({ error: 'Không tìm thấy tướng' });
+      res.status(404).json({ error: 'Không tìm thấy tướng' });
+      return;
     }
 
     const imagePath = `/images/generals/${req.file.filename}`;
@@ -326,4 +374,4 @@ router.post('/:id/image', upload.single('image'), async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

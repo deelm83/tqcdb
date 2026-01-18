@@ -1,7 +1,7 @@
-const express = require('express');
-const Anthropic = require('@anthropic-ai/sdk').default;
-const multer = require('multer');
-const { requireAuth } = require('../../middleware/auth');
+import express, { Request, Response } from 'express';
+import Anthropic from '@anthropic-ai/sdk';
+import multer from 'multer';
+import { requireAuth } from '../../middleware/auth';
 
 const router = express.Router();
 
@@ -9,7 +9,7 @@ const router = express.Router();
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
-  fileFilter: (req, file, cb) => {
+  fileFilter: (_req, file, cb) => {
     if (file.mimetype.startsWith('image/')) {
       cb(null, true);
     } else {
@@ -21,23 +21,27 @@ const upload = multer({
 // Apply auth middleware
 router.use(requireAuth);
 
+type ImageMediaType = 'image/jpeg' | 'image/png' | 'image/gif' | 'image/webp';
+
 // POST /api/admin/skills/process-image
-router.post('/', upload.single('image'), async (req, res) => {
+router.post('/', upload.single('image'), async (req: Request, res: Response) => {
   try {
     if (!req.file) {
-      return res.status(400).json({ error: 'No image file provided' });
+      res.status(400).json({ error: 'No image file provided' });
+      return;
     }
 
     const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
-      return res.status(500).json({ error: 'ANTHROPIC_API_KEY not configured' });
+      res.status(500).json({ error: 'ANTHROPIC_API_KEY not configured' });
+      return;
     }
 
     const anthropic = new Anthropic({ apiKey });
 
     // Convert image buffer to base64
     const base64Image = req.file.buffer.toString('base64');
-    const mediaType = req.file.mimetype;
+    const mediaType = req.file.mimetype as ImageMediaType;
 
     // Call Claude API with the image
     const response = await anthropic.messages.create({
@@ -121,7 +125,8 @@ Extract all visible information. If a field is not visible, use null or empty ar
     // Parse the response
     const content = response.content[0];
     if (content.type !== 'text') {
-      return res.status(500).json({ error: 'Unexpected response format' });
+      res.status(500).json({ error: 'Unexpected response format' });
+      return;
     }
 
     // Try to parse JSON from the response
@@ -133,19 +138,21 @@ Extract all visible information. If a field is not visible, use null or empty ar
         jsonText = jsonText.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '');
       }
       skillData = JSON.parse(jsonText);
-    } catch (parseError) {
+    } catch {
       console.error('Failed to parse AI response:', content.text);
-      return res.status(500).json({
+      res.status(500).json({
         error: 'Failed to parse skill data from image',
         raw: content.text
       });
+      return;
     }
 
     res.json({ success: true, data: skillData });
   } catch (error) {
     console.error('Error processing skill image:', error);
-    res.status(500).json({ error: 'Failed to process image: ' + error.message });
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    res.status(500).json({ error: 'Failed to process image: ' + errorMessage });
   }
 });
 
-module.exports = router;
+export default router;

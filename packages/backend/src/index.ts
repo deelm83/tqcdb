@@ -1,13 +1,14 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const generalsRoutes = require('./routes/generals');
-const skillsRoutes = require('./routes/skills');
-const authRoutes = require('./routes/auth');
-const adminGeneralsRoutes = require('./routes/admin/generals');
-const adminSkillsRoutes = require('./routes/admin/skills');
-const skillImageProcessorRoutes = require('./routes/admin/skillImageProcessor');
+import 'dotenv/config';
+import './types/express';
+import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import generalsRoutes from './routes/generals';
+import skillsRoutes from './routes/skills';
+import authRoutes from './routes/auth';
+import adminGeneralsRoutes from './routes/admin/generals';
+import adminSkillsRoutes from './routes/admin/skills';
+import skillImageProcessorRoutes from './routes/admin/skillImageProcessor';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -29,12 +30,12 @@ app.use('/api/admin/skills', adminSkillsRoutes);
 app.use('/api/admin/skills/process-image', skillImageProcessorRoutes);
 
 // Health check
-app.get('/api/health', (req, res) => {
+app.get('/api/health', (_req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 // Error handler
-app.use((err, req, res, next) => {
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Đã xảy ra lỗi!' });
 });
