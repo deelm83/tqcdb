@@ -3,7 +3,7 @@ const { generateToken, requireAuth } = require('../middleware/auth');
 
 const router = express.Router();
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '1234';
 
 // POST /api/auth/login
 router.post('/login', (req, res) => {
