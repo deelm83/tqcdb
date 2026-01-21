@@ -78,7 +78,16 @@
       "Bash(pgrep:*)",
       "Bash(kill:*)",
       "Bash(npx eslint:*)",
-      "Bash(jq:*)"
+      "Bash(jq:*)",
+      "Bash(railway login:*)",
+      "Bash(railway whoami:*)",
+      "Bash(export RAILWAY_TOKEN:*)",
+      "Bash(RAILWAY_TOKEN=\"39aa2d80-72fb-42f3-b044-26a162fc2315\" railway projects)",
+      "Bash(RAILWAY_TOKEN=\"39aa2d80-72fb-42f3-b044-26a162fc2315\" railway project)",
+      "Bash(RAILWAY_TOKEN=\"39aa2d80-72fb-42f3-b044-26a162fc2315\" railway project list:*)",
+      "Bash(RAILWAY_TOKEN=\"28b53686-d3bd-4387-a6eb-672cd0ce6e82\" railway whoami)",
+      "Bash(RAILWAY_TOKEN=\"26c24c73-50a8-4e4f-9d9d-27fcdf7d6afc\" railway whoami:*)",
+      "Bash(RAILWAY_TOKEN=\"26c24c73-50a8-4e4f-9d9d-27fcdf7d6afc\" railway project list)"
     ]
   }
 }
