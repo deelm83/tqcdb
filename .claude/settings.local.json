@@ -87,7 +87,15 @@
       "Bash(RAILWAY_TOKEN=\"39aa2d80-72fb-42f3-b044-26a162fc2315\" railway project list:*)",
       "Bash(RAILWAY_TOKEN=\"28b53686-d3bd-4387-a6eb-672cd0ce6e82\" railway whoami)",
       "Bash(RAILWAY_TOKEN=\"26c24c73-50a8-4e4f-9d9d-27fcdf7d6afc\" railway whoami:*)",
-      "Bash(RAILWAY_TOKEN=\"26c24c73-50a8-4e4f-9d9d-27fcdf7d6afc\" railway project list)"
+      "Bash(RAILWAY_TOKEN=\"26c24c73-50a8-4e4f-9d9d-27fcdf7d6afc\" railway project list)",
+      "Bash(railway link:*)",
+      "Bash(RAILWAY_TOKEN=\"26c24c73-50a8-4e4f-9d9d-27fcdf7d6afc\" railway link:*)",
+      "Bash(RAILWAY_TOKEN=\"e8aaa74a-4636-42b8-9af3-8975756f17eb\" railway whoami:*)",
+      "Bash(railway:*)",
+      "WebFetch(domain:docs.railway.app)",
+      "WebFetch(domain:docs.railway.com)",
+      "Bash(RAILWAY_API_TOKEN=\"e8aaa74a-4636-42b8-9af3-8975756f17eb\" railway whoami:*)",
+      "Bash(RAILWAY_TOKEN=\"e8aaa74a-4636-42b8-9af3-8975756f17eb\" railway link:*)"
     ]
   }
 }
