@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense, useCallback } from 'react';
+import { useState, useEffect, Suspense, useCallback, useRef, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { FactionId } from '@/lib/generals';
 import { TroopType } from '@/types/general';
@@ -17,13 +17,28 @@ function GeneralsContent() {
 
   const [generals, setGenerals] = useState<General[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isRefetching, setIsRefetching] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const hasLoadedOnce = useRef(false);
 
-  // Read filters from URL
+  // Read filters from URL (memoized to prevent infinite loops)
   const search = searchParams.get('q') || '';
-  const selectedFactions = (searchParams.get('factions')?.split(',').filter(Boolean) || []) as FactionId[];
-  const selectedCost = searchParams.get('cost') ? Number(searchParams.get('cost')) : null;
-  const selectedTroops = (searchParams.get('troops')?.split(',').filter(Boolean) || []) as TroopType[];
+  const factionsParam = searchParams.get('factions') || '';
+  const costParam = searchParams.get('cost') || '';
+  const troopsParam = searchParams.get('troops') || '';
+
+  const selectedFactions = useMemo(() =>
+    (factionsParam.split(',').filter(Boolean)) as FactionId[],
+    [factionsParam]
+  );
+  const selectedCost = useMemo(() =>
+    costParam ? Number(costParam) : null,
+    [costParam]
+  );
+  const selectedTroops = useMemo(() =>
+    (troopsParam.split(',').filter(Boolean)) as TroopType[],
+    [troopsParam]
+  );
 
   // Update URL with new filters
   const updateFilters = useCallback((updates: Record<string, string | null>) => {
@@ -60,7 +75,12 @@ function GeneralsContent() {
   useEffect(() => {
     async function loadGenerals() {
       try {
-        setLoading(true);
+        // Only show full loading on initial load, use refetching for subsequent loads
+        if (!hasLoadedOnce.current) {
+          setLoading(true);
+        } else {
+          setIsRefetching(true);
+        }
         setError(null);
 
         const data = await fetchGenerals({
@@ -75,16 +95,19 @@ function GeneralsContent() {
         });
 
         setGenerals(data);
+        hasLoadedOnce.current = true;
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
       } finally {
         setLoading(false);
+        setIsRefetching(false);
       }
     }
 
     const timer = setTimeout(loadGenerals, 300);
     return () => clearTimeout(timer);
-  }, [search, selectedFactions, selectedCost, selectedTroops]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search, factionsParam, costParam, troopsParam]);
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-8">
@@ -115,7 +138,10 @@ function GeneralsContent() {
             Đang tải...
           </span>
         ) : (
-          <span>{generals.length} võ tướng</span>
+          <span className="flex items-center gap-2">
+            {generals.length} võ tướng
+            {isRefetching && <span className="spinner" />}
+          </span>
         )}
       </div>
 
@@ -136,8 +162,8 @@ function GeneralsContent() {
       )}
 
       {/* Generals Grid */}
-      {!loading && (
-        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+      {!loading && generals.length > 0 && (
+        <div className={`grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 transition-opacity duration-200 ${isRefetching ? 'opacity-60' : 'opacity-100'}`}>
           {generals.map((general, index) => (
             <GeneralCard key={general.id} general={general as any} index={general.index ?? index} />
           ))}

@@ -1,15 +1,17 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
 import { ToastContainer } from '@/components/Toast';
 import Link from 'next/link';
+import { fetchPendingSuggestionsCount } from '@/lib/adminApi';
 
 function AdminNavigation() {
   const pathname = usePathname();
   const router = useRouter();
   const { isAuthenticated, isLoading, logout } = useAuth();
+  const [pendingCount, setPendingCount] = useState<number>(0);
 
   // Skip auth check for login page
   const isLoginPage = pathname === '/admin/login';
@@ -19,6 +21,25 @@ function AdminNavigation() {
       router.push('/admin/login');
     }
   }, [isAuthenticated, isLoading, isLoginPage, router]);
+
+  // Fetch pending suggestions count
+  useEffect(() => {
+    async function loadPendingCount() {
+      if (isAuthenticated && !isLoginPage) {
+        try {
+          const count = await fetchPendingSuggestionsCount();
+          setPendingCount(count);
+        } catch (error) {
+          console.error('Error loading pending suggestions count:', error);
+        }
+      }
+    }
+
+    loadPendingCount();
+    // Refresh count every 30 seconds
+    const interval = setInterval(loadPendingCount, 30000);
+    return () => clearInterval(interval);
+  }, [isAuthenticated, isLoginPage]);
 
   const handleLogout = async () => {
     await logout();
@@ -59,12 +80,22 @@ function AdminNavigation() {
             <Link
               href="/admin/generals"
               className={`px-4 py-2 text-[13px] font-medium uppercase tracking-wider transition-colors ${
-                pathname.startsWith('/admin/generals')
+                pathname === '/admin/generals'
                   ? 'text-[var(--accent-gold)]'
                   : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }`}
             >
               Võ tướng
+            </Link>
+            <Link
+              href="/admin/generals/import"
+              className={`px-4 py-2 text-[13px] font-medium uppercase tracking-wider transition-colors ${
+                pathname === '/admin/generals/import'
+                  ? 'text-[var(--accent-gold)]'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              Import tướng
             </Link>
             <Link
               href="/admin/skills"
@@ -75,6 +106,21 @@ function AdminNavigation() {
               }`}
             >
               Chiến pháp
+            </Link>
+            <Link
+              href="/admin/suggestions"
+              className={`relative px-4 py-2 text-[13px] font-medium uppercase tracking-wider transition-colors ${
+                pathname.startsWith('/admin/suggestions')
+                  ? 'text-[var(--accent-gold)]'
+                  : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              Đề xuất
+              {pendingCount > 0 && (
+                <span className="absolute -top-1 -right-1 px-1.5 py-0.5 bg-[var(--accent-red)] text-white text-[10px] font-bold rounded-full min-w-[18px] text-center">
+                  {pendingCount > 99 ? '99+' : pendingCount}
+                </span>
+              )}
             </Link>
           </div>
 

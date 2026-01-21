@@ -16,8 +16,9 @@ const SKILL_TYPES = [
   { id: 'passive', nameVi: 'Bị Động' },
   { id: 'pursuit', nameVi: 'Truy Kích' },
   { id: 'assault', nameVi: 'Đột Kích' },
-  { id: 'internal', nameVi: 'Nội Chính' },
+  { id: 'formation', nameVi: 'Pháp Trận' },
   { id: 'troop', nameVi: 'Binh Chủng' },
+  { id: 'internal', nameVi: 'Nội Chính' },
 ];
 
 const QUALITIES = ['S', 'A', 'B', 'C'];
@@ -45,7 +46,8 @@ function AdminSkillsContent() {
   const [togglingStatus, setTogglingStatus] = useState<number | null>(null);
 
   // Read filters from URL
-  const search = searchParams.get('q') || '';
+  const searchFromUrl = searchParams.get('q') || '';
+  const [search, setSearchInput] = useState(searchFromUrl);
   const selectedType = searchParams.get('type') || null;
   const selectedQuality = searchParams.get('quality') || null;
   const selectedStatus = (searchParams.get('status') || 'all') as StatusFilter;
@@ -67,8 +69,14 @@ function AdminSkillsContent() {
   }, [searchParams, router]);
 
   const setSearch = useCallback((value: string) => {
+    setSearchInput(value);
     updateFilters({ q: value || null });
   }, [updateFilters]);
+
+  // Sync local search state with URL when URL changes externally
+  useEffect(() => {
+    setSearchInput(searchFromUrl);
+  }, [searchFromUrl]);
 
   const setSelectedType = useCallback((value: string | null) => {
     updateFilters({ type: value });
@@ -181,9 +189,14 @@ function AdminSkillsContent() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl font-bold text-[var(--accent-gold)] uppercase tracking-wider">Chiến pháp ({filteredSkills.length})</h1>
-          <Link href="/admin/skills/new" className="btn-primary">
-            + Thêm chiến pháp
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link href="/admin/skills/mass-edit" className="btn-secondary">
+              Sửa nhanh
+            </Link>
+            <Link href="/admin/skills/new" className="btn-primary">
+              + Thêm chiến pháp
+            </Link>
+          </div>
         </div>
 
         {/* Filters */}

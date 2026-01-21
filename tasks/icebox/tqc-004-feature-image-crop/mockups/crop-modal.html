@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop Modal - Mockup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #1c1917; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+  <!-- Modal -->
+  <div class="bg-stone-800 rounded-lg w-full max-w-md border border-stone-600 shadow-xl">
+
+    <!-- Header -->
+    <div class="px-4 py-3 border-b border-stone-600">
+      <h2 class="text-stone-100 font-medium">Cắt ảnh đại diện</h2>
+    </div>
+
+    <!-- Crop Area -->
+    <div class="p-4">
+      <div class="relative bg-stone-900 rounded overflow-hidden" style="aspect-ratio: 7/10;">
+        <!-- Simulated crop area -->
+        <div class="absolute inset-4 border-2 border-amber-500 rounded">
+          <div class="absolute inset-0 grid grid-cols-3 grid-rows-3">
+            <div class="border-r border-b border-amber-500/30"></div>
+            <div class="border-r border-b border-amber-500/30"></div>
+            <div class="border-b border-amber-500/30"></div>
+            <div class="border-r border-b border-amber-500/30"></div>
+            <div class="border-r border-b border-amber-500/30"></div>
+            <div class="border-b border-amber-500/30"></div>
+            <div class="border-r border-amber-500/30"></div>
+            <div class="border-r border-amber-500/30"></div>
+            <div></div>
+          </div>
+        </div>
+        <div class="absolute inset-0 flex items-center justify-center text-stone-500 text-sm">
+          7:10
+        </div>
+      </div>
+
+      <!-- Zoom -->
+      <div class="mt-4 flex items-center gap-3">
+        <span class="text-stone-400 text-sm">Thu phóng</span>
+        <input type="range" min="1" max="3" step="0.1" value="1"
+          class="flex-1 h-2 bg-stone-700 rounded-lg appearance-none cursor-pointer">
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="px-4 py-3 border-t border-stone-600 flex justify-end gap-2">
+      <button class="px-4 py-2 text-stone-300 hover:text-stone-100 rounded">
+        Hủy
+      </button>
+      <button class="px-4 py-2 bg-amber-600 hover:bg-amber-500 text-white rounded font-medium">
+        Cắt ảnh
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>

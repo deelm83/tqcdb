@@ -3,11 +3,13 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import { fetchAdminGeneral, updateGeneral, uploadGeneralImage, fetchSkillsList, SkillOption } from '@/lib/adminApi';
+import { fetchAdminGeneral, updateGeneral, uploadGeneralImage, fetchSkillsList, SkillOption, deleteGeneral } from '@/lib/adminApi';
 import { General, fetchSkill, Skill } from '@/lib/api';
 import { showToast } from '@/components/Toast';
 import Link from 'next/link';
 import { usePageTitle } from '@/hooks/usePageTitle';
+import ImageCropModal from '@/components/ImageCropModal';
+import { createImageUrl, revokeImageUrl } from '@/lib/imageCrop';
 
 const FACTIONS = [
   { id: 'wei', name: 'Ngụy', color: 'bg-blue-600 text-white border-blue-600', inactiveColor: 'bg-stone-800/50 text-stone-500 border-stone-700/30' },
@@ -33,8 +35,9 @@ const SKILL_TYPE_COLORS: Record<string, string> = {
   passive: 'bg-green-600/30 text-green-300',
   pursuit: 'bg-cyan-600/30 text-cyan-300',
   assault: 'bg-orange-600/30 text-orange-300',
-  internal: 'bg-purple-600/30 text-purple-300',
+  formation: 'bg-purple-600/30 text-purple-300',
   troop: 'bg-blue-600/30 text-blue-300',
+  internal: 'bg-teal-600/30 text-teal-300',
 };
 
 const SKILL_TYPE_NAMES: Record<string, string> = {
@@ -43,8 +46,9 @@ const SKILL_TYPE_NAMES: Record<string, string> = {
   passive: 'Bị Động',
   pursuit: 'Truy Kích',
   assault: 'Đột Kích',
-  internal: 'Nội Chính',
+  formation: 'Pháp Trận',
   troop: 'Binh Chủng',
+  internal: 'Nội Chính',
 };
 
 const TARGET_LABELS: Record<string, string> = {
@@ -167,6 +171,20 @@ export default function EditGeneralPage() {
     innateSkillId: null as number | null,
     inheritedSkillId: null as number | null,
     status: 'needs_update' as string,
+    // Base stats
+    baseAttack: null as number | null,
+    baseCharm: null as number | null,
+    baseCommand: null as number | null,
+    baseIntelligence: null as number | null,
+    basePolitics: null as number | null,
+    baseSpeed: null as number | null,
+    // Growth stats
+    growthAttack: null as number | null,
+    growthCharm: null as number | null,
+    growthCommand: null as number | null,
+    growthIntelligence: null as number | null,
+    growthPolitics: null as number | null,
+    growthSpeed: null as number | null,
   });
 
   usePageTitle(form.name ? `Sửa: ${form.name}` : 'Sửa võ tướng', true);
@@ -178,6 +196,10 @@ export default function EditGeneralPage() {
   const [inheritSearch, setInheritSearch] = useState('');
   const [innateSkillData, setInnateSkillData] = useState<General['innate_skill'] | null>(null);
   const [inheritedSkillData, setInheritedSkillData] = useState<General['inherited_skill'] | null>(null);
+
+  // Image crop modal state
+  const [cropModalOpen, setCropModalOpen] = useState(false);
+  const [cropImageUrl, setCropImageUrl] = useState<string | null>(null);
 
   useEffect(() => {
     if (!authLoading && !isAuthenticated) {
@@ -267,6 +289,20 @@ export default function EditGeneralPage() {
           innateSkillId: generalData.innate_skill_id || null,
           inheritedSkillId: generalData.inherited_skill_id || null,
           status: generalData.status || 'needs_update',
+          // Base stats
+          baseAttack: generalData.base_attack ?? null,
+          baseCharm: generalData.base_charm ?? null,
+          baseCommand: generalData.base_command ?? null,
+          baseIntelligence: generalData.base_intelligence ?? null,
+          basePolitics: generalData.base_politics ?? null,
+          baseSpeed: generalData.base_speed ?? null,
+          // Growth stats
+          growthAttack: generalData.growth_attack ?? null,
+          growthCharm: generalData.growth_charm ?? null,
+          growthCommand: generalData.growth_command ?? null,
+          growthIntelligence: generalData.growth_intelligence ?? null,
+          growthPolitics: generalData.growth_politics ?? null,
+          growthSpeed: generalData.growth_speed ?? null,
         });
       } catch (err) {
         setError('Không thể tải thông tin tướng');
@@ -307,6 +343,20 @@ export default function EditGeneralPage() {
         innate_skill_id: form.innateSkillId,
         inherited_skill_id: form.inheritedSkillId,
         status: statusToSave,
+        // Base stats
+        base_attack: form.baseAttack,
+        base_charm: form.baseCharm,
+        base_command: form.baseCommand,
+        base_intelligence: form.baseIntelligence,
+        base_politics: form.basePolitics,
+        base_speed: form.baseSpeed,
+        // Growth stats
+        growth_attack: form.growthAttack,
+        growth_charm: form.growthCharm,
+        growth_command: form.growthCommand,
+        growth_intelligence: form.growthIntelligence,
+        growth_politics: form.growthPolitics,
+        growth_speed: form.growthSpeed,
       } as any);
       showToast(statusOverride === 'complete' ? 'Đã lưu và đánh dấu hoàn thành' : 'Đã cập nhật tướng thành công', 'success');
 
@@ -334,14 +384,54 @@ export default function EditGeneralPage() {
     }
   };
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDelete = async () => {
+    if (!confirm(`Bạn có chắc muốn xóa võ tướng "${form.name}"? Hành động này không thể hoàn tác.`)) {
+      return;
+    }
+
+    try {
+      await deleteGeneral(id as string);
+      showToast('Đã xóa võ tướng', 'success');
+      router.push('/admin/generals');
+    } catch (err: any) {
+      showToast(err.message || 'Lỗi khi xóa', 'error');
+    }
+  };
+
+  const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    // Create object URL for the selected file and open crop modal
+    const imageUrl = createImageUrl(file);
+    setCropImageUrl(imageUrl);
+    setCropModalOpen(true);
+
+    // Reset input so the same file can be selected again
+    e.target.value = '';
+  };
+
+  const handleRecrop = () => {
+    if (!form.image) return;
+    setCropImageUrl(form.image);
+    setCropModalOpen(true);
+  };
+
+  const handleCropComplete = async (blob: Blob) => {
+    setCropModalOpen(false);
+
+    // Clean up the object URL if it was from a file selection
+    if (cropImageUrl && cropImageUrl.startsWith('blob:')) {
+      revokeImageUrl(cropImageUrl);
+    }
+    setCropImageUrl(null);
 
     setUploading(true);
     setError('');
 
     try {
+      // Convert blob to File for upload
+      const file = new File([blob], 'cropped-image.jpg', { type: 'image/jpeg' });
       const result = await uploadGeneralImage(id, file);
       setForm((prev) => ({ ...prev, image: result.image }));
       showToast('Đã tải ảnh lên thành công', 'success');
@@ -350,6 +440,16 @@ export default function EditGeneralPage() {
     } finally {
       setUploading(false);
     }
+  };
+
+  const handleCropCancel = () => {
+    setCropModalOpen(false);
+
+    // Clean up the object URL if it was from a file selection
+    if (cropImageUrl && cropImageUrl.startsWith('blob:')) {
+      revokeImageUrl(cropImageUrl);
+    }
+    setCropImageUrl(null);
   };
 
   if (authLoading || !isAuthenticated) {
@@ -444,11 +544,21 @@ export default function EditGeneralPage() {
 
             <div className="flex items-start gap-6">
               {form.image ? (
-                <img
-                  src={form.image}
-                  alt={form.name}
-                  className="max-w-48 max-h-48 object-contain rounded-lg border-2 border-stone-600"
-                />
+                <div className="relative group">
+                  <img
+                    src={form.image}
+                    alt={form.name}
+                    className="max-w-48 max-h-48 object-contain rounded-lg border-2 border-stone-600"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleRecrop}
+                    disabled={uploading}
+                    className="absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 bg-stone-900/90 hover:bg-stone-800 text-stone-200 rounded text-xs font-medium transition-colors opacity-0 group-hover:opacity-100 border border-stone-600"
+                  >
+                    ✂️ Cắt lại
+                  </button>
+                </div>
               ) : (
                 <div className="w-32 h-32 bg-stone-700 rounded-lg flex items-center justify-center text-stone-500 border-2 border-dashed border-stone-600">
                   Chưa có ảnh
@@ -456,7 +566,7 @@ export default function EditGeneralPage() {
               )}
 
               <div className="flex-1 space-y-4">
-                <div>
+                <div className="flex items-center gap-2">
                   <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-lg text-sm font-medium transition-colors">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
@@ -465,11 +575,21 @@ export default function EditGeneralPage() {
                     <input
                       type="file"
                       accept="image/*"
-                      onChange={handleImageUpload}
+                      onChange={handleImageSelect}
                       disabled={uploading}
                       className="hidden"
                     />
                   </label>
+                  {form.image && (
+                    <button
+                      type="button"
+                      onClick={handleRecrop}
+                      disabled={uploading}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-stone-700 hover:bg-stone-600 text-stone-200 rounded-lg text-sm font-medium transition-colors"
+                    >
+                      ✂️ Cắt lại
+                    </button>
+                  )}
                   {uploading && <span className="ml-3 text-sm text-stone-400">Đang tải...</span>}
                 </div>
 
@@ -606,7 +726,76 @@ export default function EditGeneralPage() {
             </div>
           </div>
 
-          {/* 5. Innate Skill */}
+          {/* 5. Combined Stats Section */}
+          <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5 mb-5">
+            <h2 className="text-base font-semibold text-amber-100 mb-4 flex items-center gap-2">
+              <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              Chỉ số
+            </h2>
+
+            {/* Stats Table */}
+            <div className="overflow-hidden rounded-lg border border-stone-600">
+              {/* Table Header */}
+              <div className="grid grid-cols-[140px_1fr_1fr] border-b border-stone-600">
+                <div className="px-3 py-2.5 text-sm font-semibold text-stone-300 bg-stone-900">
+                  Chỉ số
+                </div>
+                <div className="px-3 py-2.5 text-sm font-semibold text-center text-blue-200 bg-blue-900/50 border-l border-stone-600">
+                  Cơ bản
+                </div>
+                <div className="px-3 py-2.5 text-sm font-semibold text-center text-green-200 bg-green-900/50 border-l border-stone-600">
+                  Tăng trưởng
+                </div>
+              </div>
+
+              {/* Table Body */}
+              {[
+                { baseKey: 'baseAttack', growthKey: 'growthAttack', label: 'Võ lực', icon: '⚔️' },
+                { baseKey: 'baseCommand', growthKey: 'growthCommand', label: 'Thống suất', icon: '🎖️' },
+                { baseKey: 'baseIntelligence', growthKey: 'growthIntelligence', label: 'Trí lực', icon: '🧠' },
+                { baseKey: 'basePolitics', growthKey: 'growthPolitics', label: 'Chính trị', icon: '📜' },
+                { baseKey: 'baseCharm', growthKey: 'growthCharm', label: 'Mị lực', icon: '✨' },
+                { baseKey: 'baseSpeed', growthKey: 'growthSpeed', label: 'Tốc độ', icon: '🏃' },
+              ].map(({ baseKey, growthKey, label, icon }, index) => (
+                <div
+                  key={baseKey}
+                  className={`grid grid-cols-[140px_1fr_1fr] ${index < 5 ? 'border-b border-stone-700' : ''}`}
+                >
+                  {/* Stat Label */}
+                  <div className={`px-3 py-2 text-sm font-medium text-stone-300 flex items-center gap-2 ${index % 2 === 0 ? 'bg-stone-800' : 'bg-stone-800/60'}`}>
+                    <span>{icon}</span>
+                    <span>{label}</span>
+                  </div>
+                  {/* Base Input */}
+                  <div className={`px-2 py-1.5 border-l border-stone-600 ${index % 2 === 0 ? 'bg-blue-900/30' : 'bg-blue-900/20'}`}>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={(form as any)[baseKey] ?? ''}
+                      onChange={(e) => setForm((prev) => ({ ...prev, [baseKey]: e.target.value === '' ? null : parseFloat(e.target.value) }))}
+                      className="w-full px-2 py-1.5 bg-stone-900 border border-blue-800/50 rounded text-white text-sm focus:border-blue-500 focus:outline-none text-center"
+                      placeholder="0.00"
+                    />
+                  </div>
+                  {/* Growth Input */}
+                  <div className={`px-2 py-1.5 border-l border-stone-600 ${index % 2 === 0 ? 'bg-green-900/30' : 'bg-green-900/20'}`}>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={(form as any)[growthKey] ?? ''}
+                      onChange={(e) => setForm((prev) => ({ ...prev, [growthKey]: e.target.value === '' ? null : parseFloat(e.target.value) }))}
+                      className="w-full px-2 py-1.5 bg-stone-900 border border-green-800/50 rounded text-white text-sm focus:border-green-500 focus:outline-none text-center"
+                      placeholder="0.00"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 6. Innate Skill */}
           <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5 mb-5">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-base font-semibold text-amber-100 flex items-center gap-2">
@@ -842,6 +1031,13 @@ export default function EditGeneralPage() {
 
           {/* 7. BUTTONS */}
           <div className="flex items-center justify-end gap-3">
+            <button
+              type="button"
+              onClick={handleDelete}
+              className="px-4 py-2 border border-red-600/50 text-red-400 rounded-lg hover:bg-red-900/30 transition-colors text-sm"
+            >
+              Xóa
+            </button>
             <Link
               href="/admin/generals"
               className="px-4 py-2 border border-stone-600 text-stone-300 rounded-lg hover:bg-stone-700 transition-colors text-sm"
@@ -868,6 +1064,15 @@ export default function EditGeneralPage() {
             </button>
           </div>
         </form>
+
+        {/* Image Crop Modal */}
+        {cropModalOpen && cropImageUrl && (
+          <ImageCropModal
+            imageSrc={cropImageUrl}
+            onComplete={handleCropComplete}
+            onCancel={handleCropCancel}
+          />
+        )}
       </div>
     </main>
   );

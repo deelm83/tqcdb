@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense, useCallback } from 'react';
+import { useState, useEffect, Suspense, useCallback, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { SkillTypeId, skillTypeNames, skillTypeColors, qualityColors } from '@/lib/skills';
 import { fetchSkills, fetchSkillTypeCounts, fetchGeneralsMap, fetchSkill, Skill } from '@/lib/api';
@@ -25,8 +25,10 @@ function SkillsContent() {
   const [typeCounts, setTypeCounts] = useState<Record<string, number>>({ all: 0 });
   const [generalsByName, setGeneralsByName] = useState<Record<string, { id: number; vi: string }>>({});
   const [loading, setLoading] = useState(true);
+  const [isRefetching, setIsRefetching] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [modalSkill, setModalSkill] = useState<Skill | null>(null);
+  const hasLoadedOnce = useRef(false);
 
   // Update URL with new filters
   const updateFilters = useCallback((updates: Record<string, string | null>) => {
@@ -65,7 +67,12 @@ function SkillsContent() {
   useEffect(() => {
     async function loadSkills() {
       try {
-        setLoading(true);
+        // Only show full loading on initial load, use refetching for subsequent loads
+        if (!hasLoadedOnce.current) {
+          setLoading(true);
+        } else {
+          setIsRefetching(true);
+        }
         setError(null);
 
         const data = await fetchSkills(
@@ -73,10 +80,12 @@ function SkillsContent() {
           activeTab !== 'all' ? activeTab : undefined
         );
         setSkills(data);
+        hasLoadedOnce.current = true;
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
       } finally {
         setLoading(false);
+        setIsRefetching(false);
       }
     }
 
@@ -182,7 +191,10 @@ function SkillsContent() {
             Đang tải...
           </span>
         ) : (
-          <span>{skills.length} chiến pháp</span>
+          <span className="flex items-center gap-2">
+            {skills.length} chiến pháp
+            {isRefetching && <span className="spinner" />}
+          </span>
         )}
       </div>
 
@@ -203,8 +215,8 @@ function SkillsContent() {
       )}
 
       {/* Skills List */}
-      {!loading && (
-        <div className="space-y-2">
+      {!loading && skills.length > 0 && (
+        <div className={`space-y-2 transition-opacity duration-200 ${isRefetching ? 'opacity-60' : 'opacity-100'}`}>
           {skills.map((skill, index) => {
             const typeId = skill.type.id as SkillTypeId;
             const typeColor = skillTypeColors[typeId] || skillTypeColors.unknown;

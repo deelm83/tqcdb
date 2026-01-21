@@ -48,7 +48,7 @@ export const skillTypeNames: Record<SkillTypeId, { cn: string; vi: string }> = {
   active: { cn: '主动', vi: 'Chủ động' },
   assault: { cn: '突击', vi: 'Đột kích' },
   passive: { cn: '被动', vi: 'Bị động' },
-  formation: { cn: '阵法', vi: 'Trận pháp' },
+  formation: { cn: '阵法', vi: 'Pháp trận' },
   troop: { cn: '兵种', vi: 'Binh chủng' },
   internal: { cn: '内政', vi: 'Nội chính' },
   unknown: { cn: '未知', vi: 'Khác' },

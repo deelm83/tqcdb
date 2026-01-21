@@ -70,7 +70,15 @@
       "Bash(then echo \"✓ $img exists\")",
       "Bash(else echo \"✗ $img MISSING\")",
       "Bash(fi)",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(npm run lint)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run dev:backend:*)",
+      "Bash(npm run dev:frontend:*)",
+      "Bash(pgrep:*)",
+      "Bash(kill:*)",
+      "Bash(npx eslint:*)",
+      "Bash(jq:*)"
     ]
   }
 }

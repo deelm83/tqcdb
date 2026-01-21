@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ConditionalHeader, ConditionalBackToTop } from "@/components/ConditionalHeader";
 import ScrollToTop from "@/components/ScrollToTop";
+import { UserProvider } from "@/contexts/UserContext";
 
 // Google Fonts - Noto Serif for elegant names
 import { Noto_Serif } from 'next/font/google';
@@ -32,10 +33,12 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className={`antialiased ${serif.variable}`}>
-        <ScrollToTop />
-        <ConditionalHeader />
-        {children}
-        <ConditionalBackToTop />
+        <UserProvider>
+          <ScrollToTop />
+          <ConditionalHeader />
+          {children}
+          <ConditionalBackToTop />
+        </UserProvider>
       </body>
     </html>
   );

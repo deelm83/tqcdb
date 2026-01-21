@@ -111,9 +111,40 @@ Use these consistent colors for grades:
 
 ---
 
+## 8. Alignment & Usability
+
+### Grid Alignment
+- Use consistent grid systems (Tailwind grid classes)
+- Align labels and inputs vertically when in the same column
+- Use equal column widths for related fields (e.g., base/growth stats side by side)
+- Ensure column headers align with their content below
+
+### Form Layout
+- Group related fields together in the same section
+- Use consistent spacing between form groups (mb-4 or mb-5 for sections)
+- Labels should be positioned consistently (above or beside inputs, not mixed)
+- Input fields in the same row should have matching heights
+
+### Readability
+- Maintain sufficient contrast between text and background
+- Use appropriate font sizes (text-sm for labels, text-base for content)
+- Don't crowd too many inputs in a single row (max 3-4 on desktop, 2 on mobile)
+- Use column headers when displaying tabular data
+
+### Mobile Responsiveness
+- Stack columns vertically on mobile (use md: breakpoint for horizontal layouts)
+- Ensure touch targets are at least 44x44px
+- Don't require horizontal scrolling
+
+---
+
 ## Checklist Before Committing UI Changes
 
 - [ ] All text is in Vietnamese (except allowed exceptions)
 - [ ] Troop type names use correct Vietnamese translations
 - [ ] Grade colors are consistent with the color scheme
 - [ ] Faction names and colors are correct
+- [ ] Form fields are properly aligned in their grid
+- [ ] Related fields are grouped together logically
+- [ ] Layout is responsive and readable on mobile
+- [ ] Column headers align with their content

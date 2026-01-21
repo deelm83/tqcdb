@@ -6,6 +6,10 @@ import Link from 'next/link';
 import { SkillTypeId, skillTypeNames } from '@/lib/skills';
 import { fetchSkill, fetchGeneralsMap, Skill } from '@/lib/api';
 import { ArmyIcon, ArmyIconType } from '@/components/icons/TroopIcons';
+import { useUser } from '@/contexts/UserContext';
+import SuggestEditButton from '@/components/SuggestEditButton';
+import SuggestEditModal from '@/components/SuggestEditModal';
+import LoginModal from '@/components/LoginModal';
 
 // Skill type colors
 const skillTypeStyles: Record<SkillTypeId, { bg: string; text: string; border: string; gradient: string }> = {
@@ -102,6 +106,17 @@ export default function SkillDetailPage() {
   const [generalsByName, setGeneralsByName] = useState<Record<string, { id: string; vi: string }>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showSuggestModal, setShowSuggestModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const { user } = useUser();
+
+  const handleSuggestClick = () => {
+    if (user) {
+      setShowSuggestModal(true);
+    } else {
+      setShowLoginModal(true);
+    }
+  };
 
   useEffect(() => {
     async function loadData() {
@@ -156,14 +171,15 @@ export default function SkillDetailPage() {
   return (
     <div className={`min-h-screen bg-gradient-to-b ${styles.gradient} to-[#0a0e14]`}>
       <main className="max-w-3xl mx-auto px-4 py-8">
-        {/* Breadcrumb */}
-        <div className="mb-8">
+        {/* Breadcrumb and Actions */}
+        <div className="mb-8 flex items-center justify-between">
           <Link href="/skills" className="inline-flex items-center gap-2 text-[#6b7280] hover:text-[#d4a74a] text-sm transition-colors group">
             <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Danh sách chiến pháp
           </Link>
+          <SuggestEditButton onClick={handleSuggestClick} />
         </div>
 
         {/* Skill Card */}
@@ -346,6 +362,26 @@ export default function SkillDetailPage() {
             </div>
           </div>
         </div>
+
+        {/* Suggest Edit Modal */}
+        {showSuggestModal && skill && (
+          <SuggestEditModal
+            isOpen={showSuggestModal}
+            onClose={() => setShowSuggestModal(false)}
+            entityType="skill"
+            entity={skill}
+            onSuccess={() => {
+              // Could show a success toast here
+              alert('Đề xuất của bạn đã được gửi thành công!');
+            }}
+          />
+        )}
+
+        {/* Login Modal */}
+        <LoginModal
+          isOpen={showLoginModal}
+          onClose={() => setShowLoginModal(false)}
+        />
       </main>
     </div>
   );

@@ -9,6 +9,10 @@ import { fetchGeneral, General } from '@/lib/api';
 import { TroopType } from '@/types/general';
 import { TroopIcon, ArmyIcon, ArmyIconType } from '@/components/icons/TroopIcons';
 import { usePageTitle } from '@/hooks/usePageTitle';
+import { useUser } from '@/contexts/UserContext';
+import SuggestEditButton from '@/components/SuggestEditButton';
+import SuggestEditModal from '@/components/SuggestEditModal';
+import LoginModal from '@/components/LoginModal';
 
 const troopTypes: TroopType[] = ['cavalry', 'shield', 'archer', 'spear', 'siege'];
 
@@ -394,6 +398,17 @@ export default function GeneralDetailPage() {
   const [general, setGeneral] = useState<General | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showSuggestModal, setShowSuggestModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const { user } = useUser();
+
+  const handleSuggestClick = () => {
+    if (user) {
+      setShowSuggestModal(true);
+    } else {
+      setShowLoginModal(true);
+    }
+  };
 
   usePageTitle(general?.name || 'Võ tướng');
 
@@ -449,14 +464,15 @@ export default function GeneralDetailPage() {
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-8">
-      {/* Breadcrumb */}
-      <div className="mb-6">
+      {/* Breadcrumb and Actions */}
+      <div className="mb-6 flex items-center justify-between">
         <Link href="/generals" className="inline-flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] text-[13px] transition-colors uppercase tracking-wider">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
           Võ tướng
         </Link>
+        <SuggestEditButton onClick={handleSuggestClick} />
       </div>
 
       {/* Header */}
@@ -521,7 +537,7 @@ export default function GeneralDetailPage() {
         <div className="md:w-72 flex-shrink-0">
           {/* Portrait */}
           <div className="card overflow-hidden">
-            <div className="relative aspect-[2.5/3.5]">
+            <div className="relative aspect-[7/10]">
               <img
                 src={general.image_full || general.image || '/images/general-placeholder.svg'}
                 alt={general.name}
@@ -547,6 +563,26 @@ export default function GeneralDetailPage() {
           )}
         </div>
       </div>
+
+      {/* Suggest Edit Modal */}
+      {showSuggestModal && (
+        <SuggestEditModal
+          isOpen={showSuggestModal}
+          onClose={() => setShowSuggestModal(false)}
+          entityType="general"
+          entity={general}
+          onSuccess={() => {
+            // Could show a success toast here
+            alert('Đề xuất của bạn đã được gửi thành công!');
+          }}
+        />
+      )}
+
+      {/* Login Modal */}
+      <LoginModal
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+      />
     </main>
   );
 }

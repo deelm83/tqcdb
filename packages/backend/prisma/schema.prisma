@@ -48,38 +48,42 @@ model General {
   exchangeableForSkills SkillExchangeGeneral[]
   inheritSkillSources   SkillInheritGeneral[]
   innateSkillSources    SkillInnateGeneral[]
+  formationGenerals     FormationGeneral[]
 
   @@map("generals")
 }
 
 model Skill {
-  id                          Int                    @id @default(autoincrement())
-  slug                        String?                @unique
-  name                        String                 @map("name")
-  typeId                      String                 @map("type_id")
-  typeName                    String?                @map("type_name")
+  id                          Int                       @id @default(autoincrement())
+  slug                        String?                   @unique
+  name                        String                    @map("name")
+  typeId                      String                    @map("type_id")
+  typeName                    String?                   @map("type_name")
   quality                     String?
-  triggerRate                 Int?                   @map("trigger_rate")
-  sourceType                  String?                @map("source_type")
-  wikiUrl                     String?                @map("wiki_url")
-  effect                      String?                @map("effect")
+  triggerRate                 Int?                      @map("trigger_rate")
+  sourceType                  String?                   @map("source_type")
+  wikiUrl                     String?                   @map("wiki_url")
+  effect                      String?                   @map("effect")
   target                      String?
-  armyTypes                   String[]               @map("army_types")
-  innateToGeneralNames        String[]               @map("innate_to_generals")
-  inheritanceFromGeneralNames String[]               @map("inheritance_from_generals")
-  acquisitionType             String?                @map("acquisition_type")
-  exchangeType                String?                @map("exchange_type")
-  exchangeGenerals            String[]               @map("exchange_generals")
-  exchangeCount               Int?                   @map("exchange_count")
-  status                      String                 @default("needs_update")
-  screenshots                 String[]               @default([])
-  createdAt                   DateTime               @default(now()) @map("created_at")
-  updatedAt                   DateTime               @updatedAt @map("updated_at")
-  inheritedByGenerals         General[]              @relation("InheritedSkill")
-  innateToGenerals            General[]              @relation("InnateSkill")
+  armyTypes                   String[]                  @map("army_types")
+  innateToGeneralNames        String[]                  @map("innate_to_generals")
+  inheritanceFromGeneralNames String[]                  @map("inheritance_from_generals")
+  acquisitionType             String?                   @map("acquisition_type")
+  exchangeType                String?                   @map("exchange_type")
+  exchangeGenerals            String[]                  @map("exchange_generals")
+  exchangeCount               Int?                      @map("exchange_count")
+  status                      String                    @default("needs_update")
+  screenshots                 String[]                  @default([])
+  createdAt                   DateTime                  @default(now()) @map("created_at")
+  updatedAt                   DateTime                  @updatedAt @map("updated_at")
+  inheritedByGenerals         General[]                 @relation("InheritedSkill")
+  innateToGenerals            General[]                 @relation("InnateSkill")
   exchangeGeneralRelations    SkillExchangeGeneral[]
   inheritGeneralRelations     SkillInheritGeneral[]
   innateGeneralRelations      SkillInnateGeneral[]
+  formationSkill1             FormationGeneral[]        @relation("FormationSkill1")
+  formationSkill2             FormationGeneral[]        @relation("FormationSkill2")
+  lineUpResolutions           LineUpSkillResolution[]
 
   @@map("skills")
 }
@@ -118,4 +122,189 @@ model SkillInheritGeneral {
 
   @@unique([skillId, generalId])
   @@map("skill_inherit_generals")
+}
+
+model User {
+  id            String           @id @default(cuid())
+  displayName   String           @map("display_name")
+  email         String?
+  avatarUrl     String?          @map("avatar_url")
+  role          UserRole         @default(USER)
+  createdAt     DateTime         @default(now()) @map("created_at")
+  updatedAt     DateTime         @updatedAt @map("updated_at")
+
+  oauthAccounts  OAuthAccount[]
+  suggestions    EditSuggestion[]
+  formations     Formation[]
+  formationVotes FormationVote[]
+  lineUps        LineUp[]
+
+  @@map("users")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+model OAuthAccount {
+  id           String   @id @default(cuid())
+  provider     String   // google, facebook, discord
+  providerId   String   @map("provider_id") // ID from provider
+  accessToken  String?  @map("access_token")
+  refreshToken String?  @map("refresh_token")
+  userId       String   @map("user_id")
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerId])
+  @@map("oauth_accounts")
+}
+
+model EditSuggestion {
+  id         String           @id @default(cuid())
+  entityType String           @map("entity_type") // general, skill
+  entityId   String           @map("entity_id")   // general.id or skill.id
+  changes    Json             // { field: { old: x, new: y } }
+  reason     String?          // optional explanation
+  status     SuggestionStatus @default(PENDING)
+  userId     String           @map("user_id")
+  user       User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reviewedBy String?          @map("reviewed_by") // admin who reviewed
+  reviewedAt DateTime?        @map("reviewed_at")
+  createdAt  DateTime         @default(now()) @map("created_at")
+  updatedAt  DateTime         @updatedAt @map("updated_at")
+
+  @@index([entityType, entityId])
+  @@index([status])
+  @@map("edit_suggestions")
+}
+
+enum SuggestionStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+// Army types for formations
+enum ArmyType {
+  CAVALRY   // Kỵ
+  SHIELD    // Khiên
+  ARCHER    // Cung
+  SPEAR     // Thương
+  SIEGE     // Xe
+}
+
+// Main formation entity
+model Formation {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  armyType    ArmyType @map("army_type")
+
+  // Ownership & visibility
+  userId      String?  @map("user_id")
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  isPublic    Boolean  @default(false) @map("is_public")
+  isCurated   Boolean  @default(false) @map("is_curated") // admin-created for ranking
+
+  // Ranking
+  rankScore   Int      @default(0) @map("rank_score")
+  voteCount   Int      @default(0) @map("vote_count")
+
+  // Timestamps
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  generals    FormationGeneral[]
+  votes       FormationVote[]
+  lineUps     LineUpFormation[]
+
+  @@index([userId])
+  @@index([isPublic, isCurated])
+  @@index([rankScore])
+  @@map("formations")
+}
+
+// Junction: Formation <-> General with skill slots
+model FormationGeneral {
+  id          String   @id @default(cuid())
+  formationId String   @map("formation_id")
+  generalId   String   @map("general_id")
+  position    Int      // 1, 2, or 3 (for ordering)
+
+  // Extra skill slots (beyond innate)
+  skill1Id    Int?     @map("skill_1_id")
+  skill2Id    Int?     @map("skill_2_id")
+
+  // Relations
+  formation   Formation @relation(fields: [formationId], references: [id], onDelete: Cascade)
+  general     General   @relation(fields: [generalId], references: [id], onDelete: Cascade)
+  skill1      Skill?    @relation("FormationSkill1", fields: [skill1Id], references: [id], onDelete: SetNull)
+  skill2      Skill?    @relation("FormationSkill2", fields: [skill2Id], references: [id], onDelete: SetNull)
+
+  @@unique([formationId, position])
+  @@unique([formationId, generalId])
+  @@map("formation_generals")
+}
+
+// User votes on curated formations
+model FormationVote {
+  id          String    @id @default(cuid())
+  formationId String    @map("formation_id")
+  userId      String    @map("user_id")
+  value       Int       // +1 (upvote) or -1 (downvote)
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  formation   Formation @relation(fields: [formationId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([formationId, userId])
+  @@map("formation_votes")
+}
+
+// Line-up: collection of formations
+model LineUp {
+  id        String   @id @default(cuid())
+  name      String
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  formations      LineUpFormation[]
+  skillResolutions LineUpSkillResolution[]
+
+  @@index([userId])
+  @@map("line_ups")
+}
+
+// Junction: LineUp <-> Formation
+model LineUpFormation {
+  id          String    @id @default(cuid())
+  lineUpId    String    @map("line_up_id")
+  formationId String    @map("formation_id")
+  position    Int       // ordering
+
+  lineUp      LineUp    @relation(fields: [lineUpId], references: [id], onDelete: Cascade)
+  formation   Formation @relation(fields: [formationId], references: [id], onDelete: Cascade)
+
+  @@unique([lineUpId, formationId])
+  @@unique([lineUpId, position])
+  @@map("line_up_formations")
+}
+
+// Skill conflict resolution in line-ups
+model LineUpSkillResolution {
+  id        String   @id @default(cuid())
+  lineUpId  String   @map("line_up_id")
+  skillId   Int      @map("skill_id")
+  resolved  Boolean  @default(true)
+  note      String?  // e.g., "Season 3 duplicate available"
+
+  lineUp    LineUp   @relation(fields: [lineUpId], references: [id], onDelete: Cascade)
+  skill     Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([lineUpId, skillId])
+  @@map("line_up_skill_resolutions")
 }

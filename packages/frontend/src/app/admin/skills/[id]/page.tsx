@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import { fetchAdminSkill, updateSkill, processSkillImage, fetchAdminGenerals, uploadSkillImage } from '@/lib/adminApi';
+import { fetchAdminSkill, updateSkill, processSkillImage, fetchAdminGenerals, uploadSkillImage, deleteSkill } from '@/lib/adminApi';
 import { showToast } from '@/components/Toast';
 import Link from 'next/link';
 import { General } from '@/lib/api';
@@ -16,8 +16,9 @@ const SKILL_TYPES = [
   { id: 'passive', nameVi: 'Bị Động', color: 'bg-green-600/30 text-green-300 border-green-600/50' },
   { id: 'pursuit', nameVi: 'Truy Kích', color: 'bg-cyan-600/30 text-cyan-300 border-cyan-600/50' },
   { id: 'assault', nameVi: 'Đột Kích', color: 'bg-orange-600/30 text-orange-300 border-orange-600/50' },
-  { id: 'internal', nameVi: 'Nội Chính', color: 'bg-purple-600/30 text-purple-300 border-purple-600/50' },
+  { id: 'formation', nameVi: 'Pháp Trận', color: 'bg-purple-600/30 text-purple-300 border-purple-600/50' },
   { id: 'troop', nameVi: 'Binh Chủng', color: 'bg-blue-600/30 text-blue-300 border-blue-600/50' },
+  { id: 'internal', nameVi: 'Nội Chính', color: 'bg-teal-600/30 text-teal-300 border-teal-600/50' },
 ];
 
 const QUALITIES = ['S', 'A', 'B', 'C'];
@@ -403,6 +404,20 @@ export default function EditSkillPage() {
     const success = await saveSkill('complete');
     if (success) {
       router.push('/admin/skills');
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!confirm(`Bạn có chắc muốn xóa chiến pháp "${form.name}"? Hành động này không thể hoàn tác.`)) {
+      return;
+    }
+
+    try {
+      await deleteSkill(id as string);
+      showToast('Đã xóa chiến pháp', 'success');
+      router.push('/admin/skills');
+    } catch (err: any) {
+      showToast(err.message || 'Lỗi khi xóa', 'error');
     }
   };
 
@@ -1087,6 +1102,13 @@ export default function EditSkillPage() {
 
           {/* 5. BUTTONS */}
           <div className="mt-5 flex items-center justify-end gap-3">
+            <button
+              type="button"
+              onClick={handleDelete}
+              className="px-4 py-2 border border-red-600/50 text-red-400 rounded-lg hover:bg-red-900/30 transition-colors text-sm"
+            >
+              Xóa
+            </button>
             <Link
               href="/admin/skills"
               className="px-4 py-2 border border-stone-600 text-stone-300 rounded-lg hover:bg-stone-700 transition-colors text-sm"

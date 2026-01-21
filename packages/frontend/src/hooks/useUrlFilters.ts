@@ -87,11 +87,13 @@ export function useUrlFilters<T extends Record<string, FilterValue>>(
     (key: string, value: string) => {
       const current = filters[key];
       const currentArray = Array.isArray(current) ? current : current ? [current] : [];
+      // Convert to string array to match FilterValue type
+      const stringArray = currentArray.map(v => String(v));
 
-      if (currentArray.includes(value)) {
-        setFilter(key, currentArray.filter(v => v !== value));
+      if (stringArray.includes(value)) {
+        setFilter(key, stringArray.filter(v => v !== value));
       } else {
-        setFilter(key, [...currentArray, value]);
+        setFilter(key, [...stringArray, value]);
       }
     },
     [filters, setFilter]

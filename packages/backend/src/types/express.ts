@@ -1,4 +1,6 @@
-// Extend Express Request interface to include admin property
+import { User } from '@prisma/client';
+
+// Extend Express Request interface to include admin and user properties
 declare global {
   namespace Express {
     interface Request {
@@ -6,6 +8,10 @@ declare global {
         role: string;
         iat: number;
       };
+    }
+    interface User extends Omit<import('@prisma/client').User, 'createdAt' | 'updatedAt'> {
+      createdAt: Date;
+      updatedAt: Date;
     }
   }
 }

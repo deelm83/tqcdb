@@ -24,6 +24,17 @@ const TARGET_OPTIONS = [
   { id: 'enemy_2_3', label: '2-3 địch' },
 ];
 
+const SKILL_TYPES = [
+  { id: 'command', nameVi: 'Chỉ Huy', color: 'bg-yellow-600/30 text-yellow-300 border-yellow-600/50' },
+  { id: 'active', nameVi: 'Chủ Động', color: 'bg-red-600/30 text-red-300 border-red-600/50' },
+  { id: 'passive', nameVi: 'Bị Động', color: 'bg-green-600/30 text-green-300 border-green-600/50' },
+  { id: 'pursuit', nameVi: 'Truy Kích', color: 'bg-cyan-600/30 text-cyan-300 border-cyan-600/50' },
+  { id: 'assault', nameVi: 'Đột Kích', color: 'bg-orange-600/30 text-orange-300 border-orange-600/50' },
+  { id: 'formation', nameVi: 'Pháp Trận', color: 'bg-purple-600/30 text-purple-300 border-purple-600/50' },
+  { id: 'troop', nameVi: 'Binh Chủng', color: 'bg-blue-600/30 text-blue-300 border-blue-600/50' },
+  { id: 'internal', nameVi: 'Nội Chính', color: 'bg-teal-600/30 text-teal-300 border-teal-600/50' },
+];
+
 function normalizeVietnamese(str: string): string {
   return str
     .normalize('NFD')
@@ -37,6 +48,9 @@ interface SkillEdit {
   id: number;
   slug: string;
   name: string;
+  typeId: string;
+  typeName: string;
+  triggerRate: number | null;
   target: string;
   acquisitionType: string;
   innateGeneralIds: string[];
@@ -44,6 +58,7 @@ interface SkillEdit {
   exchangeGeneralIds: string[];
   exchangeCount: number;
   screenshots: string[];
+  status: string;
   saving: boolean;
   changed: boolean;
 }
@@ -76,12 +91,16 @@ export default function MassEditSkillsPage() {
           fetchAdminGenerals(),
         ]);
 
-        // Sort alphabetically once on load
+        // Filter only needs_update and sort alphabetically
         const sortedSkills = skillsData
+          .filter((s: any) => s.status === 'needs_update')
           .map((s: any) => ({
             id: s.id,
             slug: s.slug || '',
             name: s.name || '',
+            typeId: s.type?.id || '',
+            typeName: s.type?.name || '',
+            triggerRate: s.trigger_rate ?? null,
             target: s.target || '',
             acquisitionType: s.acquisition_type || '',
             innateGeneralIds: s.innate_general_ids || [],
@@ -89,6 +108,7 @@ export default function MassEditSkillsPage() {
             exchangeGeneralIds: s.exchange_general_ids || [],
             exchangeCount: s.exchange_count || 0,
             screenshots: s.screenshots || [],
+            status: s.status || 'needs_update',
             saving: false,
             changed: false,
           }))
@@ -115,24 +135,33 @@ export default function MassEditSkillsPage() {
     ));
   }, []);
 
-  const saveSkill = useCallback(async (skill: SkillEdit) => {
+  const saveSkill = useCallback(async (skill: SkillEdit, markDone: boolean = false) => {
     setSkills(prev => prev.map(s => s.id === skill.id ? { ...s, saving: true } : s));
 
     try {
       await updateSkill(String(skill.id), {
         name: skill.name,
+        type: skill.typeId ? { id: skill.typeId, name: skill.typeName } : undefined,
+        trigger_rate: skill.triggerRate ?? undefined,
         target: skill.target || null,
         acquisition_type: skill.acquisitionType || null,
         innate_general_ids: skill.innateGeneralIds,
         inherit_general_ids: skill.inheritGeneralIds,
         exchange_general_ids: skill.exchangeGeneralIds,
         exchange_count: skill.exchangeCount || null,
+        status: markDone ? 'complete' : undefined,
       } as any);
 
-      setSkills(prev => prev.map(s =>
-        s.id === skill.id ? { ...s, saving: false, changed: false } : s
-      ));
-      showToast('Đã lưu', 'success');
+      if (markDone) {
+        // Remove from list when marked done
+        setSkills(prev => prev.filter(s => s.id !== skill.id));
+        showToast('Đã lưu và đánh dấu hoàn thành', 'success');
+      } else {
+        setSkills(prev => prev.map(s =>
+          s.id === skill.id ? { ...s, saving: false, changed: false } : s
+        ));
+        showToast('Đã lưu', 'success');
+      }
     } catch (err: any) {
       setSkills(prev => prev.map(s => s.id === skill.id ? { ...s, saving: false } : s));
       showToast(err.message || 'Lỗi khi lưu', 'error');
@@ -306,7 +335,7 @@ interface SkillRowProps {
   skill: SkillEdit;
   generals: General[];
   onUpdate: (id: number, field: keyof SkillEdit, value: any) => void;
-  onSave: (skill: SkillEdit) => void;
+  onSave: (skill: SkillEdit, markDone?: boolean) => void;
   onDelete: (skill: SkillEdit) => void;
   onImageClick: (url: string) => void;
 }
@@ -378,7 +407,14 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
           {/* Actions */}
           <div className="flex-shrink-0 flex flex-col gap-2">
             <button
-              onClick={() => onSave(skill)}
+              onClick={() => onSave(skill, true)}
+              disabled={skill.saving}
+              className="px-4 py-2 rounded text-sm font-medium transition-all bg-green-600 hover:bg-green-500 text-white disabled:opacity-50"
+            >
+              {skill.saving ? '...' : 'Lưu & Xong'}
+            </button>
+            <button
+              onClick={() => onSave(skill, false)}
               disabled={skill.saving || !skill.changed}
               className={`px-4 py-2 rounded text-sm font-medium transition-all ${
                 skill.changed
@@ -394,12 +430,6 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
             >
               Chi tiết
             </Link>
-            <button
-              onClick={() => onDelete(skill)}
-              className="px-4 py-2 bg-red-900/50 hover:bg-red-700 text-red-300 hover:text-white rounded text-sm transition-colors"
-            >
-              Xóa
-            </button>
           </div>
         </div>
 
@@ -414,6 +444,45 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
               onChange={(e) => onUpdate(skill.id, 'name', e.target.value)}
               className="flex-1 px-3 py-1.5 bg-stone-900/50 border border-stone-600 rounded text-white text-sm focus:border-amber-500 focus:outline-none"
             />
+          </div>
+
+          {/* Skill Type */}
+          <div className="flex items-start gap-2">
+            <label className="text-xs text-stone-400 w-16 pt-1.5">Loại:</label>
+            <div className="flex flex-wrap gap-1">
+              {SKILL_TYPES.map((type) => (
+                <button
+                  key={type.id}
+                  type="button"
+                  onClick={() => {
+                    onUpdate(skill.id, 'typeId', type.id);
+                    onUpdate(skill.id, 'typeName', type.nameVi);
+                  }}
+                  className={`px-2 py-1 rounded text-xs font-medium border transition-all ${
+                    skill.typeId === type.id
+                      ? type.color
+                      : 'bg-stone-700/50 text-stone-400 border-stone-600 hover:border-stone-500'
+                  }`}
+                >
+                  {type.nameVi}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Trigger Rate */}
+          <div className="flex items-center gap-2">
+            <label className="text-xs text-stone-400 w-16">Tỉ lệ:</label>
+            <input
+              type="number"
+              min="0"
+              max="100"
+              value={skill.triggerRate ?? ''}
+              onChange={(e) => onUpdate(skill.id, 'triggerRate', e.target.value ? parseInt(e.target.value) : null)}
+              placeholder="%"
+              className="w-20 px-3 py-1.5 bg-stone-900/50 border border-stone-600 rounded text-white text-sm focus:border-amber-500 focus:outline-none text-center"
+            />
+            <span className="text-xs text-stone-500">%</span>
           </div>
 
           {/* Target */}

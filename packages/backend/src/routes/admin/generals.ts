@@ -125,6 +125,96 @@ router.get('/', async (_req: Request, res: Response) => {
   }
 });
 
+// POST /api/admin/generals/bulk - Bulk create generals
+// NOTE: This route must be defined BEFORE /:id to avoid being caught by the dynamic route
+interface BulkGeneralInput {
+  name: string;
+  imageBase64: string;
+}
+
+interface BulkGeneralsBody {
+  generals: BulkGeneralInput[];
+}
+
+router.post('/bulk', async (req: Request<object, object, BulkGeneralsBody>, res: Response) => {
+  try {
+    const { generals } = req.body;
+
+    if (!generals || !Array.isArray(generals) || generals.length === 0) {
+      res.status(400).json({ error: 'Cần cung cấp danh sách tướng' });
+      return;
+    }
+
+    const created: string[] = [];
+    const skipped: string[] = [];
+
+    // Ensure upload directory exists
+    const uploadDir = path.join(__dirname, '../../../../web/public/images/generals');
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
+    for (const generalInput of generals) {
+      try {
+        const { name, imageBase64 } = generalInput;
+
+        if (!name || !imageBase64) {
+          skipped.push(name || 'Unknown');
+          continue;
+        }
+
+        // Generate slug from name
+        const slug = generateSlug(name);
+
+        // Check for existing general
+        const existing = await prisma.general.findUnique({ where: { slug } });
+        if (existing) {
+          skipped.push(name);
+          continue;
+        }
+
+        // Save base64 image to file
+        const base64Data = imageBase64.replace(/^data:image\/\w+;base64,/, '');
+        const buffer = Buffer.from(base64Data, 'base64');
+        const imagePath = path.join(uploadDir, `${slug}.png`);
+        fs.writeFileSync(imagePath, buffer);
+
+        // Create general record
+        await prisma.general.create({
+          data: {
+            id: slug,
+            slug,
+            name,
+            factionId: '',
+            cost: 0,
+            image: `/images/generals/${slug}.png`,
+            imageFull: null,
+            tags: [],
+            cavalryGrade: null,
+            shieldGrade: null,
+            archerGrade: null,
+            spearGrade: null,
+            siegeGrade: null,
+            innateSkillId: null,
+            inheritedSkillId: null,
+            status: 'needs_update',
+          },
+        });
+
+        created.push(name);
+      } catch (error) {
+        console.error(`Error creating general ${generalInput.name}:`, error);
+        skipped.push(generalInput.name);
+      }
+    }
+
+    res.json({ created, skipped });
+  } catch (error) {
+    console.error('Error bulk creating generals:', error);
+    res.status(500).json({ error: 'Không thể tạo hàng loạt tướng' });
+  }
+});
+
 // GET /api/admin/generals/:id - Get single general
 router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
   try {
@@ -185,6 +275,20 @@ router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
         target: general.inheritedSkill.target,
       } : null,
       status: general.status,
+      // Base stats
+      base_attack: general.baseAttack,
+      base_charm: general.baseCharm,
+      base_command: general.baseCommand,
+      base_intelligence: general.baseIntelligence,
+      base_politics: general.basePolitics,
+      base_speed: general.baseSpeed,
+      // Growth stats
+      growth_attack: general.growthAttack,
+      growth_charm: general.growthCharm,
+      growth_command: general.growthCommand,
+      growth_intelligence: general.growthIntelligence,
+      growth_politics: general.growthPolitics,
+      growth_speed: general.growthSpeed,
     };
 
     res.json(transformed);
@@ -224,6 +328,32 @@ interface CreateGeneralBody {
   inherited_skill_id?: number | null;
   inheritedSkillId?: number | null;
   status?: string;
+  // Base stats
+  base_attack?: number | null;
+  baseAttack?: number | null;
+  base_charm?: number | null;
+  baseCharm?: number | null;
+  base_command?: number | null;
+  baseCommand?: number | null;
+  base_intelligence?: number | null;
+  baseIntelligence?: number | null;
+  base_politics?: number | null;
+  basePolitics?: number | null;
+  base_speed?: number | null;
+  baseSpeed?: number | null;
+  // Growth stats
+  growth_attack?: number | null;
+  growthAttack?: number | null;
+  growth_charm?: number | null;
+  growthCharm?: number | null;
+  growth_command?: number | null;
+  growthCommand?: number | null;
+  growth_intelligence?: number | null;
+  growthIntelligence?: number | null;
+  growth_politics?: number | null;
+  growthPolitics?: number | null;
+  growth_speed?: number | null;
+  growthSpeed?: number | null;
 }
 
 // POST /api/admin/generals - Create general
@@ -311,6 +441,20 @@ router.put('/:id', async (req: Request<{ id: string }, object, CreateGeneralBody
         innateSkillId: newInnateSkillId,
         inheritedSkillId: newInheritedSkillId,
         status: data.status ?? existing.status,
+        // Base stats
+        baseAttack: data.base_attack ?? data.baseAttack ?? existing.baseAttack,
+        baseCharm: data.base_charm ?? data.baseCharm ?? existing.baseCharm,
+        baseCommand: data.base_command ?? data.baseCommand ?? existing.baseCommand,
+        baseIntelligence: data.base_intelligence ?? data.baseIntelligence ?? existing.baseIntelligence,
+        basePolitics: data.base_politics ?? data.basePolitics ?? existing.basePolitics,
+        baseSpeed: data.base_speed ?? data.baseSpeed ?? existing.baseSpeed,
+        // Growth stats
+        growthAttack: data.growth_attack ?? data.growthAttack ?? existing.growthAttack,
+        growthCharm: data.growth_charm ?? data.growthCharm ?? existing.growthCharm,
+        growthCommand: data.growth_command ?? data.growthCommand ?? existing.growthCommand,
+        growthIntelligence: data.growth_intelligence ?? data.growthIntelligence ?? existing.growthIntelligence,
+        growthPolitics: data.growth_politics ?? data.growthPolitics ?? existing.growthPolitics,
+        growthSpeed: data.growth_speed ?? data.growthSpeed ?? existing.growthSpeed,
       },
     });
 

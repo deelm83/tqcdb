@@ -17,6 +17,17 @@ const factions: FactionId[] = ['wei', 'shu', 'wu', 'qun'];
 const troopTypes: TroopType[] = ['cavalry', 'shield', 'archer', 'spear', 'siege'];
 const costOptions = [1, 2, 3, 4, 5, 6, 7];
 
+// Remove Vietnamese diacritics for search
+function removeVietnameseDiacritics(str: string): string {
+  if (!str) return '';
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/đ/g, 'd')
+    .replace(/Đ/g, 'D')
+    .toLowerCase();
+}
+
 function AdminGeneralsContent() {
   usePageTitle('Võ tướng', true);
   const { isAuthenticated, isLoading } = useAuth();
@@ -29,7 +40,13 @@ function AdminGeneralsContent() {
   const [togglingStatus, setTogglingStatus] = useState<string | null>(null);
 
   // Read filters from URL
-  const search = searchParams.get('q') || '';
+  const searchFromUrl = searchParams.get('q') || '';
+  const [search, setSearchInput] = useState(searchFromUrl);
+
+  // Sync local search state with URL when URL changes externally
+  useEffect(() => {
+    setSearchInput(searchFromUrl);
+  }, [searchFromUrl]);
   const selectedFactions = (searchParams.get('factions')?.split(',').filter(Boolean) || []) as FactionId[];
   const selectedCost = searchParams.get('cost') ? Number(searchParams.get('cost')) : null;
   const selectedTroops = (searchParams.get('troops')?.split(',').filter(Boolean) || []) as TroopType[];
@@ -52,6 +69,7 @@ function AdminGeneralsContent() {
   }, [searchParams, router]);
 
   const setSearch = useCallback((value: string) => {
+    setSearchInput(value);
     updateFilters({ q: value || null });
   }, [updateFilters]);
 
@@ -142,10 +160,10 @@ function AdminGeneralsContent() {
     .filter((g) => {
     // Search filter
     if (search) {
-      const searchLower = search.toLowerCase();
+      const searchNormalized = removeVietnameseDiacritics(search);
       const matchesSearch =
-        g.name.toLowerCase().includes(searchLower) ||
-        g.slug.toLowerCase().includes(searchLower);
+        removeVietnameseDiacritics(g.name).includes(searchNormalized) ||
+        removeVietnameseDiacritics(g.slug).includes(searchNormalized);
       if (!matchesSearch) return false;
     }
 
