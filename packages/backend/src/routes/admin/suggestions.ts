@@ -105,7 +105,7 @@ router.get('/:id', async (req: Request<{ id: string }>, res: Response) => {
     }
 
     // Fetch entity data
-    let entity = null;
+    let entity: any = null;
     if (suggestion.entityType === 'general') {
       entity = await prisma.general.findFirst({
         where: { OR: [{ id: suggestion.entityId }, { slug: suggestion.entityId }] },
@@ -465,7 +465,7 @@ router.post('/summarize', async (req: Request<object, object, SummarizeSuggestio
     }
 
     // Fetch current entity data
-    let entity = null;
+    let entity: any = null;
     if (firstEntityType === 'general') {
       entity = await prisma.general.findFirst({
         where: { OR: [{ id: firstEntityId }, { slug: firstEntityId }] },
