@@ -32,6 +32,8 @@ const pgPool = new pg.Pool({
 // Middleware
 const allowedOrigins = [
   'http://localhost:3000',
+  'https://tamquoc.gg',
+  'https://www.tamquoc.gg',
   process.env.FRONTEND_URL,
 ].filter(Boolean) as string[];
 
@@ -42,8 +44,8 @@ app.use(cors({
     if (allowedOrigins.some(allowed => origin.startsWith(allowed) || allowed.includes('.vercel.app') && origin.includes('.vercel.app'))) {
       return callback(null, true);
     }
-    // Allow all vercel.app and railway.app domains
-    if (origin.includes('.vercel.app') || origin.includes('.railway.app')) {
+    // Allow all vercel.app, railway.app, and tamquoc.gg domains
+    if (origin.includes('.vercel.app') || origin.includes('.railway.app') || origin.includes('tamquoc.gg')) {
       return callback(null, true);
     }
     callback(null, false);
