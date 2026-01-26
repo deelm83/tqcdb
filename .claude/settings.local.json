@@ -95,7 +95,12 @@
       "WebFetch(domain:docs.railway.app)",
       "WebFetch(domain:docs.railway.com)",
       "Bash(RAILWAY_API_TOKEN=\"e8aaa74a-4636-42b8-9af3-8975756f17eb\" railway whoami:*)",
-      "Bash(RAILWAY_TOKEN=\"e8aaa74a-4636-42b8-9af3-8975756f17eb\" railway link:*)"
+      "Bash(RAILWAY_TOKEN=\"e8aaa74a-4636-42b8-9af3-8975756f17eb\" railway link:*)",
+      "Bash(npx skills:*)",
+      "Bash(git show:*)",
+      "WebFetch(domain:prydwen.gg)",
+      "WebFetch(domain:genshin.gg)",
+      "WebFetch(domain:www.align.vn)"
     ]
   }
 }
