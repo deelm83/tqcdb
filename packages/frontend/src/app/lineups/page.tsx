@@ -61,7 +61,7 @@ export default function LineupsPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex min-h-[400px] items-center justify-center">
           <div className="text-center">
-            <div className="mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4 border-[var(--accent-gold)] border-t-transparent"></div>
+            <div className="mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4 border-[var(--accent)] border-t-transparent"></div>
             <p className="text-[var(--text-secondary)]">Đang tải...</p>
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function LineupsPage() {
           {error.includes('đăng nhập') && (
             <Link
               href="/auth/login"
-              className="mt-4 inline-block rounded bg-[var(--accent-gold)] px-6 py-2 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--accent-gold)]/80"
+              className="mt-4 inline-block rounded bg-[var(--accent)] px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]"
             >
               Đăng nhập
             </Link>
@@ -95,7 +95,7 @@ export default function LineupsPage() {
         <h1 className="text-3xl font-bold text-[var(--text-primary)]">Dàn Trận của tôi</h1>
         <Link
           href="/lineups/create"
-          className="rounded bg-[var(--accent-gold)] px-6 py-2.5 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--accent-gold)]/80"
+          className="rounded bg-[var(--accent)] px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]"
         >
           + Tạo Dàn Trận
         </Link>
@@ -123,7 +123,7 @@ export default function LineupsPage() {
           </p>
           <Link
             href="/lineups/create"
-            className="inline-block rounded bg-[var(--accent-gold)] px-6 py-2.5 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--accent-gold)]/80"
+            className="inline-block rounded bg-[var(--accent)] px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]"
           >
             Tạo Dàn Trận Đầu Tiên
           </Link>

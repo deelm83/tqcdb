@@ -133,7 +133,7 @@ export default function LineupDetailPage({ params }: { params: Promise<{ id: str
       <div className="container mx-auto px-4 py-8">
         <div className="flex min-h-[400px] items-center justify-center">
           <div className="text-center">
-            <div className="mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4 border-[var(--accent-gold)] border-t-transparent"></div>
+            <div className="mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4 border-[var(--accent)] border-t-transparent"></div>
             <p className="text-[var(--text-secondary)]">Đang tải...</p>
           </div>
         </div>
@@ -181,13 +181,13 @@ export default function LineupDetailPage({ params }: { params: Promise<{ id: str
                 type="text"
                 value={editedName}
                 onChange={(e) => setEditedName(e.target.value)}
-                className="flex-1 rounded border border-[var(--border)] bg-[var(--bg-secondary)] px-4 py-2 text-[var(--text-primary)] focus:border-[var(--accent-gold)] focus:outline-none"
+                className="flex-1 rounded border border-[var(--border)] bg-[var(--bg-secondary)] px-4 py-2 text-[var(--text-primary)] focus:border-[var(--accent)] focus:outline-none"
                 autoFocus
               />
               <button
                 onClick={handleSaveName}
                 disabled={saving || !editedName.trim()}
-                className="rounded bg-[var(--accent-gold)] px-6 py-2 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--accent-gold)]/80 disabled:opacity-50"
+                className="rounded bg-[var(--accent)] px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)] disabled:opacity-50"
               >
                 {saving ? 'Đang lưu...' : 'Lưu'}
               </button>
@@ -291,7 +291,7 @@ export default function LineupDetailPage({ params }: { params: Promise<{ id: str
                           )}
                           <div className="flex-1">
                             <div className="flex items-center gap-2">
-                              <p className="font-serif font-semibold text-[var(--text-primary)]">{fg.general.name}</p>
+                              <p className="font-semibold text-[var(--text-primary)]">{fg.general.name}</p>
                               {hasConflict && (
                                 <span className="text-xs text-red-400">⚠️</span>
                               )}

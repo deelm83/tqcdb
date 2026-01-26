@@ -210,7 +210,7 @@ function AdminGeneralsContent() {
     <main className="min-h-screen bg-[var(--bg)] py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-[var(--accent-gold)] uppercase tracking-wider">Võ tướng ({filteredGenerals.length})</h1>
+          <h1 className="text-2xl font-bold text-[var(--accent)]">Võ tướng ({filteredGenerals.length})</h1>
           <Link href="/admin/generals/new" className="btn-primary">
             + Thêm võ tướng
           </Link>
@@ -225,13 +225,13 @@ function AdminGeneralsContent() {
               placeholder="Tìm võ tướng..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full px-4 py-2 bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-gold)]"
+              className="w-full px-4 py-2 bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent)]"
             />
           </div>
 
           {/* Status filter row */}
           <div className="flex items-center gap-2 mb-4">
-            <span className="text-sm font-medium text-[var(--accent-gold-dim)]">Trạng thái:</span>
+            <span className="text-sm font-medium text-[var(--accent)]">Trạng thái:</span>
             <button
               onClick={() => setSelectedStatus('all')}
               className={`px-3 py-1.5 text-sm border transition-all ${
@@ -267,7 +267,7 @@ function AdminGeneralsContent() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Faction Filter */}
             <div>
-              <h3 className="text-sm font-medium text-[var(--accent-gold-dim)] mb-2">Thế lực</h3>
+              <h3 className="text-sm font-medium text-[var(--accent)] mb-2">Thế lực</h3>
               <div className="flex flex-wrap gap-2">
                 {factions.map(faction => {
                   const isSelected = selectedFactions.includes(faction);
@@ -277,7 +277,7 @@ function AdminGeneralsContent() {
                       onClick={() => toggleFaction(faction)}
                       className={`px-3 py-1.5 text-sm border transition-colors ${
                         isSelected
-                          ? 'bg-[var(--bg-tertiary)] border-[var(--accent-gold-dim)] text-[var(--accent-gold)]'
+                          ? 'bg-[var(--bg-tertiary)] border-[var(--border-accent)] text-[var(--accent)]'
                           : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
                       }`}
                     >
@@ -290,7 +290,7 @@ function AdminGeneralsContent() {
 
             {/* Cost Filter */}
             <div>
-              <h3 className="text-sm font-medium text-[var(--accent-gold-dim)] mb-2">COST</h3>
+              <h3 className="text-sm font-medium text-[var(--accent)] mb-2">COST</h3>
               <div className="flex flex-wrap gap-2">
                 {costOptions.map(cost => {
                   const isSelected = selectedCost === cost;
@@ -300,7 +300,7 @@ function AdminGeneralsContent() {
                       onClick={() => setSelectedCost(selectedCost === cost ? null : cost)}
                       className={`w-8 h-8 text-sm font-bold border transition-colors ${
                         isSelected
-                          ? 'bg-[var(--accent-gold)] border-[var(--accent-gold)] text-[var(--bg)]'
+                          ? 'bg-[var(--accent)] border-[var(--accent)] text-[var(--bg)]'
                           : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
                       }`}
                     >
@@ -313,7 +313,7 @@ function AdminGeneralsContent() {
 
             {/* Troop Filter */}
             <div>
-              <h3 className="text-sm font-medium text-[var(--accent-gold-dim)] mb-2">Binh chủng (S/A)</h3>
+              <h3 className="text-sm font-medium text-[var(--accent)] mb-2">Binh chủng (S/A)</h3>
               <div className="flex flex-wrap gap-2">
                 {troopTypes.map(type => {
                   const isSelected = selectedTroops.includes(type);
@@ -323,7 +323,7 @@ function AdminGeneralsContent() {
                       onClick={() => toggleTroop(type)}
                       className={`flex items-center gap-1 px-2 py-1.5 border transition-colors ${
                         isSelected
-                          ? 'bg-[var(--bg-tertiary)] border-[var(--accent-gold-dim)] text-[var(--accent-gold)]'
+                          ? 'bg-[var(--bg-tertiary)] border-[var(--border-accent)] text-[var(--accent)]'
                           : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
                       }`}
                     >
@@ -341,7 +341,7 @@ function AdminGeneralsContent() {
             <div className="mt-4 pt-3 border-t border-[var(--border)] flex justify-end">
               <button
                 onClick={clearFilters}
-                className="text-sm text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors"
+                className="text-sm text-[var(--text-tertiary)] hover:text-[var(--accent)] transition-colors"
               >
                 Xóa bộ lọc
               </button>
@@ -350,7 +350,10 @@ function AdminGeneralsContent() {
         </div>
 
         {loading ? (
-          <div className="text-center text-[var(--text-secondary)] py-8">Đang tải...</div>
+          <div className="text-center text-[var(--text-secondary)] py-8">
+            <span className="spinner mr-2" />
+            Đang tải...
+          </div>
         ) : (
           <div className="card overflow-hidden">
             <table className="w-full">
@@ -384,7 +387,7 @@ function AdminGeneralsContent() {
                     <td className="px-4 py-3 text-[var(--text-secondary)]">
                       {factionNames[general.faction_id as FactionId]?.vi || general.faction_id}
                     </td>
-                    <td className="px-4 py-3 text-[var(--accent-gold)] font-bold">{general.cost}</td>
+                    <td className="px-4 py-3 text-[var(--accent)] font-bold">{general.cost}</td>
                     <td className="px-4 py-3 text-center">
                       <button
                         onClick={() => handleToggleStatus(general)}
@@ -402,14 +405,14 @@ function AdminGeneralsContent() {
                       <div className="flex items-center justify-end gap-2">
                         <Link
                           href={`/admin/generals/${general.slug}`}
-                          className="px-3 py-1 text-sm text-[var(--accent-gold)] hover:text-[var(--accent-gold-bright)] border border-[var(--accent-gold-dim)] hover:border-[var(--accent-gold)] transition-colors"
+                          className="px-3 py-1 text-sm text-[var(--accent)] hover:text-[var(--accent-hover)] border border-[var(--border-accent)] hover:border-[var(--accent)] transition-colors"
                         >
                           Sửa
                         </Link>
                         <button
                           onClick={() => handleDelete(general.slug, general.name)}
                           disabled={deleting === general.slug}
-                          className="px-3 py-1 text-sm text-[var(--accent-red-bright)] hover:text-red-400 border border-[var(--accent-red)] hover:border-[var(--accent-red-bright)] transition-colors disabled:opacity-50"
+                          className="px-3 py-1 text-sm text-[var(--accent-dim)] hover:text-red-400 border border-[var(--border-accent)] hover:border-[var(--accent-dim)] transition-colors disabled:opacity-50"
                         >
                           {deleting === general.slug ? '...' : 'Xóa'}
                         </button>
@@ -437,10 +440,10 @@ export default function AdminGeneralsPage() {
     <Suspense fallback={
       <main className="min-h-screen bg-[var(--bg)] py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-8 w-48 bg-[var(--bg-secondary)] animate-pulse mb-6" />
+          <div className="h-8 w-48 bg-[var(--bg-secondary)] shimmer mb-6" />
           <div className="card p-4 mb-6 space-y-4">
-            <div className="h-10 bg-[var(--bg-secondary)] animate-pulse" />
-            <div className="h-20 bg-[var(--bg-secondary)] animate-pulse" />
+            <div className="h-10 bg-[var(--bg-secondary)] shimmer" />
+            <div className="h-20 bg-[var(--bg-secondary)] shimmer" />
           </div>
         </div>
       </main>

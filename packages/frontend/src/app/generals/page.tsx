@@ -110,10 +110,10 @@ function GeneralsContent() {
   }, [search, factionsParam, costParam, troopsParam]);
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-8">
+    <main className="max-w-7xl mx-auto px-6 py-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-[var(--accent-gold)] uppercase tracking-wider">Võ tướng</h1>
+        <h1 className="text-2xl font-semibold text-[var(--accent)]">Võ tướng</h1>
         <p className="text-[var(--text-secondary)] mt-1">Danh sách võ tướng trong Tam Quốc Chí Chiến Lược</p>
       </div>
 
@@ -131,7 +131,7 @@ function GeneralsContent() {
       </div>
 
       {/* Results Count */}
-      <div className="mb-6 text-[13px] text-[var(--text-tertiary)] uppercase tracking-wider">
+      <div className="mb-6 text-[13px] text-[var(--text-tertiary)] font-semibold">
         {loading ? (
           <span className="flex items-center gap-2">
             <span className="spinner" />
@@ -147,23 +147,23 @@ function GeneralsContent() {
 
       {/* Error State */}
       {error && (
-        <div className="card-red p-4 mb-6">
+        <div className="card p-4 mb-6">
           <span className="text-red-400">{error}</span>
         </div>
       )}
 
       {/* Loading State */}
       {loading && (
-        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="card aspect-[7/10] animate-pulse" />
+            <div key={i} className="shimmer aspect-[7/10] rounded-lg" />
           ))}
         </div>
       )}
 
       {/* Generals Grid */}
       {!loading && generals.length > 0 && (
-        <div className={`grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 transition-opacity duration-200 ${isRefetching ? 'opacity-60' : 'opacity-100'}`}>
+        <div className={`grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 transition-opacity duration-200 ${isRefetching ? 'opacity-60' : 'opacity-100'}`}>
           {generals.map((general, index) => (
             <GeneralCard key={general.id} general={general as any} index={general.index ?? index} />
           ))}
@@ -184,18 +184,18 @@ function GeneralsContent() {
 export default function GeneralsPage() {
   return (
     <Suspense fallback={
-      <main className="max-w-6xl mx-auto px-6 py-8">
+      <main className="max-w-7xl mx-auto px-6 py-8 opacity-0">
         <div className="mb-8">
-          <div className="h-8 w-32 bg-[var(--bg-secondary)] animate-pulse" />
-          <div className="h-4 w-64 bg-[var(--bg-secondary)] animate-pulse mt-2" />
+          <div className="shimmer h-8 w-32" />
+          <div className="shimmer h-4 w-64 mt-2" />
         </div>
         <div className="space-y-4 mb-8">
-          <div className="h-12 bg-[var(--bg-secondary)] animate-pulse" />
-          <div className="h-24 bg-[var(--bg-secondary)] animate-pulse" />
+          <div className="shimmer h-14 rounded-xl" />
+          <div className="shimmer h-12" />
         </div>
-        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="card aspect-[7/10] animate-pulse" />
+            <div key={i} className="shimmer aspect-[7/10] rounded-lg" />
           ))}
         </div>
       </main>

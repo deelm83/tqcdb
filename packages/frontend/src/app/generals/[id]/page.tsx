@@ -29,6 +29,7 @@ const STAT_LABELS: Record<StatKey, string> = {
   charm: 'Mị lực',
 };
 
+
 const TARGET_LABELS: Record<string, string> = {
   self: 'Bản thân',
   toi: 'Bản thân',
@@ -46,6 +47,14 @@ const TARGET_LABELS: Record<string, string> = {
 
 // Milestone levels that give 10 extra points each (at level 10, 20, 30, 40)
 const MILESTONE_LEVELS = [10, 20, 30, 40];
+
+// Faction colors for light theme
+const factionColors2: Record<FactionId, string> = {
+  wei: 'text-blue-600',
+  shu: 'text-green-600',
+  wu: 'text-red-600',
+  qun: 'text-amber-600',
+};
 
 // Advanced Stats Calculator Component
 function StatsCalculator({ general }: { general: General }) {
@@ -93,7 +102,6 @@ function StatsCalculator({ general }: { general: General }) {
 
     for (const key of STAT_KEYS) {
       const { base, growth } = stats[key];
-      // Final = base + growth * (level - 1) + extra points
       stats[key].final = Math.round((base + growth * (level - 1) + extraPoints[key]) * 100) / 100;
     }
 
@@ -117,14 +125,14 @@ function StatsCalculator({ general }: { general: General }) {
   // Simple view
   if (!isAdvanced) {
     return (
-      <div className="card-gold p-5">
+      <div className="card p-5">
         <div className="flex items-center justify-between mb-4">
-          <div className="text-[11px] text-[var(--accent-gold)] uppercase tracking-widest font-semibold">
+          <div className="text-[11px] text-[var(--accent)] font-semibold">
             Chỉ số
           </div>
           <button
             onClick={() => setIsAdvanced(true)}
-            className="text-[11px] text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors uppercase tracking-wider"
+            className="text-[11px] text-[var(--text-tertiary)] hover:text-[var(--accent)] transition-colors"
           >
             Nâng cao →
           </button>
@@ -138,7 +146,7 @@ function StatsCalculator({ general }: { general: General }) {
                   {calculatedStats[key].base || '-'}
                 </span>
                 {calculatedStats[key].growth > 0 && (
-                  <span className="text-[11px] text-green-400 ml-1">
+                  <span className="text-[11px] text-green-600 ml-1">
                     +{calculatedStats[key].growth}
                   </span>
                 )}
@@ -152,14 +160,14 @@ function StatsCalculator({ general }: { general: General }) {
 
   // Advanced view
   return (
-    <div className="card-gold p-4">
+    <div className="card p-4">
       <div className="flex items-center justify-between mb-3">
-        <div className="text-[11px] text-[var(--accent-gold)] uppercase tracking-widest font-semibold">
+        <div className="text-[11px] text-[var(--accent)] font-semibold">
           Tính chỉ số
         </div>
         <button
           onClick={() => setIsAdvanced(false)}
-          className="text-[11px] text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors"
+          className="text-[11px] text-[var(--text-tertiary)] hover:text-[var(--accent)] transition-colors"
         >
           ✕
         </button>
@@ -179,7 +187,7 @@ function StatsCalculator({ general }: { general: General }) {
                 const val = parseInt(e.target.value) || 1;
                 setLevel(Math.min(50, Math.max(1, val)));
               }}
-              className="w-8 h-6 text-[12px] text-center font-bold text-[var(--accent-gold)] bg-transparent border-b border-[var(--border)] focus:border-[var(--accent-gold)] outline-none"
+              className="w-8 h-6 text-[12px] text-center font-bold text-[var(--accent)] bg-transparent border-b border-[var(--border)] focus:border-[var(--accent)] outline-none"
             />
           </div>
         </div>
@@ -208,7 +216,7 @@ function StatsCalculator({ general }: { general: General }) {
           <button
             onClick={() => setIsAnimated(!isAnimated)}
             className={`w-8 h-4 rounded-full transition-colors relative ${
-              isAnimated ? 'bg-[var(--accent-gold)]' : 'bg-[var(--border)]'
+              isAnimated ? 'bg-[var(--accent)]' : 'bg-[var(--border)]'
             }`}
           >
             <span className={`absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform ${
@@ -223,7 +231,7 @@ function StatsCalculator({ general }: { general: General }) {
           <button
             onClick={() => setHasCollectiveCard(!hasCollectiveCard)}
             className={`w-8 h-4 rounded-full transition-colors relative ${
-              hasCollectiveCard ? 'bg-[var(--accent-gold)]' : 'bg-[var(--border)]'
+              hasCollectiveCard ? 'bg-[var(--accent)]' : 'bg-[var(--border)]'
             }`}
           >
             <span className={`absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform ${
@@ -235,7 +243,7 @@ function StatsCalculator({ general }: { general: General }) {
         {/* Remaining Points */}
         <div className="flex items-center gap-2 ml-auto">
           <span className="text-[11px] text-[var(--text-tertiary)]">Điểm tự do</span>
-          <span className={`text-[13px] font-bold ${remainingPoints > 0 ? 'text-green-400' : 'text-[var(--text-primary)]'}`}>
+          <span className={`text-[13px] font-bold  ${remainingPoints > 0 ? 'text-green-600' : 'text-[var(--text-primary)]'}`}>
             {remainingPoints}/{totalExtraPoints}
           </span>
         </div>
@@ -244,10 +252,10 @@ function StatsCalculator({ general }: { general: General }) {
       {/* Stats - Compact grid */}
       <div className="grid grid-cols-3 gap-2">
         {STAT_KEYS.map((key) => (
-          <div key={key} className="bg-[var(--bg-tertiary)] rounded px-2 py-2 border border-[var(--border)]">
+          <div key={key} className="bg-[var(--bg-tertiary)] rounded-lg px-2 py-2 border border-[var(--border)]">
             <div className="flex items-center justify-between mb-1">
               <span className="text-[10px] text-[var(--text-tertiary)]">{STAT_LABELS[key]}</span>
-              <span className="text-[14px] font-bold text-[var(--accent-gold)]">
+              <span className="text-[14px] font-bold  text-[var(--accent)]">
                 {Math.round(calculatedStats[key].final)}
               </span>
             </div>
@@ -263,7 +271,7 @@ function StatsCalculator({ general }: { general: General }) {
                 >
                   -
                 </button>
-                <span className="text-[11px] font-semibold text-green-400 w-6 text-center">
+                <span className="text-[11px] font-semibold  text-green-600 w-6 text-center">
                   +{extraPoints[key]}
                 </span>
                 <button
@@ -300,13 +308,13 @@ function highlightEffectText(text: string): React.ReactNode {
     const matchedText = match[0];
 
     if (match[1]) {
-      parts.push(<span key={match.index} className="text-[var(--accent-gold)] font-semibold">{matchedText}</span>);
+      parts.push(<span key={match.index} className="text-[var(--accent)] font-semibold">{matchedText}</span>);
     } else if (match[2]) {
-      parts.push(<span key={match.index} className="text-blue-400">{matchedText}</span>);
+      parts.push(<span key={match.index} className="text-blue-600">{matchedText}</span>);
     } else if (match[3]) {
-      parts.push(<span key={match.index} className="text-[var(--accent-gold-dim)]">{matchedText}</span>);
+      parts.push(<span key={match.index} className="text-[var(--accent-dim)]">{matchedText}</span>);
     } else if (match[4]) {
-      parts.push(<span key={match.index} className="text-green-400">{matchedText}</span>);
+      parts.push(<span key={match.index} className="text-green-600">{matchedText}</span>);
     }
 
     lastIndex = match.index + matchedText.length;
@@ -334,17 +342,17 @@ function SkillCard({
   const typeName = skillTypeNames[typeId] || skillTypeNames.unknown;
 
   return (
-    <div className="card-gold p-5">
+    <div className="card p-5">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <div className="text-[11px] text-[var(--accent-gold)] uppercase tracking-widest font-semibold">{title}</div>
+        <div className="text-[11px] text-[var(--accent)] font-semibold">{title}</div>
         <div className="flex gap-2">
           <span className={`pill ${typeColor.text}`}>{typeName.vi}</span>
           {skill.quality && (
             <span className={`pill ${qualityColors[skill.quality]}`}>{skill.quality}</span>
           )}
           {skill.trigger_rate && (
-            <span className="px-2 py-1 rounded bg-amber-500/20 text-amber-400 text-[12px] font-bold border border-amber-500/30">
+            <span className="px-2 py-1 rounded-md bg-[var(--accent)]/15 text-[var(--accent)] text-[12px] font-bold border border-[var(--accent)]/30">
               {skill.trigger_rate}%
             </span>
           )}
@@ -366,7 +374,7 @@ function SkillCard({
       {/* Target */}
       {(skill.target) && (
         <div className="flex items-start gap-3 text-[13px] mb-3">
-          <span className="text-[var(--accent-gold-dim)] uppercase tracking-wider">Mục tiêu:</span>
+          <span className="text-[var(--text-tertiary)]">Mục tiêu:</span>
           <span className="text-[var(--text-secondary)]">{TARGET_LABELS[skill.target] || skill.target}</span>
         </div>
       )}
@@ -374,7 +382,7 @@ function SkillCard({
       {/* Army Types */}
       {skill.army_types && skill.army_types.length > 0 && (
         <div className="flex items-center gap-3 text-[13px]">
-          <span className="text-[var(--accent-gold-dim)] uppercase tracking-wider">Binh chủng:</span>
+          <span className="text-[var(--text-tertiary)]">Binh chủng:</span>
           <div className="flex gap-2">
             {skill.army_types.map((army) => (
               <ArmyIcon key={army} type={army as ArmyIconType} size={20} />
@@ -432,13 +440,13 @@ export default function GeneralDetailPage() {
   if (loading) {
     return (
       <main className="max-w-5xl mx-auto px-6 py-8">
-        <div className="h-4 w-32 bg-[var(--bg-secondary)] mb-6 animate-pulse" />
+        <div className="shimmer h-4 w-32 mb-6" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="aspect-[2.5/3.5] bg-[var(--bg-secondary)] animate-pulse" />
+          <div className="shimmer aspect-[2.5/3.5] rounded-lg" />
           <div className="md:col-span-2 space-y-4">
-            <div className="h-12 bg-[var(--bg-secondary)] w-64 animate-pulse" />
-            <div className="h-8 bg-[var(--bg-secondary)] w-32 animate-pulse" />
-            <div className="h-32 bg-[var(--bg-secondary)] animate-pulse" />
+            <div className="shimmer h-12 w-64" />
+            <div className="shimmer h-8 w-32" />
+            <div className="shimmer h-32" />
           </div>
         </div>
       </main>
@@ -450,7 +458,7 @@ export default function GeneralDetailPage() {
       <main className="max-w-5xl mx-auto px-6 py-8">
         <div className="text-center py-16">
           <p className="text-[var(--text-secondary)] mb-4">Không tìm thấy võ tướng</p>
-          <Link href="/generals" className="text-[var(--accent-gold)] hover:text-[var(--accent-gold-bright)]">
+          <Link href="/generals" className="text-[var(--accent)] hover:text-[var(--accent-hover)]">
             ← Quay lại
           </Link>
         </div>
@@ -461,106 +469,112 @@ export default function GeneralDetailPage() {
   const factionId = general.faction_id as FactionId;
   const factionName = factionNames[factionId] || factionNames.qun;
   const factionColor = factionColors[factionId] || factionColors.qun;
+  const factionColor2 = factionColors2[factionId] || factionColors2.qun;
 
   return (
-    <main className="max-w-5xl mx-auto px-6 py-8">
-      {/* Breadcrumb and Actions */}
-      <div className="mb-6 flex items-center justify-between">
-        <Link href="/generals" className="inline-flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] text-[13px] transition-colors uppercase tracking-wider">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-          Võ tướng
-        </Link>
-        <SuggestEditButton onClick={handleSuggestClick} />
-      </div>
-
-      {/* Header */}
-      <div className="card-gold p-6 mb-8">
-        <div className="flex flex-col md:flex-row md:items-center gap-6">
-          {/* Left: Name, Faction, Cost */}
-          <div className="flex items-center gap-4 flex-1">
-            {/* Cost Seal */}
-            <div className="cost-seal flex-shrink-0">
-              <div className="cost-seal-inner">
-                <span>{general.cost}</span>
-              </div>
-            </div>
-
-            <div>
-              {/* Name */}
-              <h1 className="font-serif text-2xl md:text-3xl font-bold text-[var(--text-primary)] leading-tight">
-                {general.name}
-              </h1>
-              {/* Faction */}
-              <div className={`text-[13px] font-semibold uppercase tracking-wider mt-1 ${factionColor.text}`}>
-                {factionName.vi}
-              </div>
-            </div>
+    <main>
+      {/* Hero Header */}
+      <div className="bg-[var(--bg-secondary)]">
+        <div className="max-w-5xl mx-auto px-6 py-8">
+          {/* Breadcrumb and Actions */}
+          <div className="mb-6 flex items-center justify-between">
+            <Link href="/generals" className="inline-flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--accent)] text-[13px] transition-colors">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Võ tướng
+            </Link>
+            <SuggestEditButton onClick={handleSuggestClick} />
           </div>
 
-          {/* Divider - vertical on desktop */}
-          <div className="hidden md:block w-px h-16 bg-[var(--border)]" />
-          <div className="md:hidden border-t border-[var(--border)]" />
-
-          {/* Right: Army Types */}
-          <div className="flex gap-2 flex-wrap">
-            {troopTypes.map(type => {
-              const grade = general.troop_compatibility?.[type]?.grade as Grade;
-              const gradeStyle = gradeColors[grade] || { text: 'text-[var(--text-tertiary)]', border: 'border-[var(--border)]', color: '#5c574f' };
-              return (
-                <div
-                  key={type}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded bg-[var(--bg-tertiary)] border ${gradeStyle.border}`}
-                >
-                  <TroopIcon
-                    type={type}
-                    size={18}
-                    style={{ color: gradeStyle.color }}
-                  />
-                  <span className={`text-[11px] uppercase ${gradeStyle.text}`}>
-                    {troopTypeNames[type].vi}
-                  </span>
-                  <span className={`text-[13px] font-bold ${gradeStyle.text}`}>
-                    {grade || '-'}
-                  </span>
+          {/* Header Card */}
+          <div className="card p-6 mb-8">
+            <div className="flex flex-col md:flex-row md:items-center gap-6">
+              {/* Left: Name, Faction, Cost */}
+              <div className="flex items-center gap-4 flex-1">
+                {/* Cost Badge */}
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[var(--accent)] text-white flex items-center justify-center">
+                  <span className="text-xl font-bold">{general.cost}</span>
                 </div>
-              );
-            })}
+
+                <div>
+                  {/* Name */}
+                  <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] leading-tight">
+                    {general.name}
+                  </h1>
+                  {/* Faction */}
+                  <div className={`text-[13px] font-semibold mt-1 ${factionColor2}`}>
+                    {factionName.vi}
+                  </div>
+                </div>
+              </div>
+
+              {/* Divider - vertical on desktop */}
+              <div className="hidden md:block w-px h-16 bg-[var(--border)]" />
+              <div className="md:hidden border-t border-[var(--border)]" />
+
+              {/* Right: Army Types */}
+              <div className="flex gap-2 flex-wrap">
+                {troopTypes.map(type => {
+                  const grade = general.troop_compatibility?.[type]?.grade as Grade;
+                  const gradeStyle = gradeColors[grade] || { text: 'text-[var(--text-tertiary)]', border: 'border-[var(--border)]', color: '#5c574f' };
+                  return (
+                    <div
+                      key={type}
+                      className={`flex items-center gap-2 px-3 py-1.5 rounded-md bg-[var(--bg-tertiary)] border ${gradeStyle.border}`}
+                    >
+                      <TroopIcon
+                        type={type}
+                        size={18}
+                        style={{ color: gradeStyle.color }}
+                      />
+                      <span className={`text-[11px] uppercase ${gradeStyle.text}`}>
+                        {troopTypeNames[type].vi}
+                      </span>
+                      <span className={`text-[13px] font-bold  ${gradeStyle.text}`}>
+                        {grade || '-'}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Portrait Card - Left Side */}
-        <div className="md:w-72 flex-shrink-0">
-          {/* Portrait */}
-          <div className="card overflow-hidden">
-            <div className="relative aspect-[7/10]">
-              <img
-                src={general.image_full || general.image || '/images/general-placeholder.svg'}
-                alt={general.name}
-                className="w-full h-full object-cover object-top"
-              />
+      <div className="max-w-5xl mx-auto px-6 pb-8">
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Portrait Card - Left Side */}
+          <div className="md:w-72 flex-shrink-0">
+            {/* Portrait with crimson frame */}
+            <div className="card overflow-hidden rounded-lg border-2 border-[var(--border)] hover:border-[var(--border-accent)] transition-colors">
+              <div className="relative aspect-[7/10]">
+                <img
+                  src={general.image_full || general.image || '/images/general-placeholder.svg'}
+                  alt={general.name}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Details Section - Right Side */}
-        <div className="flex-1 space-y-4">
-          {/* Stats Calculator */}
-          <StatsCalculator general={general} />
+          {/* Details Section - Right Side */}
+          <div className="flex-1 space-y-4">
+            {/* Stats Calculator */}
+            <StatsCalculator general={general} />
 
-          {/* Innate Skill */}
-          {general.innate_skill && (
-            <SkillCard title="Chiến pháp tự mang" skill={general.innate_skill} />
-          )}
+            {/* Innate Skill */}
+            {general.innate_skill && (
+              <SkillCard title="Chiến pháp tự mang" skill={general.innate_skill} />
+            )}
 
-          {/* Inherited Skill */}
-          {general.inherited_skill && (
-            <SkillCard title="Chiến pháp kế thừa" skill={general.inherited_skill} />
-          )}
+            {/* Inherited Skill */}
+            {general.inherited_skill && (
+              <SkillCard title="Chiến pháp kế thừa" skill={general.inherited_skill} />
+            )}
+          </div>
         </div>
       </div>
 
@@ -572,7 +586,6 @@ export default function GeneralDetailPage() {
           entityType="general"
           entity={general}
           onSuccess={() => {
-            // Could show a success toast here
             alert('Đề xuất của bạn đã được gửi thành công!');
           }}
         />

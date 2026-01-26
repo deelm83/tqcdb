@@ -179,7 +179,7 @@ function AdminSuggestionsContent() {
     <main className="min-h-screen bg-[var(--bg)] py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-2xl font-bold text-[var(--accent-gold)] uppercase tracking-wider">Đề xuất chỉnh sửa</h1>
+          <h1 className="text-2xl font-bold text-[var(--accent)]">Đề xuất chỉnh sửa</h1>
           <div className="flex items-center gap-2 text-sm">
             <span className="text-[var(--text-tertiary)]">Tổng cộng:</span>
             <span className="px-2 py-1 bg-yellow-900/30 text-yellow-400 rounded">{pendingCount} chờ duyệt</span>
@@ -194,7 +194,7 @@ function AdminSuggestionsContent() {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value as StatusFilter)}
-              className="bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] px-4 py-2 rounded-lg focus:outline-none focus:border-[var(--accent-gold)]"
+              className="bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] px-4 py-2 rounded-lg focus:outline-none focus:border-[var(--accent)]"
             >
               <option value="all">Tất cả trạng thái</option>
               <option value="PENDING">Chờ duyệt</option>
@@ -204,7 +204,7 @@ function AdminSuggestionsContent() {
             <select
               value={selectedEntityType}
               onChange={(e) => setSelectedEntityType(e.target.value as EntityTypeFilter)}
-              className="bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] px-4 py-2 rounded-lg focus:outline-none focus:border-[var(--accent-gold)]"
+              className="bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] px-4 py-2 rounded-lg focus:outline-none focus:border-[var(--accent)]"
             >
               <option value="all">Tất cả loại</option>
               <option value="general">Võ tướng</option>
@@ -216,7 +216,7 @@ function AdminSuggestionsContent() {
                 placeholder="Tìm kiếm theo tên..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] px-4 py-2 rounded-lg placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-gold)]"
+                className="w-full bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] px-4 py-2 rounded-lg placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent)]"
               />
             </div>
             <button
@@ -239,7 +239,7 @@ function AdminSuggestionsContent() {
             <div className="pt-3 border-t border-[var(--border)] flex justify-end">
               <button
                 onClick={clearFilters}
-                className="text-sm text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors"
+                className="text-sm text-[var(--text-tertiary)] hover:text-[var(--accent)] transition-colors"
               >
                 Xóa bộ lọc
               </button>
@@ -269,13 +269,16 @@ function AdminSuggestionsContent() {
         )}
 
         {loading ? (
-          <div className="text-center text-[var(--text-secondary)] py-8">Đang tải...</div>
+          <div className="text-center text-[var(--text-secondary)] py-8">
+            <span className="spinner mr-2" />
+            Đang tải...
+          </div>
         ) : (
           <div className="space-y-4">
             {filteredSuggestions.map((suggestion) => (
               <div
                 key={suggestion.id}
-                className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5 hover:border-[var(--accent-gold)]/50 transition-colors cursor-pointer"
+                className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5 hover:border-[var(--accent)]/50 transition-colors cursor-pointer"
                 onClick={() => router.push(`/admin/suggestions/${suggestion.id}`)}
               >
                 <div className="flex items-start gap-4">
@@ -307,7 +310,7 @@ function AdminSuggestionsContent() {
                         Người gửi: <span className="text-[var(--text-primary)]">{suggestion.user.display_name}</span>
                       </span>
                       <span className="text-[var(--text-tertiary)]">
-                        Thay đổi: <span className="text-[var(--accent-gold)]">{Object.keys(suggestion.changes).join(', ')}</span>
+                        Thay đổi: <span className="text-[var(--accent)]">{Object.keys(suggestion.changes).join(', ')}</span>
                       </span>
                     </div>
                   </div>
@@ -335,9 +338,9 @@ export default function AdminSuggestionsPage() {
     <Suspense fallback={
       <main className="min-h-screen bg-[var(--bg)] py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-8 w-48 bg-[var(--bg-secondary)] animate-pulse mb-6" />
+          <div className="h-8 w-48 bg-[var(--bg-secondary)] shimmer mb-6" />
           <div className="card p-4 mb-6 space-y-4">
-            <div className="h-10 bg-[var(--bg-secondary)] animate-pulse" />
+            <div className="h-10 bg-[var(--bg-secondary)] shimmer" />
           </div>
         </div>
       </main>

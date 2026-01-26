@@ -188,7 +188,7 @@ function AdminSkillsContent() {
     <main className="min-h-screen bg-[var(--bg)] py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-[var(--accent-gold)] uppercase tracking-wider">Chiến pháp ({filteredSkills.length})</h1>
+          <h1 className="text-2xl font-bold text-[var(--accent)]">Chiến pháp ({filteredSkills.length})</h1>
           <div className="flex items-center gap-3">
             <Link href="/admin/skills/mass-edit" className="btn-secondary">
               Sửa nhanh
@@ -209,7 +209,7 @@ function AdminSkillsContent() {
                 placeholder="Tìm chiến pháp..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full px-4 py-2 bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-gold)]"
+                className="w-full px-4 py-2 bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent)]"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -222,8 +222,8 @@ function AdminSkillsContent() {
                     onClick={() => setSelectedQuality(selectedQuality === quality ? null : quality)}
                     className={`w-8 h-8 text-xs font-bold transition-all ${
                       isSelected
-                        ? quality === 'S' ? 'bg-[var(--accent-gold)] text-[var(--bg)]' :
-                          quality === 'A' ? 'bg-[var(--accent-red-bright)] text-white' :
+                        ? quality === 'S' ? 'bg-[var(--accent)] text-[var(--bg)]' :
+                          quality === 'A' ? 'bg-[var(--accent-dim)] text-white' :
                           quality === 'B' ? 'bg-blue-500 text-white' :
                           'bg-[var(--bg-tertiary)] text-[var(--text-primary)]'
                         : 'bg-[var(--bg-tertiary)] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]'
@@ -267,7 +267,7 @@ function AdminSkillsContent() {
               {hasFilters && (
                 <button
                   onClick={clearFilters}
-                  className="ml-2 px-2 py-1 text-xs text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors"
+                  className="ml-2 px-2 py-1 text-xs text-[var(--text-tertiary)] hover:text-[var(--accent)] transition-colors"
                 >
                   ✕ Xóa
                 </button>
@@ -307,7 +307,10 @@ function AdminSkillsContent() {
         </div>
 
         {loading ? (
-          <div className="text-center text-[var(--text-secondary)] py-8">Đang tải...</div>
+          <div className="text-center text-[var(--text-secondary)] py-8">
+            <span className="spinner mr-2" />
+            Đang tải...
+          </div>
         ) : (
           <div className="card overflow-hidden">
             <table className="w-full">
@@ -350,8 +353,8 @@ function AdminSkillsContent() {
                     </td>
                     <td className="px-4 py-3">
                       <span className={`inline-flex items-center justify-center w-6 h-6 text-xs font-bold ${
-                        skill.quality === 'S' ? 'text-[var(--accent-gold)]' :
-                        skill.quality === 'A' ? 'text-[var(--accent-red-bright)]' :
+                        skill.quality === 'S' ? 'text-[var(--accent)]' :
+                        skill.quality === 'A' ? 'text-[var(--accent-dim)]' :
                         skill.quality === 'B' ? 'text-blue-400' :
                         skill.quality === 'C' ? 'text-[var(--text-tertiary)]' :
                         'text-[var(--text-tertiary)]'
@@ -359,7 +362,7 @@ function AdminSkillsContent() {
                         {skill.quality || '-'}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-[var(--accent-gold)]">{skill.trigger_rate ? `${skill.trigger_rate}%` : '-'}</td>
+                    <td className="px-4 py-3 text-[var(--accent)]">{skill.trigger_rate ? `${skill.trigger_rate}%` : '-'}</td>
                     <td className="px-4 py-3 text-[var(--text-tertiary)] text-xs">
                       {(skill as any).updated_at ? new Date((skill as any).updated_at).toLocaleDateString('vi-VN') : '-'}
                     </td>
@@ -376,14 +379,14 @@ function AdminSkillsContent() {
                         )}
                         <Link
                           href={`/admin/skills/${skill.slug || skill.id}`}
-                          className="px-3 py-1 text-sm text-[var(--accent-gold)] hover:text-[var(--accent-gold-bright)] border border-[var(--accent-gold-dim)] hover:border-[var(--accent-gold)] transition-colors"
+                          className="px-3 py-1 text-sm text-[var(--accent)] hover:text-[var(--accent)] border border-[var(--accent-dim)] hover:border-[var(--accent)] transition-colors"
                         >
                           Sửa
                         </Link>
                         <button
                           onClick={() => handleDelete(skill.id, skill.slug, skill.name)}
                           disabled={deleting === skill.id}
-                          className="px-3 py-1 text-sm text-[var(--accent-red-bright)] hover:text-red-400 border border-[var(--accent-red)] hover:border-[var(--accent-red-bright)] transition-colors disabled:opacity-50"
+                          className="px-3 py-1 text-sm text-[var(--accent-dim)] hover:text-red-400 border border-[var(--accent)] hover:border-[var(--accent-dim)] transition-colors disabled:opacity-50"
                         >
                           {deleting === skill.id ? '...' : 'Xóa'}
                         </button>
@@ -411,10 +414,10 @@ export default function AdminSkillsPage() {
     <Suspense fallback={
       <main className="min-h-screen bg-[var(--bg)] py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-8 w-48 bg-[var(--bg-secondary)] animate-pulse mb-6" />
+          <div className="h-8 w-48 bg-[var(--bg-secondary)] shimmer mb-6" />
           <div className="card p-4 mb-6 space-y-4">
-            <div className="h-10 bg-[var(--bg-secondary)] animate-pulse" />
-            <div className="h-12 bg-[var(--bg-secondary)] animate-pulse" />
+            <div className="h-10 bg-[var(--bg-secondary)] shimmer" />
+            <div className="h-12 bg-[var(--bg-secondary)] shimmer" />
           </div>
         </div>
       </main>

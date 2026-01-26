@@ -200,23 +200,23 @@ export default function MassEditSkillsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-6">
+    <main className="min-h-screen bg-[var(--bg)] py-6">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <Link
               href="/admin/skills"
-              className="flex items-center gap-1 text-stone-400 hover:text-white text-sm transition-colors"
+              className="flex items-center gap-1 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] text-sm transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Quay lại
             </Link>
-            <h1 className="text-xl font-bold text-amber-100">Sửa nhanh chiến pháp</h1>
+            <h1 className="text-xl font-bold text-[var(--accent)]">Sửa nhanh chiến pháp</h1>
           </div>
-          <div className="text-sm text-stone-400">
+          <div className="text-sm text-[var(--text-tertiary)]">
             {filteredSkills.length > 0 ? (
               <>
                 {(currentPage - 1) * ITEMS_PER_PAGE + 1}-{Math.min(currentPage * ITEMS_PER_PAGE, filteredSkills.length)} / {filteredSkills.length} chiến pháp
@@ -234,7 +234,7 @@ export default function MassEditSkillsPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm theo tên..."
-            className="flex-1 min-w-[200px] max-w-md px-4 py-2 bg-stone-800 border border-stone-600 rounded-lg text-white placeholder-stone-500 focus:border-amber-500 focus:outline-none"
+            className="flex-1 min-w-[200px] max-w-md px-4 py-2 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:border-[var(--accent)] focus:outline-none"
           />
 
           {/* Pagination */}
@@ -243,7 +243,7 @@ export default function MassEditSkillsPage() {
               <button
                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="px-3 py-2 bg-stone-700 hover:bg-stone-600 disabled:bg-stone-800 disabled:text-stone-600 text-stone-300 rounded text-sm transition-colors"
+                className="px-3 py-2 bg-[var(--bg-tertiary)] hover:bg-[var(--bg-elevated)] disabled:bg-[var(--bg-secondary)] disabled:text-[var(--text-tertiary)] text-[var(--text-secondary)] rounded text-sm transition-colors"
               >
                 ←
               </button>
@@ -258,14 +258,14 @@ export default function MassEditSkillsPage() {
                   .map((page, idx, arr) => (
                     <span key={page} className="flex items-center">
                       {idx > 0 && arr[idx - 1] !== page - 1 && (
-                        <span className="text-stone-500 px-1">...</span>
+                        <span className="text-[var(--text-tertiary)] px-1">...</span>
                       )}
                       <button
                         onClick={() => setCurrentPage(page)}
                         className={`w-8 h-8 rounded text-sm transition-colors ${
                           currentPage === page
-                            ? 'bg-amber-600 text-white'
-                            : 'bg-stone-700 hover:bg-stone-600 text-stone-300'
+                            ? 'bg-[var(--accent)] text-[var(--text-primary)]'
+                            : 'bg-[var(--bg-tertiary)] hover:bg-[var(--bg-elevated)] text-[var(--text-secondary)]'
                         }`}
                       >
                         {page}
@@ -276,7 +276,7 @@ export default function MassEditSkillsPage() {
               <button
                 onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                className="px-3 py-2 bg-stone-700 hover:bg-stone-600 disabled:bg-stone-800 disabled:text-stone-600 text-stone-300 rounded text-sm transition-colors"
+                className="px-3 py-2 bg-[var(--bg-tertiary)] hover:bg-[var(--bg-elevated)] disabled:bg-[var(--bg-secondary)] disabled:text-[var(--text-tertiary)] text-[var(--text-secondary)] rounded text-sm transition-colors"
               >
                 →
               </button>
@@ -285,7 +285,7 @@ export default function MassEditSkillsPage() {
         </div>
 
         {loading ? (
-          <div className="text-center text-stone-400 py-8">Đang tải...</div>
+          <div className="text-center text-[var(--text-tertiary)] py-8">Đang tải...</div>
         ) : (
           <div className="space-y-3">
             {paginatedSkills.map((skill) => (
@@ -311,7 +311,7 @@ export default function MassEditSkillsPage() {
             <div className="relative max-w-4xl max-h-[90vh]">
               <button
                 onClick={() => setModalImage(null)}
-                className="absolute -top-10 right-0 text-white hover:text-amber-400 transition-colors"
+                className="absolute -top-10 right-0 text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
               >
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -372,7 +372,7 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
   };
 
   return (
-    <div className={`bg-stone-800/90 border rounded-lg p-4 ${skill.changed ? 'border-amber-500' : 'border-stone-700'}`}>
+    <div className={`bg-[var(--bg-secondary)] border rounded-lg p-4 ${skill.changed ? 'border-[var(--accent)]' : 'border-[var(--border)]'}`}>
       <div className="flex flex-col gap-3">
         {/* Top row: Screenshot + Actions */}
         <div className="flex gap-4">
@@ -380,7 +380,7 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
           <div className="flex-1">
             {skill.screenshots.length > 0 ? (
               <div
-                className="relative rounded-lg overflow-hidden cursor-pointer hover:ring-2 hover:ring-amber-500 transition-all bg-stone-900"
+                className="relative rounded-lg overflow-hidden cursor-pointer hover:ring-2 hover:ring-[var(--accent)] transition-all bg-[var(--bg)]"
                 onClick={() => onImageClick(`/images/skills/${skill.screenshots[0]}`)}
               >
                 <img
@@ -392,13 +392,13 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
                   }}
                 />
                 {skill.screenshots.length > 1 && (
-                  <div className="absolute bottom-1 right-1 bg-black/70 text-xs text-stone-300 px-1.5 py-0.5 rounded">
+                  <div className="absolute bottom-1 right-1 bg-black/70 text-xs text-[var(--text-secondary)] px-1.5 py-0.5 rounded">
                     +{skill.screenshots.length - 1} ảnh
                   </div>
                 )}
               </div>
             ) : (
-              <div className="h-24 rounded-lg bg-stone-900 flex items-center justify-center text-stone-600 text-xs">
+              <div className="h-24 rounded-lg bg-[var(--bg)] flex items-center justify-center text-[var(--text-tertiary)] text-xs">
                 No image
               </div>
             )}
@@ -409,7 +409,7 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
             <button
               onClick={() => onSave(skill, true)}
               disabled={skill.saving}
-              className="px-4 py-2 rounded text-sm font-medium transition-all bg-green-600 hover:bg-green-500 text-white disabled:opacity-50"
+              className="px-4 py-2 rounded text-sm font-medium transition-all bg-green-600 hover:bg-green-500 text-[var(--text-primary)] disabled:opacity-50"
             >
               {skill.saving ? '...' : 'Lưu & Xong'}
             </button>
@@ -418,15 +418,15 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
               disabled={skill.saving || !skill.changed}
               className={`px-4 py-2 rounded text-sm font-medium transition-all ${
                 skill.changed
-                  ? 'bg-amber-600 hover:bg-amber-500 text-white'
-                  : 'bg-stone-700 text-stone-500 cursor-not-allowed'
+                  ? 'bg-[var(--accent)] hover:bg-[var(--accent)] text-white'
+                  : 'bg-[var(--bg-tertiary)] text-[var(--text-tertiary)] cursor-not-allowed'
               }`}
             >
               {skill.saving ? '...' : 'Lưu'}
             </button>
             <Link
               href={`/admin/skills/${skill.slug || skill.id}`}
-              className="px-4 py-2 bg-stone-700 hover:bg-stone-600 text-stone-300 rounded text-sm text-center transition-colors"
+              className="px-4 py-2 bg-[var(--bg-tertiary)] hover:bg-[var(--bg-elevated)] text-[var(--text-secondary)] rounded text-sm text-center transition-colors"
             >
               Chi tiết
             </Link>
@@ -437,18 +437,18 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
         <div className="flex-1 space-y-3">
           {/* Name */}
           <div className="flex items-center gap-2">
-            <label className="text-xs text-stone-400 w-16">Tên:</label>
+            <label className="text-xs text-[var(--text-tertiary)] w-16">Tên:</label>
             <input
               type="text"
               value={skill.name}
               onChange={(e) => onUpdate(skill.id, 'name', e.target.value)}
-              className="flex-1 px-3 py-1.5 bg-stone-900/50 border border-stone-600 rounded text-white text-sm focus:border-amber-500 focus:outline-none"
+              className="flex-1 px-3 py-1.5 bg-[var(--bg)]/50 border border-[var(--border)] rounded text-[var(--text-primary)] text-sm focus:border-[var(--accent)] focus:outline-none"
             />
           </div>
 
           {/* Skill Type */}
           <div className="flex items-start gap-2">
-            <label className="text-xs text-stone-400 w-16 pt-1.5">Loại:</label>
+            <label className="text-xs text-[var(--text-tertiary)] w-16 pt-1.5">Loại:</label>
             <div className="flex flex-wrap gap-1">
               {SKILL_TYPES.map((type) => (
                 <button
@@ -461,7 +461,7 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
                   className={`px-2 py-1 rounded text-xs font-medium border transition-all ${
                     skill.typeId === type.id
                       ? type.color
-                      : 'bg-stone-700/50 text-stone-400 border-stone-600 hover:border-stone-500'
+                      : 'bg-[var(--bg-tertiary)]/50 text-[var(--text-tertiary)] border-[var(--border)] hover:border-[var(--border-light)]'
                   }`}
                 >
                   {type.nameVi}
@@ -472,7 +472,7 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
 
           {/* Trigger Rate */}
           <div className="flex items-center gap-2">
-            <label className="text-xs text-stone-400 w-16">Tỉ lệ:</label>
+            <label className="text-xs text-[var(--text-tertiary)] w-16">Tỉ lệ:</label>
             <input
               type="number"
               min="0"
@@ -480,18 +480,18 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
               value={skill.triggerRate ?? ''}
               onChange={(e) => onUpdate(skill.id, 'triggerRate', e.target.value ? parseInt(e.target.value) : null)}
               placeholder="%"
-              className="w-20 px-3 py-1.5 bg-stone-900/50 border border-stone-600 rounded text-white text-sm focus:border-amber-500 focus:outline-none text-center"
+              className="w-20 px-3 py-1.5 bg-[var(--bg)]/50 border border-[var(--border)] rounded text-[var(--text-primary)] text-sm focus:border-[var(--accent)] focus:outline-none text-center"
             />
-            <span className="text-xs text-stone-500">%</span>
+            <span className="text-xs text-[var(--text-tertiary)]">%</span>
           </div>
 
           {/* Target */}
           <div className="flex items-center gap-2">
-            <label className="text-xs text-stone-400 w-16">Mục tiêu:</label>
+            <label className="text-xs text-[var(--text-tertiary)] w-16">Mục tiêu:</label>
             <select
               value={skill.target}
               onChange={(e) => onUpdate(skill.id, 'target', e.target.value)}
-              className="flex-1 max-w-xs px-3 py-1.5 bg-stone-900/50 border border-stone-600 rounded text-white text-sm focus:border-amber-500 focus:outline-none"
+              className="flex-1 max-w-xs px-3 py-1.5 bg-[var(--bg)]/50 border border-[var(--border)] rounded text-[var(--text-primary)] text-sm focus:border-[var(--accent)] focus:outline-none"
             >
               {TARGET_OPTIONS.map(opt => (
                 <option key={opt.id} value={opt.id}>{opt.label}</option>
@@ -501,7 +501,7 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
 
           {/* Acquisition Type */}
           <div className="flex items-start gap-2">
-            <label className="text-xs text-stone-400 w-16 pt-1.5">Nguồn:</label>
+            <label className="text-xs text-[var(--text-tertiary)] w-16 pt-1.5">Nguồn:</label>
             <div className="flex-1">
               {/* Type Tabs */}
               <div className="flex gap-1 mb-2">
@@ -516,8 +516,8 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
                     onClick={() => onUpdate(skill.id, 'acquisitionType', skill.acquisitionType === type.id ? '' : type.id)}
                     className={`px-2 py-1 rounded text-xs font-medium transition-all ${
                       skill.acquisitionType === type.id
-                        ? 'bg-amber-700 text-white'
-                        : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                        ? 'bg-[var(--accent-dim)] text-white'
+                        : 'bg-[var(--bg-tertiary)]/50 text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)]'
                     }`}
                   >
                     <span className="mr-1">{type.icon}</span>
@@ -536,13 +536,13 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
                       skill.exchangeGeneralIds).map(gId => (
                       <span
                         key={gId}
-                        className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-900/50 border border-amber-700/50 rounded text-xs text-amber-200"
+                        className="inline-flex items-center gap-1 px-2 py-0.5 bg-[var(--accent-dim)]/30 border border-[var(--accent)] rounded text-xs text-[var(--accent)]"
                       >
                         {getGeneralName(gId)}
                         <button
                           type="button"
                           onClick={() => removeGeneral(skill.acquisitionType as any, gId)}
-                          className="text-amber-400 hover:text-white"
+                          className="text-[var(--accent)] hover:text-[var(--text-primary)]"
                         >
                           ×
                         </button>
@@ -561,16 +561,16 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
                       }}
                       onFocus={() => setShowDropdown(skill.acquisitionType as any)}
                       placeholder="Thêm tướng..."
-                      className="w-48 px-2 py-1 bg-stone-900/50 border border-stone-600 rounded text-white text-xs focus:border-amber-500 focus:outline-none"
+                      className="w-48 px-2 py-1 bg-[var(--bg)]/50 border border-[var(--border)] rounded text-[var(--text-primary)] text-xs focus:border-[var(--accent)] focus:outline-none"
                     />
                     {showDropdown === skill.acquisitionType && generalSearch && (
-                      <div className="absolute z-20 mt-1 w-48 max-h-40 overflow-auto bg-stone-800 border border-stone-600 rounded shadow-xl">
+                      <div className="absolute z-20 mt-1 w-48 max-h-40 overflow-auto bg-[var(--bg-secondary)] border border-[var(--border)] rounded shadow-xl">
                         {filteredGenerals.slice(0, 10).map(g => (
                           <button
                             key={g.id}
                             type="button"
                             onClick={() => addGeneral(skill.acquisitionType as any, g.id)}
-                            className="w-full px-2 py-1.5 text-left hover:bg-stone-700 text-stone-200 text-xs border-b border-stone-700/50 last:border-0"
+                            className="w-full px-2 py-1.5 text-left hover:bg-[var(--bg-tertiary)] text-[var(--text-secondary)] text-xs border-b border-[var(--border)]/50 last:border-0"
                           >
                             {g.name}
                           </button>
@@ -582,12 +582,12 @@ function SkillRow({ skill, generals, onUpdate, onSave, onDelete, onImageClick }:
                   {/* Exchange count */}
                   {skill.acquisitionType === 'exchange' && (
                     <div className="flex items-center gap-2 mt-2">
-                      <span className="text-xs text-stone-500">Số lượng:</span>
+                      <span className="text-xs text-[var(--text-tertiary)]">Số lượng:</span>
                       <input
                         type="number"
                         value={skill.exchangeCount || ''}
                         onChange={(e) => onUpdate(skill.id, 'exchangeCount', parseInt(e.target.value) || 0)}
-                        className="w-16 px-2 py-1 bg-stone-900/50 border border-stone-600 rounded text-sm text-white text-center"
+                        className="w-16 px-2 py-1 bg-[var(--bg)]/50 border border-[var(--border)] rounded text-sm text-[var(--text-primary)] text-center"
                         min={1}
                       />
                     </div>

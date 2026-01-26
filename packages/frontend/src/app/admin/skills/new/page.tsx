@@ -237,28 +237,28 @@ export default function NewSkillPage() {
 
   const currentType = SKILL_TYPES.find(t => t.id === form.typeId);
   const qualityColors: Record<string, string> = {
-    S: 'bg-amber-600 text-white',
-    A: 'bg-red-600 text-white',
-    B: 'bg-violet-600 text-white',
-    C: 'bg-stone-600 text-white',
+    S: 'bg-[var(--accent)] text-[var(--text-primary)]',
+    A: 'bg-red-600 text-[var(--text-primary)]',
+    B: 'bg-violet-600 text-[var(--text-primary)]',
+    C: 'bg-gray-600 text-[var(--text-primary)]',
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-6">
+    <main className="min-h-screen bg-[var(--bg)] py-6">
       <div className="max-w-5xl mx-auto px-4">
         {/* Header with back button */}
         <div className="flex items-center gap-4 mb-4">
           <Link
             href="/admin/skills"
-            className="flex items-center gap-1 text-stone-400 hover:text-white text-sm transition-colors"
+            className="flex items-center gap-1 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] text-sm transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Danh sách
           </Link>
-          <span className="text-stone-600">|</span>
-          <span className="text-stone-500 text-sm">Thêm chiến pháp mới</span>
+          <span className="text-[var(--text-tertiary)]">|</span>
+          <span className="text-[var(--text-tertiary)] text-sm">Thêm chiến pháp mới</span>
         </div>
 
         {error && (
@@ -270,7 +270,7 @@ export default function NewSkillPage() {
         <form onSubmit={handleSubmit}>
           {/* Skill Title - Display (only if name exists) */}
           {(form.name || form.quality || currentType) && (
-            <div className="bg-stone-800/90 border border-amber-900/40 rounded-xl p-5 mb-5">
+            <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5 mb-5">
               <div className="flex items-center gap-3 mb-2">
                 {form.quality && (
                   <span className={`w-8 h-8 rounded font-bold text-sm flex items-center justify-center ${qualityColors[form.quality]}`}>
@@ -283,35 +283,35 @@ export default function NewSkillPage() {
                   </span>
                 )}
                 {form.triggerRate > 0 && (
-                  <span className="text-amber-400 text-sm font-medium">{form.triggerRate}%</span>
+                  <span className="text-[var(--accent)] text-sm font-medium">{form.triggerRate}%</span>
                 )}
               </div>
-              <h1 className="text-2xl font-bold text-amber-100">{form.name || 'Chiến pháp mới'}</h1>
+              <h1 className="text-2xl font-bold text-[var(--accent)]">{form.name || 'Chiến pháp mới'}</h1>
             </div>
           )}
 
           {/* Basic Info Form */}
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5 mb-5">
-            <h2 className="text-base font-semibold text-amber-100 mb-4">Thông tin cơ bản</h2>
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5 mb-5">
+            <h2 className="text-base font-semibold text-[var(--accent)] mb-4">Thông tin cơ bản</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-stone-300 mb-1">Tên *</label>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Tên *</label>
                 <input
                   type="text"
                   value={form.name}
                   onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+                  className="w-full px-3 py-2 bg-[var(--bg)]/50 border border-[var(--border)] rounded-lg text-[var(--text-primary)] focus:border-[var(--accent)] focus:outline-none"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Loại *</label>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Loại *</label>
                 <select
                   value={form.typeId}
                   onChange={(e) => handleTypeChange(e.target.value)}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+                  className="w-full px-3 py-2 bg-[var(--bg)]/50 border border-[var(--border)] rounded-lg text-[var(--text-primary)] focus:border-[var(--accent)] focus:outline-none"
                   required
                 >
                   <option value="">Chọn loại</option>
@@ -322,7 +322,7 @@ export default function NewSkillPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Phẩm chất</label>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Phẩm chất</label>
                 <div className="flex items-center gap-2">
                   {QUALITIES.map((q) => (
                     <button
@@ -332,7 +332,7 @@ export default function NewSkillPage() {
                       className={`w-10 h-10 rounded-lg font-bold text-sm transition-all ${
                         form.quality === q
                           ? qualityColors[q]
-                          : 'bg-stone-700/50 text-stone-500 hover:bg-stone-700 border border-stone-600'
+                          : 'bg-[var(--bg-tertiary)]/50 text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)] border border-[var(--border)]'
                       }`}
                     >
                       {q}
@@ -342,12 +342,12 @@ export default function NewSkillPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Tỷ lệ kích hoạt (%)</label>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Tỷ lệ kích hoạt (%)</label>
                 <input
                   type="number"
                   value={form.triggerRate || ''}
                   onChange={(e) => setForm((prev) => ({ ...prev, triggerRate: parseInt(e.target.value) || 0 }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+                  className="w-full px-3 py-2 bg-[var(--bg)]/50 border border-[var(--border)] rounded-lg text-[var(--text-primary)] focus:border-[var(--accent)] focus:outline-none"
                   min={0}
                   max={100}
                   placeholder="0"
@@ -355,18 +355,18 @@ export default function NewSkillPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Slug</label>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Slug</label>
                 <input
                   type="text"
                   value={form.slug}
                   onChange={(e) => setForm((prev) => ({ ...prev, slug: e.target.value }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+                  className="w-full px-3 py-2 bg-[var(--bg)]/50 border border-[var(--border)] rounded-lg text-[var(--text-primary)] focus:border-[var(--accent)] focus:outline-none"
                   placeholder="tự động tạo nếu để trống"
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-stone-300 mb-1">Binh chủng</label>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Binh chủng</label>
                 <div className="flex flex-wrap gap-2">
                   {ARMY_TYPES.map((type) => (
                     <button
@@ -375,8 +375,8 @@ export default function NewSkillPage() {
                       onClick={() => handleArmyTypeToggle(type)}
                       className={`flex items-center gap-2 px-4 py-2 rounded-lg border text-sm transition-all ${
                         form.armyTypes.includes(type)
-                          ? 'bg-amber-700/50 border-amber-600 text-amber-200'
-                          : 'bg-stone-900/50 border-stone-600 text-stone-400 hover:border-stone-500'
+                          ? 'bg-[var(--accent-dim)]/30 border-[var(--accent)] text-[var(--accent)]'
+                          : 'bg-[var(--bg)]/50 border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
                       }`}
                     >
                       <ArmyIcon type={type} size={20} className={form.armyTypes.includes(type) ? 'opacity-100' : 'opacity-50'} />
@@ -393,9 +393,9 @@ export default function NewSkillPage() {
             {/* Left column - Effect & Target */}
             <div className="lg:col-span-2 space-y-5">
               {/* Effect */}
-              <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5">
-                <h2 className="text-base font-semibold text-amber-100 mb-3 flex items-center gap-2">
-                  <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5">
+                <h2 className="text-base font-semibold text-[var(--accent)] mb-3 flex items-center gap-2">
+                  <svg className="w-4 h-4 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                   Hiệu ứng
@@ -406,17 +406,17 @@ export default function NewSkillPage() {
                     <textarea
                       value={form.effect}
                       onChange={(e) => setForm((prev) => ({ ...prev, effect: e.target.value }))}
-                      className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white text-sm h-28 focus:border-amber-500 focus:outline-none transition-colors"
+                      className="w-full px-3 py-2 bg-[var(--bg)]/50 border border-[var(--border)] rounded-lg text-[var(--text-primary)] text-sm h-28 focus:border-[var(--accent)] focus:outline-none transition-colors"
                       placeholder="Mô tả hiệu ứng..."
                     />
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <label className="text-sm font-medium text-stone-300">Mục tiêu:</label>
+                    <label className="text-sm font-medium text-[var(--text-secondary)]">Mục tiêu:</label>
                     <select
                       value={form.target}
                       onChange={(e) => setForm((prev) => ({ ...prev, target: e.target.value }))}
-                      className="flex-1 max-w-xs px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white text-sm focus:border-amber-500 focus:outline-none"
+                      className="flex-1 max-w-xs px-3 py-2 bg-[var(--bg)]/50 border border-[var(--border)] rounded-lg text-[var(--text-primary)] text-sm focus:border-[var(--accent)] focus:outline-none"
                     >
                       <option value="">Chọn mục tiêu</option>
                       <optgroup label="Đồng minh">
@@ -435,9 +435,9 @@ export default function NewSkillPage() {
               </div>
 
               {/* Acquisition */}
-              <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5">
-                <h2 className="text-base font-semibold text-amber-100 mb-3 flex items-center gap-2">
-                  <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5">
+                <h2 className="text-base font-semibold text-[var(--accent)] mb-3 flex items-center gap-2">
+                  <svg className="w-4 h-4 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
                   Cách sở hữu
@@ -445,7 +445,7 @@ export default function NewSkillPage() {
 
                 <div className="space-y-4">
                   {/* Acquisition Type Tabs */}
-                  <div className="flex gap-2 p-1 bg-stone-900/50 rounded-lg">
+                  <div className="flex gap-2 p-1 bg-[var(--bg)]/50 rounded-lg">
                     {[
                       { id: 'innate', label: 'Tự mang', icon: '★' },
                       { id: 'inherit', label: 'Kế thừa', icon: '↓' },
@@ -461,8 +461,8 @@ export default function NewSkillPage() {
                         }))}
                         className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-all ${
                           form.acquisitionType === type.id
-                            ? 'bg-amber-700 text-white shadow-sm'
-                            : 'text-stone-400 hover:text-white hover:bg-stone-800'
+                            ? 'bg-[var(--accent-dim)] text-white shadow-sm'
+                            : 'text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'
                         }`}
                       >
                         <span className="mr-1">{type.icon}</span>
@@ -474,7 +474,7 @@ export default function NewSkillPage() {
                   {/* Innate */}
                   {form.acquisitionType === 'innate' && (
                     <div className="pt-2">
-                      <label className="block text-xs font-medium text-stone-400 mb-2">
+                      <label className="block text-xs font-medium text-[var(--text-tertiary)] mb-2">
                         Tướng tự mang (1 tướng)
                       </label>
                       {form.innateGeneralIds.length > 0 ? (
@@ -484,13 +484,13 @@ export default function NewSkillPage() {
                             return (
                               <span
                                 key={gId}
-                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-amber-900/50 border border-amber-700/50 rounded-full text-sm text-amber-200"
+                                className="inline-flex items-center gap-1 px-3 py-1.5 bg-[var(--accent-dim)]/30 border border-[var(--accent)] rounded-full text-sm text-[var(--accent)]"
                               >
                                 {general?.name || gId}
                                 <button
                                   type="button"
                                   onClick={() => setForm(prev => ({ ...prev, innateGeneralIds: [] }))}
-                                  className="text-amber-400 hover:text-white ml-1"
+                                  className="text-[var(--accent)] hover:text-[var(--text-primary)] ml-1"
                                 >
                                   ×
                                 </button>
@@ -504,11 +504,11 @@ export default function NewSkillPage() {
                             type="text"
                             value={innateSearch}
                             onChange={(e) => setInnateSearch(e.target.value)}
-                            className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white text-sm"
+                            className="w-full px-3 py-2 bg-[var(--bg)]/50 border border-[var(--border)] rounded-lg text-[var(--text-primary)] text-sm"
                             placeholder="Tìm tướng..."
                           />
                           {innateSearch && (
-                            <div className="absolute z-10 mt-1 w-full max-h-48 overflow-auto bg-stone-800 border border-stone-600 rounded-lg shadow-xl">
+                            <div className="absolute z-10 mt-1 w-full max-h-48 overflow-auto bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg shadow-xl">
                               {generals
                                 .filter(g => normalizeVietnamese(g.name).includes(normalizeVietnamese(innateSearch)))
                                 .slice(0, 15)
@@ -520,7 +520,7 @@ export default function NewSkillPage() {
                                       setForm(prev => ({ ...prev, innateGeneralIds: [g.id] }));
                                       setInnateSearch('');
                                     }}
-                                    className="w-full px-3 py-2 text-left hover:bg-stone-700 text-stone-200 text-sm border-b border-stone-700/50 last:border-0"
+                                    className="w-full px-3 py-2 text-left hover:bg-[var(--bg-tertiary)] text-[var(--text-secondary)] text-sm border-b border-[var(--border)]/50 last:border-0"
                                   >
                                     {g.name}
                                   </button>
@@ -536,7 +536,7 @@ export default function NewSkillPage() {
                   {/* Inherit */}
                   {form.acquisitionType === 'inherit' && (
                     <div className="pt-2">
-                      <label className="block text-xs font-medium text-stone-400 mb-2">
+                      <label className="block text-xs font-medium text-[var(--text-tertiary)] mb-2">
                         Tướng có thể truyền thừa
                       </label>
                       {form.inheritGeneralIds.length > 0 && (
@@ -555,7 +555,7 @@ export default function NewSkillPage() {
                                     ...prev,
                                     inheritGeneralIds: prev.inheritGeneralIds.filter(id => id !== gId)
                                   }))}
-                                  className="text-emerald-400 hover:text-white"
+                                  className="text-emerald-400 hover:text-[var(--text-primary)]"
                                 >
                                   ×
                                 </button>
@@ -569,11 +569,11 @@ export default function NewSkillPage() {
                           type="text"
                           value={inheritSearch}
                           onChange={(e) => setInheritSearch(e.target.value)}
-                          className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white text-sm"
+                          className="w-full px-3 py-2 bg-[var(--bg)]/50 border border-[var(--border)] rounded-lg text-[var(--text-primary)] text-sm"
                           placeholder="Tìm tướng để thêm..."
                         />
                         {inheritSearch && (
-                          <div className="absolute z-10 mt-1 w-full max-h-48 overflow-auto bg-stone-800 border border-stone-600 rounded-lg shadow-xl">
+                          <div className="absolute z-10 mt-1 w-full max-h-48 overflow-auto bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg shadow-xl">
                             {generals
                               .filter(g =>
                                 !form.inheritGeneralIds.includes(g.id) &&
@@ -588,7 +588,7 @@ export default function NewSkillPage() {
                                     setForm(prev => ({ ...prev, inheritGeneralIds: [...prev.inheritGeneralIds, g.id] }));
                                     setInheritSearch('');
                                   }}
-                                  className="w-full px-3 py-2 text-left hover:bg-stone-700 text-stone-200 text-sm border-b border-stone-700/50 last:border-0"
+                                  className="w-full px-3 py-2 text-left hover:bg-[var(--bg-tertiary)] text-[var(--text-secondary)] text-sm border-b border-[var(--border)]/50 last:border-0"
                                 >
                                   {g.name}
                                 </button>
@@ -609,8 +609,8 @@ export default function NewSkillPage() {
                           onClick={() => setForm((prev) => ({ ...prev, exchangeType: 'exact' }))}
                           className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                             form.exchangeType === 'exact'
-                              ? 'bg-cyan-700 text-white'
-                              : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                              ? 'bg-cyan-700 text-[var(--text-primary)]'
+                              : 'bg-[var(--bg-tertiary)]/50 text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)]'
                           }`}
                         >
                           Chính xác
@@ -620,20 +620,20 @@ export default function NewSkillPage() {
                           onClick={() => setForm((prev) => ({ ...prev, exchangeType: 'any' }))}
                           className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                             form.exchangeType === 'any'
-                              ? 'bg-cyan-700 text-white'
-                              : 'bg-stone-700/50 text-stone-400 hover:bg-stone-700'
+                              ? 'bg-cyan-700 text-[var(--text-primary)]'
+                              : 'bg-[var(--bg-tertiary)]/50 text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)]'
                           }`}
                         >
                           Tùy chọn
                         </button>
                         {form.exchangeType === 'any' && (
                           <div className="flex items-center gap-1 ml-auto">
-                            <span className="text-xs text-stone-500">Số lượng:</span>
+                            <span className="text-xs text-[var(--text-tertiary)]">Số lượng:</span>
                             <input
                               type="number"
                               value={form.exchangeCount || ''}
                               onChange={(e) => setForm((prev) => ({ ...prev, exchangeCount: parseInt(e.target.value) || 0 }))}
-                              className="w-14 px-2 py-1 bg-stone-900/50 border border-stone-600 rounded text-sm text-white text-center"
+                              className="w-14 px-2 py-1 bg-[var(--bg)]/50 border border-[var(--border)] rounded text-sm text-[var(--text-primary)] text-center"
                               min={1}
                               placeholder="3"
                             />
@@ -657,7 +657,7 @@ export default function NewSkillPage() {
                                     ...prev,
                                     exchangeGeneralIds: prev.exchangeGeneralIds.filter(id => id !== gId)
                                   }))}
-                                  className="text-cyan-400 hover:text-white"
+                                  className="text-cyan-400 hover:text-[var(--text-primary)]"
                                 >
                                   ×
                                 </button>
@@ -672,11 +672,11 @@ export default function NewSkillPage() {
                           type="text"
                           value={generalSearch}
                           onChange={(e) => setGeneralSearch(e.target.value)}
-                          className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white text-sm"
+                          className="w-full px-3 py-2 bg-[var(--bg)]/50 border border-[var(--border)] rounded-lg text-[var(--text-primary)] text-sm"
                           placeholder="Tìm tướng để thêm..."
                         />
                         {generalSearch && (
-                          <div className="absolute z-10 mt-1 w-full max-h-48 overflow-auto bg-stone-800 border border-stone-600 rounded-lg shadow-xl">
+                          <div className="absolute z-10 mt-1 w-full max-h-48 overflow-auto bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg shadow-xl">
                             {generals
                               .filter(g =>
                                 !form.exchangeGeneralIds.includes(g.id) &&
@@ -691,7 +691,7 @@ export default function NewSkillPage() {
                                     setForm(prev => ({ ...prev, exchangeGeneralIds: [...prev.exchangeGeneralIds, g.id] }));
                                     setGeneralSearch('');
                                   }}
-                                  className="w-full px-3 py-2 text-left hover:bg-stone-700 text-stone-200 text-sm border-b border-stone-700/50 last:border-0"
+                                  className="w-full px-3 py-2 text-left hover:bg-[var(--bg-tertiary)] text-[var(--text-secondary)] text-sm border-b border-[var(--border)]/50 last:border-0"
                                 >
                                   {g.name}
                                 </button>
@@ -709,9 +709,9 @@ export default function NewSkillPage() {
             {/* Right column - Image Upload & Meta */}
             <div className="space-y-5">
               {/* Image Upload */}
-              <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-4">
-                <h2 className="text-sm font-semibold text-amber-100 mb-3 flex items-center gap-2">
-                  <svg className="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-4">
+                <h2 className="text-sm font-semibold text-[var(--accent)] mb-3 flex items-center gap-2">
+                  <svg className="w-4 h-4 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                   Trích xuất từ ảnh
@@ -720,8 +720,8 @@ export default function NewSkillPage() {
                 <div
                   className={`border-2 border-dashed rounded-lg p-4 transition-colors ${
                     dragActive
-                      ? 'border-amber-500 bg-amber-900/20'
-                      : 'border-stone-600 hover:border-stone-500'
+                      ? 'border-[var(--accent)] bg-[var(--accent-dim)]/10'
+                      : 'border-[var(--border)] hover:border-[var(--border-light)]'
                   }`}
                   onDragEnter={handleDrag}
                   onDragLeave={handleDrag}
@@ -731,13 +731,13 @@ export default function NewSkillPage() {
                   <div className="text-center">
                     {processingImage ? (
                       <div className="py-2">
-                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500 mx-auto mb-2"></div>
-                        <p className="text-amber-400 text-sm">Đang xử lý...</p>
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--accent)] mx-auto mb-2"></div>
+                        <p className="text-[var(--accent)] text-sm">Đang xử lý...</p>
                       </div>
                     ) : (
                       <>
                         <svg
-                          className="mx-auto h-8 w-8 text-stone-500 mb-2"
+                          className="mx-auto h-8 w-8 text-[var(--text-tertiary)] mb-2"
                           stroke="currentColor"
                           fill="none"
                           viewBox="0 0 48 48"
@@ -749,11 +749,11 @@ export default function NewSkillPage() {
                             strokeLinejoin="round"
                           />
                         </svg>
-                        <p className="text-stone-400 text-xs mb-2">
+                        <p className="text-[var(--text-tertiary)] text-xs mb-2">
                           Kéo thả ảnh hoặc
                         </p>
                         <label className="cursor-pointer">
-                          <span className="px-3 py-1.5 bg-stone-700 hover:bg-stone-600 text-white rounded text-xs transition-colors">
+                          <span className="px-3 py-1.5 bg-[var(--bg-tertiary)] hover:bg-[var(--bg-elevated)] text-[var(--text-primary)] rounded text-xs transition-colors">
                             Chọn ảnh
                           </span>
                           <input
@@ -770,17 +770,17 @@ export default function NewSkillPage() {
               </div>
 
               {/* Actions */}
-              <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-4 space-y-3">
+              <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-4 space-y-3">
                 <button
                   type="submit"
                   disabled={saving}
-                  className="w-full px-4 py-2.5 bg-amber-700 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50"
+                  className="w-full px-4 py-2.5 bg-[var(--accent-dim)] hover:bg-[var(--accent)] text-white rounded-lg font-medium transition-colors disabled:opacity-50"
                 >
                   {saving ? 'Đang tạo...' : 'Tạo chiến pháp'}
                 </button>
                 <Link
                   href="/admin/skills"
-                  className="block w-full px-4 py-2 text-center border border-stone-600 text-stone-300 rounded-lg hover:bg-stone-700 transition-colors text-sm"
+                  className="block w-full px-4 py-2 text-center border border-[var(--border)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors text-sm"
                 >
                   Hủy
                 </Link>

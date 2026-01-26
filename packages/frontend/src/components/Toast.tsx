@@ -50,10 +50,10 @@ export function Toast({ message, type, onClose, duration = 3000 }: ToastProps) {
       progress: 'bg-red-400',
     },
     info: {
-      bg: 'bg-gradient-to-r from-amber-900/95 to-amber-800/95',
-      border: 'border-amber-500/50',
-      icon: 'text-amber-400',
-      progress: 'bg-amber-400',
+      bg: 'bg-gradient-to-r from-[var(--accent-dim)]/20 to-[var(--accent-dim)]/10',
+      border: 'border-[var(--border-accent)]/50',
+      icon: 'text-[var(--accent)]',
+      progress: 'bg-[var(--accent)]',
     },
   }[type];
 

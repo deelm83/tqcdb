@@ -8,6 +8,31 @@ import SearchBar from '@/components/SearchBar';
 import SkillModal from '@/components/SkillModal';
 import { usePageTitle } from '@/hooks/usePageTitle';
 
+// Skill type accent bar colors for list items
+const typeBarColors: Record<SkillTypeId, string> = {
+  command: 'bg-yellow-600',
+  active: 'bg-red-600',
+  assault: 'bg-orange-600',
+  passive: 'bg-blue-600',
+  formation: 'bg-purple-600',
+  troop: 'bg-green-600',
+  internal: 'bg-cyan-600',
+  unknown: 'bg-gray-600',
+};
+
+// Tab underline colors
+const typeUnderlineColors: Record<string, string> = {
+  all: 'bg-[var(--accent)]',
+  command: 'bg-yellow-600',
+  active: 'bg-red-600',
+  assault: 'bg-orange-600',
+  passive: 'bg-blue-600',
+  formation: 'bg-purple-600',
+  troop: 'bg-green-600',
+  internal: 'bg-cyan-600',
+  unknown: 'bg-gray-600',
+};
+
 const skillTypes: (SkillTypeId | 'all')[] = ['all', 'command', 'active', 'assault', 'passive', 'formation', 'troop', 'internal', 'unknown'];
 
 function SkillsContent() {
@@ -150,7 +175,7 @@ function SkillsContent() {
     <>
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-[var(--accent-gold)] uppercase tracking-wider">Chiến pháp</h1>
+        <h1 className="text-2xl font-semibold text-[var(--accent)]">Chiến pháp</h1>
         <p className="text-[var(--text-secondary)] mt-1">Danh sách chiến pháp trong Tam Quốc Chí Chiến Lược</p>
       </div>
 
@@ -159,32 +184,36 @@ function SkillsContent() {
         <SearchBar value={search} onChange={setSearch} placeholder="Tìm chiến pháp..." />
       </div>
 
-      {/* Tabs */}
+      {/* Tabs with colored underlines */}
       <div className="flex gap-1 mb-6 overflow-x-auto pb-2">
         {skillTypes.map(type => {
           const isActive = activeTab === type;
           const count = typeCounts[type] || 0;
-          const colorClass = type === 'all' ? 'text-[var(--accent-gold)]' : skillTypeColors[type]?.text || 'text-[var(--text-tertiary)]';
+          const colorClass = type === 'all' ? 'text-[var(--accent)]' : skillTypeColors[type]?.text || 'text-[var(--text-tertiary)]';
+          const underlineColor = typeUnderlineColors[type] || 'bg-gray-400';
 
           return (
             <button
               key={type}
               onClick={() => setActiveTab(type)}
-              className={`px-3 py-1.5 text-[13px] font-medium whitespace-nowrap border transition-all ${colorClass} ${
+              className={`relative px-3 py-2 text-[13px] font-medium whitespace-nowrap transition-all rounded-t-md ${colorClass} ${
                 isActive
-                  ? 'bg-[var(--bg-tertiary)] border-[var(--border-light)]'
-                  : 'opacity-50 border-[var(--border)] hover:opacity-80 hover:border-[var(--border-light)]'
+                  ? 'bg-[var(--bg-tertiary)]'
+                  : 'opacity-50 hover:opacity-80'
               }`}
             >
               {getTabName(type)}
               <span className={`ml-2 ${isActive ? 'opacity-70' : 'opacity-50'}`}>{count}</span>
+              {isActive && (
+                <span className={`absolute bottom-0 left-1 right-1 h-[2px] ${underlineColor} rounded-full`} />
+              )}
             </button>
           );
         })}
       </div>
 
       {/* Results Count */}
-      <div className="mb-6 text-[13px] text-[var(--text-tertiary)] uppercase tracking-wider">
+      <div className="mb-6 text-[13px] text-[var(--text-tertiary)] font-semibold">
         {loading ? (
           <span className="flex items-center gap-2">
             <span className="spinner" />
@@ -200,7 +229,7 @@ function SkillsContent() {
 
       {/* Error State */}
       {error && (
-        <div className="card-red p-4 mb-6">
+        <div className="card p-4 mb-6">
           <span className="text-red-400">{error}</span>
         </div>
       )}
@@ -209,7 +238,7 @@ function SkillsContent() {
       {loading && (
         <div className="space-y-2">
           {[...Array(10)].map((_, i) => (
-            <div key={i} className="card h-16 animate-pulse" />
+            <div key={i} className="shimmer h-16 rounded-lg" />
           ))}
         </div>
       )}
@@ -221,13 +250,17 @@ function SkillsContent() {
             const typeId = skill.type.id as SkillTypeId;
             const typeColor = skillTypeColors[typeId] || skillTypeColors.unknown;
             const typeName = skillTypeNames[typeId] || skillTypeNames.unknown;
+            const barColor = typeBarColors[typeId] || typeBarColors.unknown;
 
             return (
               <button
                 key={index}
                 onClick={() => openSkillModal(skill)}
-                className="w-full card flex items-center justify-between p-4 text-left"
+                className="w-full card-interactive relative overflow-hidden flex items-center justify-between p-4 pl-5 text-left"
               >
+                {/* Left accent bar */}
+                <div className={`absolute left-0 top-0 bottom-0 w-[3px] ${barColor}`} />
+
                 <div className="flex-1 min-w-0">
                   <div className="text-[15px] font-semibold text-[var(--text-primary)]">
                     {skill.name}
@@ -235,17 +268,17 @@ function SkillsContent() {
                   <div className="flex items-center gap-3 mt-1">
                     <span className={`text-[13px] ${typeColor.text}`}>{typeName.vi}</span>
                     {skill.trigger_rate && (
-                      <span className="text-[13px] text-[var(--text-tertiary)]">{skill.trigger_rate}%</span>
+                      <span className="text-[13px] text-[var(--text-tertiary)] ">{skill.trigger_rate}%</span>
                     )}
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   {skill.quality && (
-                    <span className={`text-[14px] font-bold ${qualityColors[skill.quality]}`}>
+                    <span className={`text-[14px] font-bold  ${qualityColors[skill.quality]}`}>
                       {skill.quality}
                     </span>
                   )}
-                  <svg className="w-5 h-5 text-[var(--accent-gold-dim)]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-[var(--text-tertiary)]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="m9 18 6-6-6-6" />
                   </svg>
                 </div>
@@ -277,14 +310,14 @@ function SkillsContent() {
 
 export default function SkillsPage() {
   return (
-    <main className="max-w-6xl mx-auto px-6 py-8">
+    <main className="max-w-7xl mx-auto px-6 py-8">
       <Suspense fallback={
         <div className="space-y-4">
-          <div className="h-8 w-32 bg-[var(--bg-secondary)] animate-pulse" />
-          <div className="h-12 bg-[var(--bg-secondary)] animate-pulse" />
+          <div className="shimmer h-8 w-32" />
+          <div className="shimmer h-14 rounded-xl" />
           <div className="space-y-2">
             {[...Array(5)].map((_, i) => (
-              <div key={i} className="card h-16 animate-pulse" />
+              <div key={i} className="shimmer h-16 rounded-lg" />
             ))}
           </div>
         </div>

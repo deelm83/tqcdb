@@ -12,21 +12,21 @@ import ImageCropModal from '@/components/ImageCropModal';
 import { createImageUrl, revokeImageUrl } from '@/lib/imageCrop';
 
 const FACTIONS = [
-  { id: 'wei', name: 'Ngụy', color: 'bg-blue-600 text-white border-blue-600', inactiveColor: 'bg-stone-800/50 text-stone-500 border-stone-700/30' },
-  { id: 'shu', name: 'Thục', color: 'bg-green-600 text-white border-green-600', inactiveColor: 'bg-stone-800/50 text-stone-500 border-stone-700/30' },
-  { id: 'wu', name: 'Ngô', color: 'bg-red-600 text-white border-red-600', inactiveColor: 'bg-stone-800/50 text-stone-500 border-stone-700/30' },
-  { id: 'qun', name: 'Quần', color: 'bg-yellow-600 text-white border-yellow-600', inactiveColor: 'bg-stone-800/50 text-stone-500 border-stone-700/30' },
+  { id: 'wei', name: 'Ngụy', color: 'bg-blue-600 text-[var(--text-primary)] border-blue-600', inactiveColor: 'bg-[var(--bg-secondary)]/50 text-[var(--text-tertiary)] border-[var(--border)]/30' },
+  { id: 'shu', name: 'Thục', color: 'bg-green-600 text-[var(--text-primary)] border-green-600', inactiveColor: 'bg-[var(--bg-secondary)]/50 text-[var(--text-tertiary)] border-[var(--border)]/30' },
+  { id: 'wu', name: 'Ngô', color: 'bg-red-600 text-[var(--text-primary)] border-red-600', inactiveColor: 'bg-[var(--bg-secondary)]/50 text-[var(--text-tertiary)] border-[var(--border)]/30' },
+  { id: 'qun', name: 'Quần', color: 'bg-yellow-600 text-[var(--text-primary)] border-yellow-600', inactiveColor: 'bg-[var(--bg-secondary)]/50 text-[var(--text-tertiary)] border-[var(--border)]/30' },
 ];
 
 const COSTS = [3, 4, 5, 6, 7];
 
 const GRADES = ['S', 'A', 'B', 'C'];
 const GRADE_COLORS: Record<string, string> = {
-  S: 'bg-amber-600 text-white',
-  A: 'bg-violet-600 text-white',
-  B: 'bg-sky-600 text-white',
-  C: 'bg-cyan-600 text-white',
-  D: 'bg-stone-600 text-white',
+  S: 'bg-[var(--accent)] text-[var(--text-primary)]',
+  A: 'bg-violet-600 text-[var(--text-primary)]',
+  B: 'bg-sky-600 text-[var(--text-primary)]',
+  C: 'bg-cyan-600 text-[var(--text-primary)]',
+  D: 'bg-[var(--bg-elevated)] text-[var(--text-primary)]',
 };
 
 const SKILL_TYPE_COLORS: Record<string, string> = {
@@ -102,11 +102,11 @@ function SkillSearchDropdown({
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white text-sm focus:border-amber-500 focus:outline-none"
+        className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] text-sm focus:border-[var(--accent)] focus:outline-none"
         placeholder="Tìm chiến pháp..."
       />
       {search && results.length > 0 && (
-        <div className="absolute z-20 mt-1 w-full max-h-64 overflow-auto bg-stone-800 border border-stone-600 rounded-lg shadow-xl">
+        <div className="absolute z-20 mt-1 w-full max-h-64 overflow-auto bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg shadow-xl">
           {results.map(skill => (
             <button
               key={skill.id}
@@ -115,21 +115,21 @@ function SkillSearchDropdown({
                 onSelect(skill);
                 setSearch('');
               }}
-              className="w-full px-3 py-2 text-left hover:bg-stone-700 flex items-center gap-3 border-b border-stone-700/50 last:border-0"
+              className="w-full px-3 py-2 text-left hover:bg-[var(--bg-tertiary)] flex items-center gap-3 border-b border-[var(--border)]/50 last:border-0"
             >
               {skill.quality && (
                 <span className={`w-6 h-6 rounded font-bold text-xs flex items-center justify-center flex-shrink-0 ${
-                  skill.quality === 'S' ? 'bg-amber-600 text-white' :
-                  skill.quality === 'A' ? 'bg-violet-600 text-white' :
-                  skill.quality === 'B' ? 'bg-sky-600 text-white' : 'bg-cyan-600 text-white'
+                  skill.quality === 'S' ? 'bg-[var(--accent)] text-[var(--text-primary)]' :
+                  skill.quality === 'A' ? 'bg-violet-600 text-[var(--text-primary)]' :
+                  skill.quality === 'B' ? 'bg-sky-600 text-[var(--text-primary)]' : 'bg-cyan-600 text-[var(--text-primary)]'
                 }`}>
                   {skill.quality}
                 </span>
               )}
               <div className="flex-1 min-w-0">
-                <span className="text-white text-sm">{skill.name}</span>
+                <span className="text-[var(--text-primary)] text-sm">{skill.name}</span>
                 {skill.type_id && (
-                  <span className={`ml-2 px-1.5 py-0.5 rounded text-xs ${SKILL_TYPE_COLORS[skill.type_id] || 'bg-stone-600/30 text-stone-300'}`}>
+                  <span className={`ml-2 px-1.5 py-0.5 rounded text-xs ${SKILL_TYPE_COLORS[skill.type_id] || 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)]'}`}>
                     {SKILL_TYPE_NAMES[skill.type_id] || skill.type_id}
                   </span>
                 )}
@@ -139,7 +139,7 @@ function SkillSearchDropdown({
         </div>
       )}
       {search && results.length === 0 && (
-        <div className="absolute z-20 mt-1 w-full bg-stone-800 border border-stone-600 rounded-lg shadow-xl p-3 text-center text-stone-400 text-sm">
+        <div className="absolute z-20 mt-1 w-full bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg shadow-xl p-3 text-center text-[var(--text-tertiary)] text-sm">
           Không tìm thấy chiến pháp
         </div>
       )}
@@ -458,9 +458,12 @@ export default function EditGeneralPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-8">
+      <main className="min-h-screen bg-[var(--bg)] py-8">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center text-stone-400 py-8">Đang tải...</div>
+          <div className="text-center text-[var(--text-secondary)] py-8">
+            <span className="spinner mr-2" />
+            Đang tải...
+          </div>
         </div>
       </main>
     );
@@ -469,25 +472,25 @@ export default function EditGeneralPage() {
   const currentFaction = FACTIONS.find(f => f.id === form.factionId);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-6">
+    <main className="min-h-screen bg-[var(--bg)] py-6">
       <div className="max-w-4xl mx-auto px-4">
         {/* Header with back button */}
         <div className="flex items-center gap-4 mb-4">
           <Link
             href="/admin/generals"
-            className="flex items-center gap-1 text-stone-400 hover:text-white text-sm transition-colors"
+            className="flex items-center gap-1 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] text-sm transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Danh sách
           </Link>
-          <span className="text-stone-600">|</span>
+          <span className="text-[var(--text-tertiary)]">|</span>
           <a
             href={`/generals/${form.slug || id}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-amber-400 hover:text-amber-300 text-sm flex items-center gap-1"
+            className="text-[var(--accent)] hover:text-[var(--accent)] text-sm flex items-center gap-1"
           >
             Xem trang công khai
             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -504,7 +507,7 @@ export default function EditGeneralPage() {
 
         <form onSubmit={handleSubmit}>
           {/* 1. TITLE / INFO */}
-          <div className="bg-stone-800/90 border border-amber-900/40 rounded-xl p-5 mb-5">
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5 mb-5">
             {/* Title row with badges */}
             <div className="flex items-center gap-3 mb-4">
               {currentFaction && (
@@ -513,7 +516,7 @@ export default function EditGeneralPage() {
                 </span>
               )}
               {form.cost > 0 && (
-                <span className="px-3 py-1 rounded-full text-sm font-medium bg-amber-600 text-white">
+                <span className="px-3 py-1 rounded-full text-sm font-medium bg-[var(--accent)] text-[var(--text-primary)]">
                   COST {form.cost}
                 </span>
               )}
@@ -530,13 +533,13 @@ export default function EditGeneralPage() {
                 {form.status === 'complete' ? '✓ Hoàn thành' : '⚠ Cần cập nhật'}
               </button>
             </div>
-            <h1 className="text-2xl font-bold text-amber-100">{form.name || 'Tướng mới'}</h1>
+            <h1 className="text-2xl font-bold text-[var(--accent)]">{form.name || 'Tướng mới'}</h1>
           </div>
 
           {/* 2. IMAGE AREA */}
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5 mb-5">
-            <h2 className="text-base font-semibold text-amber-100 mb-4 flex items-center gap-2">
-              <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5 mb-5">
+            <h2 className="text-base font-semibold text-[var(--accent)] mb-4 flex items-center gap-2">
+              <svg className="w-5 h-5 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               Hình ảnh
@@ -548,26 +551,26 @@ export default function EditGeneralPage() {
                   <img
                     src={form.image}
                     alt={form.name}
-                    className="max-w-48 max-h-48 object-contain rounded-lg border-2 border-stone-600"
+                    className="max-w-48 max-h-48 object-contain rounded-lg border-2 border-[var(--border)]"
                   />
                   <button
                     type="button"
                     onClick={handleRecrop}
                     disabled={uploading}
-                    className="absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 bg-stone-900/90 hover:bg-stone-800 text-stone-200 rounded text-xs font-medium transition-colors opacity-0 group-hover:opacity-100 border border-stone-600"
+                    className="absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 bg-[var(--bg)]/90 hover:bg-[var(--bg-secondary)] text-[var(--text-secondary)] rounded text-xs font-medium transition-colors opacity-0 group-hover:opacity-100 border border-[var(--border)]"
                   >
                     ✂️ Cắt lại
                   </button>
                 </div>
               ) : (
-                <div className="w-32 h-32 bg-stone-700 rounded-lg flex items-center justify-center text-stone-500 border-2 border-dashed border-stone-600">
+                <div className="w-32 h-32 bg-[var(--bg-tertiary)] rounded-lg flex items-center justify-center text-[var(--text-tertiary)] border-2 border-dashed border-[var(--border)]">
                   Chưa có ảnh
                 </div>
               )}
 
               <div className="flex-1 space-y-4">
                 <div className="flex items-center gap-2">
-                  <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-lg text-sm font-medium transition-colors">
+                  <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 bg-[var(--accent)] hover:bg-[var(--accent)] text-white rounded-lg text-sm font-medium transition-colors">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                     </svg>
@@ -585,21 +588,21 @@ export default function EditGeneralPage() {
                       type="button"
                       onClick={handleRecrop}
                       disabled={uploading}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-stone-700 hover:bg-stone-600 text-stone-200 rounded-lg text-sm font-medium transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--bg-tertiary)] hover:bg-[var(--bg-elevated)] text-[var(--text-secondary)] rounded-lg text-sm font-medium transition-colors"
                     >
                       ✂️ Cắt lại
                     </button>
                   )}
-                  {uploading && <span className="ml-3 text-sm text-stone-400">Đang tải...</span>}
+                  {uploading && <span className="ml-3 text-sm text-[var(--text-tertiary)]">Đang tải...</span>}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-stone-400 mb-1">URL ảnh (thủ công)</label>
+                  <label className="block text-sm font-medium text-[var(--text-tertiary)] mb-1">URL ảnh (thủ công)</label>
                   <input
                     type="text"
                     value={form.image}
                     onChange={(e) => setForm((prev) => ({ ...prev, image: e.target.value }))}
-                    className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white text-sm focus:border-amber-500 focus:outline-none"
+                    className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] text-sm focus:border-[var(--accent)] focus:outline-none"
                     placeholder="/images/generals/..."
                   />
                 </div>
@@ -608,9 +611,9 @@ export default function EditGeneralPage() {
           </div>
 
           {/* 3. Basic Info Form */}
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5 mb-5">
-            <h2 className="text-base font-semibold text-amber-100 flex items-center gap-2 mb-4">
-              <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5 mb-5">
+            <h2 className="text-base font-semibold text-[var(--accent)] flex items-center gap-2 mb-4">
+              <svg className="w-5 h-5 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
               Thông tin cơ bản
@@ -620,22 +623,22 @@ export default function EditGeneralPage() {
               {/* Name and Slug in same row */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-stone-300 mb-1">Tên *</label>
+                  <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Tên *</label>
                   <input
                     type="text"
                     value={form.name}
                     onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
-                    className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] focus:border-[var(--accent)] focus:outline-none"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-stone-300 mb-1">Slug</label>
+                  <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Slug</label>
                   <input
                     type="text"
                     value={form.slug}
                     onChange={(e) => setForm((prev) => ({ ...prev, slug: e.target.value }))}
-                    className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded-lg text-white focus:border-amber-500 focus:outline-none"
+                    className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] focus:border-[var(--accent)] focus:outline-none"
                     placeholder="tự động"
                   />
                 </div>
@@ -644,7 +647,7 @@ export default function EditGeneralPage() {
               {/* Faction and Cost in same row */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-stone-300 mb-2">Phe</label>
+                  <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">Phe</label>
                   <div className="flex flex-wrap gap-1.5">
                     {FACTIONS.map((f) => (
                       <button
@@ -654,7 +657,7 @@ export default function EditGeneralPage() {
                         className={`px-3 py-1.5 rounded text-xs font-medium transition-all border ${
                           form.factionId === f.id
                             ? f.color
-                            : f.inactiveColor + ' hover:text-stone-300'
+                            : f.inactiveColor + ' hover:text-[var(--text-secondary)]'
                         }`}
                       >
                         {f.name}
@@ -664,7 +667,7 @@ export default function EditGeneralPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-stone-300 mb-2">Phí (COST)</label>
+                  <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">Phí (COST)</label>
                   <div className="flex flex-wrap gap-1.5">
                     {COSTS.map((c) => (
                       <button
@@ -673,8 +676,8 @@ export default function EditGeneralPage() {
                         onClick={() => setForm((prev) => ({ ...prev, cost: prev.cost === c ? 0 : c }))}
                         className={`w-8 h-8 rounded text-xs font-bold transition-all ${
                           form.cost === c
-                            ? 'bg-amber-600 text-white'
-                            : 'bg-stone-800/50 text-stone-500 border border-stone-700/30 hover:text-stone-300'
+                            ? 'bg-[var(--accent)] text-[var(--text-primary)]'
+                            : 'bg-[var(--bg-secondary)]/50 text-[var(--text-tertiary)] border border-[var(--border)]/30 hover:text-[var(--text-secondary)]'
                         }`}
                       >
                         {c}
@@ -687,9 +690,9 @@ export default function EditGeneralPage() {
           </div>
 
           {/* 4. Troop Compatibility */}
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5 mb-5">
-            <h2 className="text-base font-semibold text-amber-100 mb-4 flex items-center gap-2">
-              <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5 mb-5">
+            <h2 className="text-base font-semibold text-[var(--accent)] mb-4 flex items-center gap-2">
+              <svg className="w-5 h-5 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
               Tương thích binh chủng
@@ -704,7 +707,7 @@ export default function EditGeneralPage() {
                 { key: 'siegeGrade', label: 'Công thành', icon: '⚙️' },
               ].map(({ key, label, icon }) => (
                 <div key={key}>
-                  <label className="block text-sm font-medium text-stone-300 mb-2">{icon} {label}</label>
+                  <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">{icon} {label}</label>
                   <div className="flex gap-1">
                     {GRADES.map((g) => (
                       <button
@@ -714,7 +717,7 @@ export default function EditGeneralPage() {
                         className={`flex-1 py-2 rounded text-sm font-bold transition-all ${
                           (form as any)[key] === g
                             ? GRADE_COLORS[g]
-                            : 'bg-stone-700/50 text-stone-500 hover:bg-stone-700'
+                            : 'bg-[var(--bg-tertiary)]/50 text-[var(--text-tertiary)] hover:bg-[var(--bg-tertiary)]'
                         }`}
                       >
                         {g}
@@ -727,25 +730,25 @@ export default function EditGeneralPage() {
           </div>
 
           {/* 5. Combined Stats Section */}
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5 mb-5">
-            <h2 className="text-base font-semibold text-amber-100 mb-4 flex items-center gap-2">
-              <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5 mb-5">
+            <h2 className="text-base font-semibold text-[var(--accent)] mb-4 flex items-center gap-2">
+              <svg className="w-5 h-5 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
               Chỉ số
             </h2>
 
             {/* Stats Table */}
-            <div className="overflow-hidden rounded-lg border border-stone-600">
+            <div className="overflow-hidden rounded-lg border border-[var(--border)]">
               {/* Table Header */}
-              <div className="grid grid-cols-[140px_1fr_1fr] border-b border-stone-600">
-                <div className="px-3 py-2.5 text-sm font-semibold text-stone-300 bg-stone-900">
+              <div className="grid grid-cols-[140px_1fr_1fr] border-b border-[var(--border)]">
+                <div className="px-3 py-2.5 text-sm font-semibold text-[var(--text-secondary)] bg-[var(--bg)]">
                   Chỉ số
                 </div>
-                <div className="px-3 py-2.5 text-sm font-semibold text-center text-blue-200 bg-blue-900/50 border-l border-stone-600">
+                <div className="px-3 py-2.5 text-sm font-semibold text-center text-blue-200 bg-blue-900/50 border-l border-[var(--border)]">
                   Cơ bản
                 </div>
-                <div className="px-3 py-2.5 text-sm font-semibold text-center text-green-200 bg-green-900/50 border-l border-stone-600">
+                <div className="px-3 py-2.5 text-sm font-semibold text-center text-green-200 bg-green-900/50 border-l border-[var(--border)]">
                   Tăng trưởng
                 </div>
               </div>
@@ -761,32 +764,32 @@ export default function EditGeneralPage() {
               ].map(({ baseKey, growthKey, label, icon }, index) => (
                 <div
                   key={baseKey}
-                  className={`grid grid-cols-[140px_1fr_1fr] ${index < 5 ? 'border-b border-stone-700' : ''}`}
+                  className={`grid grid-cols-[140px_1fr_1fr] ${index < 5 ? 'border-b border-[var(--border)]' : ''}`}
                 >
                   {/* Stat Label */}
-                  <div className={`px-3 py-2 text-sm font-medium text-stone-300 flex items-center gap-2 ${index % 2 === 0 ? 'bg-stone-800' : 'bg-stone-800/60'}`}>
+                  <div className={`px-3 py-2 text-sm font-medium text-[var(--text-secondary)] flex items-center gap-2 ${index % 2 === 0 ? 'bg-[var(--bg-secondary)]' : 'bg-[var(--bg-secondary)]/60'}`}>
                     <span>{icon}</span>
                     <span>{label}</span>
                   </div>
                   {/* Base Input */}
-                  <div className={`px-2 py-1.5 border-l border-stone-600 ${index % 2 === 0 ? 'bg-blue-900/30' : 'bg-blue-900/20'}`}>
+                  <div className={`px-2 py-1.5 border-l border-[var(--border)] ${index % 2 === 0 ? 'bg-blue-900/30' : 'bg-blue-900/20'}`}>
                     <input
                       type="number"
                       step="0.01"
                       value={(form as any)[baseKey] ?? ''}
                       onChange={(e) => setForm((prev) => ({ ...prev, [baseKey]: e.target.value === '' ? null : parseFloat(e.target.value) }))}
-                      className="w-full px-2 py-1.5 bg-stone-900 border border-blue-800/50 rounded text-white text-sm focus:border-blue-500 focus:outline-none text-center"
+                      className="w-full px-2 py-1.5 bg-[var(--bg)] border border-blue-800/50 rounded text-[var(--text-primary)] text-sm focus:border-blue-500 focus:outline-none text-center"
                       placeholder="0.00"
                     />
                   </div>
                   {/* Growth Input */}
-                  <div className={`px-2 py-1.5 border-l border-stone-600 ${index % 2 === 0 ? 'bg-green-900/30' : 'bg-green-900/20'}`}>
+                  <div className={`px-2 py-1.5 border-l border-[var(--border)] ${index % 2 === 0 ? 'bg-green-900/30' : 'bg-green-900/20'}`}>
                     <input
                       type="number"
                       step="0.01"
                       value={(form as any)[growthKey] ?? ''}
                       onChange={(e) => setForm((prev) => ({ ...prev, [growthKey]: e.target.value === '' ? null : parseFloat(e.target.value) }))}
-                      className="w-full px-2 py-1.5 bg-stone-900 border border-green-800/50 rounded text-white text-sm focus:border-green-500 focus:outline-none text-center"
+                      className="w-full px-2 py-1.5 bg-[var(--bg)] border border-green-800/50 rounded text-[var(--text-primary)] text-sm focus:border-green-500 focus:outline-none text-center"
                       placeholder="0.00"
                     />
                   </div>
@@ -796,10 +799,10 @@ export default function EditGeneralPage() {
           </div>
 
           {/* 6. Innate Skill */}
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5 mb-5">
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5 mb-5">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-base font-semibold text-amber-100 flex items-center gap-2">
-                <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <h2 className="text-base font-semibold text-[var(--accent)] flex items-center gap-2">
+                <svg className="w-5 h-5 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
                 Chiến pháp tự mang
@@ -808,7 +811,7 @@ export default function EditGeneralPage() {
                 <div className="flex items-center gap-3">
                   <Link
                     href={`/admin/skills/${form.innateSkillId}`}
-                    className="text-xs text-amber-400 hover:text-amber-300 transition-colors"
+                    className="text-xs text-[var(--accent)] hover:text-[var(--accent)] transition-colors"
                   >
                     Sửa chiến pháp
                   </Link>
@@ -818,7 +821,7 @@ export default function EditGeneralPage() {
                       setForm((prev) => ({ ...prev, innateSkillId: null }));
                       setInnateSkillData(null);
                     }}
-                    className="text-xs text-stone-400 hover:text-red-400 transition-colors"
+                    className="text-xs text-[var(--text-tertiary)] hover:text-red-400 transition-colors"
                   >
                     Xóa liên kết
                   </button>
@@ -827,52 +830,52 @@ export default function EditGeneralPage() {
             </div>
 
             {innateSkillData ? (
-              <div className="bg-stone-900/50 border border-stone-600 rounded-lg p-4">
+              <div className="bg-[var(--bg)] border border-[var(--border)] rounded-lg p-4">
                 {/* Header with badges */}
                 <div className="flex items-center gap-2 mb-3">
                   {innateSkillData.quality && (
                     <span className={`px-2 py-0.5 rounded text-xs font-bold ${
-                      innateSkillData.quality === 'S' ? 'bg-amber-600 text-white' :
-                      innateSkillData.quality === 'A' ? 'bg-violet-600 text-white' :
-                      innateSkillData.quality === 'B' ? 'bg-sky-600 text-white' : 'bg-cyan-600 text-white'
+                      innateSkillData.quality === 'S' ? 'bg-[var(--accent)] text-[var(--text-primary)]' :
+                      innateSkillData.quality === 'A' ? 'bg-violet-600 text-[var(--text-primary)]' :
+                      innateSkillData.quality === 'B' ? 'bg-sky-600 text-[var(--text-primary)]' : 'bg-cyan-600 text-[var(--text-primary)]'
                     }`}>
                       {innateSkillData.quality}
                     </span>
                   )}
                   {innateSkillData.type?.id && (
-                    <span className={`px-2 py-0.5 rounded text-xs ${SKILL_TYPE_COLORS[innateSkillData.type.id] || 'bg-stone-600/30 text-stone-300'}`}>
+                    <span className={`px-2 py-0.5 rounded text-xs ${SKILL_TYPE_COLORS[innateSkillData.type.id] || 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)]'}`}>
                       {innateSkillData.type.name || SKILL_TYPE_NAMES[innateSkillData.type.id] || innateSkillData.type.id}
                     </span>
                   )}
                   {innateSkillData.trigger_rate && (
-                    <span className="px-2 py-0.5 rounded text-xs bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                    <span className="px-2 py-0.5 rounded text-xs bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30">
                       {innateSkillData.trigger_rate}%
                     </span>
                   )}
                 </div>
 
                 {/* Skill name */}
-                <h3 className="text-lg font-bold text-white mb-2">
+                <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2">
                   {innateSkillData.name}
                 </h3>
 
                 {/* Effect */}
                 {innateSkillData.effect && (
-                  <p className="text-sm text-stone-300 leading-relaxed mb-3">
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-3">
                     {innateSkillData.effect}
                   </p>
                 )}
 
                 {/* Target */}
                 {innateSkillData.target && (
-                  <div className="text-xs text-stone-400">
-                    <span className="text-amber-500/70">Mục tiêu:</span>{' '}
+                  <div className="text-xs text-[var(--text-tertiary)]">
+                    <span className="text-[var(--accent)]/70">Mục tiêu:</span>{' '}
                     {TARGET_LABELS[innateSkillData.target] || innateSkillData.target}
                   </div>
                 )}
 
                 {!innateSkillData.effect && (
-                  <p className="text-sm text-stone-500 italic">Chưa có thông tin chi tiết</p>
+                  <p className="text-sm text-[var(--text-tertiary)] italic">Chưa có thông tin chi tiết</p>
                 )}
               </div>
             ) : (
@@ -906,17 +909,17 @@ export default function EditGeneralPage() {
                   }}
                 />
                 {!innateSearch && (
-                  <p className="mt-3 text-sm text-stone-500 italic">Chưa chọn chiến pháp</p>
+                  <p className="mt-3 text-sm text-[var(--text-tertiary)] italic">Chưa chọn chiến pháp</p>
                 )}
               </div>
             )}
           </div>
 
           {/* 6. Inherited Skill */}
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-xl p-5 mb-5">
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-5 mb-5">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-base font-semibold text-amber-100 flex items-center gap-2">
-                <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <h2 className="text-base font-semibold text-[var(--accent)] flex items-center gap-2">
+                <svg className="w-5 h-5 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                 </svg>
                 Chiến pháp kế thừa
@@ -925,7 +928,7 @@ export default function EditGeneralPage() {
                 <div className="flex items-center gap-3">
                   <Link
                     href={`/admin/skills/${form.inheritedSkillId}`}
-                    className="text-xs text-amber-400 hover:text-amber-300 transition-colors"
+                    className="text-xs text-[var(--accent)] hover:text-[var(--accent)] transition-colors"
                   >
                     Sửa chiến pháp
                   </Link>
@@ -935,7 +938,7 @@ export default function EditGeneralPage() {
                       setForm((prev) => ({ ...prev, inheritedSkillId: null }));
                       setInheritedSkillData(null);
                     }}
-                    className="text-xs text-stone-400 hover:text-red-400 transition-colors"
+                    className="text-xs text-[var(--text-tertiary)] hover:text-red-400 transition-colors"
                   >
                     Xóa liên kết
                   </button>
@@ -944,52 +947,52 @@ export default function EditGeneralPage() {
             </div>
 
             {inheritedSkillData ? (
-              <div className="bg-stone-900/50 border border-stone-600 rounded-lg p-4">
+              <div className="bg-[var(--bg)] border border-[var(--border)] rounded-lg p-4">
                 {/* Header with badges */}
                 <div className="flex items-center gap-2 mb-3">
                   {inheritedSkillData.quality && (
                     <span className={`px-2 py-0.5 rounded text-xs font-bold ${
-                      inheritedSkillData.quality === 'S' ? 'bg-amber-600 text-white' :
-                      inheritedSkillData.quality === 'A' ? 'bg-violet-600 text-white' :
-                      inheritedSkillData.quality === 'B' ? 'bg-sky-600 text-white' : 'bg-cyan-600 text-white'
+                      inheritedSkillData.quality === 'S' ? 'bg-[var(--accent)] text-[var(--text-primary)]' :
+                      inheritedSkillData.quality === 'A' ? 'bg-violet-600 text-[var(--text-primary)]' :
+                      inheritedSkillData.quality === 'B' ? 'bg-sky-600 text-[var(--text-primary)]' : 'bg-cyan-600 text-[var(--text-primary)]'
                     }`}>
                       {inheritedSkillData.quality}
                     </span>
                   )}
                   {inheritedSkillData.type?.id && (
-                    <span className={`px-2 py-0.5 rounded text-xs ${SKILL_TYPE_COLORS[inheritedSkillData.type.id] || 'bg-stone-600/30 text-stone-300'}`}>
+                    <span className={`px-2 py-0.5 rounded text-xs ${SKILL_TYPE_COLORS[inheritedSkillData.type.id] || 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)]'}`}>
                       {inheritedSkillData.type.name || SKILL_TYPE_NAMES[inheritedSkillData.type.id] || inheritedSkillData.type.id}
                     </span>
                   )}
                   {inheritedSkillData.trigger_rate && (
-                    <span className="px-2 py-0.5 rounded text-xs bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                    <span className="px-2 py-0.5 rounded text-xs bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30">
                       {inheritedSkillData.trigger_rate}%
                     </span>
                   )}
                 </div>
 
                 {/* Skill name */}
-                <h3 className="text-lg font-bold text-white mb-2">
+                <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2">
                   {inheritedSkillData.name}
                 </h3>
 
                 {/* Effect */}
                 {inheritedSkillData.effect && (
-                  <p className="text-sm text-stone-300 leading-relaxed mb-3">
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-3">
                     {inheritedSkillData.effect}
                   </p>
                 )}
 
                 {/* Target */}
                 {inheritedSkillData.target && (
-                  <div className="text-xs text-stone-400">
-                    <span className="text-amber-500/70">Mục tiêu:</span>{' '}
+                  <div className="text-xs text-[var(--text-tertiary)]">
+                    <span className="text-[var(--accent)]/70">Mục tiêu:</span>{' '}
                     {TARGET_LABELS[inheritedSkillData.target] || inheritedSkillData.target}
                   </div>
                 )}
 
                 {!inheritedSkillData.effect && (
-                  <p className="text-sm text-stone-500 italic">Chưa có thông tin chi tiết</p>
+                  <p className="text-sm text-[var(--text-tertiary)] italic">Chưa có thông tin chi tiết</p>
                 )}
               </div>
             ) : (
@@ -1023,7 +1026,7 @@ export default function EditGeneralPage() {
                   }}
                 />
                 {!inheritSearch && (
-                  <p className="mt-3 text-sm text-stone-500 italic">Chưa chọn chiến pháp</p>
+                  <p className="mt-3 text-sm text-[var(--text-tertiary)] italic">Chưa chọn chiến pháp</p>
                 )}
               </div>
             )}
@@ -1040,14 +1043,14 @@ export default function EditGeneralPage() {
             </button>
             <Link
               href="/admin/generals"
-              className="px-4 py-2 border border-stone-600 text-stone-300 rounded-lg hover:bg-stone-700 transition-colors text-sm"
+              className="px-4 py-2 border border-[var(--border)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors text-sm"
             >
               Hủy
             </Link>
             <button
               type="submit"
               disabled={saving}
-              className="px-6 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50"
+              className="px-6 py-2 bg-[var(--accent)] hover:bg-[var(--accent)] text-white rounded-lg font-medium transition-colors disabled:opacity-50"
             >
               {saving ? 'Đang lưu...' : 'Lưu thay đổi'}
             </button>
@@ -1055,7 +1058,7 @@ export default function EditGeneralPage() {
               type="button"
               onClick={handleSaveAndComplete}
               disabled={saving || form.status === 'complete'}
-              className="px-6 py-2 bg-green-700 hover:bg-green-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center gap-2"
+              className="px-6 py-2 bg-green-700 hover:bg-green-600 text-[var(--text-primary)] rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center gap-2"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />

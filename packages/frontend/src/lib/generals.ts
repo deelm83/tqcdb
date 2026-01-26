@@ -63,10 +63,10 @@ export function filterGenerals(generals: General[], filters: FilterOptions): Gen
 
 // Faction colors - TW3K inspired
 export const factionColors: Record<FactionId, { text: string }> = {
-  wei: { text: 'text-blue-400' },
-  shu: { text: 'text-green-400' },
-  wu: { text: 'text-red-400' },
-  qun: { text: 'text-yellow-400' },
+  wei: { text: 'text-blue-600' },
+  shu: { text: 'text-green-600' },
+  wu: { text: 'text-red-600' },
+  qun: { text: 'text-amber-600' },
 };
 
 export const factionNames: Record<FactionId, { cn: string; vi: string; en: string }> = {

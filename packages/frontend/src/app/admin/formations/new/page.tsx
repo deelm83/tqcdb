@@ -250,7 +250,7 @@ export default function NewAdminFormationPage() {
           <div className="flex items-center justify-between">
             <span className="text-sm text-[var(--text-secondary)]">Tổng COST:</span>
             <span className={`text-2xl font-bold ${
-              costWarning ? 'text-red-400' : totalCost === 21 ? 'text-[var(--accent-gold)]' : 'text-green-400'
+              costWarning ? 'text-red-400' : totalCost === 21 ? 'text-[var(--accent)]' : 'text-green-400'
             }`} style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', cursive" }}>
               {totalCost} / 21
             </span>

@@ -12,22 +12,22 @@ import SuggestEditModal from '@/components/SuggestEditModal';
 import LoginModal from '@/components/LoginModal';
 
 // Skill type colors
-const skillTypeStyles: Record<SkillTypeId, { bg: string; text: string; border: string; gradient: string }> = {
-  command: { bg: 'bg-yellow-500/20', text: 'text-yellow-400', border: 'border-yellow-500', gradient: 'from-yellow-950/50' },
-  active: { bg: 'bg-red-500/20', text: 'text-red-400', border: 'border-red-500', gradient: 'from-red-950/50' },
-  assault: { bg: 'bg-orange-500/20', text: 'text-orange-400', border: 'border-orange-500', gradient: 'from-orange-950/50' },
-  passive: { bg: 'bg-blue-500/20', text: 'text-blue-400', border: 'border-blue-500', gradient: 'from-blue-950/50' },
-  formation: { bg: 'bg-purple-500/20', text: 'text-purple-400', border: 'border-purple-500', gradient: 'from-purple-950/50' },
-  troop: { bg: 'bg-green-500/20', text: 'text-green-400', border: 'border-green-500', gradient: 'from-green-950/50' },
-  internal: { bg: 'bg-cyan-500/20', text: 'text-cyan-400', border: 'border-cyan-500', gradient: 'from-cyan-950/50' },
-  unknown: { bg: 'bg-gray-500/20', text: 'text-gray-400', border: 'border-gray-500', gradient: 'from-gray-950/50' },
+const skillTypeStyles: Record<SkillTypeId, { bg: string; text: string; border: string }> = {
+  command: { bg: 'bg-yellow-500/20', text: 'text-yellow-600', border: 'border-yellow-500' },
+  active: { bg: 'bg-red-500/20', text: 'text-red-600', border: 'border-red-500' },
+  assault: { bg: 'bg-orange-500/20', text: 'text-orange-600', border: 'border-orange-500' },
+  passive: { bg: 'bg-blue-500/20', text: 'text-blue-600', border: 'border-blue-500' },
+  formation: { bg: 'bg-purple-500/20', text: 'text-purple-600', border: 'border-purple-500' },
+  troop: { bg: 'bg-green-500/20', text: 'text-green-600', border: 'border-green-500' },
+  internal: { bg: 'bg-cyan-500/20', text: 'text-cyan-600', border: 'border-cyan-500' },
+  unknown: { bg: 'bg-gray-500/20', text: 'text-gray-600', border: 'border-gray-500' },
 };
 
 // Quality colors
 const qualityStyles: Record<string, string> = {
-  S: 'text-amber-400 font-bold',
-  A: 'text-red-400 font-semibold',
-  B: 'text-violet-400',
+  S: 'text-[var(--accent)] font-bold',
+  A: 'text-[var(--accent-dim)] font-semibold',
+  B: 'text-blue-600',
 };
 
 const TARGET_LABELS: Record<string, string> = {
@@ -64,25 +64,25 @@ function highlightEffectText(text: string): React.ReactNode {
 
     if (match[1]) {
       parts.push(
-        <span key={match.index} className="text-amber-400 font-semibold">
+        <span key={match.index} className="text-[var(--accent)] font-semibold">
           {matchedText}
         </span>
       );
     } else if (match[2]) {
       parts.push(
-        <span key={match.index} className="text-cyan-400 font-medium">
+        <span key={match.index} className="text-cyan-600 font-medium">
           {matchedText}
         </span>
       );
     } else if (match[3]) {
       parts.push(
-        <span key={match.index} className="text-amber-300">
+        <span key={match.index} className="text-[var(--accent)]">
           {matchedText}
         </span>
       );
     } else if (match[4]) {
       parts.push(
-        <span key={match.index} className="text-green-400">
+        <span key={match.index} className="text-green-600">
           {matchedText}
         </span>
       );
@@ -143,8 +143,8 @@ export default function SkillDetailPage() {
     return (
       <div className="min-h-screen">
         <main className="max-w-3xl mx-auto px-4 py-8">
-          <div className="h-4 bg-[#2a3548] rounded w-32 mb-6 animate-pulse" />
-          <div className="h-64 bg-[#1a2130] rounded-xl animate-pulse" />
+          <div className="h-4 bg-[var(--bg-secondary)] rounded w-32 mb-6 shimmer" />
+          <div className="h-64 bg-[var(--bg-secondary)] rounded-xl shimmer" />
         </main>
       </div>
     );
@@ -153,10 +153,14 @@ export default function SkillDetailPage() {
   if (error || !skill) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center p-12 rounded-xl border border-[#2a3548] bg-[#1a2130]">
-          <div className="text-4xl mb-4">🔍</div>
-          <h1 className="text-xl font-bold text-[#e8dcc8] mb-3">Không tìm thấy chiến pháp</h1>
-          <Link href="/skills" className="text-[#d4a74a] hover:text-[#f0c96e] transition-colors">
+        <div className="text-center p-12 card">
+          <div className="text-4xl mb-4">
+            <svg className="w-12 h-12 mx-auto text-[var(--text-tertiary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <h1 className="text-xl font-bold text-[var(--text-primary)] mb-3">Không tìm thấy chiến pháp</h1>
+          <Link href="/skills" className="text-[var(--accent)] hover:text-[var(--accent-hover)] transition-colors">
             ← Quay lại danh sách
           </Link>
         </div>
@@ -169,11 +173,11 @@ export default function SkillDetailPage() {
   const typeName = skillTypeNames[typeId] || skillTypeNames.unknown;
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b ${styles.gradient} to-[#0a0e14]`}>
+    <div className="min-h-screen">
       <main className="max-w-3xl mx-auto px-4 py-8">
         {/* Breadcrumb and Actions */}
         <div className="mb-8 flex items-center justify-between">
-          <Link href="/skills" className="inline-flex items-center gap-2 text-[#6b7280] hover:text-[#d4a74a] text-sm transition-colors group">
+          <Link href="/skills" className="inline-flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--accent)] text-sm transition-colors group">
             <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
@@ -183,23 +187,11 @@ export default function SkillDetailPage() {
         </div>
 
         {/* Skill Card */}
-        <div className="relative rounded-2xl border border-[#2a3548] bg-gradient-to-br from-[#1a2130] to-[#0a0e14] overflow-hidden shadow-2xl">
-          {/* Corner decorations */}
-          <div className="absolute top-3 left-3 w-4 h-4 border-l-2 border-t-2 border-[#d4a74a]/50" />
-          <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-[#d4a74a]/50" />
-          <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-[#d4a74a]/50" />
-          <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 border-[#d4a74a]/50" />
-
+        <div className="relative rounded-2xl border border-[var(--border)] bg-[var(--bg-secondary)] overflow-hidden">
           {/* Header */}
-          <div className={`px-6 py-5 bg-gradient-to-r ${styles.bg} border-b border-[#2a3548]/50`}>
+          <div className={`px-6 py-5 ${styles.bg} border-b border-[var(--border)]/50`}>
             <div className="flex items-center justify-between gap-4">
-              <h1
-                className="text-3xl text-[#f0c96e]"
-                style={{
-                  fontFamily: 'var(--font-great-vibes), cursive',
-                  textShadow: '1px 1px 3px rgba(0,0,0,0.5)',
-                }}
-              >
+              <h1 className="text-3xl font-bold text-[var(--accent)]">
                 {skill.name}
               </h1>
 
@@ -209,13 +201,13 @@ export default function SkillDetailPage() {
                   {typeName.vi}
                 </span>
                 {skill.quality && (
-                  <span className={`px-3 py-1 rounded text-sm font-bold bg-[#1e2636] border border-[#2a3548] ${qualityStyles[skill.quality] || 'text-gray-400'}`}>
+                  <span className={`px-3 py-1 rounded text-sm font-bold bg-[var(--bg-elevated)] border border-[var(--border)] ${qualityStyles[skill.quality] || 'text-[var(--text-tertiary)]'}`}>
                     {skill.quality}
                   </span>
                 )}
                 {skill.trigger_rate && (
-                  <span className="px-3 py-1 rounded text-sm bg-amber-900/30 border border-amber-500/40 font-semibold">
-                    <span className="text-amber-400">{skill.trigger_rate}%</span>
+                  <span className="px-3 py-1 rounded text-sm bg-[var(--accent)]/15 border border-[var(--accent)]/30 font-semibold">
+                    <span className="text-[var(--accent)]">{skill.trigger_rate}%</span>
                   </span>
                 )}
               </div>
@@ -226,9 +218,9 @@ export default function SkillDetailPage() {
           <div className="p-6 space-y-6">
             {/* Effect */}
             {skill.effect && (
-              <div className="p-5 bg-[#0a0e14]/50 rounded-xl border border-[#2a3548]/50">
-                <div className="text-xs text-[#d4a74a] uppercase tracking-wider mb-3">Hiệu ứng</div>
-                <div className="text-base text-[#b8a990] leading-relaxed">
+              <div className="p-5 bg-[var(--bg)]/50 rounded-xl border border-[var(--border)]/50">
+                <div className="text-xs text-[var(--accent)] mb-3 font-medium">Hiệu ứng</div>
+                <div className="text-base text-[var(--text-secondary)] leading-relaxed">
                   {highlightEffectText(skill.effect || '')}
                 </div>
               </div>
@@ -237,15 +229,15 @@ export default function SkillDetailPage() {
             {/* Target */}
             {skill.target && (
               <div className="flex items-start gap-3">
-                <span className="text-[#6b7280] min-w-[100px]">Mục tiêu:</span>
-                <span className="text-[#b8a990]">{TARGET_LABELS[skill.target] || skill.target}</span>
+                <span className="text-[var(--text-tertiary)] min-w-[100px]">Mục tiêu:</span>
+                <span className="text-[var(--text-secondary)]">{TARGET_LABELS[skill.target] || skill.target}</span>
               </div>
             )}
 
             {/* Army Types */}
             {skill.army_types && skill.army_types.length > 0 && (
               <div className="flex items-center gap-3">
-                <span className="text-[#6b7280] min-w-[100px]">Binh chủng:</span>
+                <span className="text-[var(--text-tertiary)] min-w-[100px]">Binh chủng:</span>
                 <div className="flex gap-2">
                   {skill.army_types.map((army) => (
                     <ArmyIcon
@@ -259,14 +251,14 @@ export default function SkillDetailPage() {
             )}
 
             {/* Acquisition */}
-            <div className="pt-5 border-t border-[#2a3548]/50">
-              <div className="text-xs text-[#d4a74a] uppercase tracking-wider mb-4">Cách nhận</div>
+            <div className="pt-5 border-t border-[var(--border)]/50">
+              <div className="text-xs text-[var(--accent)] mb-4 font-medium">Cách nhận</div>
               <div className="space-y-3">
                 {/* Innate */}
                 {skill.innate_to && skill.innate_to.length > 0 && (
                   <div>
-                    <span className="text-orange-400 font-medium">Tự mang: </span>
-                    <span className="text-[#b8a990]">
+                    <span className="text-orange-600 font-medium">Tự mang: </span>
+                    <span className="text-[var(--text-secondary)]">
                       {skill.innate_to.map((name, idx) => {
                         const general = generalsByName[name];
                         return (
@@ -275,12 +267,12 @@ export default function SkillDetailPage() {
                             {general ? (
                               <Link
                                 href={`/generals/${general.id}`}
-                                className="text-[#d4a74a] hover:text-[#f0c96e] hover:underline"
+                                className="text-[var(--accent)] hover:text-[var(--accent)] hover:underline"
                               >
                                 {general.vi}
                               </Link>
                             ) : (
-                              <span className="text-red-400">{name}</span>
+                              <span className="text-red-600">{name}</span>
                             )}
                           </span>
                         );
@@ -291,8 +283,8 @@ export default function SkillDetailPage() {
                 {/* Inherited */}
                 {skill.inheritance_from && skill.inheritance_from.length > 0 && (
                   <div>
-                    <span className="text-purple-400 font-medium">Truyền thừa từ: </span>
-                    <span className="text-[#b8a990]">
+                    <span className="text-purple-600 font-medium">Truyền thừa từ: </span>
+                    <span className="text-[var(--text-secondary)]">
                       {skill.inheritance_from.map((name, idx) => {
                         const general = generalsByName[name];
                         return (
@@ -301,12 +293,12 @@ export default function SkillDetailPage() {
                             {general ? (
                               <Link
                                 href={`/generals/${general.id}`}
-                                className="text-[#d4a74a] hover:text-[#f0c96e] hover:underline"
+                                className="text-[var(--accent)] hover:text-[var(--accent)] hover:underline"
                               >
                                 {general.vi}
                               </Link>
                             ) : (
-                              <span className="text-red-400">{name}</span>
+                              <span className="text-red-600">{name}</span>
                             )}
                           </span>
                         );
@@ -319,7 +311,7 @@ export default function SkillDetailPage() {
                   <div className="p-4 bg-cyan-900/20 rounded-lg border border-cyan-700/30">
                     <div className="flex items-center gap-2 mb-3">
                       <span className="text-cyan-400 font-medium">Đổi tướng</span>
-                      <span className="px-2 py-0.5 rounded text-xs bg-cyan-900/50 text-cyan-300 border border-cyan-700/50">
+                      <span className="px-2 py-0.5 rounded text-xs bg-cyan-900/50 text-cyan-600 border border-cyan-700/50">
                         {skill.exchange_type === 'exact'
                           ? `${skill.exchange_generals?.length || 0} tướng`
                           : `${skill.exchange_count || skill.exchange_generals?.length || 0} tướng`
@@ -327,20 +319,20 @@ export default function SkillDetailPage() {
                       </span>
                     </div>
                     {skill.exchange_generals && skill.exchange_generals.length > 0 && (
-                      <div className="text-[#b8a990]">
+                      <div className="text-[var(--text-secondary)]">
                         {skill.exchange_type === 'any' && (
-                          <span className="text-cyan-300 mr-2">Chọn từ các tướng:</span>
+                          <span className="text-cyan-600 mr-2">Chọn từ các tướng:</span>
                         )}
                         {skill.exchange_generals.map((name, idx) => {
                           const general = generalsByName[name];
                           const separator = skill.exchange_type === 'exact' ? ' / ' : ', ';
                           return (
                             <span key={name}>
-                              {idx > 0 && <span className="text-[#6b7280]">{separator}</span>}
+                              {idx > 0 && <span className="text-[var(--text-tertiary)]">{separator}</span>}
                               {general ? (
                                 <Link
                                   href={`/generals/${general.id}`}
-                                  className="text-[#d4a74a] hover:text-[#f0c96e] hover:underline"
+                                  className="text-[var(--accent)] hover:text-[var(--accent)] hover:underline"
                                 >
                                   {general.vi}
                                 </Link>
@@ -356,7 +348,7 @@ export default function SkillDetailPage() {
                 )}
                 {/* Unknown */}
                 {!skill.innate_to?.length && !skill.inheritance_from?.length && skill.acquisition_type !== 'exchange' && (
-                  <span className="text-[#6b7280]">Chưa rõ</span>
+                  <span className="text-[var(--text-tertiary)]">Chưa rõ</span>
                 )}
               </div>
             </div>
@@ -371,7 +363,6 @@ export default function SkillDetailPage() {
             entityType="skill"
             entity={skill}
             onSuccess={() => {
-              // Could show a success toast here
               alert('Đề xuất của bạn đã được gửi thành công!');
             }}
           />

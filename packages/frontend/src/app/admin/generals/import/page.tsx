@@ -241,15 +241,15 @@ export default function MassImportPage() {
           <div className="flex items-center gap-4">
             <Link
               href="/admin/generals"
-              className="flex items-center gap-1 text-stone-400 hover:text-white text-sm transition-colors"
+              className="flex items-center gap-1 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] text-sm transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Danh sách tướng
             </Link>
-            <span className="text-stone-600">|</span>
-            <h1 className="text-2xl font-bold text-amber-100">Import tướng hàng loạt</h1>
+            <span className="text-[var(--text-tertiary)]">|</span>
+            <h1 className="text-2xl font-bold text-[var(--accent)]">Import tướng hàng loạt</h1>
           </div>
 
           {items.length > 0 && (
@@ -257,7 +257,7 @@ export default function MassImportPage() {
               type="button"
               onClick={handleImport}
               disabled={!canImport}
-              className="px-6 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="px-6 py-2 bg-[var(--accent-dim)] hover:bg-[var(--accent)] text-white rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
               {importing ? (
                 <>
@@ -297,13 +297,13 @@ export default function MassImportPage() {
             )}
 
             {results.skipped.length > 0 && (
-              <div className="bg-amber-900/30 border border-amber-700/50 rounded-lg p-4">
-                <h3 className="font-semibold text-amber-300 mb-2">
+              <div className="bg-[var(--accent-dim)]/15 border border-[var(--accent-dim)]/30 rounded-lg p-4">
+                <h3 className="font-semibold text-[var(--accent)] mb-2">
                   Bỏ qua {results.skipped.length} tướng đã tồn tại
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {results.skipped.map((name) => (
-                    <span key={name} className="px-2 py-1 bg-amber-800/50 text-amber-200 rounded text-sm">
+                    <span key={name} className="px-2 py-1 bg-[var(--accent-dim)]/30 text-[var(--accent)] rounded text-sm">
                       {name}
                     </span>
                   ))}
@@ -326,15 +326,15 @@ export default function MassImportPage() {
         {items.length > 0 && (
           <div className="mt-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-stone-300">
+              <h2 className="text-lg font-semibold text-[var(--text-secondary)]">
                 Danh sách ({items.length} tướng)
               </h2>
               <div className="flex items-center gap-2 text-sm">
-                <span className="text-stone-400">
+                <span className="text-[var(--text-tertiary)]">
                   Đã cắt: {items.filter(i => i.cropped).length}/{items.length}
                 </span>
                 {!allCropped && (
-                  <span className="px-2 py-1 bg-amber-600/30 text-amber-300 rounded text-xs">
+                  <span className="px-2 py-1 bg-[var(--accent)]/20 text-[var(--accent)] rounded text-xs">
                     Cần cắt tất cả ảnh
                   </span>
                 )}

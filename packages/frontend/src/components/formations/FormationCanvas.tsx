@@ -11,11 +11,11 @@ const armyTypeLabels: Record<string, string> = {
 };
 
 const armyTypeColors: Record<string, { bg: string; text: string; border: string }> = {
-  CAVALRY: { bg: 'bg-blue-500/20', text: 'text-blue-400', border: 'border-blue-500' },
-  SHIELD: { bg: 'bg-gray-500/20', text: 'text-gray-400', border: 'border-gray-500' },
-  ARCHER: { bg: 'bg-green-500/20', text: 'text-green-400', border: 'border-green-500' },
-  SPEAR: { bg: 'bg-orange-500/20', text: 'text-orange-400', border: 'border-orange-500' },
-  SIEGE: { bg: 'bg-purple-500/20', text: 'text-purple-400', border: 'border-purple-500' },
+  CAVALRY: { bg: 'bg-blue-500/20', text: 'text-blue-600', border: 'border-blue-600' },
+  SHIELD: { bg: 'bg-gray-500/20', text: 'text-gray-600', border: 'border-gray-600' },
+  ARCHER: { bg: 'bg-green-500/20', text: 'text-green-600', border: 'border-green-600' },
+  SPEAR: { bg: 'bg-orange-500/20', text: 'text-orange-600', border: 'border-orange-600' },
+  SIEGE: { bg: 'bg-purple-500/20', text: 'text-purple-600', border: 'border-purple-600' },
 };
 
 interface FormationCanvasProps {
@@ -28,10 +28,10 @@ export default function FormationCanvas({ formation }: FormationCanvasProps) {
 
   const getGradeColor = (grade: string | undefined) => {
     switch (grade) {
-      case 'S': return 'text-orange-400';
-      case 'A': return 'text-purple-400';
-      case 'B': return 'text-sky-400';
-      case 'C': return 'text-cyan-300';
+      case 'S': return 'text-orange-600';
+      case 'A': return 'text-purple-600';
+      case 'B': return 'text-sky-600';
+      case 'C': return 'text-cyan-600';
       default: return 'text-[#888]';
     }
   };

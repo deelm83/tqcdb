@@ -139,97 +139,21 @@ function FormationsContent() {
   }, [search, tab, selectedArmyType, sort, page, user, updateFilters]);
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-8">
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-[var(--accent-gold)] uppercase tracking-wider">Đội Hình</h1>
+          <h1 className="text-2xl font-semibold text-[var(--accent)]">Đội Hình</h1>
           <p className="text-[var(--text-secondary)] mt-1">Khám phá và tạo đội hình trong Tam Quốc Chí Chiến Lược</p>
         </div>
-        <Link
-          href="/formations/create"
-          className="px-4 py-2 bg-[var(--accent-gold)] text-black font-medium rounded hover:bg-[var(--accent-gold-bright)] transition-colors"
-        >
+        <Link href="/formations/create" className="btn-primary">
           + Tạo mới
         </Link>
       </div>
 
       {/* Search */}
-      <div className="mb-4">
+      <div className="mb-6">
         <SearchBar value={search} onChange={setSearch} placeholder="Tìm kiếm võ tướng..." />
-      </div>
-
-      {/* Army Type Filter */}
-      <div className="mb-4">
-        <div className="text-[13px] text-[var(--text-secondary)] mb-2 uppercase tracking-wider">Lọc:</div>
-        <div className="flex gap-2 flex-wrap">
-          <button
-            onClick={() => setArmyType(undefined)}
-            className={`px-3 py-1.5 text-[13px] font-medium border transition-colors ${
-              !selectedArmyType
-                ? 'bg-[var(--bg-tertiary)] border-[var(--border-light)] text-[var(--text-primary)]'
-                : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
-            }`}
-          >
-            Tất cả
-          </button>
-          {armyTypes.map((type) => {
-            const colors = armyTypeColors[type];
-            const isActive = selectedArmyType === type;
-            return (
-              <button
-                key={type}
-                onClick={() => setArmyType(type)}
-                className={`px-3 py-1.5 text-[13px] font-medium border transition-colors ${colors.text} ${
-                  isActive
-                    ? `${colors.bg} ${colors.border}`
-                    : 'border-[var(--border)] opacity-60 hover:opacity-100'
-                }`}
-              >
-                {armyTypeLabels[type]}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Sort */}
-      <div className="mb-4">
-        <div className="text-[13px] text-[var(--text-secondary)] mb-2 uppercase tracking-wider">Sắp xếp:</div>
-        <div className="flex gap-2">
-          {tab === 'curated' && (
-            <button
-              onClick={() => setSort('rank')}
-              className={`px-3 py-1.5 text-[13px] font-medium border transition-colors ${
-                sort === 'rank'
-                  ? 'bg-[var(--bg-tertiary)] border-[var(--border-light)] text-[var(--text-primary)]'
-                  : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
-              }`}
-            >
-              Xếp hạng
-            </button>
-          )}
-          <button
-            onClick={() => setSort('newest')}
-            className={`px-3 py-1.5 text-[13px] font-medium border transition-colors ${
-              sort === 'newest'
-                ? 'bg-[var(--bg-tertiary)] border-[var(--border-light)] text-[var(--text-primary)]'
-                : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
-            }`}
-          >
-            Mới nhất
-          </button>
-          <button
-            onClick={() => setSort('oldest')}
-            className={`px-3 py-1.5 text-[13px] font-medium border transition-colors ${
-              sort === 'oldest'
-                ? 'bg-[var(--bg-tertiary)] border-[var(--border-light)] text-[var(--text-primary)]'
-                : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
-            }`}
-          >
-            Cũ nhất
-          </button>
-        </div>
       </div>
 
       {/* Tabs */}
@@ -239,7 +163,7 @@ function FormationsContent() {
             onClick={() => setTab('community')}
             className={`pb-3 text-[14px] font-medium border-b-2 transition-colors ${
               tab === 'community'
-                ? 'border-[var(--accent-gold)] text-[var(--accent-gold)]'
+                ? 'border-[var(--accent)] text-[var(--accent)]'
                 : 'border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
             }`}
           >
@@ -249,7 +173,7 @@ function FormationsContent() {
             onClick={() => setTab('curated')}
             className={`pb-3 text-[14px] font-medium border-b-2 transition-colors ${
               tab === 'curated'
-                ? 'border-[var(--accent-gold)] text-[var(--accent-gold)]'
+                ? 'border-[var(--accent)] text-[var(--accent)]'
                 : 'border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
             }`}
           >
@@ -260,7 +184,7 @@ function FormationsContent() {
               onClick={() => setTab('mine')}
               className={`pb-3 text-[14px] font-medium border-b-2 transition-colors ${
                 tab === 'mine'
-                  ? 'border-[var(--accent-gold)] text-[var(--accent-gold)]'
+                  ? 'border-[var(--accent)] text-[var(--accent)]'
                   : 'border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }`}
             >
@@ -270,8 +194,84 @@ function FormationsContent() {
         </div>
       </div>
 
+      {/* Filters Row */}
+      <div className="mb-6 flex flex-wrap items-center gap-6">
+        {/* Army Type Filter */}
+        <div className="flex items-center gap-2">
+          <span className="text-[13px] text-[var(--text-tertiary)] font-medium">Binh chủng:</span>
+          <div className="flex gap-1.5">
+            <button
+              onClick={() => setArmyType(undefined)}
+              className={`px-3 py-1.5 text-[13px] font-medium border transition-colors ${
+                !selectedArmyType
+                  ? 'bg-[var(--bg-tertiary)] border-[var(--border-light)] text-[var(--text-primary)]'
+                  : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
+              }`}
+            >
+              Tất cả
+            </button>
+            {armyTypes.map((type) => {
+              const colors = armyTypeColors[type];
+              const isActive = selectedArmyType === type;
+              return (
+                <button
+                  key={type}
+                  onClick={() => setArmyType(type)}
+                  className={`px-3 py-1.5 text-[13px] font-medium border transition-colors ${
+                    isActive
+                      ? `${colors.bg} ${colors.text} ${colors.border}`
+                      : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
+                  }`}
+                >
+                  {armyTypeLabels[type]}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Sort */}
+        <div className="flex items-center gap-2">
+          <span className="text-[13px] text-[var(--text-tertiary)]">Sắp xếp:</span>
+          <div className="flex gap-1.5">
+            {tab === 'curated' && (
+              <button
+                onClick={() => setSort('rank')}
+                className={`px-3 py-1.5 text-[13px] font-medium border transition-colors ${
+                  sort === 'rank'
+                    ? 'bg-[var(--bg-tertiary)] border-[var(--border-light)] text-[var(--text-primary)]'
+                    : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
+                }`}
+              >
+                Xếp hạng
+              </button>
+            )}
+            <button
+              onClick={() => setSort('newest')}
+              className={`px-3 py-1.5 text-[13px] font-medium border transition-colors ${
+                sort === 'newest'
+                  ? 'bg-[var(--bg-tertiary)] border-[var(--border-light)] text-[var(--text-primary)]'
+                  : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
+              }`}
+            >
+              Mới nhất
+            </button>
+            <button
+              onClick={() => setSort('oldest')}
+              className={`px-3 py-1.5 text-[13px] font-medium border transition-colors ${
+                sort === 'oldest'
+                  ? 'bg-[var(--bg-tertiary)] border-[var(--border-light)] text-[var(--text-primary)]'
+                  : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)]'
+              }`}
+            >
+              Cũ nhất
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Results Count */}
-      <div className="mb-6 text-[13px] text-[var(--text-tertiary)] uppercase tracking-wider">
+      <div className="mb-6 text-[13px] text-[var(--text-tertiary)]">
         {loading ? (
           <span className="flex items-center gap-2">
             <span className="spinner" />
@@ -287,7 +287,7 @@ function FormationsContent() {
 
       {/* Error State */}
       {error && (
-        <div className="card-red p-4 mb-6">
+        <div className="card p-4 mb-6 border-red-500/30">
           <span className="text-red-400">{error}</span>
         </div>
       )}
@@ -296,7 +296,7 @@ function FormationsContent() {
       {loading && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="card p-4 h-64 animate-pulse" />
+            <div key={i} className="card p-4 h-64 shimmer" />
           ))}
         </div>
       )}
@@ -313,6 +313,9 @@ function FormationsContent() {
       {/* Empty State */}
       {!loading && formations.length === 0 && !error && (
         <div className="text-center py-16">
+          <svg className="w-12 h-12 mx-auto text-[var(--text-tertiary)] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
           <p className="text-[var(--text-secondary)]">Không tìm thấy đội hình</p>
           <p className="text-[13px] text-[var(--text-tertiary)] mt-2">Thử thay đổi bộ lọc</p>
         </div>
@@ -324,7 +327,7 @@ function FormationsContent() {
           <button
             onClick={() => setPage(page - 1)}
             disabled={page === 1}
-            className="px-3 py-1.5 text-[13px] border border-[var(--border)] text-[var(--text-secondary)] hover:border-[var(--border-light)] disabled:opacity-30 disabled:cursor-not-allowed"
+            className="px-3 py-1.5 text-[13px] border border-[var(--border)] text-[var(--text-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
           >
             ‹ Trước
           </button>
@@ -342,8 +345,8 @@ function FormationsContent() {
                   onClick={() => setPage(pageNum)}
                   className={`px-3 py-1.5 text-[13px] border transition-colors ${
                     page === pageNum
-                      ? 'bg-[var(--accent-gold)] border-[var(--accent-gold)] text-black'
-                      : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-[var(--border-light)]'
+                      ? 'bg-[var(--accent)] border-[var(--accent)] text-black font-bold'
+                      : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)]'
                   }`}
                 >
                   {pageNum}
@@ -357,7 +360,7 @@ function FormationsContent() {
           <button
             onClick={() => setPage(page + 1)}
             disabled={page === totalPages}
-            className="px-3 py-1.5 text-[13px] border border-[var(--border)] text-[var(--text-secondary)] hover:border-[var(--border-light)] disabled:opacity-30 disabled:cursor-not-allowed"
+            className="px-3 py-1.5 text-[13px] border border-[var(--border)] text-[var(--text-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
           >
             Tiếp ›
           </button>
@@ -370,18 +373,18 @@ function FormationsContent() {
 export default function FormationsPage() {
   return (
     <Suspense fallback={
-      <main className="max-w-6xl mx-auto px-6 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <div className="h-8 w-32 bg-[var(--bg-secondary)] animate-pulse" />
-          <div className="h-4 w-64 bg-[var(--bg-secondary)] animate-pulse mt-2" />
+          <div className="h-8 w-32 bg-[var(--bg-secondary)] shimmer" />
+          <div className="h-4 w-64 bg-[var(--bg-secondary)] shimmer mt-2" />
         </div>
         <div className="space-y-4 mb-8">
-          <div className="h-12 bg-[var(--bg-secondary)] animate-pulse" />
-          <div className="h-10 bg-[var(--bg-secondary)] animate-pulse" />
+          <div className="h-14 bg-[var(--bg-secondary)] shimmer rounded-2xl" />
+          <div className="h-10 bg-[var(--bg-secondary)] shimmer" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[...Array(6)].map((_, i) => (
-            <div key={i} className="card p-4 h-64 animate-pulse" />
+            <div key={i} className="card p-4 h-64 shimmer" />
           ))}
         </div>
       </main>

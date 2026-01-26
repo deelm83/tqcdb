@@ -85,13 +85,13 @@ export default function NewGeneralPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-stone-900 via-stone-800 to-stone-900 py-8">
+    <main className="min-h-screen bg-[var(--bg)] py-8">
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-amber-100">New General</h1>
+          <h1 className="text-2xl font-bold text-[var(--accent)]">New General</h1>
           <Link
             href="/admin/generals"
-            className="text-stone-400 hover:text-white text-sm"
+            className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] text-sm"
           >
             Back to list
           </Link>
@@ -105,29 +105,29 @@ export default function NewGeneralPage() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Basic Info */}
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-6">
-            <h2 className="text-lg font-semibold text-amber-100 mb-4">Basic Information</h2>
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-[var(--accent)] mb-4">Basic Information</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">
-                  Slug <span className="text-stone-500">(auto-generated if empty)</span>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+                  Slug <span className="text-[var(--text-tertiary)]">(auto-generated if empty)</span>
                 </label>
                 <input
                   type="text"
                   value={form.slug}
                   onChange={(e) => setForm((prev) => ({ ...prev, slug: e.target.value }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded text-[var(--text-primary)]"
                   placeholder="truong-phi"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Faction *</label>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Faction *</label>
                 <select
                   value={form.factionId}
                   onChange={(e) => setForm((prev) => ({ ...prev, factionId: e.target.value }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded text-[var(--text-primary)]"
                   required
                 >
                   <option value="">Select faction</option>
@@ -138,62 +138,62 @@ export default function NewGeneralPage() {
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-stone-300 mb-1">Tên *</label>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Tên *</label>
                 <input
                   type="text"
                   value={form.name}
                   onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded text-[var(--text-primary)]"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Cost</label>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Cost</label>
                 <input
                   type="number"
                   value={form.cost}
                   onChange={(e) => setForm((prev) => ({ ...prev, cost: parseInt(e.target.value) || 0 }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded text-[var(--text-primary)]"
                   min={1}
                   max={5}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Wiki URL</label>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Wiki URL</label>
                 <input
                   type="url"
                   value={form.wikiUrl}
                   onChange={(e) => setForm((prev) => ({ ...prev, wikiUrl: e.target.value }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded text-[var(--text-primary)]"
                 />
               </div>
             </div>
           </div>
 
           {/* Image */}
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-6">
-            <h2 className="text-lg font-semibold text-amber-100 mb-4">Image</h2>
-            <p className="text-sm text-stone-400 mb-4">
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-[var(--accent)] mb-4">Image</h2>
+            <p className="text-sm text-[var(--text-tertiary)] mb-4">
               You can upload an image after creating the general.
             </p>
 
             <div>
-              <label className="block text-sm font-medium text-stone-300 mb-1">Image URL</label>
+              <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Image URL</label>
               <input
                 type="text"
                 value={form.image}
                 onChange={(e) => setForm((prev) => ({ ...prev, image: e.target.value }))}
-                className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded text-[var(--text-primary)]"
                 placeholder="/images/generals/..."
               />
             </div>
           </div>
 
           {/* Troop Compatibility */}
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-6">
-            <h2 className="text-lg font-semibold text-amber-100 mb-4">Troop Compatibility</h2>
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-[var(--accent)] mb-4">Troop Compatibility</h2>
 
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {[
@@ -204,11 +204,11 @@ export default function NewGeneralPage() {
                 { key: 'siegeGrade', label: 'Siege' },
               ].map(({ key, label }) => (
                 <div key={key}>
-                  <label className="block text-sm font-medium text-stone-300 mb-1">{label}</label>
+                  <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">{label}</label>
                   <select
                     value={(form as any)[key]}
                     onChange={(e) => setForm((prev) => ({ ...prev, [key]: e.target.value }))}
-                    className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                    className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded text-[var(--text-primary)]"
                   >
                     <option value="">-</option>
                     {GRADES.map((g) => (
@@ -221,43 +221,43 @@ export default function NewGeneralPage() {
           </div>
 
           {/* Skills */}
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-6">
-            <h2 className="text-lg font-semibold text-amber-100 mb-4">Skills</h2>
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-[var(--accent)] mb-4">Skills</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Innate Skill Name</label>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Innate Skill Name</label>
                 <input
                   type="text"
                   value={form.innateSkillName}
                   onChange={(e) => setForm((prev) => ({ ...prev, innateSkillName: e.target.value }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded text-[var(--text-primary)]"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-300 mb-1">Inherited Skill Name</label>
+                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Inherited Skill Name</label>
                 <input
                   type="text"
                   value={form.inheritedSkillName}
                   onChange={(e) => setForm((prev) => ({ ...prev, inheritedSkillName: e.target.value }))}
-                  className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                  className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded text-[var(--text-primary)]"
                 />
               </div>
             </div>
           </div>
 
           {/* Tags */}
-          <div className="bg-stone-800/80 border border-amber-900/30 rounded-lg p-6">
-            <h2 className="text-lg font-semibold text-amber-100 mb-4">Tags</h2>
+          <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-[var(--accent)] mb-4">Tags</h2>
 
             <div>
-              <label className="block text-sm font-medium text-stone-300 mb-1">Tags (phân cách bởi dấu phẩy)</label>
+              <label className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Tags (phân cách bởi dấu phẩy)</label>
               <input
                 type="text"
                 value={form.tags.join(', ')}
                 onChange={(e) => setForm((prev) => ({ ...prev, tags: e.target.value.split(',').map(t => t.trim()).filter(Boolean) }))}
-                className="w-full px-3 py-2 bg-stone-900/50 border border-stone-600 rounded text-white"
+                className="w-full px-3 py-2 bg-[var(--bg)] border border-[var(--border)] rounded text-[var(--text-primary)]"
               />
             </div>
           </div>
@@ -266,14 +266,14 @@ export default function NewGeneralPage() {
           <div className="flex justify-end gap-4">
             <Link
               href="/admin/generals"
-              className="px-6 py-2 border border-stone-600 text-stone-300 rounded-lg hover:bg-stone-700 transition-colors"
+              className="px-6 py-2 border border-[var(--border)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors"
             >
               Cancel
             </Link>
             <button
               type="submit"
               disabled={saving}
-              className="px-6 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded-lg transition-colors disabled:opacity-50"
+              className="px-6 py-2 bg-[var(--accent-dim)] hover:bg-[var(--accent)] text-white rounded-lg transition-colors disabled:opacity-50"
             >
               {saving ? 'Creating...' : 'Create General'}
             </button>

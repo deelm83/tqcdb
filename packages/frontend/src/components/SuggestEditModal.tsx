@@ -260,15 +260,15 @@ export default function SuggestEditModal({
 
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-        <div className="relative bg-[#252542] border border-[#3a3a5c] rounded-xl w-full max-w-2xl max-h-[90vh] overflow-hidden shadow-2xl flex flex-col pointer-events-auto">
+        <div className="relative bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl w-full max-w-2xl max-h-[90vh] overflow-hidden shadow-2xl flex flex-col pointer-events-auto">
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-[#3a3a5c]">
-            <h2 className="text-xl font-bold text-[#d4af37]">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)]">
+            <h2 className="text-xl font-bold text-[var(--accent)]">
               Đề xuất chỉnh sửa: {entity.name}
             </h2>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -297,37 +297,37 @@ export default function SuggestEditModal({
               <>
                 {/* Basic Info Section */}
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-4">
+                  <h3 className="text-sm font-semibold text-[var(--text-secondary)] mb-4">
                     Thông tin cơ bản
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm text-gray-400 mb-1">Tên võ tướng</label>
+                      <label className="block text-sm text-[var(--text-secondary)] mb-1">Tên võ tướng</label>
                       <input
                         type="text"
                         value={formData.name}
                         onChange={(e) => handleFieldChange('name', e.target.value)}
-                        className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none ${
+                        className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none ${
                           isFieldChanged('name')
-                            ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                            : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                            ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                            : 'border-[var(--border)] focus:border-[var(--accent)]'
                         }`}
                       />
                       {isFieldChanged('name') && (
-                        <p className="text-xs text-[#d4af37] mt-1">
+                        <p className="text-xs text-[var(--accent)] mt-1">
                           Đã thay đổi từ: {getOldValue('name')}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label className="block text-sm text-gray-400 mb-1">Phe</label>
+                      <label className="block text-sm text-[var(--text-secondary)] mb-1">Phe</label>
                       <select
                         value={formData.faction_id}
                         onChange={(e) => handleFieldChange('faction_id', e.target.value)}
-                        className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none ${
+                        className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none ${
                           isFieldChanged('faction_id')
-                            ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                            : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                            ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                            : 'border-[var(--border)] focus:border-[var(--accent)]'
                         }`}
                       >
                         {FACTIONS.map((faction) => (
@@ -337,38 +337,38 @@ export default function SuggestEditModal({
                         ))}
                       </select>
                       {isFieldChanged('faction_id') && (
-                        <p className="text-xs text-[#d4af37] mt-1">
+                        <p className="text-xs text-[var(--accent)] mt-1">
                           Đã thay đổi từ: {factionNames[getOldValue('faction_id') as keyof typeof factionNames]?.vi}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label className="block text-sm text-gray-400 mb-1">Cost</label>
+                      <label className="block text-sm text-[var(--text-secondary)] mb-1">Cost</label>
                       <input
                         type="number"
                         value={formData.cost}
                         onChange={(e) => handleFieldChange('cost', parseInt(e.target.value))}
-                        className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none ${
+                        className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none ${
                           isFieldChanged('cost')
-                            ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                            : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                            ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                            : 'border-[var(--border)] focus:border-[var(--accent)]'
                         }`}
                       />
                       {isFieldChanged('cost') && (
-                        <p className="text-xs text-[#d4af37] mt-1">
+                        <p className="text-xs text-[var(--accent)] mt-1">
                           Đã thay đổi từ: {getOldValue('cost')}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label className="block text-sm text-gray-400 mb-1">Độ hiếm</label>
+                      <label className="block text-sm text-[var(--text-secondary)] mb-1">Độ hiếm</label>
                       <select
                         value={formData.rarity}
                         onChange={(e) => handleFieldChange('rarity', e.target.value)}
-                        className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none ${
+                        className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none ${
                           isFieldChanged('rarity')
-                            ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                            : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                            ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                            : 'border-[var(--border)] focus:border-[var(--accent)]'
                         }`}
                       >
                         <option value="">Chọn độ hiếm</option>
@@ -379,7 +379,7 @@ export default function SuggestEditModal({
                         ))}
                       </select>
                       {isFieldChanged('rarity') && (
-                        <p className="text-xs text-[#d4af37] mt-1">
+                        <p className="text-xs text-[var(--accent)] mt-1">
                           Đã thay đổi từ: {getOldValue('rarity') || '(trống)'}
                         </p>
                       )}
@@ -389,7 +389,7 @@ export default function SuggestEditModal({
 
                 {/* Stats Section */}
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-4">
+                  <h3 className="text-sm font-semibold text-[var(--text-secondary)] mb-4">
                     Chỉ số
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
@@ -402,7 +402,7 @@ export default function SuggestEditModal({
                       { base: 'base_charm', growth: 'growth_charm', label: 'Mị lực' },
                     ].map(({ base, growth, label }) => (
                       <div key={base} className="space-y-2">
-                        <label className="block text-sm text-gray-400">{label}</label>
+                        <label className="block text-sm text-[var(--text-secondary)]">{label}</label>
                         <div className="grid grid-cols-2 gap-2">
                           <div>
                             <input
@@ -411,14 +411,14 @@ export default function SuggestEditModal({
                               value={formData[base]}
                               onChange={(e) => handleFieldChange(base, e.target.value)}
                               placeholder="Cơ bản"
-                              className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none text-sm ${
+                              className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none text-sm ${
                                 isFieldChanged(base)
-                                  ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                                  : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                                  ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                                  : 'border-[var(--border)] focus:border-[var(--accent)]'
                               }`}
                             />
                             {isFieldChanged(base) && (
-                              <p className="text-xs text-[#d4af37] mt-1">
+                              <p className="text-xs text-[var(--accent)] mt-1">
                                 Từ: {getOldValue(base)}
                               </p>
                             )}
@@ -430,14 +430,14 @@ export default function SuggestEditModal({
                               value={formData[growth]}
                               onChange={(e) => handleFieldChange(growth, e.target.value)}
                               placeholder="Tăng trưởng"
-                              className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none text-sm ${
+                              className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none text-sm ${
                                 isFieldChanged(growth)
-                                  ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                                  : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                                  ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                                  : 'border-[var(--border)] focus:border-[var(--accent)]'
                               }`}
                             />
                             {isFieldChanged(growth) && (
-                              <p className="text-xs text-[#d4af37] mt-1">
+                              <p className="text-xs text-[var(--accent)] mt-1">
                                 Từ: {getOldValue(growth)}
                               </p>
                             )}
@@ -450,7 +450,7 @@ export default function SuggestEditModal({
 
                 {/* Troop Compatibility Section */}
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-4">
+                  <h3 className="text-sm font-semibold text-[var(--text-secondary)] mb-4">
                     Tương thích binh chủng
                   </h3>
                   <div className="grid grid-cols-5 gap-3">
@@ -464,10 +464,10 @@ export default function SuggestEditModal({
                           <select
                             value={formData[fieldName]}
                             onChange={(e) => handleFieldChange(fieldName, e.target.value)}
-                            className={`w-full px-2 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none text-sm ${
+                            className={`w-full px-2 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none text-sm ${
                               isFieldChanged(fieldName)
-                                ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                                : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                                ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                                : 'border-[var(--border)] focus:border-[var(--accent)]'
                             }`}
                           >
                             <option value="">-</option>
@@ -478,7 +478,7 @@ export default function SuggestEditModal({
                             ))}
                           </select>
                           {isFieldChanged(fieldName) && (
-                            <p className="text-xs text-[#d4af37] mt-1 text-center">
+                            <p className="text-xs text-[var(--accent)] mt-1 text-center">
                               Từ: {getOldValue(fieldName) || '-'}
                             </p>
                           )}
@@ -496,37 +496,37 @@ export default function SuggestEditModal({
               <>
                 {/* Basic Info Section */}
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-4">
+                  <h3 className="text-sm font-semibold text-[var(--text-secondary)] mb-4">
                     Thông tin cơ bản
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm text-gray-400 mb-1">Tên chiến pháp</label>
+                      <label className="block text-sm text-[var(--text-secondary)] mb-1">Tên chiến pháp</label>
                       <input
                         type="text"
                         value={formData.name}
                         onChange={(e) => handleFieldChange('name', e.target.value)}
-                        className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none ${
+                        className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none ${
                           isFieldChanged('name')
-                            ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                            : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                            ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                            : 'border-[var(--border)] focus:border-[var(--accent)]'
                         }`}
                       />
                       {isFieldChanged('name') && (
-                        <p className="text-xs text-[#d4af37] mt-1">
+                        <p className="text-xs text-[var(--accent)] mt-1">
                           Đã thay đổi từ: {getOldValue('name')}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label className="block text-sm text-gray-400 mb-1">Loại</label>
+                      <label className="block text-sm text-[var(--text-secondary)] mb-1">Loại</label>
                       <select
                         value={formData.type}
                         onChange={(e) => handleFieldChange('type', e.target.value)}
-                        className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none ${
+                        className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none ${
                           isFieldChanged('type')
-                            ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                            : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                            ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                            : 'border-[var(--border)] focus:border-[var(--accent)]'
                         }`}
                       >
                         {SKILL_TYPES.map((type) => (
@@ -536,20 +536,20 @@ export default function SuggestEditModal({
                         ))}
                       </select>
                       {isFieldChanged('type') && (
-                        <p className="text-xs text-[#d4af37] mt-1">
+                        <p className="text-xs text-[var(--accent)] mt-1">
                           Đã thay đổi từ: {skillTypeNames[getOldValue('type') as keyof typeof skillTypeNames]?.vi}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label className="block text-sm text-gray-400 mb-1">Chất lượng</label>
+                      <label className="block text-sm text-[var(--text-secondary)] mb-1">Chất lượng</label>
                       <select
                         value={formData.quality}
                         onChange={(e) => handleFieldChange('quality', e.target.value)}
-                        className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none ${
+                        className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none ${
                           isFieldChanged('quality')
-                            ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                            : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                            ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                            : 'border-[var(--border)] focus:border-[var(--accent)]'
                         }`}
                       >
                         <option value="">Chọn chất lượng</option>
@@ -560,25 +560,25 @@ export default function SuggestEditModal({
                         ))}
                       </select>
                       {isFieldChanged('quality') && (
-                        <p className="text-xs text-[#d4af37] mt-1">
+                        <p className="text-xs text-[var(--accent)] mt-1">
                           Đã thay đổi từ: {getOldValue('quality') || '(trống)'}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label className="block text-sm text-gray-400 mb-1">Tỷ lệ kích hoạt (%)</label>
+                      <label className="block text-sm text-[var(--text-secondary)] mb-1">Tỷ lệ kích hoạt (%)</label>
                       <input
                         type="number"
                         value={formData.trigger_rate}
                         onChange={(e) => handleFieldChange('trigger_rate', e.target.value)}
-                        className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none ${
+                        className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none ${
                           isFieldChanged('trigger_rate')
-                            ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                            : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                            ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                            : 'border-[var(--border)] focus:border-[var(--accent)]'
                         }`}
                       />
                       {isFieldChanged('trigger_rate') && (
-                        <p className="text-xs text-[#d4af37] mt-1">
+                        <p className="text-xs text-[var(--accent)] mt-1">
                           Đã thay đổi từ: {getOldValue('trigger_rate')}
                         </p>
                       )}
@@ -588,19 +588,19 @@ export default function SuggestEditModal({
 
                 {/* Effect Section */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-1">Hiệu ứng</label>
+                  <label className="block text-sm text-[var(--text-secondary)] mb-1">Hiệu ứng</label>
                   <textarea
                     rows={4}
                     value={formData.effect}
                     onChange={(e) => handleFieldChange('effect', e.target.value)}
-                    className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none resize-none ${
+                    className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none resize-none ${
                       isFieldChanged('effect')
-                        ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                        : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                        ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                        : 'border-[var(--border)] focus:border-[var(--accent)]'
                     }`}
                   />
                   {isFieldChanged('effect') && (
-                    <p className="text-xs text-[#d4af37] mt-1">
+                    <p className="text-xs text-[var(--accent)] mt-1">
                       Đã thay đổi từ: {getOldValue('effect') || '(trống)'}
                     </p>
                   )}
@@ -609,14 +609,14 @@ export default function SuggestEditModal({
                 {/* Target and Army Types */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm text-gray-400 mb-1">Mục tiêu</label>
+                    <label className="block text-sm text-[var(--text-secondary)] mb-1">Mục tiêu</label>
                     <select
                       value={formData.target}
                       onChange={(e) => handleFieldChange('target', e.target.value)}
-                      className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none ${
+                      className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none ${
                         isFieldChanged('target')
-                          ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                          : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                          ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                          : 'border-[var(--border)] focus:border-[var(--accent)]'
                       }`}
                     >
                       <option value="">Chọn mục tiêu</option>
@@ -627,13 +627,13 @@ export default function SuggestEditModal({
                       ))}
                     </select>
                     {isFieldChanged('target') && (
-                      <p className="text-xs text-[#d4af37] mt-1">
+                      <p className="text-xs text-[var(--accent)] mt-1">
                         Đã thay đổi từ: {getOldValue('target') || '(trống)'}
                       </p>
                     )}
                   </div>
                   <div>
-                    <label className="block text-sm text-gray-400 mb-1">
+                    <label className="block text-sm text-[var(--text-secondary)] mb-1">
                       Binh chủng (phân cách bằng dấu phẩy)
                     </label>
                     <input
@@ -641,14 +641,14 @@ export default function SuggestEditModal({
                       value={formData.army_types}
                       onChange={(e) => handleFieldChange('army_types', e.target.value)}
                       placeholder="cavalry,shield,archer"
-                      className={`w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border text-[#e0e0e0] focus:outline-none ${
+                      className={`w-full px-3 py-2 rounded-lg bg-[var(--bg)] border text-[var(--text-primary)] focus:outline-none ${
                         isFieldChanged('army_types')
-                          ? 'border-[#d4af37] ring-1 ring-[#d4af37]/30'
-                          : 'border-[#3a3a5c] focus:border-[#d4af37]'
+                          ? 'border-[var(--accent)] ring-1 ring-[var(--accent)]/30'
+                          : 'border-[var(--border)] focus:border-[var(--accent)]'
                       }`}
                     />
                     {isFieldChanged('army_types') && (
-                      <p className="text-xs text-[#d4af37] mt-1">
+                      <p className="text-xs text-[var(--accent)] mt-1">
                         Đã thay đổi từ: {getOldValue('army_types') || '(trống)'}
                       </p>
                     )}
@@ -659,7 +659,7 @@ export default function SuggestEditModal({
 
             {/* Reason */}
             <div>
-              <label className="block text-sm text-gray-400 mb-1">
+              <label className="block text-sm text-[var(--text-secondary)] mb-1">
                 Lý do thay đổi (tùy chọn)
               </label>
               <textarea
@@ -667,17 +667,17 @@ export default function SuggestEditModal({
                 value={reason}
                 onChange={(e) => setReason(e.target.value)}
                 placeholder="Giải thích lý do bạn muốn thay đổi thông tin này..."
-                className="w-full px-3 py-2 rounded-lg bg-[#1a1a2e] border border-[#3a3a5c] text-[#e0e0e0] focus:outline-none focus:border-[#d4af37] resize-none"
+                className="w-full px-3 py-2 rounded-lg bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)] resize-none"
               />
             </div>
           </form>
 
           {/* Footer */}
-          <div className="flex items-center justify-between px-6 py-4 border-t border-[#3a3a5c] bg-[#1a1a2e]/50">
-            <p className="text-sm text-gray-400">
+          <div className="flex items-center justify-between px-6 py-4 border-t border-[var(--border)] bg-[var(--bg)]/50">
+            <p className="text-sm text-[var(--text-secondary)]">
               {changedCount > 0 ? (
                 <>
-                  <span className="text-[#d4af37] font-medium">{changedCount}</span> trường đã thay đổi
+                  <span className="text-[var(--accent)] font-medium">{changedCount}</span> trường đã thay đổi
                 </>
               ) : (
                 'Chưa có thay đổi'
@@ -688,7 +688,7 @@ export default function SuggestEditModal({
                 type="button"
                 onClick={onClose}
                 disabled={isSubmitting}
-                className="px-4 py-2 text-gray-400 hover:text-white transition-colors disabled:opacity-50"
+                className="px-4 py-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors disabled:opacity-50"
               >
                 Hủy
               </button>
@@ -696,7 +696,7 @@ export default function SuggestEditModal({
                 type="submit"
                 onClick={handleSubmit}
                 disabled={isSubmitting || changedCount === 0}
-                className="px-6 py-2 bg-[#d4af37] text-black font-medium rounded-lg hover:bg-[#c9a432] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2 bg-[var(--accent)] text-white font-medium rounded-lg hover:bg-[var(--accent-hover)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Đang gửi...' : 'Gửi đề xuất'}
               </button>

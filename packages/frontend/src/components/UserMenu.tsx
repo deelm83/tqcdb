@@ -52,7 +52,7 @@ export default function UserMenu() {
               className="w-full h-full object-cover"
             />
           ) : (
-            <span className="text-sm font-medium text-[var(--accent-gold)]">
+            <span className="text-sm font-medium text-[var(--accent)]">
               {avatarFallback}
             </span>
           )}

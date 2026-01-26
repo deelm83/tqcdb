@@ -69,7 +69,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           </button>
 
           {/* Title */}
-          <h2 className="text-2xl font-bold text-center mb-8 text-[var(--accent-gold)]">
+          <h2 className="text-2xl font-bold text-center mb-8 text-[var(--accent)]">
             Đăng nhập
           </h2>
 
@@ -165,12 +165,12 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                   value={devName}
                   onChange={(e) => setDevName(e.target.value)}
                   placeholder="Tên hiển thị (tuỳ chọn)"
-                  className="w-full px-4 py-2 bg-[var(--bg)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:border-[var(--accent-gold)] focus:outline-none"
+                  className="w-full px-4 py-2 bg-[var(--bg)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:border-[var(--accent)] focus:outline-none"
                 />
                 <button
                   onClick={handleDevLogin}
                   disabled={loadingProvider !== null}
-                  className="w-full flex items-center justify-center gap-3 px-6 py-3 bg-[var(--accent-gold)] text-black rounded-lg font-medium hover:bg-[var(--accent-gold-bright)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-3 px-6 py-3 bg-[var(--accent)] text-white rounded-lg font-medium hover:bg-[var(--accent-hover)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loadingProvider === 'dev' ? (
                     <>
@@ -196,7 +196,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
           {/* Terms */}
           <p className="mt-6 text-center text-sm text-[var(--text-secondary)]">
             Bằng việc đăng nhập, bạn đồng ý với<br />
-            <a href="#" className="text-[var(--accent-gold)] hover:underline">
+            <a href="#" className="text-[var(--accent)] hover:underline">
               điều khoản sử dụng
             </a>
             .

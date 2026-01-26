@@ -260,7 +260,7 @@ export default function AdminFormationsPage() {
                                 COST: <span style={{ fontFamily: "'Comic Sans MS', 'Comic Neue', cursive" }} className="font-bold">{formation.totalCost}</span>
                               </span>
                               {formation.isCurated && (
-                                <span className="px-2 py-0.5 text-xs font-medium bg-[var(--accent-gold)]/20 text-[var(--accent-gold)] border border-[var(--accent-gold)]">
+                                <span className="px-2 py-0.5 text-xs font-medium bg-[var(--accent)]/20 text-[var(--accent)] border border-[var(--accent)]">
                                   Đề xuất
                                 </span>
                               )}
@@ -290,7 +290,7 @@ export default function AdminFormationsPage() {
                             </Link>
                             <button
                               onClick={() => handleToggleCurated(formation)}
-                              className="text-sm text-[var(--accent-gold)] hover:text-[var(--accent-gold)]/80"
+                              className="text-sm text-[var(--accent)] hover:text-[var(--accent)]/80"
                             >
                               {formation.isCurated ? 'Bỏ đề xuất' : 'Đánh dấu đề xuất'}
                             </button>

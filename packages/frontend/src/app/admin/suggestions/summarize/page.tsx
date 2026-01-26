@@ -116,14 +116,14 @@ function SummarizeContent() {
           <div>
             <button
               onClick={() => router.back()}
-              className="text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors mb-4 flex items-center gap-2"
+              className="text-[var(--text-tertiary)] hover:text-[var(--accent)] transition-colors mb-4 flex items-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Quay lại
             </button>
-            <h1 className="text-2xl font-bold text-[var(--accent-gold)] uppercase tracking-wider">
+            <h1 className="text-2xl font-bold text-[var(--accent)]">
               AI Tổng hợp đề xuất
             </h1>
           </div>
@@ -156,7 +156,7 @@ function SummarizeContent() {
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold text-[var(--text-primary)]">Tổng quan</h2>
                 <span className="text-sm text-[var(--text-tertiary)]">
-                  {result.suggestions_count} đề xuất cho {result.entity_type === 'general' ? 'võ tướng' : 'chiến pháp'}: <strong className="text-[var(--accent-gold)]">{result.entity_id}</strong>
+                  {result.suggestions_count} đề xuất cho {result.entity_type === 'general' ? 'võ tướng' : 'chiến pháp'}: <strong className="text-[var(--accent)]">{result.entity_id}</strong>
                 </span>
               </div>
               <p className="text-[var(--text-secondary)] leading-relaxed">{result.summary.summary}</p>
@@ -180,7 +180,7 @@ function SummarizeContent() {
                         </div>
                         <div>
                           <span className="text-xs text-[var(--text-tertiary)] block mb-1">Giá trị mới</span>
-                          <span className="text-[var(--accent-gold)] font-medium">{String(change.new)}</span>
+                          <span className="text-[var(--accent)] font-medium">{String(change.new)}</span>
                         </div>
                       </div>
                       <p className="text-sm text-[var(--text-secondary)] bg-[var(--bg-secondary)] rounded p-3">
@@ -208,7 +208,7 @@ function SummarizeContent() {
                               <span className="text-xs text-[var(--text-tertiary)]">
                                 {suggestion.users.join(', ')}
                               </span>
-                              <span className="px-2 py-0.5 bg-[var(--accent-gold)]/20 text-[var(--accent-gold)] text-xs rounded-full">
+                              <span className="px-2 py-0.5 bg-[var(--accent)]/20 text-[var(--accent)] text-xs rounded-full">
                                 {suggestion.count} phiếu
                               </span>
                             </div>
@@ -241,7 +241,7 @@ function SummarizeContent() {
                     router.push(`/admin/skills/${result.entity_id}`);
                   }
                 }}
-                className="px-6 py-2 bg-[var(--accent-gold)] text-black font-medium rounded-lg hover:opacity-90 transition-opacity"
+                className="px-6 py-2 bg-[var(--accent)] text-black font-medium rounded-lg hover:opacity-90 transition-opacity"
               >
                 Áp dụng thay đổi
               </button>
@@ -258,10 +258,10 @@ export default function SummarizePage() {
     <Suspense fallback={
       <main className="min-h-screen bg-[var(--bg)] py-8">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-8 w-48 bg-[var(--bg-secondary)] animate-pulse mb-6" />
+          <div className="h-8 w-48 bg-[var(--bg-secondary)] shimmer mb-6" />
           <div className="card p-6 space-y-4">
-            <div className="h-6 bg-[var(--bg-secondary)] animate-pulse" />
-            <div className="h-24 bg-[var(--bg-secondary)] animate-pulse" />
+            <div className="h-6 bg-[var(--bg-secondary)] shimmer" />
+            <div className="h-24 bg-[var(--bg-secondary)] shimmer" />
           </div>
         </div>
       </main>

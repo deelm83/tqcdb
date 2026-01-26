@@ -4,13 +4,13 @@ import { ConditionalHeader, ConditionalBackToTop } from "@/components/Conditiona
 import ScrollToTop from "@/components/ScrollToTop";
 import { UserProvider } from "@/contexts/UserContext";
 
-// Google Fonts - Noto Serif for elegant names
-import { Noto_Serif } from 'next/font/google';
+// Google Fonts
+import { Be_Vietnam_Pro } from 'next/font/google';
 
-const serif = Noto_Serif({
-  weight: ['400', '700'],
+const beVietnamPro = Be_Vietnam_Pro({
+  weight: ['400', '500', '600', '700'],
   subsets: ['latin', 'vietnamese'],
-  variable: '--font-serif',
+  variable: '--font-body',
   display: 'swap',
 });
 
@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body className={`antialiased ${serif.variable}`}>
+      <body className={`antialiased ${beVietnamPro.variable}`}>
         <UserProvider>
           <ScrollToTop />
           <ConditionalHeader />

@@ -53,8 +53,8 @@ export default function ImageDropzone({ onFilesSelected }: ImageDropzoneProps) {
       className={`
         relative border-2 border-dashed rounded-lg p-8 text-center transition-all cursor-pointer
         ${isDragging
-          ? 'border-[#d4af37] bg-[#d4af37]/10'
-          : 'border-[#3a3a5c] hover:border-[#d4af37] hover:bg-[#3a3a5c]/20'
+          ? 'border-[var(--accent)] bg-[var(--accent-light)]'
+          : 'border-[var(--border)] hover:border-[var(--accent)] hover:bg-[var(--bg-secondary)]'
         }
       `}
     >

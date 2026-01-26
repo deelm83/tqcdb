@@ -1,27 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  /* Total War: Three Kingdoms inspired palette */
-  --bg: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-tertiary: #1a1a1a;
-  --bg-elevated: #222222;
+  /* Backgrounds - light, clean */
+  --bg: #FAFAF8;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F5F3F0;
+  --bg-elevated: #FFFFFF;
 
-  /* Text - warm cream tones */
-  --text-primary: #e8e0d5;
-  --text-secondary: #9a9084;
-  --text-tertiary: #5c574f;
+  /* Text - warm dark tones */
+  --text-primary: #1C1917;
+  --text-secondary: #57534E;
+  --text-tertiary: #78716C;
 
   /* Borders */
-  --border: #2a2520;
-  --border-light: #3d362e;
+  --border: #E8E5E0;
+  --border-light: #D1CCC4;
+  --border-accent: rgba(185, 28, 28, 0.2);
 
-  /* Accent colors */
-  --accent-red: #8b1a1a;
-  --accent-red-bright: #b22222;
-  --accent-gold: #c9a227;
-  --accent-gold-bright: #d4af37;
-  --accent-gold-dim: #8b7355;
+  /* Accent - crimson */
+  --accent: #B91C1C;
+  --accent-hover: #991B1B;
+  --accent-light: #FEF2F2;
+  --accent-dim: #DC2626;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+  /* Fonts */
+  --font-body: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
 }
 
 * {
@@ -32,13 +40,13 @@
 body {
   background: var(--bg);
   color: var(--text-primary);
-  font-family: 'Noto Sans', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
-  font-size: 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
   line-height: 1.6;
 }
 
 ::selection {
-  background: rgba(201, 162, 39, 0.3);
+  background: rgba(185, 28, 28, 0.15);
 }
 
 /* Scrollbar */
@@ -47,19 +55,19 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: var(--bg-tertiary);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--border-light);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-gold-dim);
+  background: #A8A29E;
 }
 
 /* Focus */
 :focus-visible {
-  outline: 2px solid var(--accent-gold);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -67,9 +75,10 @@ body {
 input, textarea, select {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 6px;
   color: var(--text-primary);
-  font-size: 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
   transition: all 0.2s ease;
 }
 
@@ -79,8 +88,8 @@ input:hover, textarea:hover, select:hover {
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: var(--accent-gold);
-  box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.2);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.1);
 }
 
 input::placeholder, textarea::placeholder {
@@ -102,58 +111,113 @@ button {
   transition: all 0.2s ease;
 }
 
-/* Cards - with subtle gold border accent */
+/* ==========================================
+   CARD SYSTEM
+   ========================================== */
+
 .card {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  border-radius: 8px;
+  transition: all 0.25s ease;
 }
 .card:hover {
   border-color: var(--border-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-interactive {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.card-interactive:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* ==========================================
+   BUTTON SYSTEM
+   ========================================== */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid var(--border-accent);
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+.btn-secondary:hover {
+  background: var(--accent-light);
+  border-color: var(--accent);
+}
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--border-light);
   background: var(--bg-tertiary);
+  color: var(--text-primary);
 }
 
-/* Gold accent card */
-.card-gold {
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(201, 162, 39, 0.05) 100%);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  position: relative;
-}
-.card-gold::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-}
+/* ==========================================
+   SPINNER & LOADING
+   ========================================== */
 
-/* Red accent card */
-.card-red {
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(139, 26, 26, 0.1) 100%);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  position: relative;
-}
-.card-red::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
-}
-
-/* Spinner */
 .spinner {
   width: 16px;
   height: 16px;
   border: 2px solid var(--border);
-  border-top-color: var(--accent-gold);
+  border-top-color: var(--accent);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -162,40 +226,85 @@ button {
   to { transform: rotate(360deg); }
 }
 
-/* Fade in */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 25%,
+    var(--border) 50%,
+    var(--bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 6px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 .animate-in {
-  animation: fadeIn 0.3s ease forwards;
+  animation: fadeIn 0.4s ease forwards;
 }
 
-/* Badge */
+@keyframes slideUp {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-slide-up {
+  animation: slideUp 0.4s ease forwards;
+}
+
+/* Modal animations */
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Pulse accent */
+@keyframes pulse-accent {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(185, 28, 28, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(185, 28, 28, 0); }
+}
+.pulse-accent {
+  animation: pulse-accent 2s ease-in-out infinite;
+}
+
+/* ==========================================
+   BADGE & PILL
+   ========================================== */
+
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 3px 8px;
-  border-radius: 2px;
+  padding: 3px 10px;
+  border-radius: 4px;
   font-size: 11px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   background: var(--bg-tertiary);
   color: var(--text-secondary);
   border: 1px solid var(--border);
 }
 
-/* Pill - neutral base, color from utility class */
 .pill {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
-  border-radius: 2px;
+  padding: 4px 12px;
+  border-radius: 4px;
   font-size: 11px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   background: var(--bg-tertiary);
   border: 1px solid var(--border);
   transition: all 0.2s ease;
@@ -205,49 +314,10 @@ button {
   border-color: var(--border-light);
 }
 
-/* Button primary - gold */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  background: linear-gradient(180deg, var(--accent-gold-bright) 0%, var(--accent-gold) 100%);
-  color: #0a0a0a;
-  font-weight: 600;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border: none;
-  border-radius: 2px;
-  transition: all 0.2s ease;
-}
-.btn-primary:hover {
-  filter: brightness(1.1);
-  transform: translateY(-1px);
-}
+/* ==========================================
+   DIVIDERS
+   ========================================== */
 
-/* Button secondary - red */
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  background: linear-gradient(180deg, var(--accent-red-bright) 0%, var(--accent-red) 100%);
-  color: var(--text-primary);
-  font-weight: 600;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border: none;
-  border-radius: 2px;
-  transition: all 0.2s ease;
-}
-.btn-secondary:hover {
-  filter: brightness(1.1);
-  transform: translateY(-1px);
-}
-
-/* Divider with ornament */
 .divider {
   display: flex;
   align-items: center;
@@ -259,116 +329,72 @@ button {
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+  background: var(--border);
 }
 
-/* Gold text */
-.text-gold {
-  color: var(--accent-gold);
+/* ==========================================
+   TEXT UTILITIES
+   ========================================== */
+
+.text-accent {
+  color: var(--accent);
 }
 
-/* Red text */
-.text-red {
-  color: var(--accent-red-bright);
-}
+/* ==========================================
+   SECTION HEADER
+   ========================================== */
 
-/* Glow effects */
-.glow-gold {
-  box-shadow: 0 0 20px rgba(201, 162, 39, 0.2);
-}
-
-.glow-red {
-  box-shadow: 0 0 20px rgba(178, 34, 34, 0.2);
-}
-
-/* Section header */
 .section-header {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--accent-gold);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
   margin-bottom: 16px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border);
 }
 
-/* Elegant serif font for general names */
-.font-serif {
-  font-family: var(--font-serif), 'Noto Serif', Georgia, serif;
+/* ==========================================
+   ADMIN TABLE STYLES
+   ========================================== */
+
+.admin-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
 }
 
-/* Game-inspired faction banner */
-.faction-banner {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  font-size: 12px;
+.admin-table thead th {
+  background: var(--bg-tertiary);
+  color: var(--accent);
+  font-size: 13px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  border: 1px solid;
-  position: relative;
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
 }
 
-.faction-banner::before,
-.faction-banner::after {
-  content: '◆';
-  font-size: 8px;
-  opacity: 0.6;
+.admin-table tbody tr {
+  transition: background 0.15s ease;
 }
 
-.faction-banner-wei {
-  background: linear-gradient(180deg, rgba(37, 99, 235, 0.15) 0%, rgba(30, 64, 175, 0.25) 100%);
-  border-color: rgba(59, 130, 246, 0.5);
-  color: #60a5fa;
+.admin-table tbody tr:nth-child(even) {
+  background: var(--bg-tertiary);
 }
 
-.faction-banner-shu {
-  background: linear-gradient(180deg, rgba(34, 197, 94, 0.15) 0%, rgba(21, 128, 61, 0.25) 100%);
-  border-color: rgba(34, 197, 94, 0.5);
-  color: #4ade80;
+.admin-table tbody tr:hover {
+  background: #F0EDE8;
 }
 
-.faction-banner-wu {
-  background: linear-gradient(180deg, rgba(239, 68, 68, 0.15) 0%, rgba(185, 28, 28, 0.25) 100%);
-  border-color: rgba(239, 68, 68, 0.5);
-  color: #f87171;
+.admin-table tbody td {
+  padding: 12px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
 }
 
-.faction-banner-qun {
-  background: linear-gradient(180deg, rgba(234, 179, 8, 0.15) 0%, rgba(161, 98, 7, 0.25) 100%);
-  border-color: rgba(234, 179, 8, 0.5);
-  color: #fbbf24;
-}
-
-/* Game-inspired cost diamond */
-.cost-seal {
-  position: relative;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cost-seal-inner {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: 900;
-  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
-  color: #ffffff;
-  background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 50%, #450a0a 100%);
-  border: 2px solid #b91c1c;
-  transform: rotate(45deg);
-  box-shadow: 0 2px 8px rgba(127, 29, 29, 0.6);
-}
-
-.cost-seal-inner span {
-  transform: rotate(-45deg);
+.admin-table tbody tr:last-child td {
+  border-bottom: none;
 }

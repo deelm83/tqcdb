@@ -56,21 +56,21 @@ export const skillTypeNames: Record<SkillTypeId, { cn: string; vi: string }> = {
 
 // Skill type colors - TW3K inspired
 export const skillTypeColors: Record<SkillTypeId, { text: string }> = {
-  command: { text: 'text-yellow-400' },
-  active: { text: 'text-red-400' },
-  assault: { text: 'text-orange-400' },
-  passive: { text: 'text-blue-400' },
-  formation: { text: 'text-purple-400' },
-  troop: { text: 'text-green-400' },
-  internal: { text: 'text-cyan-400' },
+  command: { text: 'text-amber-600' },
+  active: { text: 'text-red-600' },
+  assault: { text: 'text-orange-600' },
+  passive: { text: 'text-blue-600' },
+  formation: { text: 'text-purple-600' },
+  troop: { text: 'text-green-600' },
+  internal: { text: 'text-cyan-600' },
   unknown: { text: 'text-[var(--text-tertiary)]' },
 };
 
-// Quality colors - gold for S, red for A
+// Quality colors - orange for S, purple for A
 export const qualityColors: Record<string, string> = {
-  S: 'text-[var(--accent-gold)]',
-  A: 'text-[var(--accent-red-bright)]',
-  B: 'text-blue-400',
+  S: 'text-orange-600',
+  A: 'text-purple-600',
+  B: 'text-sky-600',
   C: 'text-[var(--text-tertiary)]',
 };
 

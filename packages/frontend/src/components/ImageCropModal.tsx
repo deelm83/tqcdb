@@ -55,14 +55,14 @@ export default function ImageCropModal({
   }, [isProcessing, croppedAreaPixels]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-      <div className="bg-stone-800 rounded-lg w-full max-w-md border border-stone-600 shadow-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+      <div className="bg-[var(--bg-secondary)] rounded-lg w-full max-w-md border border-[var(--border)] shadow-xl">
         {/* Header */}
-        <div className="px-4 py-3 border-b border-stone-600 flex justify-between items-center">
-          <h2 className="text-stone-100 font-medium">Cắt ảnh đại diện</h2>
+        <div className="px-4 py-3 border-b border-[var(--border)] flex justify-between items-center">
+          <h2 className="text-[var(--text-primary)] font-medium">Cắt ảnh đại diện</h2>
           <button
             onClick={onCancel}
-            className="text-stone-400 hover:text-stone-200"
+            className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"
             disabled={isProcessing}
           >
             ✕
@@ -71,7 +71,7 @@ export default function ImageCropModal({
 
         {/* Crop Area */}
         <div className="p-4">
-          <div className="relative h-80 bg-stone-900 rounded overflow-hidden">
+          <div className="relative h-80 bg-[var(--bg)] rounded overflow-hidden">
             <Cropper
               image={imageSrc}
               crop={crop}
@@ -90,7 +90,7 @@ export default function ImageCropModal({
 
           {/* Zoom Slider */}
           <div className="mt-4 flex items-center gap-3">
-            <span className="text-stone-400 text-sm">Thu phóng</span>
+            <span className="text-[var(--text-tertiary)] text-sm">Thu phóng</span>
             <input
               type="range"
               min={1}
@@ -98,24 +98,24 @@ export default function ImageCropModal({
               step={0.1}
               value={zoom}
               onChange={(e) => setZoom(Number(e.target.value))}
-              className="flex-1 h-2 bg-stone-700 rounded-lg appearance-none cursor-pointer"
+              className="flex-1 h-2 bg-[var(--bg-tertiary)] rounded-lg appearance-none cursor-pointer"
               disabled={isProcessing}
             />
           </div>
         </div>
 
         {/* Footer */}
-        <div className="px-4 py-3 border-t border-stone-600 flex justify-end gap-2">
+        <div className="px-4 py-3 border-t border-[var(--border)] flex justify-end gap-2">
           <button
             onClick={onCancel}
-            className="px-4 py-2 text-stone-300 hover:text-stone-100 rounded"
+            className="px-4 py-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] rounded"
             disabled={isProcessing}
           >
             Hủy
           </button>
           <button
             onClick={handleConfirm}
-            className="px-4 py-2 bg-amber-600 hover:bg-amber-500 text-white rounded font-medium disabled:opacity-50"
+            className="px-4 py-2 bg-[var(--accent-dim)] hover:bg-[var(--accent)] text-white rounded font-medium disabled:opacity-50"
             disabled={isProcessing || !croppedAreaPixels}
           >
             {isProcessing ? 'Đang xử lý...' : 'Cắt ảnh'}

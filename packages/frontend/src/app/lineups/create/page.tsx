@@ -138,7 +138,7 @@ export default function CreateLineupPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex min-h-[400px] items-center justify-center">
           <div className="text-center">
-            <div className="mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4 border-[var(--accent-gold)] border-t-transparent"></div>
+            <div className="mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4 border-[var(--accent)] border-t-transparent"></div>
             <p className="text-[var(--text-secondary)]">Đang tải...</p>
           </div>
         </div>
@@ -189,7 +189,7 @@ export default function CreateLineupPage() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Ví dụ: Dàn trận PVP Season 3"
-            className="w-full rounded border border-[var(--border)] bg-[var(--bg-secondary)] px-4 py-3 text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:border-[var(--accent-gold)] focus:outline-none"
+            className="w-full rounded border border-[var(--border)] bg-[var(--bg-secondary)] px-4 py-3 text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:border-[var(--accent)] focus:outline-none"
           />
         </div>
 
@@ -215,7 +215,7 @@ export default function CreateLineupPage() {
             <button
               onClick={handleCreate}
               disabled={creating || !name.trim() || selectedFormationIds.length === 0 || generalConflicts.length > 0}
-              className="rounded bg-[var(--accent-gold)] px-6 py-2 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--accent-gold)]/80 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded bg-[var(--accent)] px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {creating ? 'Đang tạo...' : 'Tạo Dàn Trận'}
             </button>
@@ -245,7 +245,7 @@ export default function CreateLineupPage() {
           </p>
           <Link
             href="/formations/create"
-            className="inline-block rounded bg-[var(--accent-gold)] px-6 py-2.5 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--accent-gold)]/80"
+            className="inline-block rounded bg-[var(--accent)] px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--accent-hover)]"
           >
             Tạo Đội Hình
           </Link>
@@ -269,7 +269,7 @@ export default function CreateLineupPage() {
                     isSelected
                       ? isConflicted
                         ? 'border-red-500/50 bg-red-500/10'
-                        : 'border-[var(--accent-gold)] bg-[var(--accent-gold)]/10'
+                        : 'border-[var(--accent)] bg-[var(--accent)]/10'
                       : isConflicted
                       ? 'border-red-500/30 bg-red-500/5 opacity-50 cursor-not-allowed'
                       : 'border-[var(--border)] bg-[var(--bg-secondary)]/50 hover:border-[var(--border)]'
@@ -285,9 +285,9 @@ export default function CreateLineupPage() {
                         <span className="text-[var(--text-secondary)]">COST: {formation.totalCost}</span>
                       </div>
                     </div>
-                    <div className={`rounded-full border-2 p-0.5 ${isSelected ? 'border-[var(--accent-gold)]' : 'border-[var(--border)]'}`}>
+                    <div className={`rounded-full border-2 p-0.5 ${isSelected ? 'border-[var(--accent)]' : 'border-[var(--border)]'}`}>
                       {isSelected && (
-                        <svg className="h-5 w-5 text-[var(--accent-gold)]" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="h-5 w-5 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                       )}
@@ -306,7 +306,7 @@ export default function CreateLineupPage() {
                             className="h-12 w-full rounded object-cover"
                           />
                         )}
-                        <p className="mt-1 truncate font-serif text-xs text-[var(--text-secondary)]">{fg.generalName || 'Trống'}</p>
+                        <p className="mt-1 truncate text-xs text-[var(--text-secondary)]">{fg.generalName || 'Trống'}</p>
                       </div>
                     ))}
                   </div>

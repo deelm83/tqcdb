@@ -8,9 +8,9 @@ interface SearchBarProps {
 
 export default function SearchBar({ value, onChange, placeholder = 'Tìm kiếm...' }: SearchBarProps) {
   return (
-    <div className="relative">
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)]">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <div className="relative group">
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)] transition-colors group-focus-within:text-[var(--accent)]">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="11" cy="11" r="8" />
           <path d="m21 21-4.35-4.35" />
         </svg>
@@ -20,7 +20,7 @@ export default function SearchBar({ value, onChange, placeholder = 'Tìm kiếm.
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full h-12 pl-12 pr-10 bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:border-[var(--accent-gold)] focus:outline-none transition-colors"
+        className="w-full h-12 pl-13 pr-10 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-lg text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_rgba(185,28,28,0.1)] focus:outline-none transition-all"
       />
       {value && (
         <button

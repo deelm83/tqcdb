@@ -225,7 +225,7 @@ export default function AdminSuggestionDetailPage() {
                 {getStatusBadge(suggestion.status)}
                 {getEntityTypeBadge(suggestion.entity_type)}
               </div>
-              <h1 className="text-2xl font-bold text-[var(--accent-gold)]">
+              <h1 className="text-2xl font-bold text-[var(--accent)]">
                 Đề xuất chỉnh sửa: {entityName}
               </h1>
             </div>
@@ -250,7 +250,7 @@ export default function AdminSuggestionDetailPage() {
         {/* Reason Card */}
         {suggestion.reason && (
           <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-6 mb-6">
-            <h2 className="text-sm font-semibold text-[var(--text-tertiary)] uppercase tracking-wide mb-3">
+            <h2 className="text-sm font-semibold text-[var(--text-tertiary)] mb-3">
               Lý do thay đổi
             </h2>
             <p className="text-[var(--text-primary)] leading-relaxed">{suggestion.reason}</p>
@@ -259,7 +259,7 @@ export default function AdminSuggestionDetailPage() {
 
         {/* Diff View */}
         <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-6 mb-6">
-          <h2 className="text-sm font-semibold text-[var(--text-tertiary)] uppercase tracking-wide mb-4">
+          <h2 className="text-sm font-semibold text-[var(--text-tertiary)] mb-4">
             So sánh thay đổi
           </h2>
 
@@ -298,7 +298,7 @@ export default function AdminSuggestionDetailPage() {
           {/* Arrow between columns */}
           <div className="flex justify-center -mt-4 mb-4 pointer-events-none">
             <div className="w-12 h-12 bg-[var(--bg-secondary)] border border-[var(--border)] rounded-full flex items-center justify-center">
-              <svg className="w-6 h-6 text-[var(--accent-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </div>
@@ -309,7 +309,7 @@ export default function AdminSuggestionDetailPage() {
         {relatedSuggestions.length > 0 && (
           <div className="bg-[var(--bg-secondary)] border border-[var(--border)] rounded-xl p-6 mb-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-sm font-semibold text-[var(--text-tertiary)] uppercase tracking-wide">
+              <h2 className="text-sm font-semibold text-[var(--text-tertiary)]">
                 Đề xuất khác cho {entityName}
               </h2>
               <span className="text-xs text-[var(--text-tertiary)]">{relatedSuggestions.length} đề xuất khác đang chờ</span>
@@ -327,14 +327,14 @@ export default function AdminSuggestionDetailPage() {
                     />
                     <div>
                       <p className="text-sm text-[var(--text-primary)]">
-                        {related.user.display_name} - <span className="text-[var(--accent-gold)]">{Object.keys(related.changes).join(', ')}</span>
+                        {related.user.display_name} - <span className="text-[var(--accent)]">{Object.keys(related.changes).join(', ')}</span>
                       </p>
                       <p className="text-xs text-[var(--text-tertiary)]">{formatTimeAgo(related.created_at)}</p>
                     </div>
                   </div>
                   <Link
                     href={`/admin/suggestions/${related.id}`}
-                    className="text-sm text-[var(--accent-gold)] hover:underline"
+                    className="text-sm text-[var(--accent)] hover:underline"
                   >
                     Xem
                   </Link>

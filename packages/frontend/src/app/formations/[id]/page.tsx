@@ -71,7 +71,7 @@ export default function FormationDetailPage() {
   if (loading) {
     return (
       <main className="max-w-6xl mx-auto px-6 py-8">
-        <div className="card p-8 animate-pulse">
+        <div className="card p-8 shimmer">
           <div className="h-8 w-48 bg-[var(--bg-secondary)] mb-4" />
           <div className="h-64 bg-[var(--bg-secondary)]" />
         </div>
@@ -82,7 +82,7 @@ export default function FormationDetailPage() {
   if (error || !formation) {
     return (
       <main className="max-w-6xl mx-auto px-6 py-8">
-        <div className="card-red p-4">
+        <div className="card p-4">
           <span className="text-red-400">{error || 'Không tìm thấy đội hình'}</span>
         </div>
       </main>
@@ -117,13 +117,13 @@ export default function FormationDetailPage() {
       </div>
 
       {/* Formation Canvas */}
-      <div className="card-gold p-6 mb-6">
+      <div className="card p-6 mb-6">
         {/* Generals */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           {generals.map((gen, idx) => (
             <div key={idx} className="card p-4">
               {/* Role Label */}
-              <div className={`text-[13px] mb-3 uppercase tracking-wider text-center ${idx === 0 ? 'text-[var(--accent-gold)]' : 'text-[var(--text-secondary)]'}`}>
+              <div className={`text-[13px] mb-3  text-center ${idx === 0 ? 'text-[var(--accent)]' : 'text-[var(--text-secondary)]'}`}>
                 {idx === 0 ? 'Chủ Tướng' : 'Phó Tướng'}
               </div>
               {/* General Image */}
@@ -144,16 +144,16 @@ export default function FormationDetailPage() {
               {/* General Info */}
               {gen.generalName && (
                 <div className="text-center mb-3">
-                  <h3 className="font-serif font-semibold text-[17px] text-[var(--text-primary)]">
+                  <h3 className="font-semibold text-[17px] text-[var(--text-primary)]">
                     {gen.generalName}
                   </h3>
                   <div className="flex items-center justify-center gap-2 mt-1">
                     {gen.generalGrade && (
                       <span className={`text-[13px] font-bold ${
-                        gen.generalGrade === 'S' ? 'text-orange-400' :
-                        gen.generalGrade === 'A' ? 'text-purple-400' :
-                        gen.generalGrade === 'B' ? 'text-sky-400' :
-                        'text-cyan-300'
+                        gen.generalGrade === 'S' ? 'text-orange-600' :
+                        gen.generalGrade === 'A' ? 'text-purple-600' :
+                        gen.generalGrade === 'B' ? 'text-sky-600' :
+                        'text-cyan-600'
                       }`}>
                         [{gen.generalGrade}]
                       </span>
@@ -172,14 +172,14 @@ export default function FormationDetailPage() {
                 {/* Innate Skill */}
                 {gen.innateSkillName && (
                   <div className="border-t border-[var(--border)] pt-3">
-                    <div className="text-[11px] text-[var(--text-tertiary)] mb-1 uppercase">Tự mang:</div>
+                    <div className="text-[11px] text-[var(--text-tertiary)] mb-1">Tự mang:</div>
                     <div className="text-[13px] text-[var(--text-primary)]">{gen.innateSkillName}</div>
                   </div>
                 )}
 
                 {/* Skill 1 */}
                 <div className="border-t border-[var(--border)] pt-3">
-                  <div className="text-[11px] text-[var(--text-tertiary)] mb-1 uppercase">Chiến pháp 1:</div>
+                  <div className="text-[11px] text-[var(--text-tertiary)] mb-1">Chiến pháp 1:</div>
                   {gen.skill1Name ? (
                     <div className="text-[13px] text-[var(--text-primary)]">{gen.skill1Name}</div>
                   ) : (
@@ -189,7 +189,7 @@ export default function FormationDetailPage() {
 
                 {/* Skill 2 */}
                 <div className="border-t border-[var(--border)] pt-3">
-                  <div className="text-[11px] text-[var(--text-tertiary)] mb-1 uppercase">Chiến pháp 2:</div>
+                  <div className="text-[11px] text-[var(--text-tertiary)] mb-1">Chiến pháp 2:</div>
                   {gen.skill2Name ? (
                     <div className="text-[13px] text-[var(--text-primary)]">{gen.skill2Name}</div>
                   ) : (
@@ -235,7 +235,7 @@ export default function FormationDetailPage() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-[var(--text-primary)]">Bình chọn</h3>
             {formation.rank && (
-              <div className="text-[var(--accent-gold)] font-bold text-[18px]">
+              <div className="text-[var(--accent)] font-bold text-[18px]">
                 Vị trí: #{formation.rank}
               </div>
             )}

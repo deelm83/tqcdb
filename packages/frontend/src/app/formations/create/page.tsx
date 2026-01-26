@@ -55,10 +55,10 @@ const ArmyTypeIcon = ({ type, className = 'w-4 h-4' }: { type: ArmyType; classNa
 };
 
 const factionColors: Record<string, string> = {
-  wei: 'text-blue-400',
-  shu: 'text-green-400',
-  wu: 'text-red-400',
-  qun: 'text-yellow-400',
+  wei: 'text-blue-600',
+  shu: 'text-green-600',
+  wu: 'text-red-600',
+  qun: 'text-amber-600',
 };
 
 const factionLabels: Record<string, string> = {
@@ -148,7 +148,7 @@ export default function FormationCreatePage() {
     return sum + (slot.general?.cost || 0);
   }, 0);
 
-  const costColor = totalCost > 21 ? 'text-red-400' : totalCost === 21 ? 'text-yellow-400' : 'text-[var(--text-primary)]';
+  const costColor = totalCost > 21 ? 'text-red-600' : totalCost === 21 ? 'text-amber-600' : 'text-[var(--text-primary)]';
 
   // Get army grade for a general based on selected army type
   const getArmyGrade = (general: General): string | undefined => {
@@ -161,10 +161,10 @@ export default function FormationCreatePage() {
   const getGradeColor = (grade: string | undefined): string => {
     if (!grade) return 'text-[var(--text-tertiary)]';
     switch (grade) {
-      case 'S': return 'text-orange-400';
-      case 'A': return 'text-purple-400';
-      case 'B': return 'text-sky-400';
-      case 'C': return 'text-cyan-300';
+      case 'S': return 'text-orange-600';
+      case 'A': return 'text-purple-600';
+      case 'B': return 'text-sky-600';
+      case 'C': return 'text-cyan-600';
       default: return 'text-[var(--text-tertiary)]';
     }
   };
@@ -368,7 +368,7 @@ export default function FormationCreatePage() {
   if (loading) {
     return (
       <main className="max-w-6xl mx-auto px-6 py-8">
-        <div className="card p-8 animate-pulse">
+        <div className="card p-8 shimmer">
           <div className="h-8 w-48 bg-[var(--bg-secondary)] mb-4" />
           <div className="h-64 bg-[var(--bg-secondary)]" />
         </div>
@@ -381,7 +381,7 @@ export default function FormationCreatePage() {
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
-          <h1 className="text-2xl font-bold text-[var(--accent-gold)] uppercase tracking-wider">Tạo Đội Hình</h1>
+          <h1 className="text-2xl font-bold text-[var(--accent)] ">Tạo Đội Hình</h1>
           <div className="flex items-center gap-3">
             <button
               onClick={() => router.back()}
@@ -392,7 +392,7 @@ export default function FormationCreatePage() {
             {!user && (
               <button
                 onClick={handlePreview}
-                className="px-4 py-2 border border-[var(--accent-gold)] text-[var(--accent-gold)] hover:bg-[var(--accent-gold)] hover:text-black transition-colors"
+                className="px-4 py-2 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-colors"
               >
                 Xem trước & Lưu ảnh
               </button>
@@ -401,7 +401,7 @@ export default function FormationCreatePage() {
               <button
                 onClick={handleSave}
                 disabled={saving}
-                className="px-4 py-2 bg-[var(--accent-gold)] text-black font-medium hover:bg-[var(--accent-gold-bright)] transition-colors disabled:opacity-50"
+                className="btn-primary disabled:opacity-50"
               >
                 {saving ? 'Đang lưu...' : 'Lưu'}
               </button>
@@ -422,7 +422,7 @@ export default function FormationCreatePage() {
                   onClick={() => setArmyType(type)}
                   className={`px-3 py-1.5 text-[13px] font-medium border transition-colors flex items-center gap-1.5 ${
                     isActive
-                      ? 'bg-[var(--bg-tertiary)] border-[var(--accent-gold)] text-[var(--accent-gold)]'
+                      ? 'bg-[var(--bg-tertiary)] border-[var(--accent)] text-[var(--accent)]'
                       : 'border-[var(--border)] text-[var(--text-tertiary)] hover:border-[var(--border-light)] hover:text-[var(--text-secondary)]'
                   }`}
                 >
@@ -444,7 +444,7 @@ export default function FormationCreatePage() {
                 key={idx}
                 className={`card p-4 transition-all ${
                   slot.general ? 'cursor-grab active:cursor-grabbing' : ''
-                } ${dragOverIndex === idx ? 'ring-2 ring-[var(--accent-gold)] scale-[1.02]' : ''} ${
+                } ${dragOverIndex === idx ? 'ring-2 ring-[var(--accent)] scale-[1.02]' : ''} ${
                   draggedIndex === idx ? 'opacity-50' : ''
                 }`}
                 draggable={!!slot.general}
@@ -454,7 +454,7 @@ export default function FormationCreatePage() {
                 onDrop={() => handleDrop(idx)}
                 onDragEnd={handleDragEnd}
               >
-                <div className={`text-[13px] mb-3 uppercase tracking-wider ${idx === 0 ? 'text-[var(--accent-gold)]' : 'text-[var(--text-secondary)]'}`}>
+                <div className={`text-[13px] mb-3  ${idx === 0 ? 'text-[var(--accent)]' : 'text-[var(--text-secondary)]'}`}>
                   {idx === 0 ? 'Chủ Tướng' : 'Phó Tướng'}
                 </div>
 
@@ -484,7 +484,7 @@ export default function FormationCreatePage() {
 
                     {/* General Info */}
                     <div className="text-center mb-3">
-                      <div className="font-serif font-semibold text-[15px] text-[var(--text-primary)]">
+                      <div className="font-semibold text-[15px] text-[var(--text-primary)]">
                         {slot.general.name}
                       </div>
                       {/* Faction */}
@@ -508,7 +508,7 @@ export default function FormationCreatePage() {
                     <div className="space-y-2 border-t border-[var(--border)] pt-3">
                       {/* Innate Skill - Read only, same style as other skills */}
                       {(slot.general.innate_skill?.name || slot.general.innate_skill_name) ? (
-                        <div className="bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/30 px-3 py-2 rounded">
+                        <div className="bg-[var(--accent)]/10 border border-[var(--accent)]/30 px-3 py-2 rounded">
                           <span className="text-[13px] text-[var(--text-primary)] font-medium">
                             {slot.general.innate_skill?.name || slot.general.innate_skill_name}
                           </span>
@@ -521,7 +521,7 @@ export default function FormationCreatePage() {
 
                       {/* Skill 1 */}
                       {slot.skill1 ? (
-                        <div className="flex items-center justify-between bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/30 px-3 py-2 rounded">
+                        <div className="flex items-center justify-between bg-[var(--accent)]/10 border border-[var(--accent)]/30 px-3 py-2 rounded">
                           <span className="text-[13px] text-[var(--text-primary)] font-medium truncate">{slot.skill1.name}</span>
                           <button
                             onClick={() => removeSkill(idx, 'skill1')}
@@ -533,7 +533,7 @@ export default function FormationCreatePage() {
                       ) : (
                         <button
                           onClick={() => openSkillPicker(idx, 'skill1')}
-                          className="w-full px-3 py-2 text-[13px] border-2 border-dashed border-[var(--accent-gold)]/30 text-[var(--text-tertiary)] hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-colors rounded"
+                          className="w-full px-3 py-2 text-[13px] border-2 border-dashed border-[var(--accent)]/30 text-[var(--text-tertiary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors rounded"
                         >
                           + Chiến pháp
                         </button>
@@ -541,7 +541,7 @@ export default function FormationCreatePage() {
 
                       {/* Skill 2 */}
                       {slot.skill2 ? (
-                        <div className="flex items-center justify-between bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/30 px-3 py-2 rounded">
+                        <div className="flex items-center justify-between bg-[var(--accent)]/10 border border-[var(--accent)]/30 px-3 py-2 rounded">
                           <span className="text-[13px] text-[var(--text-primary)] font-medium truncate">{slot.skill2.name}</span>
                           <button
                             onClick={() => removeSkill(idx, 'skill2')}
@@ -553,7 +553,7 @@ export default function FormationCreatePage() {
                       ) : (
                         <button
                           onClick={() => openSkillPicker(idx, 'skill2')}
-                          className="w-full px-3 py-2 text-[13px] border-2 border-dashed border-[var(--accent-gold)]/30 text-[var(--text-tertiary)] hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-colors rounded"
+                          className="w-full px-3 py-2 text-[13px] border-2 border-dashed border-[var(--accent)]/30 text-[var(--text-tertiary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors rounded"
                         >
                           + Chiến pháp
                         </button>
@@ -563,7 +563,7 @@ export default function FormationCreatePage() {
                 ) : (
                   <button
                     onClick={() => openGeneralPicker(idx)}
-                    className="aspect-[7/10] w-full rounded border-2 border-dashed border-[var(--border)] bg-[var(--bg-secondary)] hover:border-[var(--accent-gold)] transition-colors flex items-center justify-center"
+                    className="aspect-[7/10] w-full rounded border-2 border-dashed border-[var(--border)] bg-[var(--bg-secondary)] hover:border-[var(--accent)] transition-colors flex items-center justify-center"
                   >
                     <div className="text-center">
                       <div className="text-[var(--text-tertiary)] text-[24px] mb-2">+</div>
@@ -579,7 +579,7 @@ export default function FormationCreatePage() {
         {/* Right: Name & Description (1 column) */}
         <div className="space-y-4">
           <div className="card p-4">
-            <label className="block text-[12px] text-[var(--text-tertiary)] mb-1 uppercase tracking-wider">
+            <label className="block text-[12px] text-[var(--text-tertiary)] mb-1 ">
               Tên đội hình
             </label>
             <input
@@ -587,12 +587,12 @@ export default function FormationCreatePage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="VD: Thục Hán Tam Kiệt"
-              className="w-full px-3 py-2 text-[14px] bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent-gold)] focus:outline-none"
+              className="w-full px-3 py-2 text-[14px] bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent)] focus:outline-none"
             />
           </div>
 
           <div className="card p-4">
-            <label className="block text-[12px] text-[var(--text-tertiary)] mb-1 uppercase tracking-wider">
+            <label className="block text-[12px] text-[var(--text-tertiary)] mb-1 ">
               Mô tả
             </label>
             <textarea
@@ -600,7 +600,7 @@ export default function FormationCreatePage() {
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Mô tả về đội hình..."
               rows={4}
-              className="w-full px-3 py-2 text-[14px] bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent-gold)] focus:outline-none resize-none"
+              className="w-full px-3 py-2 text-[14px] bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent)] focus:outline-none resize-none"
             />
           </div>
 
@@ -627,7 +627,7 @@ export default function FormationCreatePage() {
                 value={generalSearch}
                 onChange={(e) => setGeneralSearch(e.target.value)}
                 placeholder="Tìm kiếm võ tướng..."
-                className="w-full px-4 py-2 bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent-gold)] focus:outline-none"
+                className="w-full px-4 py-2 bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent)] focus:outline-none"
               />
             </div>
 
@@ -641,7 +641,7 @@ export default function FormationCreatePage() {
                       onClick={() => selectGeneral(general)}
                       className="group text-left"
                     >
-                      <div className="aspect-[7/10] rounded overflow-hidden bg-[var(--bg-secondary)] border-2 border-transparent group-hover:border-[var(--accent-gold)] transition-colors">
+                      <div className="aspect-[7/10] rounded overflow-hidden bg-[var(--bg-secondary)] border-2 border-transparent group-hover:border-[var(--accent)] transition-colors">
                         <img
                           src={general.image || '/images/general-placeholder.svg'}
                           alt={general.name}
@@ -686,7 +686,7 @@ export default function FormationCreatePage() {
                 value={skillSearch}
                 onChange={(e) => setSkillSearch(e.target.value)}
                 placeholder="Tìm kiếm chiến pháp..."
-                className="w-full px-4 py-2 bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent-gold)] focus:outline-none"
+                className="w-full px-4 py-2 bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent)] focus:outline-none"
               />
 
               <div className="flex gap-2">
@@ -713,7 +713,7 @@ export default function FormationCreatePage() {
                   <button
                     key={skill.id}
                     onClick={() => selectSkill(skill)}
-                    className="w-full card p-3 text-left hover:border-[var(--accent-gold)] transition-colors"
+                    className="w-full card p-3 text-left hover:border-[var(--accent)] transition-colors"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex-1 min-w-0">

@@ -12,11 +12,11 @@ const armyTypeLabels: Record<string, string> = {
 };
 
 const armyTypeColors: Record<string, { bg: string; text: string; border: string }> = {
-  CAVALRY: { bg: 'bg-blue-500/20', text: 'text-blue-400', border: 'border-blue-500' },
-  SHIELD: { bg: 'bg-gray-500/20', text: 'text-gray-400', border: 'border-gray-500' },
-  ARCHER: { bg: 'bg-green-500/20', text: 'text-green-400', border: 'border-green-500' },
-  SPEAR: { bg: 'bg-orange-500/20', text: 'text-orange-400', border: 'border-orange-500' },
-  SIEGE: { bg: 'bg-purple-500/20', text: 'text-purple-400', border: 'border-purple-500' },
+  CAVALRY: { bg: 'bg-blue-500/20', text: 'text-blue-600', border: 'border-blue-600' },
+  SHIELD: { bg: 'bg-gray-500/20', text: 'text-gray-600', border: 'border-gray-600' },
+  ARCHER: { bg: 'bg-green-500/20', text: 'text-green-600', border: 'border-green-600' },
+  SPEAR: { bg: 'bg-orange-500/20', text: 'text-orange-600', border: 'border-orange-600' },
+  SIEGE: { bg: 'bg-purple-500/20', text: 'text-purple-600', border: 'border-purple-600' },
 };
 
 interface FormationCardProps {
@@ -33,7 +33,7 @@ export default function FormationCard({ formation }: FormationCardProps) {
 
   return (
     <Link href={`/formations/${formation.id}`} className="block">
-      <div className="card p-4 hover:border-[var(--accent-gold)] transition-colors h-full flex flex-col">
+      <div className="card p-4 hover:border-[var(--accent)] transition-colors h-full flex flex-col">
         {/* General Avatars */}
         <div className="flex gap-2 mb-3">
           {displayGenerals.map((gen, idx) => (
@@ -110,7 +110,7 @@ export default function FormationCard({ formation }: FormationCardProps) {
             </span>
           </div>
           {formation.isCurated && formation.rank && (
-            <span className="text-[var(--accent-gold)] font-bold">
+            <span className="text-[var(--accent)] font-bold">
               #{formation.rank}
             </span>
           )}
