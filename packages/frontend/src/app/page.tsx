@@ -172,11 +172,12 @@ export default function Home() {
                       href={`/generals/${general.slug || general.id}`}
                       className="card-interactive flex items-center gap-4 p-4"
                     >
-                      <div className="w-12 h-12 rounded-lg overflow-hidden bg-[var(--bg-tertiary)] flex-shrink-0">
+                      <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 relative">
+                        <div className="absolute inset-0 shimmer" />
                         <img
                           src={general.image || '/images/general-placeholder.svg'}
                           alt=""
-                          className="w-full h-full object-cover"
+                          className="relative w-full h-full object-cover"
                         />
                       </div>
                       <div className="flex-1 min-w-0">

@@ -551,10 +551,11 @@ export default function GeneralDetailPage() {
             {/* Portrait with crimson frame */}
             <div className="card overflow-hidden rounded-lg border-2 border-[var(--border)] hover:border-[var(--border-accent)] transition-colors">
               <div className="relative aspect-[7/10]">
+                <div className="absolute inset-0 shimmer" />
                 <img
                   src={general.image_full || general.image || '/images/general-placeholder.svg'}
                   alt={general.name}
-                  className="w-full h-full object-cover object-top"
+                  className="relative w-full h-full object-cover object-top"
                 />
               </div>
             </div>

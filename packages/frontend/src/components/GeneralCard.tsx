@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { General } from '@/lib/api';
 import { factionNames, FactionId } from '@/lib/generals';
@@ -35,13 +36,25 @@ interface GeneralCardProps {
 export default function GeneralCard({ general, index }: GeneralCardProps) {
   const factionId = general.faction_id as FactionId;
   const styles = factionStyles[factionId] || factionStyles.qun;
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const imageSrc = general.image || '/images/general-placeholder.svg';
 
   return (
     <Link href={`/generals/${general.slug || general.id}`} className="block group">
       <div
-        className="relative aspect-[7/10] rounded-lg overflow-hidden bg-cover bg-center shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:shadow-[var(--shadow-lg)] group-hover:scale-[1.03]"
-        style={{ backgroundImage: `url(${general.image || '/images/general-placeholder.svg'})` }}
+        className="relative aspect-[7/10] rounded-lg overflow-hidden shadow-[var(--shadow-sm)] transition-all duration-300 group-hover:shadow-[var(--shadow-lg)] group-hover:scale-[1.03]"
       >
+        {/* Shimmer placeholder */}
+        {!imageLoaded && (
+          <div className="absolute inset-0 shimmer" />
+        )}
+        {/* Actual image */}
+        <img
+          src={imageSrc}
+          alt={general.name}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setImageLoaded(true)}
+        />
         {/* Cost badge - top right */}
         <div className="absolute top-2 right-2 z-10">
           <span className="text-[15px] font-bold text-white bg-black/60 backdrop-blur-sm rounded-md w-7 h-7 flex items-center justify-center border border-white/10">
